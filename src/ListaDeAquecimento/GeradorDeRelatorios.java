@@ -22,7 +22,7 @@ public class GeradorDeRelatorios {
 			Document doc = new Document(PageSize.A4);
 			OutputStream os = new FileOutputStream("relatorios/relatorio.pdf");
 			PdfWriter.getInstance(doc, os);
-			
+			System.out.println();
 			doc.open();
 			Paragraph p1 = new Paragraph("Relatório de Solicitações de Corrida");
 			p1.setAlignment(Element.ALIGN_CENTER);
