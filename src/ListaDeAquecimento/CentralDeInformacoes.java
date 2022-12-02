@@ -7,7 +7,7 @@ public class CentralDeInformacoes {
 	private ArrayList < Passageiro > todosOsPassageiros = new ArrayList < Passageiro >();
 	private ArrayList < Corrida > corridas = new ArrayList < Corrida > ();
 	
-	//Corrida
+	//Corrigida
 	public boolean adicionarPassageiro(Passageiro p) {
 		int idade = LocalDate.now().compareTo(p.getDataDeNascimento());
 		if(idade < 18) {
@@ -68,7 +68,7 @@ public class CentralDeInformacoes {
 	}
 	public ArrayList <Corrida> recuperarCorridasDeUmPassageiro(String idPassageiro){
 		Passageiro p = this.recuperarPassageiroPeloEmail(idPassageiro);
-		if(!todosOsPassageiros.contains(p)) {
+		if(p == null) {
 			return null;
 		} else {
 			ArrayList <Corrida> corridasDoPass = new ArrayList <Corrida>();

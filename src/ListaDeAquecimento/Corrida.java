@@ -9,14 +9,14 @@ public class Corrida {
 	private Passageiro passageiro;
 	
 	public Corrida() {
-		
+		id = System.currentTimeMillis();
 	}
 	public Corrida(String enderecoDePartida, String enderecoDeDestino, float distancia, Passageiro passageiro) {
+		this();
 		this.enderecoDePartida = enderecoDePartida;
 		this.enderecoDeDestino = enderecoDeDestino;
 		this.distancia = distancia;
 		this.passageiro = passageiro;
-		id = System.currentTimeMillis();
 	}
 	public String toString() {
 		if(passageiro.getSexo() == Sexo.FEMININO) {

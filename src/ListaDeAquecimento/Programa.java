@@ -138,15 +138,14 @@ public class Programa {
 					System.out.println("Relatório Gerado com Sucesso!");
 					break;
 				case "8":
-					Passageiro passageiro = null;
-					do {
-						System.out.print("Insira o email do passageiro: ");
-						String email1 = input.nextLine();
-						passageiro = central.recuperarPassageiroPeloEmail(email1);
-						if(passageiro == null)
-							System.out.println("Passageiro não encontrado! Tente novamente!");
-					}while(passageiro == null);
-					msn.enviarHistoricoDeCorridas(passageiro);
+					System.out.print("Insira o email do passageiro: ");
+					String email1 = input.nextLine();
+					Passageiro passageiro = central.recuperarPassageiroPeloEmail(email1);
+					if(passageiro == null) {
+						System.out.println("Passageiro não encontrado! Tente novamente!");
+					} else {
+						msn.enviarHistoricoDeCorridas(passageiro);
+					}
 					break;
 				case "S":
 					System.out.println("\nSaindo...");
