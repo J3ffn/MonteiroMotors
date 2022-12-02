@@ -1,4 +1,4 @@
-package teste;
+package pasta1;
 
 public class Teste {
 
