@@ -31,6 +31,9 @@ public class Programa {
 					System.out.print("Insira o sexo do passageiro: ");
 					String sexo = input.nextLine();
 					
+					System.out.print("Insira uma senha para o passageiro: ");
+					String senha = input.nextLine();
+					
 					System.out.print("Insira a data de nascimento (no formato DD/MM/AAAA): ");
 					String[] datas = input.nextLine().split("/");
 					LocalDate dataNascimento = LocalDate.of(Integer.parseInt(datas[2]), 
@@ -40,8 +43,8 @@ public class Programa {
 					System.out.print("Insira o email do passageiro: ");
 					String email = input.nextLine();
 					
-					Passageiro pass = new Passageiro(nome, sexo, dataNascimento, email);
-					if(central.adicionarPassageiro(pass)) {
+					Usuario usuario = new Passageiro(nome, sexo, email, senha, dataNascimento);
+					if(central.adicionarUsuario(usuario)) {
 						System.out.println("Passageiro adicionado!");
 						try {
 							per.salvar(central, "dados-passageiros.xml");
@@ -54,25 +57,25 @@ public class Programa {
 					break;
 					
 				case "2":
-					System.out.println(central.listarTodosOsPassageiros());
+					System.out.println(central.listarTodosOsUsuarios());
 					break;
 					
 				case "3":
-					Passageiro p = null;
+					Usuario u = null;
 					do {
 						System.out.print("\nInsira o email(Digite 'Cancelar' para voltar ao menu): ");
 						String eml = input.nextLine();
 						if(eml.equalsIgnoreCase("Cancelar")) {
 							break;
 						} else {
-							p = central.recuperarPassageiroPeloEmail(eml);
+							u = central.recuperarUsuarioPeloEmail(eml);
 						}
-						if(p==null){
+						if(u==null){
 							System.out.println("Email não encontrado! Tente novamente!");
 						}
-					}while(p == null);
-					if(p!= null) 
-						System.out.printf("Nome: %s\nSexo: %s \nData de Nascimento: %s\n", p.getNome(), p.getSexo(), p.getDataDeNascimento());
+					}while(u == null);
+					if(u!= null) 
+						System.out.printf("Nome: %s\nSexo: %s \nData de Nascimento: %s\n", u.getNome(), u.getSexo(), u.getDataDeNascimento());
 					break;
 					
 				case "4":
@@ -89,9 +92,9 @@ public class Programa {
 						System.out.print("Informe o endereço de destino: ");
 						float distancia = Float.parseFloat(input.nextLine());
 						
-						corrida = new Corrida(enderecoP, enderecoD,  distancia, central.recuperarPassageiroPeloEmail(id));
+						corrida = new Corrida(enderecoP, enderecoD,  distancia, central.recuperarUsuarioPeloEmail(id));
 						boolean g = false;
-						if(corrida.getPassageiro() != null) {
+						if(corrida.getUsuario() != null) {
 							g = central.adicionarCorrida(corrida);
 						}
 						if(!g) {
@@ -112,22 +115,22 @@ public class Programa {
 					break;
 					
 				case "6":
-					Passageiro p1 = null;
+					Usuario u1 = null;
 					do {
 						System.out.print("\nInsira o email(Digite 'Cancelar' para voltar ao menu): ");
 						String eml = input.nextLine();
 						if(eml.equalsIgnoreCase("Cancelar")) {
 							break;
 						} else {
-							p1 = central.recuperarPassageiroPeloEmail(eml);
+							u1 = central.recuperarUsuarioPeloEmail(eml);
 						}
-						if(p1==null){
+						if(u1==null){
 							System.out.println("Email não encontrado! Tente novamente!");
 						}
-					}while(p1 == null);
-					if(p1 != null) {
-						System.out.printf("Corridas de %s:\n", p1.getNome());
-						for(Corrida c : central.recuperarCorridasDeUmPassageiro(p1.getId())) {
+					}while(u1 == null);
+					if(u1 != null) {
+						System.out.printf("Corridas de %s:\n", u1.getNome());
+						for(Corrida c : central.recuperarCorridasDeUmPassageiro(u1.getId())) {
 							System.out.println(c);
 						}
 					}
@@ -140,13 +143,14 @@ public class Programa {
 				case "8":
 					System.out.print("Insira o email do passageiro: ");
 					String email1 = input.nextLine();
-					Passageiro passageiro = central.recuperarPassageiroPeloEmail(email1);
-					if(passageiro == null) {
+					Usuario usuario2 = central.recuperarUsuarioPeloEmail(email1);
+					if(usuario2 == null) {
 						System.out.println("Passageiro não encontrado! Tente novamente!");
 					} else {
-						msn.enviarHistoricoDeCorridas(passageiro);
+						msn.enviarHistoricoDeCorridas(usuario2);
 					}
 					break;
+					
 				case "S":
 					System.out.println("\nSaindo...");
 					flag = true;

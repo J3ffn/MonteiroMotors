@@ -28,7 +28,7 @@ public class GeradorDeRelatorios {
 			p1.setAlignment(Element.ALIGN_CENTER);
 			PdfPTable table = new PdfPTable(2);
 			PdfPCell cabecalho1 = new PdfPCell(p1);
-			PdfPCell cabecalho2 = new PdfPCell(new Paragraph ("Nome do Passageiro"));
+			PdfPCell cabecalho2 = new PdfPCell(new Paragraph ("Nome do Usuario"));
 			PdfPCell cabecalho3 = new PdfPCell(new Paragraph("Número de Corridas Solicitadas"));
 			
 			cabecalho1.setColspan(2);
@@ -45,9 +45,9 @@ public class GeradorDeRelatorios {
 			table.addCell(cabecalho2);
 			table.addCell(cabecalho3);
 			
-			for(Passageiro p : central.getTodosOsPassageiros()) {
-				PdfPCell nome = new PdfPCell(new Paragraph(p.getNome()));
-				PdfPCell corridas = new PdfPCell(new Paragraph(Integer.toString(central.recuperarCorridasDeUmPassageiro(p.getEmail()).size())));
+			for(Usuario usuario : central.getTodosOsUsuarios()) {
+				PdfPCell nome = new PdfPCell(new Paragraph(usuario.getNome()));
+				PdfPCell corridas = new PdfPCell(new Paragraph(Integer.toString(central.recuperarCorridasDeUmPassageiro(usuario.getEmail()).size())));
 				nome.setHorizontalAlignment(Element.ALIGN_CENTER);
 				corridas.setHorizontalAlignment(Element.ALIGN_CENTER);
 				table.addCell(nome);

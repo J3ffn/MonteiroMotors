@@ -20,7 +20,7 @@ public class Mensageiro extends MultiPartEmail{
 	
 	}
 	
-	public boolean enviarHistoricoDeCorridas(Passageiro p) {
+	public boolean enviarHistoricoDeCorridas(Usuario p) {
 		Persistencia per = new Persistencia();
 		ArrayList <Corrida> corridas = null;
 		CentralDeInformacoes central = null;
@@ -31,9 +31,9 @@ public class Mensageiro extends MultiPartEmail{
 			corridas = central.recuperarCorridasDeUmPassageiro(p.getEmail());
 		} catch (Exception e) {e.printStackTrace();}
 		
-		ArrayList <Passageiro> pass = new ArrayList <Passageiro> ();
-		pass.add(central.recuperarPassageiroPeloEmail(p.getEmail()));
-		outraCentral.setTodosOsPassageiros(pass);
+		ArrayList <Usuario> pass = new ArrayList <Usuario> ();
+		pass.add(central.recuperarUsuarioPeloEmail(p.getEmail()));
+		outraCentral.setTodosOsUsuarios(pass);
 		outraCentral.setCorridas(corridas);
 		
 		GeradorDeRelatorios.obterSolicitacoesDeCorrida(outraCentral);

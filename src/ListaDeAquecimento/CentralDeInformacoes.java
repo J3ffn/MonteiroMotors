@@ -4,18 +4,18 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class CentralDeInformacoes {
-	private ArrayList < Passageiro > todosOsPassageiros = new ArrayList < Passageiro >();
+	private ArrayList < Usuario > todosOsUsuarios = new ArrayList < Usuario >();
 	private ArrayList < Corrida > corridas = new ArrayList < Corrida > ();
 	
 	//Corrigida
-	public boolean adicionarPassageiro(Passageiro p) {
+	public boolean adicionarUsuario(Usuario p) {
 		int idade = LocalDate.now().compareTo(p.getDataDeNascimento());
 		if(idade < 18) {
 			return false;
 		} else {
-			Passageiro outro = this.recuperarPassageiroPeloEmail(p.getEmail());
+			Usuario outro = this.recuperarUsuarioPeloEmail(p.getEmail());
 			if(outro==null) {
-				todosOsPassageiros.add(p);
+				todosOsUsuarios.add(p);
 				return true;
 			}
 			return false;
@@ -26,18 +26,18 @@ public class CentralDeInformacoes {
 		this.corridas = corridas;
 	}
 
-	public Passageiro recuperarPassageiroPeloEmail(String email) {
-		for(Passageiro passageiro : todosOsPassageiros) {
-			if(passageiro.getEmail().equals(email)) {
-				return passageiro;
+	public Usuario recuperarUsuarioPeloEmail(String email) {
+		for(Usuario usuario : todosOsUsuarios) {
+			if(usuario.getEmail().equals(email)) {
+				return usuario;
 			}
 		}
 		return null;
 	}
-	public String listarTodosOsPassageiros() {
+	public String listarTodosOsUsuarios() {
 		String txt = "Lista de Passageiros: \n";
-		for(Passageiro passageiro : todosOsPassageiros) {
-			txt += String.format("%s - %s \n", passageiro.getNome(), passageiro.getId());
+		for(Usuario usuario : todosOsUsuarios) {
+			txt += String.format("%s - %s \n", usuario.getNome(), usuario.getId());
 		}
 		return txt;
 	}
@@ -66,24 +66,24 @@ public class CentralDeInformacoes {
 		}
 		return null;
 	}
-	public ArrayList <Corrida> recuperarCorridasDeUmPassageiro(String idPassageiro){
-		Passageiro p = this.recuperarPassageiroPeloEmail(idPassageiro);
+	public ArrayList <Corrida> recuperarCorridasDeUmPassageiro(String idUsuario){
+		Usuario p = this.recuperarUsuarioPeloEmail(idUsuario);
 		if(p == null) {
 			return null;
 		} else {
 			ArrayList <Corrida> corridasDoPass = new ArrayList <Corrida>();
 			for(Corrida c : corridas) {
-				if(c.getPassageiro().equals(p)) {
+				if(c.getUsuario().equals(p)) {
 					corridasDoPass.add(c);
 				}
 			}
 			return corridasDoPass;
 		}
 	}
-	public ArrayList<Passageiro> getTodosOsPassageiros() {
-		return todosOsPassageiros;
+	public ArrayList<Usuario> getTodosOsUsuarios() {
+		return todosOsUsuarios;
 	}
-	public void setTodosOsPassageiros(ArrayList<Passageiro> todosOsPassageiros) {
-		this.todosOsPassageiros = todosOsPassageiros;
+	public void setTodosOsUsuarios(ArrayList<Usuario> todosOsUsuarios) {
+		this.todosOsUsuarios = todosOsUsuarios;
 	}
 }

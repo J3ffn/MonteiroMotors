@@ -6,14 +6,14 @@ public class MainTesteDatas {
 
 	public static void main(String[] args) {
 		CentralDeInformacoes c = new CentralDeInformacoes();
-		Passageiro passageiro1 = new Passageiro("João", "masculino", LocalDate.of(2004, 2, 21) , "email.teste@testando1.com");
-		Passageiro passageiro2 = new Passageiro("Maria", "feminino", LocalDate.of(1998, 2, 21) , "email.teste@testando2.com");
-		Passageiro passageiro3 = new Passageiro("José", "masculino", LocalDate.of(2002, 2, 21) , "email.teste@testando3.com");
+		Usuario passageiro1 = new Passageiro("João", "masculino", "email.teste@testando1.com", "Eduardo123", LocalDate.of(2004, 2, 21));
+		Usuario passageiro2 = new Passageiro("Maria", "feminino", "email.teste@testando2.com", "Bolinhas", LocalDate.of(1998, 2, 21));
+		Usuario passageiro3 = new Passageiro("José", "masculino", "email.teste@testando3.com", "Tristeza", LocalDate.of(2002, 2, 21));
 		
-		System.out.println(c.adicionarPassageiro(passageiro1));	
-		System.out.println(c.adicionarPassageiro(passageiro2));	
-		System.out.println(c.adicionarPassageiro(passageiro3));	
+		System.out.println(c.adicionarUsuario(passageiro1));	
+		System.out.println(c.adicionarUsuario(passageiro2));	
+		System.out.println(c.adicionarUsuario(passageiro3));	
 		
-		System.out.print(c.listarTodosOsPassageiros());
+		System.out.print(c.listarTodosOsUsuarios());
 	}
 }

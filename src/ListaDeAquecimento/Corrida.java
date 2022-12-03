@@ -6,23 +6,23 @@ public class Corrida {
 	private String enderecoDePartida;
 	private String enderecoDeDestino;
 	private float distancia;
-	private Passageiro passageiro;
+	private Usuario usuario;
 	
 	public Corrida() {
 		id = System.currentTimeMillis();
 	}
-	public Corrida(String enderecoDePartida, String enderecoDeDestino, float distancia, Passageiro passageiro) {
+	public Corrida(String enderecoDePartida, String enderecoDeDestino, float distancia, Usuario usuario) {
 		this();
 		this.enderecoDePartida = enderecoDePartida;
 		this.enderecoDeDestino = enderecoDeDestino;
 		this.distancia = distancia;
-		this.passageiro = passageiro;
+		this.usuario = usuario;
 	}
 	public String toString() {
-		if(passageiro.getSexo() == Sexo.FEMININO) {
-			return String.format("%s pede para pegá-la em %s", passageiro.getNome(), this.enderecoDePartida);
+		if(usuario.getSexo() == Sexo.FEMININO) {
+			return String.format("%s pede para pegá-la em %s", usuario.getNome(), this.enderecoDePartida);
 		} else {
-			return String.format("%s pede para pegá-lo em %s", passageiro.getNome(), this.enderecoDePartida);
+			return String.format("%s pede para pegá-lo em %s", usuario.getNome(), this.enderecoDePartida);
 		}
 	}
 	public long getId() {
@@ -40,11 +40,11 @@ public class Corrida {
 	public void setEnderecoDeDestino(String enderecoDeDestino) {
 		this.enderecoDeDestino = enderecoDeDestino;
 	}
-	public Passageiro getPassageiro() {
-		return passageiro;
+	public Usuario getUsuario() {
+		return usuario;
 	}
-	public void setPassageiro(Passageiro passageiro) {
-		this.passageiro = passageiro;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 	public float getDistancia() {
 		return distancia;
