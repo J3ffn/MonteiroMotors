@@ -57,7 +57,8 @@ public class JanelaDeRegistro extends JanelaPadrao{
 		this.add(inputConfirmacaoSenha);
 	}
 	public void adicionarBotoes() {
-		//ToDo- Adicionar A Lista de seleção de tipo de usuario
+		
+		//ToDo- Adicionar A Lista de seleção de tipo de usuario em cima do JTExtField de nome.
 		
 		JButton btCriarConta = new JButton("Criar Conta");
 		btCriarConta.setBounds(189, 360, 120, 32);
