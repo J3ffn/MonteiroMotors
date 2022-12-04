@@ -1,21 +1,34 @@
 package ListaDeAquecimento;
 
+import java.time.LocalDate;
 
 public class Corrida {
 	private long id;
+	private Status status;
+	
 	private String enderecoDePartida;
 	private String enderecoDeDestino;
 	private float distancia;
+	
+	private boolean paraAgora;
+	private LocalDate data;
+	
 	private Usuario usuario;
+	
+	private Mototaxista mototaxista;
+	
+	private Avaliacao avaliacao;
 	
 	public Corrida() {
 		id = System.currentTimeMillis();
 	}
-	public Corrida(String enderecoDePartida, String enderecoDeDestino, float distancia, Usuario usuario) {
+	public Corrida(String enderecoDePartida, String enderecoDeDestino, float distancia, boolean paraAgora, LocalDate data, Usuario usuario) {
 		this();
 		this.enderecoDePartida = enderecoDePartida;
 		this.enderecoDeDestino = enderecoDeDestino;
 		this.distancia = distancia;
+		this.paraAgora = paraAgora;
+		this.data = data;
 		this.usuario = usuario;
 	}
 	public String toString() {
@@ -49,5 +62,33 @@ public class Corrida {
 	public float getDistancia() {
 		return distancia;
 	}
+	public LocalDate getData() {
+		return data;
+	}
+	public void setData(LocalDate data) {
+		this.data = data;
+	}
+	public boolean isParaAgora() {
+		return paraAgora;
+	}
+	public Status getStatus() {
+		return status;
+	}
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+	public Mototaxista getMototaxista() {
+		return mototaxista;
+	}
+	public void setMototaxista(Mototaxista mototaxista) {
+		this.mototaxista = mototaxista;
+		status = Status.EM_CURSO;
+	}
 	
+	public Avaliacao getAvaliacao() {
+		return avaliacao;
+	}
+	public void setAvaliacao(Avaliacao avaliacao) {
+		this.avaliacao = avaliacao;
+	}
 }

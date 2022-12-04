@@ -92,7 +92,7 @@ public class Programa {
 						System.out.print("Informe o endereço de destino: ");
 						float distancia = Float.parseFloat(input.nextLine());
 						
-						corrida = new Corrida(enderecoP, enderecoD,  distancia, central.recuperarUsuarioPeloEmail(id));
+						corrida = new Corrida(enderecoP, enderecoD,  distancia, true, null, central.recuperarUsuarioPeloEmail(id));
 						boolean g = false;
 						if(corrida.getUsuario() != null) {
 							g = central.adicionarCorrida(corrida);

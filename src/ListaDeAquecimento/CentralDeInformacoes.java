@@ -53,11 +53,20 @@ public class CentralDeInformacoes {
 		}
 		return txt;
 	}
+	public ArrayList<Usuario> getTodosOsUsuarios() {
+		return todosOsUsuarios;
+	}
+	public void setTodosOsUsuarios(ArrayList<Usuario> todosOsUsuarios) {
+		this.todosOsUsuarios = todosOsUsuarios;
+	}
+	
+	///METODOS DE CORRIDAS===========================================
 	// Corrigida
 	public boolean adicionarCorrida(Corrida corrida) {
 		Corrida outra = this.recuperarCorridaPeloId(corrida.getId());
 		if(outra == null) {
 			corridas.add(corrida);
+			corrida.setStatus(Status.PENDENTE);
 			return true;
 		} else {
 			return false;
@@ -85,10 +94,9 @@ public class CentralDeInformacoes {
 			return corridasDoPass;
 		}
 	}
-	public ArrayList<Usuario> getTodosOsUsuarios() {
-		return todosOsUsuarios;
-	}
-	public void setTodosOsUsuarios(ArrayList<Usuario> todosOsUsuarios) {
-		this.todosOsUsuarios = todosOsUsuarios;
+	public void adicionarAvaliacao(Avaliacao avaliacao) {
+		avaliacao.getCorrida().setAvaliacao(avaliacao);
+		Mototaxista mototaxista = (Mototaxista) this.recuperarUsuarioPeloEmail(avaliacao.getDestinatario().getEmail());
+		mototaxista.addAvaliacao(avaliacao);
 	}
 }
