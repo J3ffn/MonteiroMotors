@@ -24,10 +24,11 @@ public abstract class Usuario{
 		this(nome, sexo, senha, email, null);
 	}
 	
-	public boolean fazerLogin(String email_2, String senha_2) {
-		//Depois de verificar se o usuário existe na central, apenas verifica se o email e a snha são iguais
-		return (email_2.equals(email) && senha_2.equals(senha));
+	public boolean fazerLogin(String senha_2) throws SenhaIncorretaException, PerfilDesativadoException{
+		//Depois de verificar se o usuário existe na central com o recuperarUsuarioComEmail, apenas verifica se a senha é igual
+		return (senha_2.equals(senha) && perfilAtivo);
 	}
+	
 	public String toString() {
 		return nome;
 	}
@@ -65,5 +66,14 @@ public abstract class Usuario{
 	}
 	public void setPerfilAtivo(boolean perfilAtivo) {
 		this.perfilAtivo = perfilAtivo;
+	}
+	public static void main(String[] args) {
+		Administrador adm = new Administrador("Desconhecido", "Masculino", "jjjj", "bolo", null);
+		Credito c = new Credito(adm);
+		System.out.println(c.getValor());
+		adm.atualizarValorDosCreditos(0.4f);
+		System.out.println(c.getValor());
+		Credito c2 = new Credito(adm);
+		System.out.println(c2.getValor());
 	}
 }
