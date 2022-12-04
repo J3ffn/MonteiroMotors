@@ -8,7 +8,7 @@ public class Programa {
 		Scanner input = new Scanner(System.in);
 		Persistencia per = new Persistencia();
 		Mensageiro msn = new Mensageiro();
-		Usuario usuarioAtual;
+		Usuario usuarioAtual = null;
 		boolean flag = false;
 		try {
 			CentralDeInformacoes central = (CentralDeInformacoes) per.recuperar("dados-passageiros.xml");
@@ -179,20 +179,26 @@ public class Programa {
 					}
 					break;
 				case "10":
-					System.out.print("Insira o email: ");
-					String email4 = input.nextLine();
-					System.out.print("Insira a senha: ");
-					String senha2 = input.nextLine();
-					try {
-						usuarioAtual = central.recuperarUsuarioPeloEmail(email4);
-						boolean logado = usuarioAtual.fazerLogin(senha2);
-						System.out.println("Logado!");
-					} catch(SenhaIncorretaException erro) {
-						System.out.println("Senha Incorreta!");
-					} catch(PerfilDesativadoException erro) {
-						System.out.println("Perfil Desativado!");
-					} catch (NullPointerException erro) {
-						System.out.println("Passageiro não encontrado!");
+					if(usuarioAtual == null) {
+						System.out.print("Insira o email: ");
+						String email4 = input.nextLine();
+						System.out.print("Insira a senha: ");
+						String senha2 = input.nextLine();
+						try {
+							usuarioAtual = central.recuperarUsuarioPeloEmail(email4);
+							boolean logado = usuarioAtual.fazerLogin(senha2);
+							System.out.println("Logado!");
+						} catch(SenhaIncorretaException erro) {
+							System.out.println("Senha Incorreta!");
+							usuarioAtual = null;
+						} catch(PerfilDesativadoException erro) {
+							System.out.println("Perfil Desativado!");
+							usuarioAtual = null;
+						} catch (NullPointerException erro) {
+							System.out.println("Passageiro não encontrado!");
+						}
+					} else {
+						System.out.println("Você já está logado!");
 					}
 					break;
 				case "S":
@@ -200,7 +206,7 @@ public class Programa {
 					flag = true;
 				}
 				
-			}while(!flag);
+			} while(!flag);
 			System.out.println("Fim do Programa!");
 			
 		} catch (Exception erro){

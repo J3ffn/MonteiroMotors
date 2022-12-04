@@ -26,6 +26,11 @@ public abstract class Usuario{
 	
 	public boolean fazerLogin(String senha_2) throws SenhaIncorretaException, PerfilDesativadoException{
 		//Depois de verificar se o usuário existe na central com o recuperarUsuarioComEmail, apenas verifica se a senha é igual
+		if(!senha_2.equals(senha)) {
+			throw new SenhaIncorretaException();
+		} else if (!perfilAtivo) {
+			throw new PerfilDesativadoException();
+		}
 		return (senha_2.equals(senha) && perfilAtivo);
 	}
 	
