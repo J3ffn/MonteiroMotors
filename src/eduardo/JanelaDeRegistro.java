@@ -1,5 +1,9 @@
 package eduardo;
 
+import java.awt.Color;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -7,7 +11,8 @@ import javax.swing.JTextField;
 import clebson.JanelaPadrao;
 
 public class JanelaDeRegistro extends JanelaPadrao{
-
+	JButton btCriarConta;
+	
 	public JanelaDeRegistro() {
 		super("Registro de Usuário");
 		this.adicionarBotoes();
@@ -59,9 +64,23 @@ public class JanelaDeRegistro extends JanelaPadrao{
 	public void adicionarBotoes() {
 		//ToDo- Adicionar A Lista de seleção de tipo de usuario em cima do JTExtField de nome.
 		
-		JButton btCriarConta = new JButton("Criar Conta");
+		btCriarConta = new JButton("Criar Conta");
 		btCriarConta.setBounds(189, 360, 120, 32);
-		
+		btCriarConta.addMouseListener(new OuvinteMouseBtCriarConta());
+		btCriarConta.setToolTipText("Crie a sua conta! Venha fazer parte da Monteiro-Motos!");
 		this.add(btCriarConta);
+	}
+	public class OuvinteMouseBtCriarConta implements MouseListener{
+		public void mouseClicked(MouseEvent e) {}
+		public void mousePressed(MouseEvent e) {}
+		public void mouseReleased(MouseEvent e) {}
+		
+		public void mouseEntered(MouseEvent e) {
+			btCriarConta.setBackground(Color.getHSBColor(100/360f, 50/100f, 80/100f));
+		}
+
+		public void mouseExited(MouseEvent e) {
+			btCriarConta.setBackground(null);
+		}
 	}
 }
