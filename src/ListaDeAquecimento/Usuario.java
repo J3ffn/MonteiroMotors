@@ -67,13 +67,4 @@ public abstract class Usuario{
 	public void setPerfilAtivo(boolean perfilAtivo) {
 		this.perfilAtivo = perfilAtivo;
 	}
-	public static void main(String[] args) {
-		Administrador adm = new Administrador("Desconhecido", "Masculino", "jjjj", "bolo", null);
-		Credito c = new Credito(adm);
-		System.out.println(c.getValor());
-		adm.atualizarValorDosCreditos(0.4f);
-		System.out.println(c.getValor());
-		Credito c2 = new Credito(adm);
-		System.out.println(c2.getValor());
-	}
 }

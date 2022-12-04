@@ -21,7 +21,12 @@ public class CentralDeInformacoes {
 			return false;
 		}
 	}
-	
+	public Administrador recuperarAdministradorDoSistema() {
+		for(Usuario u : todosOsUsuarios)
+			if(u instanceof Administrador)
+				return (Administrador) u;
+		return null;
+	}
 	public void setCorridas(ArrayList<Corrida> corridas) {
 		this.corridas = corridas;
 	}

@@ -3,8 +3,8 @@ package ListaDeAquecimento;
 public class Credito {
 	private float valor;
 	
-	public Credito(Administrador adm) {
-		valor = adm.getValorDosCreditos();
+	public Credito(CentralDeInformacoes central) {
+		valor = central.recuperarAdministradorDoSistema().getValorDosCreditos();
 	}
 	public float getValor() {
 		return valor;
