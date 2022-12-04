@@ -8,23 +8,33 @@ public class Programa {
 		Scanner input = new Scanner(System.in);
 		Persistencia per = new Persistencia();
 		Mensageiro msn = new Mensageiro();
+		Usuario usuarioAtual;
 		boolean flag = false;
 		try {
 			CentralDeInformacoes central = (CentralDeInformacoes) per.recuperar("dados-passageiros.xml");
 			do {
-				System.out.print("\n1- novo passageiro\n" +
-						"2- listar todos os passageiros\n" +
-						"3- exibir informações de um passageiro expecífico\n" +
+				System.out.print("\n1- novo usuario\n" +
+						"2- listar todos os usuarios\n" +
+						"3- exibir informações de um usuario expecífico\n" +
 						"4- nova corrida\n" +
 						"5- listar todas as corridas\n" +
 						"6- listar corridas de um passageiro\n" +
 						"7- gerar relatório de solicitações de corridas\n" +
 						"8- enviar histórico de corridas\n" +
+						"9- verificar tipo de usuario\n" +
+						"10- fazer login\n" +
 						"S- Sair\nSua Escolha: ");
 				String escolha = input.nextLine().toUpperCase();
 				switch(escolha) {
 				
 				case "1":
+					Usuario usuario = null;
+					int tipo = 0;
+					if(!central.getTodosOsUsuarios().isEmpty()) {
+						System.out.print("Insira o tipo de usuario que deseja cadastrar(1-Passageiro ou 2-Mototaxista): ");
+						tipo = Integer.parseInt(input.nextLine());
+					}
+					
 					System.out.print("\nInsira o nome do passageiro: ");
 					String nome = input.nextLine();
 					
@@ -43,7 +53,15 @@ public class Programa {
 					System.out.print("Insira o email do passageiro: ");
 					String email = input.nextLine();
 					
-					Usuario usuario = new Passageiro(nome, sexo, email, senha, dataNascimento);
+					if(central.getTodosOsUsuarios().isEmpty()) {
+						usuario = new Administrador(nome, sexo, email, senha, dataNascimento);
+					} else {
+						if(tipo == 1) {
+							usuario = new Passageiro(nome, sexo, email, senha, dataNascimento);
+						} else {
+							usuario = new Mototaxista(nome, sexo, email, senha, dataNascimento);
+						}
+					}
 					if(central.adicionarUsuario(usuario)) {
 						System.out.println("Passageiro adicionado!");
 						try {
@@ -128,7 +146,7 @@ public class Programa {
 							System.out.println("Email não encontrado! Tente novamente!");
 						}
 					}while(u1 == null);
-					if(u1 != null) {
+					if(u1 != null && u1 instanceof Passageiro) {
 						System.out.printf("Corridas de %s:\n", u1.getNome());
 						for(Corrida c : central.recuperarCorridasDeUmPassageiro(u1.getId())) {
 							System.out.println(c);
@@ -150,7 +168,33 @@ public class Programa {
 						msn.enviarHistoricoDeCorridas(usuario2);
 					}
 					break;
-					
+				case "9":
+					System.out.print("Informe o email do passageiro: ");
+					String email2 = input.nextLine();
+					Usuario usuario3 = central.recuperarUsuarioPeloEmail(email2);
+					if(usuario3 == null) {
+						System.out.println("Passageiro não encontrado! Tente novamente!");
+					} else {
+						System.out.println(usuario3.recuperarCargo());
+					}
+					break;
+				case "10":
+					System.out.print("Insira o email: ");
+					String email4 = input.nextLine();
+					System.out.print("Insira a senha: ");
+					String senha2 = input.nextLine();
+					try {
+						usuarioAtual = central.recuperarUsuarioPeloEmail(email4);
+						boolean logado = usuarioAtual.fazerLogin(senha2);
+						System.out.println("Logado!");
+					} catch(SenhaIncorretaException erro) {
+						System.out.println("Senha Incorreta!");
+					} catch(PerfilDesativadoException erro) {
+						System.out.println("Perfil Desativado!");
+					} catch (NullPointerException erro) {
+						System.out.println("Passageiro não encontrado!");
+					}
+					break;
 				case "S":
 					System.out.println("\nSaindo...");
 					flag = true;

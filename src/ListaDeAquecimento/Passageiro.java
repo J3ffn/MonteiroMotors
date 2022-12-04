@@ -9,7 +9,9 @@ public class Passageiro extends Usuario{
 	public Passageiro(String nome, String sexo, String email, String senha, LocalDate i) {
 		super(nome, sexo, email, senha, i);
 	}
-	
+	public String recuperarCargo() {
+		return "Passageiro";
+	}
 	public void cadastrarCorrida(String enderecoP, String enderecoD, float distancia, boolean paraAgora, LocalDate data, CentralDeInformacoes central) throws CorridaNaoAdicionadaException{
 		boolean deuCerto = central.adicionarCorrida(new Corrida(enderecoP, enderecoD, distancia, paraAgora, data, this));
 		if(!deuCerto)

@@ -32,6 +32,7 @@ public abstract class Usuario{
 	public String toString() {
 		return nome;
 	}
+	public abstract String recuperarCargo();
 	
 	public String getId() {
 		return id;
