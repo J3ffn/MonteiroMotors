@@ -6,20 +6,23 @@ import java.awt.event.MouseListener;
 import java.text.ParseException;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
 import clebson.JanelaPadrao;
 
 public class JanelaDeRegistro extends JanelaPadrao{
+	JComboBox < String > cbTipoUsuario;
 	JButton btCriarConta;
 	JTextField inputNome;
 	JTextField inputEmail;
-	JFormattedTextField inputDataDeNascimento;
-	JTextField inputSenha;
-	JTextField inputConfirmacaoSenha;
+	JPasswordField inputSenha;
+	JPasswordField inputConfirmacaoSenha;
+	JFormattedTextField inputDataDeNascimento; JComboBox <String> cbSexo;
 	
 	
 	public JanelaDeRegistro() {
@@ -30,6 +33,11 @@ public class JanelaDeRegistro extends JanelaPadrao{
 	}
 	public void adicionarCaixasDeTexto() {
 		int x = 125;
+		
+		String[] tiposUsuarios = {"Administrador", "Mototaxista", "Passageiro"};
+		cbTipoUsuario = new JComboBox < String >(tiposUsuarios);
+		cbTipoUsuario.setBounds(190, 7, 110, 30);
+		
 		JLabel txNome = new JLabel("Nome Completo:");
 		txNome.setBounds(x, 40, 134, 20);
 		inputNome = new JTextField();
@@ -43,12 +51,12 @@ public class JanelaDeRegistro extends JanelaPadrao{
 		
 		JLabel txSenha = new JLabel("Senha:");
 		txSenha.setBounds(x, 150, 134, 20);
-		inputSenha = new JTextField();
+		inputSenha = new JPasswordField();
 		inputSenha.setBounds(x, 170, 243, 30);
 		
 		JLabel txConfirmacaoSenha = new JLabel("Confirme a sua senha:");
 		txConfirmacaoSenha.setBounds(x, 205, 170, 20);
-		inputConfirmacaoSenha = new JTextField();
+		inputConfirmacaoSenha = new JPasswordField();
 		inputConfirmacaoSenha.setBounds(x, 230, 243, 30);
 		
 		JLabel txDataDeNascimento = new JLabel("Data de Nascimento:");
@@ -64,6 +72,11 @@ public class JanelaDeRegistro extends JanelaPadrao{
 		JLabel txSexo = new JLabel("Sexo:");
 		txSexo.setBounds(280, 266, 50, 30);
 		
+		String[] sexos = {"Masculino", "Feminino"};
+		cbSexo = new JComboBox <String> (sexos);
+		cbSexo.setBounds(280, 295, 90, 30);
+		
+		this.add(cbTipoUsuario);
 		
 		this.add(txNome);
 		this.add(inputNome);
@@ -81,13 +94,14 @@ public class JanelaDeRegistro extends JanelaPadrao{
 		this.add(inputDataDeNascimento);
 		
 		this.add(txSexo);
+		this.add(cbSexo);
 		
 	}
 	public void adicionarBotoes() {
 		//ToDo- Adicionar A Lista de seleção de tipo de usuario em cima do JTExtField de nome.
 		
 		btCriarConta = new JButton("Criar Conta");
-		btCriarConta.setBounds(189, 365, 120, 32);
+		btCriarConta.setBounds(190, 365, 120, 30);
 		btCriarConta.addMouseListener(new OuvinteMouseBtCriarConta());
 		btCriarConta.setToolTipText("Crie a sua conta! Venha fazer parte da Monteiro-Motos!");
 		
