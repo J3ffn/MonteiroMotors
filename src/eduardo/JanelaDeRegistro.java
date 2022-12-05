@@ -3,15 +3,24 @@ package eduardo;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.text.ParseException;
 
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.text.MaskFormatter;
 
 import clebson.JanelaPadrao;
 
 public class JanelaDeRegistro extends JanelaPadrao{
 	JButton btCriarConta;
+	JTextField inputNome;
+	JTextField inputEmail;
+	JFormattedTextField inputDataDeNascimento;
+	JTextField inputSenha;
+	JTextField inputConfirmacaoSenha;
+	
 	
 	public JanelaDeRegistro() {
 		super("Registro de Usuário");
@@ -20,31 +29,41 @@ public class JanelaDeRegistro extends JanelaPadrao{
 		this.setVisible(true);
 	}
 	public void adicionarCaixasDeTexto() {
-		int x = 124;
-		JLabel txNome = new JLabel("NOME COMPLETO:");
-		txNome.setBounds(x, 39, 134, 20);
-		JTextField inputNome = new JTextField();
-		inputNome.setBounds(x, 59, 243, 32);
+		int x = 125;
+		JLabel txNome = new JLabel("Nome Completo:");
+		txNome.setBounds(x, 40, 134, 20);
+		inputNome = new JTextField();
+		inputNome.setBounds(x, 60, 243, 30);
 		
-		JLabel txEmail = new JLabel("EMAIL:");
-		txEmail.setBounds(x, 98, 134, 20);
-		JTextField inputEmail = new JTextField();
-		inputEmail.setBounds(x, 121, 243, 32);
+		JLabel txEmail = new JLabel("Email:");
+		txEmail.setBounds(x, 95, 134, 20);
+		inputEmail = new JTextField();
+		inputEmail.setBounds(x, 115, 243, 30);
 		
-		JLabel txDataDeNascimento = new JLabel("DATA DE NASCIMENTO(DD/MM/YYYY):");
-		txDataDeNascimento.setBounds(x, 166, 250, 20);
-		JTextField inputDataDeNascimento = new JTextField();
-		inputDataDeNascimento.setBounds(x, 186, 243, 32);
 		
-		JLabel txSenha = new JLabel("SENHA:");
-		txSenha.setBounds(x, 228, 134, 20);
-		JTextField inputSenha = new JTextField();
-		inputSenha.setBounds(x, 248, 243, 32);
+		JLabel txSenha = new JLabel("Senha:");
+		txSenha.setBounds(x, 150, 134, 20);
+		inputSenha = new JTextField();
+		inputSenha.setBounds(x, 170, 243, 30);
 		
-		JLabel txConfirmacaoSenha = new JLabel("CONFIRME A SUA SENHA:");
-		txConfirmacaoSenha.setBounds(x, 292, 170, 20);
-		JTextField inputConfirmacaoSenha = new JTextField();
-		inputConfirmacaoSenha.setBounds(x, 312, 243, 32);
+		JLabel txConfirmacaoSenha = new JLabel("Confirme a sua senha:");
+		txConfirmacaoSenha.setBounds(x, 205, 170, 20);
+		inputConfirmacaoSenha = new JTextField();
+		inputConfirmacaoSenha.setBounds(x, 230, 243, 30);
+		
+		JLabel txDataDeNascimento = new JLabel("Data de Nascimento:");
+		MaskFormatter msk = null;
+		txDataDeNascimento.setBounds(x, 265, 150, 30);
+		try {
+			msk = new MaskFormatter("##/##/####");
+		} catch (ParseException e) {}
+		inputDataDeNascimento = new JFormattedTextField(msk);
+		inputDataDeNascimento.setHorizontalAlignment(JTextField.CENTER);
+		inputDataDeNascimento.setBounds(x, 295, 100, 30);
+		
+		JLabel txSexo = new JLabel("Sexo:");
+		txSexo.setBounds(280, 266, 50, 30);
+		
 		
 		this.add(txNome);
 		this.add(inputNome);
@@ -52,22 +71,26 @@ public class JanelaDeRegistro extends JanelaPadrao{
 		this.add(txEmail);
 		this.add(inputEmail);
 		
-		this.add(txDataDeNascimento);
-		this.add(inputDataDeNascimento);
-		
 		this.add(txSenha);
 		this.add(inputSenha);
 		
 		this.add(txConfirmacaoSenha);
 		this.add(inputConfirmacaoSenha);
+		
+		this.add(txDataDeNascimento);
+		this.add(inputDataDeNascimento);
+		
+		this.add(txSexo);
+		
 	}
 	public void adicionarBotoes() {
 		//ToDo- Adicionar A Lista de seleção de tipo de usuario em cima do JTExtField de nome.
 		
 		btCriarConta = new JButton("Criar Conta");
-		btCriarConta.setBounds(189, 360, 120, 32);
+		btCriarConta.setBounds(189, 365, 120, 32);
 		btCriarConta.addMouseListener(new OuvinteMouseBtCriarConta());
 		btCriarConta.setToolTipText("Crie a sua conta! Venha fazer parte da Monteiro-Motos!");
+		
 		this.add(btCriarConta);
 	}
 	public class OuvinteMouseBtCriarConta implements MouseListener{
