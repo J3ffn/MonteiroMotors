@@ -1,20 +1,30 @@
 package eduardo;
 
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
-
+import ListaDeAquecimento.CentralDeInformacoes;
 import ListaDeAquecimento.Corrida;
+import ListaDeAquecimento.MotoTaxistaSemCreditosCreditosException;
+import ListaDeAquecimento.Mototaxista;
 
 public class JanelaDeReividicacaoDeCorrida extends JFrame{
 	JButton btConfirmar;
 	JButton btCancelar;
+	CentralDeInformacoes central;
 	Corrida corrida;
+	Mototaxista mototaxista;
 	
-	public JanelaDeReividicacaoDeCorrida(Corrida c) {
+	public JanelaDeReividicacaoDeCorrida(CentralDeInformacoes cen, Corrida c, Mototaxista m) {
+		this.central = cen;
+		this.mototaxista = m;
 		this.setTitle("Reividicar Corrida");
 		this.setSize(400, 177);
 		setResizable(false);
@@ -29,15 +39,41 @@ public class JanelaDeReividicacaoDeCorrida extends JFrame{
 	public void adicionarBotoes() {
 		btConfirmar = new JButton("Confirmar");
 		btConfirmar.setBounds(207, 103, 111, 30);
+		btConfirmar.addActionListener(new OuvinteDosBotoesJanelaRegistro(this));
 		this.add(btConfirmar);
 		
 		btCancelar = new JButton("Cancelar");
 		btCancelar.setBounds(91, 103, 111, 30);
+		btCancelar.addActionListener(new OuvinteDosBotoesJanelaRegistro(this));
 		this.add(btCancelar);
+	}
+	private class OuvinteDosBotoesJanelaRegistro implements ActionListener{
+		JanelaDeReividicacaoDeCorrida janela;
+		
+		public OuvinteDosBotoesJanelaRegistro(JanelaDeReividicacaoDeCorrida j) {
+			janela = j;
+		}
+		
+		public void actionPerformed(ActionEvent e) {
+			if(e.getActionCommand().equals("Confirmar")) {
+			int esc = JOptionPane.showConfirmDialog(janela, "Deseja reivindicar essa corrida?");
+			if(esc == 0) {
+				try {
+					mototaxista.reinvidicarCorrida(corrida);
+					janela.dispose();
+					JanelaDeReividicacaoDeCorrida janela3 = new JanelaDeReividicacaoDeCorrida(central, corrida, mototaxista);
+				} catch (MotoTaxistaSemCreditosCreditosException erro) {
+					JOptionPane.showMessageDialog(janela, erro.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
+				}
+			}
+			} else {
+				janela.dispose();
+			}
+		}
 	}
 	public void adicionarLabels() {
 		JLabel txPassageiro = new JLabel("Passageiro: " + corrida.getUsuario().toString());
-		txPassageiro.setBounds(100, 10, 200, 30);
+		txPassageiro.setBounds(100, 12, 200, 30);
 		txPassageiro.setFont(new Font("Arial", Font.BOLD, 15));
 		txPassageiro.setHorizontalAlignment(JLabel.CENTER);
 		this.add(txPassageiro);
@@ -57,5 +93,11 @@ public class JanelaDeReividicacaoDeCorrida extends JFrame{
 		JLabel txData = new JLabel(String.format("Data: %s/%s/%s", corrida.getData().getDayOfMonth(), corrida.getData().getMonthValue(), corrida.getData().getYear()));
 		txData.setBounds(240, 80, 120, 20);
 		this.add(txData);
+		
+		ImageIcon i = new ImageIcon("icones/icons8-barato-2-12.png");
+		JLabel txCreditos = new JLabel(String.format("Creditos: %s",  mototaxista.getCreditos().size()));
+		txCreditos.setIcon(i);
+		txCreditos.setBounds(285, 0, 90, 30);
+		this.add(txCreditos);
 	}
 }

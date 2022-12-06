@@ -6,6 +6,7 @@ import java.util.ArrayList;
 public class CentralDeInformacoes {
 	private ArrayList < Usuario > todosOsUsuarios = new ArrayList < Usuario >();
 	private ArrayList < Corrida > corridas = new ArrayList < Corrida > ();
+	private float caixaDoSistema = 0;
 	
 	//Corrigida
 	public boolean adicionarUsuario(Usuario p) {
@@ -98,5 +99,8 @@ public class CentralDeInformacoes {
 		avaliacao.getCorrida().setAvaliacao(avaliacao);
 		Mototaxista mototaxista = (Mototaxista) this.recuperarUsuarioPeloEmail(avaliacao.getDestinatario().getEmail());
 		mototaxista.addAvaliacao(avaliacao);
+	}
+	public void adicionarAoCaixa(float f) {
+		caixaDoSistema += f;
 	}
 }
