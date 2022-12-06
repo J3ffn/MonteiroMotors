@@ -3,6 +3,8 @@ package ListaDeAquecimento;
 import java.time.LocalDate;
 import java.util.Scanner;
 
+import eduardo.JanelaDeRegistro;
+
 public class Programa {
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
@@ -28,50 +30,7 @@ public class Programa {
 				switch(escolha) {
 				
 				case "1":
-					Usuario usuario = null;
-					int tipo = 0;
-					if(!central.getTodosOsUsuarios().isEmpty()) {
-						System.out.print("Insira o tipo de usuario que deseja cadastrar(1-Passageiro ou 2-Mototaxista): ");
-						tipo = Integer.parseInt(input.nextLine());
-					}
-					
-					System.out.print("\nInsira o nome do passageiro: ");
-					String nome = input.nextLine();
-					
-					System.out.print("Insira o sexo do passageiro: ");
-					String sexo = input.nextLine();
-					
-					System.out.print("Insira uma senha para o passageiro: ");
-					String senha = input.nextLine();
-					
-					System.out.print("Insira a data de nascimento (no formato DD/MM/AAAA): ");
-					String[] datas = input.nextLine().split("/");
-					LocalDate dataNascimento = LocalDate.of(Integer.parseInt(datas[2]), 
-							Integer.parseInt(datas[1]), 
-							Integer.parseInt(datas[0]));
-					
-					System.out.print("Insira o email do passageiro: ");
-					String email = input.nextLine();
-					
-					if(central.getTodosOsUsuarios().isEmpty()) {
-						usuario = new Administrador(nome, sexo, email, senha, dataNascimento);
-					} else {
-						if(tipo == 1) {
-							usuario = new Passageiro(nome, sexo, email, senha, dataNascimento);
-						} else {
-							usuario = new Mototaxista(nome, sexo, email, senha, dataNascimento);
-						}
-					}
-					if(central.adicionarUsuario(usuario)) {
-						System.out.println("Passageiro adicionado!");
-						try {
-							per.salvar(central, "dados-passageiros.xml");
-						} catch (Exception erro){
-							System.out.println("Houve um erro ao salvar os dados!");
-						}
-					} else {
-						System.out.println("Erro! Tente Novamente!");
-					}
+					JanelaDeRegistro janela = new JanelaDeRegistro(central, per);
 					break;
 					
 				case "2":
