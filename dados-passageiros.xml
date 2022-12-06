@@ -1,15 +1,5 @@
 <ListaDeAquecimento.CentralDeInformacoes>
-  <todosOsUsuarios>
-    <ListaDeAquecimento.Administrador>
-      <nome>Eduardo</nome>
-      <sexo>MASCULINO</sexo>
-      <dataDeNascimento>2004-02-21</dataDeNascimento>
-      <email>eduardojose71953@gmail.com</email>
-      <id>eduardojose71953@gmail.com</id>
-      <perfilAtivo>true</perfilAtivo>
-      <valorDosCreditos>0.5</valorDosCreditos>
-    </ListaDeAquecimento.Administrador>
-  </todosOsUsuarios>
+  <todosOsUsuarios/>
   <corridas/>
   <caixaDoSistema>0.0</caixaDoSistema>
 </ListaDeAquecimento.CentralDeInformacoes>
