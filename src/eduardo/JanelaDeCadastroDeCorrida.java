@@ -46,6 +46,10 @@ public class JanelaDeCadastroDeCorrida extends JanelaPadrao{
 		botaoConfirmar.setBounds(360, 240, 100, 30);
 		botaoConfirmar.addActionListener(new OuvinteDoBotaoConfirmarCadastroCorrida(this));
 		this.add(botaoConfirmar);
+		JButton botaoCancelar = new JButton("Cancelar");
+		botaoCancelar.setBounds(255, 240, 100, 30);
+		botaoCancelar.addActionListener(new OuvinteBotaoCancelar(this));
+		this.add(botaoCancelar);
 	}
 	public class OuvinteDoBotaoConfirmarCadastroCorrida implements ActionListener{
 		private JanelaDeCadastroDeCorrida janela;

@@ -9,6 +9,7 @@ import ListaDeAquecimento.Corrida;
 import ListaDeAquecimento.Mototaxista;
 import ListaDeAquecimento.Passageiro;
 import ListaDeAquecimento.Persistencia;
+import clebson.TelaPassageiro;
 
 public class Teste2 {
 
@@ -30,6 +31,7 @@ public class Teste2 {
 		
 		//n.adicionarCreditos(2, central);
 		//JanelaDeReividicacaoDeCorrida janela2 = new JanelaDeReividicacaoDeCorrida(central, c, n);
-		JanelaDeCadastroDeCorrida janela5 = new JanelaDeCadastroDeCorrida(central, per, n);
+		//JanelaDeCadastroDeCorrida janela5 = new JanelaDeCadastroDeCorrida(central, per, n);
+		TelaPassageiro janela2 = new TelaPassageiro(central, per, n);
 	}
 }

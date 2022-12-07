@@ -96,6 +96,23 @@
         <mototaxistasBloqueados/>
       </usuario>
     </ListaDeAquecimento.Corrida>
+    <ListaDeAquecimento.Corrida>
+      <id>1670436997212</id>
+      <status>PENDENTE</status>
+      <enderecoDePartida>rua</enderecoDePartida>
+      <enderecoDeDestino>rua</enderecoDeDestino>
+      <distancia>2.0</distancia>
+      <paraAgora>true</paraAgora>
+      <data>2022-12-07</data>
+      <usuario class="ListaDeAquecimento.Passageiro">
+        <nome>Eduardo</nome>
+        <sexo>MASCULINO</sexo>
+        <email>eduardo</email>
+        <id>eduardo</id>
+        <perfilAtivo>true</perfilAtivo>
+        <mototaxistasBloqueados/>
+      </usuario>
+    </ListaDeAquecimento.Corrida>
   </corridas>
   <caixaDoSistema>0.0</caixaDoSistema>
 </ListaDeAquecimento.CentralDeInformacoes>

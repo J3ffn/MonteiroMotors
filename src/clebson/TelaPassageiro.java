@@ -1,17 +1,35 @@
 package clebson;
 
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
+import ListaDeAquecimento.CentralDeInformacoes;
+import ListaDeAquecimento.Passageiro;
+import ListaDeAquecimento.Persistencia;
+import eduardo.JanelaDeCadastroDeCorrida;
+
 public class TelaPassageiro extends JanelaPadrao{
+	private CentralDeInformacoes central;
+	private Persistencia persistencia;
+	private Passageiro p;
 	
-	
-	public TelaPassageiro() {
+	public TelaPassageiro(CentralDeInformacoes central, Persistencia persistencia, Passageiro p) {
 		super("Passageiro");
+		this.central = central;
+		this.persistencia = persistencia;
+		this.p = p;
 		adicionarBotoes();
 		
 		setVisible(true);
+	}
+	
+	private class OuvinteDeBtCadastroCorrida implements ActionListener{
+		public void actionPerformed(ActionEvent e) {
+			new JanelaDeCadastroDeCorrida(central, persistencia, p);
+		}
 	}
 	
 	private void adicionarBotoes() {
@@ -19,6 +37,7 @@ public class TelaPassageiro extends JanelaPadrao{
 		btCadastroCorrida.setBounds(170, 121, 130, 50);
 		btCadastroCorrida.setText("Cadastrar Corrida");
 		btCadastroCorrida.setFont(new Font("Arial",Font.BOLD,10));
+		btCadastroCorrida.addActionListener(new OuvinteDeBtCadastroCorrida());
 		add (btCadastroCorrida);
 		
 		JButton btListarCorridas = new JButton();
@@ -39,7 +58,6 @@ public class TelaPassageiro extends JanelaPadrao{
 		btDeslogar.setFont(new Font("Arial",Font.BOLD,10));
 		add (btDeslogar);
 		
-	
 	}
 	
 
