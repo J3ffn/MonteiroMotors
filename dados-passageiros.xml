@@ -10,6 +10,92 @@
       <valorDosCreditos>0.5</valorDosCreditos>
     </ListaDeAquecimento.Administrador>
   </todosOsUsuarios>
-  <corridas/>
+  <corridas>
+    <ListaDeAquecimento.Corrida>
+      <id>1670433645102</id>
+      <status>PENDENTE</status>
+      <enderecoDePartida>rua</enderecoDePartida>
+      <enderecoDeDestino>rua</enderecoDeDestino>
+      <distancia>0.0</distancia>
+      <paraAgora>false</paraAgora>
+      <data>2022-12-07</data>
+      <usuario class="ListaDeAquecimento.Passageiro">
+        <nome>Eduardo</nome>
+        <sexo>MASCULINO</sexo>
+        <email>eduardo</email>
+        <id>eduardo</id>
+        <perfilAtivo>true</perfilAtivo>
+        <mototaxistasBloqueados/>
+      </usuario>
+    </ListaDeAquecimento.Corrida>
+    <ListaDeAquecimento.Corrida>
+      <id>1670433703863</id>
+      <status>PENDENTE</status>
+      <enderecoDePartida>Rua</enderecoDePartida>
+      <enderecoDeDestino>Rua</enderecoDeDestino>
+      <distancia>9.0</distancia>
+      <paraAgora>true</paraAgora>
+      <data>2022-12-07</data>
+      <usuario class="ListaDeAquecimento.Passageiro">
+        <nome>Eduardo</nome>
+        <sexo>MASCULINO</sexo>
+        <email>eduardo</email>
+        <id>eduardo</id>
+        <perfilAtivo>true</perfilAtivo>
+        <mototaxistasBloqueados/>
+      </usuario>
+    </ListaDeAquecimento.Corrida>
+    <ListaDeAquecimento.Corrida>
+      <id>1670433902834</id>
+      <status>PENDENTE</status>
+      <enderecoDePartida>Rua Das Rosas</enderecoDePartida>
+      <enderecoDeDestino>edu</enderecoDeDestino>
+      <distancia>123.0</distancia>
+      <paraAgora>true</paraAgora>
+      <data>2022-12-07</data>
+      <usuario class="ListaDeAquecimento.Passageiro">
+        <nome>Eduardo</nome>
+        <sexo>MASCULINO</sexo>
+        <email>eduardo</email>
+        <id>eduardo</id>
+        <perfilAtivo>true</perfilAtivo>
+        <mototaxistasBloqueados/>
+      </usuario>
+    </ListaDeAquecimento.Corrida>
+    <ListaDeAquecimento.Corrida>
+      <id>1670434060888</id>
+      <status>PENDENTE</status>
+      <enderecoDePartida>Rua</enderecoDePartida>
+      <enderecoDeDestino>Rua</enderecoDeDestino>
+      <distancia>100.6</distancia>
+      <paraAgora>true</paraAgora>
+      <data>2022-12-07</data>
+      <usuario class="ListaDeAquecimento.Passageiro">
+        <nome>Eduardo</nome>
+        <sexo>MASCULINO</sexo>
+        <email>eduardo</email>
+        <id>eduardo</id>
+        <perfilAtivo>true</perfilAtivo>
+        <mototaxistasBloqueados/>
+      </usuario>
+    </ListaDeAquecimento.Corrida>
+    <ListaDeAquecimento.Corrida>
+      <id>1670435540375</id>
+      <status>PENDENTE</status>
+      <enderecoDePartida>Here</enderecoDePartida>
+      <enderecoDeDestino>Eua</enderecoDeDestino>
+      <distancia>0.2</distancia>
+      <paraAgora>false</paraAgora>
+      <data>2022-02-21</data>
+      <usuario class="ListaDeAquecimento.Passageiro">
+        <nome>Eduardo</nome>
+        <sexo>MASCULINO</sexo>
+        <email>eduardo</email>
+        <id>eduardo</id>
+        <perfilAtivo>true</perfilAtivo>
+        <mototaxistasBloqueados/>
+      </usuario>
+    </ListaDeAquecimento.Corrida>
+  </corridas>
   <caixaDoSistema>0.0</caixaDoSistema>
 </ListaDeAquecimento.CentralDeInformacoes>
