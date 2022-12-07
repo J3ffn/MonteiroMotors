@@ -16,7 +16,7 @@ public class Teste2 {
 		CentralDeInformacoes central = null;
 		try {
 			central = (CentralDeInformacoes) per.recuperar("dados-passageiros.xml");
-			JanelaDeRegistro janela = new JanelaDeRegistro(central, per);
+			//JanelaDeRegistro janela = new JanelaDeRegistro(central, per);
 			per.salvar(central, "dados-passageiros.xml");
 		} catch (Exception erro){
 			System.out.println("Houve um erro ao salvar os dados!");
@@ -29,6 +29,6 @@ public class Teste2 {
 		
 		//n.adicionarCreditos(2, central);
 		//JanelaDeReividicacaoDeCorrida janela2 = new JanelaDeReividicacaoDeCorrida(central, c, n);
-		//JanelaDeCadastroDeCorrida janela5 = new JanelaDeCadastroDeCorrida();
+		JanelaDeCadastroDeCorrida janela5 = new JanelaDeCadastroDeCorrida();
 	}
 }
