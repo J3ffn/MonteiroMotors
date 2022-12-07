@@ -11,6 +11,7 @@ public class Programa {
 		Persistencia per = new Persistencia();
 		Mensageiro msn = new Mensageiro();
 		Usuario usuarioAtual = null;
+		
 		boolean flag = false;
 		try {
 			CentralDeInformacoes central = (CentralDeInformacoes) per.recuperar("dados-passageiros.xml");
