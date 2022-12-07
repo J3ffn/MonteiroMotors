@@ -44,9 +44,11 @@ public class JanelaDeCadastroDeCorrida extends JanelaPadrao{
 		inputEnderecoDestino = new JTextField();
 		inputEnderecoDestino.setBounds(30, 140, 428, 30);
 		
-		JLabel txDistancia = new JLabel("Distancia(Km):");
+		JLabel txDistancia = new JLabel("Distancia (Km):");
 		txDistancia.setBounds(30, 170, 134, 20);
 		inputDistancia = new JFormattedTextField();
+		inputDistancia.addKeyListener(new OuvinteDoTecladoParaApenasNumerico());
+		
 		inputDistancia.setBounds(30, 190, 70, 30);
 		
 		this.add(txTitulo);

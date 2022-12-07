@@ -160,6 +160,7 @@ public class JanelaDeRegistro extends JanelaPadrao{
 			this.j = j;
 		}
 		public void actionPerformed(ActionEvent e) {
+			if(new String(inputSenha.getPassword()).equals(new String(inputConfirmacaoSenha.getPassword()))) {
 			Usuario u;
 			String[] datas = inputDataDeNascimento.getText().split("/");
 			LocalDate dataNascimento = LocalDate.of(Integer.parseInt(datas[2]), 
@@ -196,8 +197,11 @@ public class JanelaDeRegistro extends JanelaPadrao{
 			}
 			JOptionPane.showMessageDialog(j, "Usuário cadastrado Com Sucesso!");
 			j.dispose();
+			} else {
+			JOptionPane.showMessageDialog(j, "Ocorreu um erro, corrija os campos!", "Erro!", JOptionPane.ERROR_MESSAGE);
 		}
 		
+	}
 	}
 	private class OuvinteMouseBtCriarConta implements MouseListener{
 		public void mouseClicked(MouseEvent e) {}

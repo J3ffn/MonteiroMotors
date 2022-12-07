@@ -27,7 +27,7 @@ public class Teste2 {
 		Mototaxista n = new Mototaxista("Eduardo", "Masculino", "eduardo", "kkk", null);
 		Corrida c = new Corrida("Bla", "Bla", 60f, true, data , new Administrador("Eduardo", "Masculino", "edd", "kkk", null));
 		
-		n.adicionarCreditos(2, central);
+		//n.adicionarCreditos(2, central);
 		//JanelaDeReividicacaoDeCorrida janela2 = new JanelaDeReividicacaoDeCorrida(central, c, n);
 		//JanelaDeCadastroDeCorrida janela5 = new JanelaDeCadastroDeCorrida();
 	}
