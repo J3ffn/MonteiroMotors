@@ -14,8 +14,9 @@ import ListaDeAquecimento.CentralDeInformacoes;
 import ListaDeAquecimento.Corrida;
 import ListaDeAquecimento.MotoTaxistaSemCreditosCreditosException;
 import ListaDeAquecimento.Mototaxista;
+import clebson.JanelaPadrao;
 
-public class JanelaDeReividicacaoDeCorrida extends JFrame{
+public class JanelaDeReividicacaoDeCorrida extends JanelaPadrao{
 	JButton btConfirmar;
 	JButton btCancelar;
 	CentralDeInformacoes central;
@@ -23,15 +24,13 @@ public class JanelaDeReividicacaoDeCorrida extends JFrame{
 	Mototaxista mototaxista;
 	
 	public JanelaDeReividicacaoDeCorrida(CentralDeInformacoes cen, Corrida c, Mototaxista m) {
+		super("Reivindicação de corrida");
 		this.central = cen;
 		this.mototaxista = m;
-		this.setTitle("Reividicar Corrida");
-		this.setSize(400, 177);
-		setResizable(false);
-		setLocationRelativeTo(null);				
-		setLayout(null);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		corrida = c;
+		this.setSize(400, 177);
+		this.setLocationRelativeTo(null);
+		
 		this.adicionarLabels();
 		this.adicionarBotoes();
 		this.setVisible(true);
@@ -44,7 +43,7 @@ public class JanelaDeReividicacaoDeCorrida extends JFrame{
 		
 		btCancelar = new JButton("Cancelar");
 		btCancelar.setBounds(91, 103, 111, 30);
-		btCancelar.addActionListener(new OuvinteDosBotoesJanelaRegistro(this));
+		btCancelar.addActionListener(new OuvinteBotaoCancelar(this));
 		this.add(btCancelar);
 	}
 	private class OuvinteDosBotoesJanelaRegistro implements ActionListener{
@@ -60,14 +59,12 @@ public class JanelaDeReividicacaoDeCorrida extends JFrame{
 			if(esc == 0) {
 				try {
 					mototaxista.reinvidicarCorrida(corrida);
+					JOptionPane.showMessageDialog(janela, "Corrida Reivindicada!", "Reivindicada!", JOptionPane.INFORMATION_MESSAGE);
 					janela.dispose();
-					JanelaDeReividicacaoDeCorrida janela3 = new JanelaDeReividicacaoDeCorrida(central, corrida, mototaxista);
 				} catch (MotoTaxistaSemCreditosCreditosException erro) {
 					JOptionPane.showMessageDialog(janela, erro.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
 				}
 			}
-			} else {
-				janela.dispose();
 			}
 		}
 	}

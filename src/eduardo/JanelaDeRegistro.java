@@ -160,7 +160,12 @@ public class JanelaDeRegistro extends JanelaPadrao{
 			this.j = j;
 		}
 		public void actionPerformed(ActionEvent e) {
-			if(new String(inputSenha.getPassword()).equals(new String(inputConfirmacaoSenha.getPassword()))) {
+			try {
+			if(new String(inputSenha.getPassword()).equals(new String(inputConfirmacaoSenha.getPassword())) 
+					&& !inputNome.getText().equals("")&& !inputEmail.getText().equals("") && 
+					!inputDataDeNascimento.getText().equals("  /  /    ") && 
+					! new String(inputSenha.getPassword()).equals("")
+					) {
 			Usuario u;
 			String[] datas = inputDataDeNascimento.getText().split("/");
 			LocalDate dataNascimento = LocalDate.of(Integer.parseInt(datas[2]), 
@@ -192,12 +197,11 @@ public class JanelaDeRegistro extends JanelaPadrao{
 			try {
 				persistencia.salvar(central, "dados-passageiros.xml");
 			} catch (Exception e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 			JOptionPane.showMessageDialog(j, "Usuário cadastrado Com Sucesso!");
 			j.dispose();
-			} else {
+			} } catch (Exception erro){
 			JOptionPane.showMessageDialog(j, "Ocorreu um erro, corrija os campos!", "Erro!", JOptionPane.ERROR_MESSAGE);
 		}
 		
