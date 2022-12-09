@@ -9,16 +9,18 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import ListaDeAquecimento.Mensageiro;
 import clebson.JanelaPadrao;
+import jefferson.telaDeRecuperacao.OuvinteGestorDeInformacoes;
 import jefferson.telaDeRecuperacao.ouvintesTelaRecuperacao.*;
 
 @SuppressWarnings("serial")
-public class TelaDeRecuperarSenha extends JanelaPadrao{
+public class TelaDeRecuperarSenha extends JanelaPadrao implements OuvinteGestorDeInformacoes{
 	
 	// Referência da tela -> 498, 462
 	private JButton botaoEnviar;
 	private JFrame telaEmail = this;
-
+	private JTextField emailDigitado;
 	
 	public TelaDeRecuperarSenha() {
 		super("Recuperação senha");
@@ -66,10 +68,9 @@ public class TelaDeRecuperarSenha extends JanelaPadrao{
 
 			@Override
 			public void focusLost(FocusEvent e) {
-				JTextField emailDigitado = (JTextField) e.getSource();
-				emailDigitado.getText();
+				emailDigitado = (JTextField) e.getSource();
 				
-				botaoEnviar.addMouseListener(new OuvinteBotao(botaoEnviar, telaEmail, linhaEmail));
+				gestor(emailDigitado.getText(), telaEmail, emailDigitado);
 			}
 			
 			@Override
@@ -80,6 +81,14 @@ public class TelaDeRecuperarSenha extends JanelaPadrao{
 
 		add(textoEmail);
 		add(linhaEmail);
+	}
+	
+	@Override
+	public void gestor(String texto, JFrame tela, JTextField campoEmail) {
+		if (new Mensageiro().verificarEmail(texto)) {
+			botaoEnviar.addMouseListener(new OuvinteBotao(botaoEnviar, telaEmail, campoEmail));
+		}
+		
 	}
 
 }

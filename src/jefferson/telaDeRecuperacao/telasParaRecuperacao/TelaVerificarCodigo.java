@@ -7,6 +7,7 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
@@ -18,6 +19,8 @@ public class TelaVerificarCodigo extends TelaDeRecuperarSenha implements Ouvinte
 	@SuppressWarnings("unused")
 	private String codigo;
 	private JButton botao;
+	private JFrame tela = this;
+	private JTextField infoLinha;
 	
 	public TelaVerificarCodigo(String codigoChave) {
 		codigo = codigoChave;
@@ -54,18 +57,15 @@ public class TelaVerificarCodigo extends TelaDeRecuperarSenha implements Ouvinte
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						JTextField infoLinha = (JTextField) e.getSource();
-						gestor(infoLinha.getText());
+						infoLinha = (JTextField) e.getSource();
+						gestor(infoLinha.getText(), tela, infoLinha);
 					}
 					
 				});
 			}
 			
 			@Override
-			public void focusGained(FocusEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+			public void focusGained(FocusEvent e) {}
 		});
 		
 		add(texto);
@@ -73,8 +73,10 @@ public class TelaVerificarCodigo extends TelaDeRecuperarSenha implements Ouvinte
 	}
 
 	@Override
-	public void gestor(String texto) {
-		if (String > )
+	public void gestor(String texto, JFrame tela, JTextField campoEmail) {
+//		if (new OuvinteCodigoChave(tela, campoEmail).ValidarCodigo()) {
+//			
+//		} 
 		
 	}
 	

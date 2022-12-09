@@ -33,7 +33,7 @@ public class OuvinteBotao implements MouseListener{
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		botaoEnviar.addActionListener(new OuvinteEnvioCodigo(telaEmail, linhaEmail));
+		botaoEnviar.addActionListener(new OuvinteCodigoChave(telaEmail, linhaEmail));
 		
 	}
 

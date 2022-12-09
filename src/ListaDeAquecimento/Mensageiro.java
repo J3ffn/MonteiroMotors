@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
+import javax.swing.JOptionPane;
 
 import org.apache.commons.mail.DefaultAuthenticator;
 import org.apache.commons.mail.EmailAttachment;
@@ -22,10 +23,10 @@ public class Mensageiro extends MultiPartEmail{
 	private void setarProtocolo() {
 		setHostName("smtp.gmail.com");
 		setSmtpPort(587);
-		setAuthenticator(new DefaultAuthenticator(emailRemetente, "jzmiiiqyqmxqqtin"));
+		setAuthenticator(new DefaultAuthenticator(emailRemetente, chave));
 		setSSLOnConnect(true);
 		try {
-			setFrom("monteiromotos4598@gmail.com");
+			setFrom(emailRemetente);
 		} catch (EmailException e) {e.printStackTrace();}
 	}
 	
@@ -80,7 +81,21 @@ public class Mensageiro extends MultiPartEmail{
 		}
 	}
 	
-	public boolean enviarCodigoDeRecuperacao(String email) {
-		
+	public boolean enviarCodigoDeRecuperacao(String email, String codigoChave, String titulo) {
+		if (verificarEmail(email)) {
+			try {
+				addTo(email);
+				setMsg("Sua chave é: " + codigoChave);
+				
+				send();
+				System.out.println("Enviado");
+				return true;
+			} catch (EmailException e) {
+				
+				JOptionPane.showMessageDialog(null, "Email não enviado");
+				
+			}
+		} 
+		return false;
 	}
 }
