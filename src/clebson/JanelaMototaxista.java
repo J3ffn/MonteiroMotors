@@ -64,7 +64,7 @@ public class JanelaMototaxista extends JanelaPadrao{
 		JButton btListarCorridas = new JButton();
 		btListarCorridas.setBounds(170, 121, 130, 40);
 		btListarCorridas.setText("Listar Corridas");
-		btListarCorridas.addActionListener(new OuvinteBotaoListarCorridas(usuario, central, persistencia));
+		btListarCorridas.addActionListener(new OuvinteBotaoListarCorridas());
 		btListarCorridas.setFont(new Font("Tahoma",Font.BOLD,10));
 		add (btListarCorridas);
 		OuvinteBotaoListarCorridas ouvinteCorridas = new OuvinteBotaoListarCorridas();

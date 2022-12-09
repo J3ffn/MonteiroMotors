@@ -17,6 +17,7 @@ import ListaDeAquecimento.Mototaxista;
 import ListaDeAquecimento.Persistencia;
 import ListaDeAquecimento.Status;
 import ListaDeAquecimento.Usuario;
+import clebson.JanelaEditarPerfil;
 
 public class PainelListaUsuarios extends Painel{
 	ArrayList <Usuario> usuarios = central.getTodosOsUsuarios();
@@ -40,6 +41,11 @@ public class PainelListaUsuarios extends Painel{
 					
 					JButton botao = new JButton("Detalhes");
 					botao.setBounds(310, y, 115, 40);
+					botao.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							new JanelaEditarPerfil();
+						}
+					});
 					this.add(corrida);
 					this.add(botao);
 					y += 45;
