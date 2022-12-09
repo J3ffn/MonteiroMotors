@@ -2,6 +2,7 @@ package clebson;
 
 import javax.swing.JFrame;
 
+@SuppressWarnings("serial")
 public class JanelaPadrao extends JFrame {
 	
 	public JanelaPadrao(String titulo) {
