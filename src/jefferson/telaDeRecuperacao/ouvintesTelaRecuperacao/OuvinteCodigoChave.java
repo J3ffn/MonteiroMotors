@@ -37,6 +37,7 @@ public class OuvinteCodigoChave extends SimpleEmail implements ActionListener{
 		// TODO Descomentar essas verificações.
 //		if (new CentralDeInformacoes().recuperarUsuarioPeloEmail(emailDestinatario) != null) {
 
+			
 			new Mensageiro().enviarCodigoDeRecuperacao(emailDestinatario, codigoChave, "Chave de recuperação");
 			
 			telaAtual.dispose();

@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import jefferson.telaDeRecuperacao.OuvinteGestorDeInformacoes;
+import jefferson.telaDeRecuperacao.ouvintesTelaRecuperacao.OuvinteCodigoChave;
 
 @SuppressWarnings("serial")
 public class TelaVerificarCodigo extends TelaDeRecuperarSenha implements OuvinteGestorDeInformacoes{
@@ -74,9 +75,9 @@ public class TelaVerificarCodigo extends TelaDeRecuperarSenha implements Ouvinte
 
 	@Override
 	public void gestor(String texto, JFrame tela, JTextField campoEmail) {
-//		if (new OuvinteCodigoChave(tela, campoEmail).ValidarCodigo()) {
-//			
-//		} 
+		if (new OuvinteCodigoChave(tela, campoEmail).ValidarCodigo()) {
+			
+		} 
 		
 	}
 	

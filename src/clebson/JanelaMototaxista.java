@@ -15,6 +15,7 @@ import eduardo.Ouvintes.OuvinteBotaoListarCorridas;
 
 
 
+@SuppressWarnings("serial")
 public class JanelaMototaxista extends JanelaPadrao{
 	
 	private JButton btDeslogar;
