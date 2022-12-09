@@ -13,6 +13,7 @@ import ListaDeAquecimento.Persistencia;
 import clebsonOuvintesExternos.OuvinteBotaoDeslogar;
 import clebsonOuvintesExternos.OuvinteBotaoEditarPerfil;
 import eduardo.Janelas.JanelaDeDefinicaoDeValorDosCreditos;
+import eduardo.Janelas.JanelaDeListagemDeUsuarios;
 import eduardo.Ouvintes.OuvinteBotaoListarCorridas;
 
 @SuppressWarnings("serial")
@@ -38,6 +39,13 @@ public class TelaAdministrador extends JanelaPadrao {
 		JButton btListarUsuarios = new JButton();
 		btListarUsuarios.setBounds(70, 121, 130, 40);
 		btListarUsuarios.setText("Listar Usuarios");
+		btListarUsuarios.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				new JanelaDeListagemDeUsuarios(p, central, persistencia);
+			}
+			
+		});
 		btListarUsuarios.setFont(new Font("Tahoma",Font.BOLD,10));
 		add (btListarUsuarios);
 		
