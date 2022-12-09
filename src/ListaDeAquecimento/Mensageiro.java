@@ -2,6 +2,9 @@ package ListaDeAquecimento;
 
 import java.util.ArrayList;
 
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+
 import org.apache.commons.mail.DefaultAuthenticator;
 import org.apache.commons.mail.EmailAttachment;
 import org.apache.commons.mail.EmailException;
@@ -9,15 +12,21 @@ import org.apache.commons.mail.MultiPartEmail;
 
 public class Mensageiro extends MultiPartEmail{
 
+	private String emailRemetente = "monteiromotos4598@gmail.com";
+	private String chave = "jzmiiiqyqmxqqtin";
+	
 	public Mensageiro(){
+		setarProtocolo();
+	}
+	
+	private void setarProtocolo() {
 		setHostName("smtp.gmail.com");
 		setSmtpPort(587);
-		setAuthenticator(new DefaultAuthenticator("monteiromotos4598@gmail.com", "jzmiiiqyqmxqqtin"));
+		setAuthenticator(new DefaultAuthenticator(emailRemetente, "jzmiiiqyqmxqqtin"));
 		setSSLOnConnect(true);
 		try {
 			setFrom("monteiromotos4598@gmail.com");
 		} catch (EmailException e) {e.printStackTrace();}
-	
 	}
 	
 	public boolean enviarHistoricoDeCorridas(Usuario p) {
@@ -58,4 +67,20 @@ public class Mensageiro extends MultiPartEmail{
 		}
 	}
 	
+	public boolean verificarEmail(String email)  {
+		try {
+			InternetAddress verificador = new InternetAddress(email);
+			verificador.validate();
+			
+			return true;
+		} catch (AddressException e) {
+			
+			return false;
+			
+		}
+	}
+	
+	public boolean enviarCodigoDeRecuperacao(String email) {
+		
+	}
 }

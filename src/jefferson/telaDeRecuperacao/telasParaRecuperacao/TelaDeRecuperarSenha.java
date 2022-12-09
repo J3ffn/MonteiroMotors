@@ -13,7 +13,7 @@ import clebson.JanelaPadrao;
 import jefferson.telaDeRecuperacao.ouvintesTelaRecuperacao.*;
 
 @SuppressWarnings("serial")
-public class TelaDeRecuperarSenha extends JanelaPadrao {
+public class TelaDeRecuperarSenha extends JanelaPadrao{
 	
 	// Referência da tela -> 498, 462
 	private JButton botaoEnviar;

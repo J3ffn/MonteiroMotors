@@ -1,5 +1,8 @@
 package jefferson.telaDeRecuperacao;
 
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+
 import jefferson.telaDeRecuperacao.telasParaRecuperacao.*;
 
 public class Teste {
@@ -25,6 +28,17 @@ public class Teste {
 //			System.out.println("Erro");
 //			e.printStackTrace();
 //		}
-		new TelaVerificarCodigo("a7b9858");
+//		new TelaVerificarCodigo("a7b9858");
+		
+		try {
+			InternetAddress emailAddr = new InternetAddress("");
+			emailAddr.validate();
+		} catch (AddressException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
 	}
 }

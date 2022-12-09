@@ -3,20 +3,17 @@ package jefferson.telaDeRecuperacao.telasParaRecuperacao;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ContainerEvent;
-import java.awt.event.ContainerListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import clebson.JanelaPadrao;
+import jefferson.telaDeRecuperacao.OuvinteGestorDeInformacoes;
 
 @SuppressWarnings("serial")
-public class TelaVerificarCodigo extends TelaDeRecuperarSenha {
+public class TelaVerificarCodigo extends TelaDeRecuperarSenha implements OuvinteGestorDeInformacoes{
 
 	@SuppressWarnings("unused")
 	private String codigo;
@@ -57,8 +54,8 @@ public class TelaVerificarCodigo extends TelaDeRecuperarSenha {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						// TODO Auto-generated method stub
-						
+						JTextField infoLinha = (JTextField) e.getSource();
+						gestor(infoLinha.getText());
 					}
 					
 				});
@@ -74,5 +71,13 @@ public class TelaVerificarCodigo extends TelaDeRecuperarSenha {
 		add(texto);
 		add(linhaValidacao);
 	}
+
+	@Override
+	public void gestor(String texto) {
+		if (String > )
+		
+	}
+	
+	
 	
 }
