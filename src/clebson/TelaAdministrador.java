@@ -6,6 +6,11 @@ import javax.swing.JButton;
 
 import clebsonOuvintesExternos.OuvinteBotaoDeslogar;
 import clebsonOuvintesExternos.OuvinteBotaoEditarPerfil;
+<<<<<<< HEAD
+=======
+import eduardo.Janelas.JanelaDeDefinicaoDeValorDosCreditos;
+import eduardo.Ouvintes.OuvinteBotaoListarCorridas;
+>>>>>>> parent of c555896 (Janela Listagem Usuarios)
 
 @SuppressWarnings("serial")
 public class TelaAdministrador extends JanelaPadrao {
