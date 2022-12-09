@@ -1,4 +1,4 @@
-package eduardo;
+package eduardo.Janelas;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -172,6 +172,7 @@ public class JanelaDeRegistro extends JanelaPadrao{
 					Integer.parseInt(datas[1]), 
 					Integer.parseInt(datas[0]));
 			if(central.getTodosOsUsuarios().isEmpty()) {
+				
 				u = new Administrador(inputNome.getText(), 
 									  (String) cbSexo.getSelectedItem(), 
 									  inputEmail.getText(), 

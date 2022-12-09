@@ -1,4 +1,4 @@
-package eduardo;
+package eduardo.Janelas;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -14,6 +14,7 @@ import javax.swing.text.MaskFormatter;
 
 import ListaDeAquecimento.Administrador;
 import clebson.JanelaPadrao;
+import eduardo.Ouvintes.OuvinteBotaoCancelar;
 
 public class JanelaDeDefinicaoDeValorDosCreditos extends JanelaPadrao{
 	
