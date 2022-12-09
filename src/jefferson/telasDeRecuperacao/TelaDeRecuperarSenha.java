@@ -52,7 +52,7 @@ public class TelaDeRecuperarSenha extends JanelaPadrao {
 		add(titulo);
 	}
 
-	private void addCampoEmail() {
+	protected void addCampoEmail() {
 		// Texto E-MAIL
 		JLabel textoEmail = new JLabel("E-MAIL: ");
 		textoEmail.setBounds(115, 160, 45, 30);

@@ -20,9 +20,8 @@ public class TelaVerificarCodigo extends TelaDeRecuperarSenha {
 	public TelaVerificarCodigo(String codigoChave) {
 		codigo = codigoChave;
 		
-		this.addTituloDaTela();
-		this.addBotoesDaTela();
-		this.addLinhaDeVerificacao();
+		addBotoesDaTela();
+		addCampoEmail();
 		
 		setVisible(true);
 	}
@@ -35,8 +34,9 @@ public class TelaVerificarCodigo extends TelaDeRecuperarSenha {
 		add(botao);
 	}
 	
-	public void addLinhaDeVerificacao() {
-		JLabel texto = new JLabel("Código");
+	@Override
+	public void addCampoEmail() {
+		JLabel texto = new JLabel("Código: ");
 		texto.setBounds(115, 160, 45, 30);
 		texto.setFont(new Font("", Font.BOLD, 12));
 		
