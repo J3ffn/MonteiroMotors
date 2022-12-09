@@ -1,6 +1,6 @@
-package jefferson;
+package jefferson.telaDeRecuperacao;
 
-import jefferson.telasDeRecuperacao.TelaVerificarCodigo;
+import jefferson.telaDeRecuperacao.telasParaRecuperacao.*;
 
 public class Teste {
 

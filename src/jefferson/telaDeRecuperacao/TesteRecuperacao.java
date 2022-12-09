@@ -1,6 +1,6 @@
-package jefferson;
+package jefferson.telaDeRecuperacao;
 
-import jefferson.telasDeRecuperacao.TelaDeRecuperarSenha;
+import jefferson.telaDeRecuperacao.telasParaRecuperacao.TelaDeRecuperarSenha;
 
 public class TesteRecuperacao {
 

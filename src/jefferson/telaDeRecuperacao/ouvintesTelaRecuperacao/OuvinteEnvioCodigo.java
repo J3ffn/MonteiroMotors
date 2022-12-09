@@ -1,9 +1,7 @@
-package jefferson.ouvintesTelaRecuperacao;
+package jefferson.telaDeRecuperacao.ouvintesTelaRecuperacao;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.TreeSet;
 import java.util.UUID;
 
 import javax.swing.JFrame;
@@ -12,12 +10,9 @@ import javax.swing.JTextField;
 
 import org.apache.commons.mail.DefaultAuthenticator;
 import org.apache.commons.mail.EmailException;
-import org.apache.commons.mail.MultiPartEmail;
 import org.apache.commons.mail.SimpleEmail;
 
-import ListaDeAquecimento.CentralDeInformacoes;
-import ListaDeAquecimento.Usuario;
-import jefferson.telasDeRecuperacao.TelaVerificarCodigo;
+import jefferson.telaDeRecuperacao.telasParaRecuperacao.TelaVerificarCodigo;
 
 @SuppressWarnings("unused")
 public class OuvinteEnvioCodigo extends SimpleEmail implements ActionListener {
@@ -57,7 +52,7 @@ public class OuvinteEnvioCodigo extends SimpleEmail implements ActionListener {
 //		} else { JOptionPane.showMessageDialog(null, "Usuário não está cadastrado."); }
 	}
 
-	public boolean enviarEmail() throws EmailException {
+	private boolean enviarEmail() throws EmailException {
 		// email projetomonteiromotors@gmail.com
 		setarProtocolo();
 
