@@ -16,6 +16,7 @@ import clebson.TelaAdministrador;
 import clebson.TelaPassageiro;
 import eduardo.Janelas.JanelaDeCadastroDeCorrida;
 import eduardo.Janelas.JanelaDeCorridasDisponiveis;
+import eduardo.Janelas.JanelaDeDefinicaoDeValorDosCreditos;
 import eduardo.Janelas.JanelaDeRegistro;
 
 public class Teste2 {
@@ -46,9 +47,9 @@ public class Teste2 {
 		//JanelaDeCadastroDeCorrida janela5 = new JanelaDeCadastroDeCorrida(central, per, n);
 		TelaPassageiro janela2 = new TelaPassageiro(central, per, n);
 		//JanelaDeDefinicaoDeValorDosCreditos j = new JanelaDeDefinicaoDeValorDosCreditos(adm);
-		//JanelaDeCorridasDisponiveis j = new JanelaDeCorridasDisponiveis(n, central, per);
+		//JanelaDeCorridasDisponiveis j2 = new JanelaDeCorridasDisponiveis(n, central, per);
 
-//		new TelaAdministrador(central, per, central.recuperarAdministradorDoSistema());
-//		new JanelaMototaxista(central, per, n1);
+		new TelaAdministrador(central, per, central.recuperarAdministradorDoSistema());
+		new JanelaMototaxista(central, per, n1);
 	}
 }

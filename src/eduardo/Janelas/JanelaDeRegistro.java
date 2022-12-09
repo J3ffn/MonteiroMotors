@@ -31,8 +31,6 @@ import clebson.JanelaPadrao;
 import eduardo.Ouvintes.OuvinteBotaoCancelar;
 
 public class JanelaDeRegistro extends JanelaPadrao{
-	CentralDeInformacoes central;
-	Persistencia persistencia;
 	
 	JComboBox < String > cbTipoUsuario;
 	JButton btCriarConta;

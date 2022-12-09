@@ -7,7 +7,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
+import ListaDeAquecimento.CentralDeInformacoes;
+import ListaDeAquecimento.Mototaxista;
+import ListaDeAquecimento.Persistencia;
 import clebsonOuvintesExternos.OuvinteBotaoDeslogar;
+import eduardo.Ouvintes.OuvinteBotaoListarCorridas;
 
 
 
@@ -16,8 +20,11 @@ public class JanelaMototaxista extends JanelaPadrao{
 	private JButton btDeslogar;
 	private JButton btEditarPerfil;
 	
-	public JanelaMototaxista() {
+	public JanelaMototaxista(CentralDeInformacoes central, Persistencia per, Mototaxista mototaxista) {
 		super("Mototaxista");
+		this.central = central;
+		this.persistencia = per;
+		this.usuario = mototaxista;
 		adicionarTextos();
 		adicionarBotoes();
 		
@@ -37,6 +44,7 @@ public class JanelaMototaxista extends JanelaPadrao{
 		JButton btListarCorridas = new JButton();
 		btListarCorridas.setBounds(170, 121, 130, 40);
 		btListarCorridas.setText("Listar Corridas");
+		btListarCorridas.addActionListener(new OuvinteBotaoListarCorridas(usuario, central, persistencia));
 		btListarCorridas.setFont(new Font("Tahoma",Font.BOLD,10));
 		add (btListarCorridas);
 		
@@ -60,8 +68,6 @@ public class JanelaMototaxista extends JanelaPadrao{
 		add (btDeslogar);
 		OuvinteBotaoDeslogar ouvinteDeslogar = new OuvinteBotaoDeslogar(this);
 		btDeslogar.addActionListener(ouvinteDeslogar);
-		
-		
 		
 		
 	}
