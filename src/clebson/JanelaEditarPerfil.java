@@ -4,6 +4,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -22,7 +23,7 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 		
 		setVisible(true);
 	}
-
+	
 
 	public void adicionarTextos() {
 		lbNome = new JLabel("NOME: ");		
@@ -39,6 +40,11 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 		lbTipoDeUsuario.setBounds(100,240 , 220, 20);
 		lbTipoDeUsuario.setFont(new Font("Arial",Font.BOLD,12));
 		add(lbTipoDeUsuario);
+		
+		ImageIcon icone = new ImageIcon("icones/User (1).png");
+		JLabel lbImagem = new JLabel(icone);
+		lbImagem.setBounds(199, 40, 100, 100);
+		add(lbImagem);
 		
 	}
 	
