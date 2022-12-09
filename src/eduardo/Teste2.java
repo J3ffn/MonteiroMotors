@@ -11,8 +11,6 @@ import ListaDeAquecimento.Corrida;
 import ListaDeAquecimento.Mototaxista;
 import ListaDeAquecimento.Passageiro;
 import ListaDeAquecimento.Persistencia;
-import clebson.JanelaMototaxista;
-import clebson.TelaAdministrador;
 import clebson.TelaPassageiro;
 import eduardo.Janelas.JanelaDeCadastroDeCorrida;
 import eduardo.Janelas.JanelaDeCorridasDisponiveis;
@@ -25,7 +23,7 @@ public class Teste2 {
 		CentralDeInformacoes central = null;
 		try {
 			central = (CentralDeInformacoes) per.recuperar("dados-passageiros.xml");
-			JanelaDeRegistro janela = new JanelaDeRegistro(central, per);
+			//JanelaDeRegistro janela = new JanelaDeRegistro(central, per);
 			per.salvar(central, "dados-passageiros.xml");
 			
 		} catch (Exception erro){
@@ -37,17 +35,15 @@ public class Teste2 {
 		Passageiro n = new Passageiro("Eduardo1", "Masculino", "eduardo", "kkk", dataN);
 		Mototaxista n1 = new Mototaxista("Eduardo", "Masculino", "eduardo", "kkk", null);
 		Administrador adm =  new Administrador("Eduardo", "Masculino", "edd", "kkk", null);
-		
 		Corrida c = new Corrida("Bla", "Bla", 60f, true, data, adm);
 		n1.adicionarCreditos(2, central);
 		central.adicionarUsuario(n);
+		
 		//n.adicionarCreditos(2, central);
 		//JanelaDeReividicacaoDeCorrida janela2 = new JanelaDeReividicacaoDeCorrida(central, c, n);
-		//JanelaDeCadastroDeCorrida janela5 = new JanelaDeCadastroDeCorrida(central, per, n);
-		TelaPassageiro janela2 = new TelaPassageiro(central, per, n);
+		JanelaDeCadastroDeCorrida janela5 = new JanelaDeCadastroDeCorrida(central, per, n);
+		//TelaPassageiro janela2 = new TelaPassageiro(central, per, n);
 		//JanelaDeDefinicaoDeValorDosCreditos j = new JanelaDeDefinicaoDeValorDosCreditos(adm);
-		//JanelaDeCorridasDisponiveis j = new JanelaDeCorridasDisponiveis(n, central, per);
-		new TelaAdministrador(central, per, central.recuperarAdministradorDoSistema());
-		new JanelaMototaxista(central, per, n1);
+		JanelaDeCorridasDisponiveis j = new JanelaDeCorridasDisponiveis(adm, central, per);
 	}
 }
