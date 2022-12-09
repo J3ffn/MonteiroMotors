@@ -19,14 +19,13 @@ import ListaDeAquecimento.CentralDeInformacoes;
 import ListaDeAquecimento.Corrida;
 import ListaDeAquecimento.Passageiro;
 import ListaDeAquecimento.Persistencia;
+import ListaDeAquecimento.Usuario;
 import clebson.JanelaPadrao;
 import eduardo.Ouvintes.OuvinteBotaoCancelar;
 import eduardo.Ouvintes.OuvinteDoTecladoParaApenasNumerico;
 
 public class JanelaDeCadastroDeCorrida extends JanelaPadrao{
-	CentralDeInformacoes central;
-	Persistencia persistencia;
-	Passageiro passageiro;
+	
 	
 	JTextField inputEnderecoPartida;
 	JTextField inputEnderecoDestino;
@@ -35,13 +34,13 @@ public class JanelaDeCadastroDeCorrida extends JanelaPadrao{
 	JFormattedTextField inputHoraDaCorrida;
 	JCheckBox checkBCorridaParaAgora;
 	
-	public JanelaDeCadastroDeCorrida(CentralDeInformacoes c, Persistencia per, Passageiro p) {
+	public JanelaDeCadastroDeCorrida(CentralDeInformacoes c, Persistencia per, Usuario p) {
 		super("Cadastrar Solicitação de Corrida");
 		this.adicionarBotoes();
 		this.adicionarTextos();
 		this.setSize(500, 320);
 		central = c;
-		passageiro = p;
+		this.usuario = p;
 		persistencia = per;
 		this.setVisible(true);
 	}
@@ -80,7 +79,7 @@ public class JanelaDeCadastroDeCorrida extends JanelaPadrao{
 							Float.parseFloat(inputDistancia.getText()), 
 							checkBCorridaParaAgora.isSelected(), 
 							dataDaCorrida,
-							passageiro);
+							usuario);
 					central.adicionarCorrida(c);
 					
 					try {

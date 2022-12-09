@@ -23,19 +23,15 @@ public class JanelaDeReividicacaoDeCorrida extends JanelaPadrao{
 	JLabel txLocaldePartida;
 	JLabel txLocaldeDestino;
 	JLabel txData;
-	
 	JButton btConfirmar;
 	JButton btCancelar;
 	Corrida corrida;
 	JLabel txCreditos;
-	Mototaxista mototaxista;
-	CentralDeInformacoes central;
-	Persistencia persistencia;
 	
 	public JanelaDeReividicacaoDeCorrida(CentralDeInformacoes cen, Persistencia per, Corrida c, Mototaxista m) {
 		super("Reivindicação de corrida");
 		this.central = cen;
-		this.mototaxista = m;
+		this.usuario = m;
 		corrida = c;
 		persistencia = per;
 		this.setSize(400, 177);
@@ -68,7 +64,7 @@ public class JanelaDeReividicacaoDeCorrida extends JanelaPadrao{
 			int esc = JOptionPane.showConfirmDialog(janela, "Deseja reivindicar essa corrida?");
 			if(esc == 0 && corrida.getStatus() == Status.PENDENTE) {
 				try {
-					mototaxista.reinvidicarCorrida(corrida);
+					((Mototaxista) usuario).reinvidicarCorrida(corrida);
 					JOptionPane.showMessageDialog(janela, "Corrida Reivindicada!", "Reivindicada!", JOptionPane.INFORMATION_MESSAGE);
 					txLocaldePartida.setText(String.format("Local de Partida: %s", corrida.getEnderecoDePartida()));
 					txLocaldeDestino.setText(String.format("Local de Destino: %s", corrida.getEnderecoDeDestino()));
@@ -117,7 +113,7 @@ public class JanelaDeReividicacaoDeCorrida extends JanelaPadrao{
 		this.add(txData);
 		
 		ImageIcon i = new ImageIcon("icones/icons8-barato-2-12.png");
-		txCreditos = new JLabel(String.format("Creditos: %s",  mototaxista.getCreditos().size()));
+		txCreditos = new JLabel(String.format("Creditos: %s",  ((Mototaxista) usuario).getCreditos().size()));
 		txCreditos.setIcon(i);
 		txCreditos.setBounds(285, 0, 90, 30);
 		this.add(txCreditos);

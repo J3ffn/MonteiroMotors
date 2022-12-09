@@ -22,12 +22,9 @@ import eduardo.Ouvintes.OuvinteBotaoCancelar;
 import ListaDeAquecimento.Corrida;
 
 public class JanelaDeCorridasDisponiveis extends JanelaPadrao{
-	Usuario usuario;
-	CentralDeInformacoes central;
 	ArrayList <Corrida> corridasTodasAsDisponiveis;
 	JScrollPane painel;
 	Painel painel1;
-	Persistencia persistencia;
 	JComboBox < String > filtro;
 	
 	public JanelaDeCorridasDisponiveis(Usuario u, CentralDeInformacoes c, Persistencia per) {

@@ -9,6 +9,15 @@
       <perfilAtivo>true</perfilAtivo>
       <valorDosCreditos>0.5</valorDosCreditos>
     </ListaDeAquecimento.Administrador>
+    <ListaDeAquecimento.Passageiro>
+      <nome>Eduardo1</nome>
+      <sexo>MASCULINO</sexo>
+      <dataDeNascimento>2000-12-20</dataDeNascimento>
+      <email>eduardo</email>
+      <id>eduardo</id>
+      <perfilAtivo>true</perfilAtivo>
+      <mototaxistasBloqueados/>
+    </ListaDeAquecimento.Passageiro>
   </todosOsUsuarios>
   <corridas>
     <ListaDeAquecimento.Corrida>
@@ -160,6 +169,44 @@
           </ListaDeAquecimento.Credito>
         </creditos>
       </mototaxista>
+    </ListaDeAquecimento.Corrida>
+    <ListaDeAquecimento.Corrida>
+      <id>1670614740612</id>
+      <status>PENDENTE</status>
+      <enderecoDePartida>SKsksksk</enderecoDePartida>
+      <enderecoDeDestino>skssksk</enderecoDeDestino>
+      <distancia>0.1</distancia>
+      <paraAgora>true</paraAgora>
+      <data>2022-12-09T16:39:00.6120315</data>
+      <usuario class="ListaDeAquecimento.Passageiro" reference="../../../todosOsUsuarios/ListaDeAquecimento.Passageiro"/>
+    </ListaDeAquecimento.Corrida>
+    <ListaDeAquecimento.Corrida>
+      <id>1670614966680</id>
+      <status>PENDENTE</status>
+      <enderecoDePartida>ksksksks</enderecoDePartida>
+      <enderecoDeDestino>dlddldldl</enderecoDeDestino>
+      <distancia>0.2</distancia>
+      <paraAgora>true</paraAgora>
+      <data>2022-12-09T16:42:46.6799063</data>
+      <usuario class="ListaDeAquecimento.Passageiro">
+        <nome>Eduardo1</nome>
+        <sexo>MASCULINO</sexo>
+        <dataDeNascimento>2000-12-20</dataDeNascimento>
+        <email>eduardo</email>
+        <id>eduardo</id>
+        <perfilAtivo>true</perfilAtivo>
+        <mototaxistasBloqueados/>
+      </usuario>
+    </ListaDeAquecimento.Corrida>
+    <ListaDeAquecimento.Corrida>
+      <id>1670614996190</id>
+      <status>PENDENTE</status>
+      <enderecoDePartida>sllslssl</enderecoDePartida>
+      <enderecoDeDestino>dlddddd</enderecoDeDestino>
+      <distancia>0.1</distancia>
+      <paraAgora>true</paraAgora>
+      <data>2022-12-09T16:43:16.1902793</data>
+      <usuario class="ListaDeAquecimento.Passageiro" reference="../../ListaDeAquecimento.Corrida[7]/usuario"/>
     </ListaDeAquecimento.Corrida>
   </corridas>
   <caixaDoSistema>0.0</caixaDoSistema>

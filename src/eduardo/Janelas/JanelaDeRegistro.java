@@ -28,13 +28,13 @@ import ListaDeAquecimento.Passageiro;
 import ListaDeAquecimento.Persistencia;
 import ListaDeAquecimento.Usuario;
 import clebson.JanelaPadrao;
+import eduardo.Ouvintes.OuvinteBotaoCancelar;
 
 public class JanelaDeRegistro extends JanelaPadrao{
-	CentralDeInformacoes central;
-	Persistencia persistencia;
 	
 	JComboBox < String > cbTipoUsuario;
 	JButton btCriarConta;
+	JButton btCancelar;
 	JTextField inputNome;
 	JTextField inputEmail;
 	JPasswordField inputSenha;
@@ -145,12 +145,17 @@ public class JanelaDeRegistro extends JanelaPadrao{
 		//ToDo- Adicionar A Lista de seleção de tipo de usuario em cima do JTExtField de nome.
 		
 		btCriarConta = new JButton("Criar Conta");
-		btCriarConta.setBounds(190, 365, 120, 30);
+		btCriarConta.setBounds(125, 365, 120, 30);
 		btCriarConta.addMouseListener(new OuvinteMouseBtCriarConta());
 		btCriarConta.addActionListener(new OuvinteClickBtCriarConta(this));
 		btCriarConta.setToolTipText("Crie a sua conta! Venha fazer parte da Monteiro-Motos!");
 		
+		btCancelar = new JButton("Cancelar");
+		btCancelar.setBounds(250, 365, 120, 30);
+		btCancelar.addActionListener(new OuvinteBotaoCancelar(this));
+		
 		this.add(btCriarConta);
+		this.add(btCancelar);
 	}
 	
 	private class OuvinteClickBtCriarConta implements ActionListener{

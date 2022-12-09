@@ -17,12 +17,9 @@ import clebson.JanelaPadrao;
 import eduardo.Ouvintes.OuvinteBotaoCancelar;
 
 public class JanelaDeListagemDeUsuarios extends JanelaPadrao {
-	Administrador usuario;
-	CentralDeInformacoes central;
 	ArrayList <Corrida> corridasTodasAsDisponiveis;
 	JScrollPane painel;
 	Painel painel1;
-	Persistencia persistencia;
 	JComboBox < String > filtro;
 	
 	public JanelaDeListagemDeUsuarios(Administrador u, CentralDeInformacoes c, Persistencia per) {
@@ -56,7 +53,7 @@ public class JanelaDeListagemDeUsuarios extends JanelaPadrao {
 		
 	}
 	public void adicionarPainel() {
-		painel1 = new PainelListaUsuarios(central, persistencia, usuario);
+		painel1 = new PainelListaUsuarios(central, persistencia, (Administrador) usuario);
 		painel = new JScrollPane(painel1);
 		
 		painel.setBounds(20, 60, 440, 340);

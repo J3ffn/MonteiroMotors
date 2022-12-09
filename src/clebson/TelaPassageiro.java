@@ -11,20 +11,17 @@ import ListaDeAquecimento.Passageiro;
 import ListaDeAquecimento.Persistencia;
 import clebsonOuvintesExternos.OuvinteBotaoDeslogar;
 import eduardo.Janelas.JanelaDeCadastroDeCorrida;
+import eduardo.Ouvintes.OuvinteBotaoListarCorridas;
 
 public class TelaPassageiro extends JanelaPadrao{
-	private CentralDeInformacoes central;
-	private Persistencia persistencia;
-	private Passageiro p;
 	private JButton btDeslogar;
 	private JButton btEditarPerfil;
-	
 	
 	public TelaPassageiro(CentralDeInformacoes central, Persistencia persistencia, Passageiro p) {
 		super("Passageiro");
 		this.central = central;
 		this.persistencia = persistencia;
-		this.p = p;
+		this.usuario = p;
 		adicionarBotoes();
 		
 		setVisible(true);
@@ -32,7 +29,7 @@ public class TelaPassageiro extends JanelaPadrao{
 	
 	private class OuvinteDeBtCadastroCorrida implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
-			new JanelaDeCadastroDeCorrida(central, persistencia, p);
+			new JanelaDeCadastroDeCorrida(central, persistencia, usuario);
 		}
 	}
 	
@@ -47,6 +44,7 @@ public class TelaPassageiro extends JanelaPadrao{
 		JButton btListarCorridas = new JButton();
 		btListarCorridas.setBounds(170, 191, 130, 30);
 		btListarCorridas.setText("Listar Corridas");
+		btListarCorridas.addActionListener(new OuvinteBotaoListarCorridas(usuario, central, persistencia));
 		btListarCorridas.setFont(new Font("Tahoma",Font.BOLD,10));
 		add (btListarCorridas);
 		
