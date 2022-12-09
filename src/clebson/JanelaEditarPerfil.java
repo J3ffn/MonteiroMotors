@@ -14,6 +14,27 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 	
 	private JLabel lbNome;
 	private JLabel lbEmail;
+	
+	public JLabel getLbNome() {
+		return lbNome;
+	}
+
+
+	public void setLbNome(JLabel lbNome) {
+		this.lbNome = lbNome;
+	}
+
+
+	public JLabel getLbEmail() {
+		return lbEmail;
+	}
+
+
+	public void setLbEmail(JLabel lbEmail) {
+		this.lbEmail = lbEmail;
+	}
+
+
 	private JLabel lbTipoDeUsuario;
 	
 	public JLabel getLbTipoDeUsuario() {
@@ -61,17 +82,29 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 	public class OuvinteBotaoEditarNome implements ActionListener{
 		
 		public void actionPerformed(ActionEvent e) {
-			String nome = JOptionPane.showInputDialog("Digite o novo nome: ");
+			JLabel nome = getLbNome();
+			String novoNome = JOptionPane.showInputDialog("Digite o novo nome: ");
 			JOptionPane.showMessageDialog(null, "Mudança Concluida");
-			lbNome.setText("NOME: "+nome);
+			//corrigir erro ao deixar em branco
+			if (novoNome != null) {
+			lbNome.setText("NOME: "+novoNome);
+			}else {
+				lbNome = nome;
+			}
 		}
 	}
 	public class OuvinteBotaoEditarEmail implements ActionListener{
 		
 		public void actionPerformed(ActionEvent e) {
-			String email = JOptionPane.showInputDialog("Digite o novo email: ");
+			JLabel email = getLbEmail();
+			String novoEmail = JOptionPane.showInputDialog("Digite o novo email: ");
 			JOptionPane.showMessageDialog(null, "Mudança Concluida");
-			lbEmail.setText("EMAIL: " + email);
+			//corrigir erro ao deixar em branco
+			if ((novoEmail != null) & (novoEmail != "")){
+				lbEmail.setText("EMAIL: " + novoEmail);
+			}else {
+				lbEmail = email;
+			}
 			
 		}
 	}
