@@ -10,9 +10,11 @@ import ListaDeAquecimento.CentralDeInformacoes;
 import ListaDeAquecimento.Passageiro;
 import ListaDeAquecimento.Persistencia;
 import clebsonOuvintesExternos.OuvinteBotaoDeslogar;
+import clebsonOuvintesExternos.OuvinteBotaoEditarPerfil;
 import eduardo.Janelas.JanelaDeCadastroDeCorrida;
 import eduardo.Ouvintes.OuvinteBotaoListarCorridas;
 
+@SuppressWarnings("serial")
 public class TelaPassageiro extends JanelaPadrao{
 	private CentralDeInformacoes central;
 	private Persistencia persistencia;
@@ -57,8 +59,9 @@ public class TelaPassageiro extends JanelaPadrao{
 		btEditarPerfil.setBounds(340, 320, 130, 35);
 		btEditarPerfil.setText("Editar Perfil");
 		btEditarPerfil.setFont(new Font("Tahoma",Font.BOLD,10));
-		add (btEditarPerfil);		
-		
+		add (btEditarPerfil);	
+		OuvinteBotaoEditarPerfil ouvinteEditarPerfil = new OuvinteBotaoEditarPerfil(this);
+		btEditarPerfil.addActionListener(ouvinteEditarPerfil);
 		
 		btDeslogar = new JButton();
 		btDeslogar.setBounds(340, 370, 130, 35);

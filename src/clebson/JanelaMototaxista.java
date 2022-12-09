@@ -12,10 +12,12 @@ import ListaDeAquecimento.Mototaxista;
 import ListaDeAquecimento.Passageiro;
 import ListaDeAquecimento.Persistencia;
 import clebsonOuvintesExternos.OuvinteBotaoDeslogar;
+import clebsonOuvintesExternos.OuvinteBotaoEditarPerfil;
 import eduardo.Ouvintes.OuvinteBotaoListarCorridas;
 
 
 
+@SuppressWarnings("serial")
 public class JanelaMototaxista extends JanelaPadrao{
 	
 	private JButton btDeslogar;
@@ -63,7 +65,9 @@ public class JanelaMototaxista extends JanelaPadrao{
 		btEditarPerfil.setBounds(340, 320, 130, 35);
 		btEditarPerfil.setText("Editar Perfil");
 		btEditarPerfil.setFont(new Font("Tahoma",Font.BOLD,10));
-		add (btEditarPerfil);		
+		add (btEditarPerfil);
+		OuvinteBotaoEditarPerfil ouvinteEditarPerfil = new OuvinteBotaoEditarPerfil(this);
+		btEditarPerfil.addActionListener(ouvinteEditarPerfil);
 		
 		
 		btDeslogar = new JButton();

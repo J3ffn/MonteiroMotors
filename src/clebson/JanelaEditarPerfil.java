@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
+@SuppressWarnings("serial")
 public class JanelaEditarPerfil extends JanelaPadrao{
 	
 	private JLabel lbNome;
