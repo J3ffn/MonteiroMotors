@@ -103,4 +103,13 @@ public class CentralDeInformacoes {
 	public void adicionarAoCaixa(float f) {
 		caixaDoSistema += f;
 	}
+	public ArrayList <Corrida> recuperarCorridasNaoReivindicadas(){
+		ArrayList <Corrida> lista = new ArrayList <Corrida>();
+		for(Corrida c : corridas) {
+			if(c.getStatus() == Status.PENDENTE) {
+				lista.add(c);
+			}
+		}
+		return lista;
+	}
 }

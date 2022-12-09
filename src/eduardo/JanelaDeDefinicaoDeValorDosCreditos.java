@@ -62,7 +62,7 @@ public class JanelaDeDefinicaoDeValorDosCreditos extends JanelaPadrao{
 		this.add(btConfirmar);
 		this.add(btCancelar);
 	}
-	public class OuvinteDoBotaoConfirmar implements ActionListener{
+	private class OuvinteDoBotaoConfirmar implements ActionListener{
 		JanelaDeDefinicaoDeValorDosCreditos janela;
 		public OuvinteDoBotaoConfirmar(JanelaDeDefinicaoDeValorDosCreditos j) {
 			janela = j;

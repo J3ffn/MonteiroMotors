@@ -51,7 +51,7 @@ public class JanelaDeCadastroDeCorrida extends JanelaPadrao{
 		botaoCancelar.addActionListener(new OuvinteBotaoCancelar(this));
 		this.add(botaoCancelar);
 	}
-	public class OuvinteDoBotaoConfirmarCadastroCorrida implements ActionListener{
+	private class OuvinteDoBotaoConfirmarCadastroCorrida implements ActionListener{
 		private JanelaDeCadastroDeCorrida janela;
 		public OuvinteDoBotaoConfirmarCadastroCorrida(JanelaDeCadastroDeCorrida j) {
 			janela = j;
