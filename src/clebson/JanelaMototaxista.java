@@ -7,7 +7,12 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
+import ListaDeAquecimento.CentralDeInformacoes;
+import ListaDeAquecimento.Mototaxista;
+import ListaDeAquecimento.Passageiro;
+import ListaDeAquecimento.Persistencia;
 import clebsonOuvintesExternos.OuvinteBotaoDeslogar;
+import eduardo.Ouvintes.OuvinteBotaoListarCorridas;
 
 
 
@@ -15,9 +20,16 @@ public class JanelaMototaxista extends JanelaPadrao{
 	
 	private JButton btDeslogar;
 	private JButton btEditarPerfil;
+	private CentralDeInformacoes central;
+	private Persistencia persistencia;
+	private Mototaxista p;
 	
-	public JanelaMototaxista() {
+	public JanelaMototaxista(CentralDeInformacoes central, Persistencia persistencia, Mototaxista p) {
 		super("Mototaxista");
+		this.central = central;
+		this.p = p;
+		this.persistencia = persistencia;
+		
 		adicionarTextos();
 		adicionarBotoes();
 		
@@ -25,8 +37,8 @@ public class JanelaMototaxista extends JanelaPadrao{
 	}
 	
 	private void adicionarTextos() {
-		JLabel lbCreditos = new JLabel("Créditos: ");		
-		lbCreditos.setBounds(390, 10, 60, 20);
+		JLabel lbCreditos = new JLabel(String.format("Créditos: %d", p.getCreditos().size()));		
+		lbCreditos.setBounds(370, 10, 80, 20);
 		lbCreditos.setFont(new Font("Arial",Font.BOLD,12));
 		add(lbCreditos);
 		
@@ -43,6 +55,7 @@ public class JanelaMototaxista extends JanelaPadrao{
 		JButton btChamadas = new JButton();
 		btChamadas.setBounds(170, 181, 130, 60);
 		btChamadas.setText("Chamadas para corridas");
+		btChamadas.addActionListener(new OuvinteBotaoListarCorridas(p, central, persistencia));
 		btChamadas.setFont(new Font("Tahoma",Font.BOLD,8));
 		add (btChamadas);
 		

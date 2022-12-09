@@ -11,6 +11,7 @@ import ListaDeAquecimento.Passageiro;
 import ListaDeAquecimento.Persistencia;
 import clebsonOuvintesExternos.OuvinteBotaoDeslogar;
 import eduardo.Janelas.JanelaDeCadastroDeCorrida;
+import eduardo.Ouvintes.OuvinteBotaoListarCorridas;
 
 public class TelaPassageiro extends JanelaPadrao{
 	private CentralDeInformacoes central;
@@ -48,6 +49,7 @@ public class TelaPassageiro extends JanelaPadrao{
 		JButton btListarCorridas = new JButton();
 		btListarCorridas.setBounds(170, 191, 130, 30);
 		btListarCorridas.setText("Listar Corridas");
+		btListarCorridas.addActionListener(new OuvinteBotaoListarCorridas(p, central, persistencia));
 		btListarCorridas.setFont(new Font("Tahoma",Font.BOLD,10));
 		add (btListarCorridas);
 		
