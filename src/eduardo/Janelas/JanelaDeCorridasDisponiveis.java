@@ -26,7 +26,6 @@ public class JanelaDeCorridasDisponiveis extends JanelaPadrao{
 	CentralDeInformacoes central;
 	ArrayList <Corrida> corridasTodasAsDisponiveis;
 	JScrollPane painel;
-	Painel painel1;
 	Persistencia persistencia;
 	JComboBox < String > filtro;
 	
@@ -74,7 +73,9 @@ public class JanelaDeCorridasDisponiveis extends JanelaPadrao{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(filtro.getSelectedItem().equals("Mais Recentes")) {
-					corridasTodasAsDisponiveis = painel1.getCorridasOrganizadasMaisRecentes();
+					comparacao = new ComparacaoData();
+					corridasTodasAsDisponiveis.sort(comparacao);
+					
 				} else if(filtro.getSelectedItem().equals("Todas")) {
 					if(usuario instanceof Mototaxista) {
 						corridasTodasAsDisponiveis = central.recuperarCorridasPossiveisParaoMototaxista((Mototaxista)usuario);
@@ -99,14 +100,12 @@ public class JanelaDeCorridasDisponiveis extends JanelaPadrao{
 	}
 	public void adicionarPainel() {
 		if(usuario instanceof Mototaxista) {
-			painel1 = new PainelListaCorridasMototaxista(corridasTodasAsDisponiveis, central, persistencia, (Mototaxista) usuario);
+			painel = new JScrollPane(new PainelListaCorridasMototaxista(corridasTodasAsDisponiveis, central, persistencia, (Mototaxista) usuario));
 		} else if (usuario instanceof Administrador) {
-			painel1 = new PainelListaCorridasAdministrador(corridasTodasAsDisponiveis, central, persistencia, (Administrador) usuario);
+			painel = new JScrollPane(new PainelListaCorridasAdministrador(corridasTodasAsDisponiveis, central, persistencia, (Administrador) usuario));
 		} else if(usuario instanceof Passageiro) {
-			painel1 = new PainelListaCorridasPassageiro(corridasTodasAsDisponiveis, central, persistencia, (Passageiro) usuario);
+			painel = new JScrollPane(new PainelListaCorridasPassageiro(corridasTodasAsDisponiveis, central, persistencia, (Passageiro) usuario));
 		}
-		painel = new JScrollPane(painel1);
-		
 		painel.setBounds(20, 60, 440, 340);
 		
 		this.add(painel);

@@ -44,6 +44,6 @@ public class Teste2 {
 		JanelaDeCadastroDeCorrida janela5 = new JanelaDeCadastroDeCorrida(central, per, n);
 		//TelaPassageiro janela2 = new TelaPassageiro(central, per, n);
 		//JanelaDeDefinicaoDeValorDosCreditos j = new JanelaDeDefinicaoDeValorDosCreditos(adm);
-		JanelaDeCorridasDisponiveis j = new JanelaDeCorridasDisponiveis(adm, central, per);
+		JanelaDeCorridasDisponiveis j = new JanelaDeCorridasDisponiveis(n1, central, per);
 	}
 }

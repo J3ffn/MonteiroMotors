@@ -311,55 +311,6 @@
         </creditos>
       </mototaxista>
     </ListaDeAquecimento.Corrida>
-    <ListaDeAquecimento.Corrida>
-      <id>1670601844537</id>
-      <status>REINVINDICADA</status>
-      <enderecoDePartida>nnnnnn</enderecoDePartida>
-      <enderecoDeDestino>nnnnnn</enderecoDeDestino>
-      <distancia>0.1</distancia>
-      <paraAgora>false</paraAgora>
-      <data>2004-02-21T12:02:00</data>
-      <usuario class="ListaDeAquecimento.Passageiro">
-        <nome>Eduardo1</nome>
-        <sexo>MASCULINO</sexo>
-        <dataDeNascimento>2000-12-20</dataDeNascimento>
-        <email>eduardo</email>
-        <id>eduardo</id>
-        <perfilAtivo>true</perfilAtivo>
-        <mototaxistasBloqueados/>
-      </usuario>
-      <mototaxista>
-        <nome>Eduardo</nome>
-        <sexo>MASCULINO</sexo>
-        <email>eduardo</email>
-        <id>eduardo</id>
-        <perfilAtivo>true</perfilAtivo>
-        <avaliacoes/>
-        <creditos>
-          <ListaDeAquecimento.Credito>
-            <valor>0.5</valor>
-          </ListaDeAquecimento.Credito>
-        </creditos>
-      </mototaxista>
-    </ListaDeAquecimento.Corrida>
-    <ListaDeAquecimento.Corrida>
-      <id>1670601935555</id>
-      <status>PENDENTE</status>
-      <enderecoDePartida>d</enderecoDePartida>
-      <enderecoDeDestino>d</enderecoDeDestino>
-      <distancia>2.0</distancia>
-      <paraAgora>false</paraAgora>
-      <data>2022-02-21T12:20:00</data>
-      <usuario class="ListaDeAquecimento.Passageiro">
-        <nome>Eduardo1</nome>
-        <sexo>MASCULINO</sexo>
-        <dataDeNascimento>2000-12-20</dataDeNascimento>
-        <email>eduardo</email>
-        <id>eduardo</id>
-        <perfilAtivo>true</perfilAtivo>
-        <mototaxistasBloqueados/>
-      </usuario>
-    </ListaDeAquecimento.Corrida>
   </corridas>
   <caixaDoSistema>0.0</caixaDoSistema>
 </ListaDeAquecimento.CentralDeInformacoes>
