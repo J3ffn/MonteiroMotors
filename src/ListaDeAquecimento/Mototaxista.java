@@ -32,7 +32,7 @@ public class Mototaxista extends Usuario{
 		if(!creditos.isEmpty()) {
 			creditos.remove(0);
 			corrida.setMototaxista(this);
-			corrida.setStatus(Status.EM_CURSO);
+			corrida.setStatus(Status.REINVINDICADA);
 		} else {
 			throw new MotoTaxistaSemCreditosCreditosException();
 		}

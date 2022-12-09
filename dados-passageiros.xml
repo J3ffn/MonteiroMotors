@@ -1,14 +1,24 @@
 <ListaDeAquecimento.CentralDeInformacoes>
-  <todosOsUsuarios/>
+  <todosOsUsuarios>
+    <ListaDeAquecimento.Administrador>
+      <nome>Eduardo</nome>
+      <sexo>MASCULINO</sexo>
+      <dataDeNascimento>2004-02-21</dataDeNascimento>
+      <email>eduardojose71952@gmail.com</email>
+      <id>eduardojose71952@gmail.com</id>
+      <perfilAtivo>true</perfilAtivo>
+      <valorDosCreditos>0.5</valorDosCreditos>
+    </ListaDeAquecimento.Administrador>
+  </todosOsUsuarios>
   <corridas>
     <ListaDeAquecimento.Corrida>
-      <id>1670556973542</id>
-      <status>PENDENTE</status>
-      <enderecoDePartida>ooooooooooooooo</enderecoDePartida>
-      <enderecoDeDestino>ooooooooooo</enderecoDeDestino>
-      <distancia>0.0</distancia>
+      <id>1670595043798</id>
+      <status>REINVINDICADA</status>
+      <enderecoDePartida>ooooooooooooo</enderecoDePartida>
+      <enderecoDeDestino>oooooooooo</enderecoDeDestino>
+      <distancia>12.0</distancia>
       <paraAgora>true</paraAgora>
-      <data>2022-12-09</data>
+      <data>2022-12-09T11:10:43.7970349</data>
       <usuario class="ListaDeAquecimento.Passageiro">
         <nome>Eduardo</nome>
         <sexo>MASCULINO</sexo>
@@ -17,15 +27,28 @@
         <perfilAtivo>true</perfilAtivo>
         <mototaxistasBloqueados/>
       </usuario>
+      <mototaxista>
+        <nome>Eduardo</nome>
+        <sexo>MASCULINO</sexo>
+        <email>eduardo</email>
+        <id>eduardo</id>
+        <perfilAtivo>true</perfilAtivo>
+        <avaliacoes/>
+        <creditos>
+          <ListaDeAquecimento.Credito>
+            <valor>0.5</valor>
+          </ListaDeAquecimento.Credito>
+        </creditos>
+      </mototaxista>
     </ListaDeAquecimento.Corrida>
     <ListaDeAquecimento.Corrida>
-      <id>1670557013634</id>
-      <status>PENDENTE</status>
-      <enderecoDePartida>Rua Das Flores</enderecoDePartida>
-      <enderecoDeDestino>Rua Das Rosas</enderecoDeDestino>
-      <distancia>0.0</distancia>
+      <id>1670595128070</id>
+      <status>REINVINDICADA</status>
+      <enderecoDePartida>dllll</enderecoDePartida>
+      <enderecoDeDestino>sllllllllll</enderecoDeDestino>
+      <distancia>0.1</distancia>
       <paraAgora>true</paraAgora>
-      <data>2022-12-09</data>
+      <data>2022-12-09T11:12:08.0704008</data>
       <usuario class="ListaDeAquecimento.Passageiro">
         <nome>Eduardo</nome>
         <sexo>MASCULINO</sexo>
@@ -34,15 +57,28 @@
         <perfilAtivo>true</perfilAtivo>
         <mototaxistasBloqueados/>
       </usuario>
+      <mototaxista>
+        <nome>Eduardo</nome>
+        <sexo>MASCULINO</sexo>
+        <email>eduardo</email>
+        <id>eduardo</id>
+        <perfilAtivo>true</perfilAtivo>
+        <avaliacoes/>
+        <creditos>
+          <ListaDeAquecimento.Credito>
+            <valor>0.5</valor>
+          </ListaDeAquecimento.Credito>
+        </creditos>
+      </mototaxista>
     </ListaDeAquecimento.Corrida>
     <ListaDeAquecimento.Corrida>
-      <id>1670557389503</id>
-      <status>PENDENTE</status>
-      <enderecoDePartida>tititi</enderecoDePartida>
-      <enderecoDeDestino>iririri</enderecoDeDestino>
-      <distancia>0.0</distancia>
+      <id>1670595243025</id>
+      <status>REINVINDICADA</status>
+      <enderecoDePartida>LLLLLLLLLll</enderecoDePartida>
+      <enderecoDeDestino>LLLLLLLLLLLLll</enderecoDeDestino>
+      <distancia>0.1</distancia>
       <paraAgora>true</paraAgora>
-      <data>2022-12-09</data>
+      <data>2022-12-09T11:14:03.0259309</data>
       <usuario class="ListaDeAquecimento.Passageiro">
         <nome>Eduardo</nome>
         <sexo>MASCULINO</sexo>
@@ -51,15 +87,28 @@
         <perfilAtivo>true</perfilAtivo>
         <mototaxistasBloqueados/>
       </usuario>
+      <mototaxista>
+        <nome>Eduardo</nome>
+        <sexo>MASCULINO</sexo>
+        <email>eduardo</email>
+        <id>eduardo</id>
+        <perfilAtivo>true</perfilAtivo>
+        <avaliacoes/>
+        <creditos>
+          <ListaDeAquecimento.Credito>
+            <valor>0.5</valor>
+          </ListaDeAquecimento.Credito>
+        </creditos>
+      </mototaxista>
     </ListaDeAquecimento.Corrida>
     <ListaDeAquecimento.Corrida>
-      <id>1670557483466</id>
-      <status>PENDENTE</status>
-      <enderecoDePartida>000000</enderecoDePartida>
-      <enderecoDeDestino>0000000</enderecoDeDestino>
-      <distancia>0.0</distancia>
+      <id>1670595390482</id>
+      <status>REINVINDICADA</status>
+      <enderecoDePartida>xlllllllllll</enderecoDePartida>
+      <enderecoDeDestino>xlllllllllllllll</enderecoDeDestino>
+      <distancia>0.3</distancia>
       <paraAgora>true</paraAgora>
-      <data>2022-12-09</data>
+      <data>2022-12-09T11:16:30.4820318</data>
       <usuario class="ListaDeAquecimento.Passageiro">
         <nome>Eduardo</nome>
         <sexo>MASCULINO</sexo>
@@ -68,6 +117,49 @@
         <perfilAtivo>true</perfilAtivo>
         <mototaxistasBloqueados/>
       </usuario>
+      <mototaxista>
+        <nome>Eduardo</nome>
+        <sexo>MASCULINO</sexo>
+        <email>eduardo</email>
+        <id>eduardo</id>
+        <perfilAtivo>true</perfilAtivo>
+        <avaliacoes/>
+        <creditos>
+          <ListaDeAquecimento.Credito>
+            <valor>0.5</valor>
+          </ListaDeAquecimento.Credito>
+        </creditos>
+      </mototaxista>
+    </ListaDeAquecimento.Corrida>
+    <ListaDeAquecimento.Corrida>
+      <id>1670595534670</id>
+      <status>REINVINDICADA</status>
+      <enderecoDePartida>ckckckck</enderecoDePartida>
+      <enderecoDeDestino>kdkdkdk</enderecoDeDestino>
+      <distancia>0.9</distancia>
+      <paraAgora>true</paraAgora>
+      <data>2022-12-09T11:18:54.6709462</data>
+      <usuario class="ListaDeAquecimento.Passageiro">
+        <nome>Eduardo</nome>
+        <sexo>MASCULINO</sexo>
+        <email>eduardo</email>
+        <id>eduardo</id>
+        <perfilAtivo>true</perfilAtivo>
+        <mototaxistasBloqueados/>
+      </usuario>
+      <mototaxista>
+        <nome>Eduardo</nome>
+        <sexo>MASCULINO</sexo>
+        <email>eduardo</email>
+        <id>eduardo</id>
+        <perfilAtivo>true</perfilAtivo>
+        <avaliacoes/>
+        <creditos>
+          <ListaDeAquecimento.Credito>
+            <valor>0.5</valor>
+          </ListaDeAquecimento.Credito>
+        </creditos>
+      </mototaxista>
     </ListaDeAquecimento.Corrida>
   </corridas>
   <caixaDoSistema>0.0</caixaDoSistema>

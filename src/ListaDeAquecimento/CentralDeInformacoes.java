@@ -112,4 +112,14 @@ public class CentralDeInformacoes {
 		}
 		return lista;
 	}
+	public ArrayList <Corrida> recuperarCorridasPossiveisParaoMototaxista(Mototaxista m){
+		ArrayList <Corrida> lista = new ArrayList <Corrida>();
+		for(Corrida c : corridas) {
+			Passageiro p = (Passageiro) c.getUsuario();
+			if(c.getStatus() == Status.PENDENTE && !p.verificarSeEBloqueado(m)) {
+				lista.add(c);
+			}
+		}
+		return lista;
+	}
 }

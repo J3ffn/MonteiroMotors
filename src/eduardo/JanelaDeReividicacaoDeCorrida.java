@@ -14,20 +14,28 @@ import ListaDeAquecimento.CentralDeInformacoes;
 import ListaDeAquecimento.Corrida;
 import ListaDeAquecimento.MotoTaxistaSemCreditosCreditosException;
 import ListaDeAquecimento.Mototaxista;
+import ListaDeAquecimento.Persistencia;
 import clebson.JanelaPadrao;
 
 public class JanelaDeReividicacaoDeCorrida extends JanelaPadrao{
+	JLabel txLocaldePartida;
+	JLabel txLocaldeDestino;
+	JLabel txData;
+	
 	JButton btConfirmar;
 	JButton btCancelar;
-	CentralDeInformacoes central;
 	Corrida corrida;
+	JLabel txCreditos;
 	Mototaxista mototaxista;
+	CentralDeInformacoes central;
+	Persistencia persistencia;
 	
-	public JanelaDeReividicacaoDeCorrida(CentralDeInformacoes cen, Corrida c, Mototaxista m) {
+	public JanelaDeReividicacaoDeCorrida(CentralDeInformacoes cen, Persistencia per, Corrida c, Mototaxista m) {
 		super("Reivindicação de corrida");
 		this.central = cen;
 		this.mototaxista = m;
 		corrida = c;
+		persistencia = per;
 		this.setSize(400, 177);
 		this.setLocationRelativeTo(null);
 		
@@ -60,7 +68,20 @@ public class JanelaDeReividicacaoDeCorrida extends JanelaPadrao{
 				try {
 					mototaxista.reinvidicarCorrida(corrida);
 					JOptionPane.showMessageDialog(janela, "Corrida Reivindicada!", "Reivindicada!", JOptionPane.INFORMATION_MESSAGE);
-					janela.dispose();
+					txLocaldePartida.setText(String.format("Local de Partida: %s", corrida.getEnderecoDePartida()));
+					txLocaldeDestino.setText(String.format("Local de Destino: %s", corrida.getEnderecoDeDestino()));
+					txData.setText(String.format("Data: %s/%s/%s    Hora: %d:%d", corrida.getData().getDayOfMonth(), corrida.getData().getMonthValue(), corrida.getData().getYear(), corrida.getData().getHour(), corrida.getData().getMinute()));
+					
+					txCreditos.repaint();
+					btConfirmar.setEnabled(false);
+					
+					try {
+						persistencia.salvar(central, "dados-passageiros.xml");
+						
+					} catch (Exception erro){
+						System.out.println("Houve um erro ao salvar os dados!");
+					}
+					janela.repaint();
 				} catch (MotoTaxistaSemCreditosCreditosException erro) {
 					JOptionPane.showMessageDialog(janela, erro.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
 				}
@@ -75,11 +96,11 @@ public class JanelaDeReividicacaoDeCorrida extends JanelaPadrao{
 		txPassageiro.setHorizontalAlignment(JLabel.CENTER);
 		this.add(txPassageiro);
 		
-		JLabel txLocaldePartida = new JLabel(String.format("Local de Partida: %s", corrida.getEnderecoDePartida()));
+		txLocaldePartida = new JLabel("Local de Partida: Reivindique a corrida!");
 		txLocaldePartida.setBounds(65, 40, 360, 20);
 		this.add(txLocaldePartida);
 		
-		JLabel txLocaldeDestino = new JLabel(String.format("Local de Destino: %s", corrida.getEnderecoDeDestino()));
+		txLocaldeDestino = new JLabel("Local de Destino: Reivindique a corrida!");
 		txLocaldeDestino.setBounds(65, 60, 360, 20);
 		this.add(txLocaldeDestino);
 		
@@ -87,12 +108,12 @@ public class JanelaDeReividicacaoDeCorrida extends JanelaPadrao{
 		txDistancia.setBounds(65, 80, 120, 20);
 		this.add(txDistancia);
 		
-		JLabel txData = new JLabel(String.format("Data: %s/%s/%s", corrida.getData().getDayOfMonth(), corrida.getData().getMonthValue(), corrida.getData().getYear()));
-		txData.setBounds(240, 80, 120, 20);
+		txData = new JLabel(String.format("Data: **/**/****    Hora: **:**"));
+		txData.setBounds(180, 80, 200, 20);
 		this.add(txData);
 		
 		ImageIcon i = new ImageIcon("icones/icons8-barato-2-12.png");
-		JLabel txCreditos = new JLabel(String.format("Creditos: %s",  mototaxista.getCreditos().size()));
+		txCreditos = new JLabel(String.format("Creditos: %s",  mototaxista.getCreditos().size()));
 		txCreditos.setIcon(i);
 		txCreditos.setBounds(285, 0, 90, 30);
 		this.add(txCreditos);
