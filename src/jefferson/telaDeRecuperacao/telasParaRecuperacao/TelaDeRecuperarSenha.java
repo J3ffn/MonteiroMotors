@@ -25,7 +25,7 @@ public class TelaDeRecuperarSenha extends JanelaPadrao implements OuvinteGestorD
 	public TelaDeRecuperarSenha() {
 		super("Recuperação senha");
 		addTituloDaTela();
-		addCampoEmail();
+		addCampoTextField();
 		addBotoesDaTela();
 		
 		setVisible(true);
@@ -35,26 +35,21 @@ public class TelaDeRecuperarSenha extends JanelaPadrao implements OuvinteGestorD
 	protected void addBotoesDaTela() {
 		botaoEnviar = new JButton("ENVIAR CÓDIGO");
 
-		/*
-		 * TODO Adicionar um Ouvinte para animar o botão. -> enviar.addMouseListener(new
-		 * OuvinteMouse());
-		 */
-
-		botaoEnviar.setBounds(184, 270, 111, 40);
+		botaoEnviar.setBounds(170, 270, 125, 40);
 		
 		add(botaoEnviar);
 	}
 
 	protected void addTituloDaTela() {
-		JLabel titulo = new JLabel("RECUPERAR CONTA");
-		titulo.setBounds(150, 100, 190, 40);
-		titulo.setFont(new Font("", Font.BOLD, 18));
-		titulo.setHorizontalTextPosition((int) CENTER_ALIGNMENT);
+		JLabel linhaTitulo = new JLabel("RECUPERAR CONTA");
+		linhaTitulo.setBounds(150, 100, 190, 40);
+		linhaTitulo.setFont(new Font("", Font.BOLD, 18));
+		linhaTitulo.setHorizontalTextPosition((int) CENTER_ALIGNMENT);
 
-		add(titulo);
+		add(linhaTitulo);
 	}
 
-	protected void addCampoEmail() {
+	protected void addCampoTextField() {
 		// Texto E-MAIL
 		JLabel textoEmail = new JLabel("E-MAIL: ");
 		textoEmail.setBounds(115, 160, 45, 30);

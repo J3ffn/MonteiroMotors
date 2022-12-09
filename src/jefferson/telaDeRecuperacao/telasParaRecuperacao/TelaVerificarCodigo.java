@@ -7,27 +7,25 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import jefferson.telaDeRecuperacao.OuvinteGestorDeInformacoes;
-import jefferson.telaDeRecuperacao.ouvintesTelaRecuperacao.OuvinteCodigoChave;
 
 @SuppressWarnings("serial")
-public class TelaVerificarCodigo extends TelaDeRecuperarSenha implements OuvinteGestorDeInformacoes{
+public final class TelaVerificarCodigo extends TelaDeRecuperarSenha implements OuvinteGestorDeInformacoes{
 
-	@SuppressWarnings("unused")
-	private String codigo;
+	private String codigoEnviado;
 	private JButton botao;
-	private JFrame tela = this;
-	private JTextField infoLinha;
+	private JTextField infoEmail;
 	
-	public TelaVerificarCodigo(String codigoChave) {
-		codigo = codigoChave;
+	public TelaVerificarCodigo(String codigoChave, JTextField linhaEmail) {
+		codigoEnviado = codigoChave;
+		infoEmail = linhaEmail;
 		
 		addBotoesDaTela();
-		addCampoEmail();
+		addCampoTextField();
 		
 		setVisible(true);
 	}
@@ -41,7 +39,7 @@ public class TelaVerificarCodigo extends TelaDeRecuperarSenha implements Ouvinte
 	}
 	
 	@Override
-	public void addCampoEmail() {
+	public void addCampoTextField() {
 		// Subtexto
 		JLabel texto = new JLabel("Código: ");
 		texto.setBounds(115, 160, 45, 30);
@@ -58,10 +56,14 @@ public class TelaVerificarCodigo extends TelaDeRecuperarSenha implements Ouvinte
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						infoLinha = (JTextField) e.getSource();
-						gestor(infoLinha.getText(), tela, infoLinha);
+						JTextField infoLinha = (JTextField) e.getSource();
+						String codigoDigitado = infoLinha.getText();
+						if (codigoDigitado.equals(codigoEnviado)) {
+							dispose();
+							new TelaDeAlteracaoDaSenha(infoEmail.getText());
+						} else 
+							JOptionPane.showMessageDialog(null, "Código incorreto!");
 					}
-					
 				});
 			}
 			
@@ -73,14 +75,5 @@ public class TelaVerificarCodigo extends TelaDeRecuperarSenha implements Ouvinte
 		add(linhaValidacao);
 	}
 
-	@Override
-	public void gestor(String texto, JFrame tela, JTextField campoEmail) {
-		if (new OuvinteCodigoChave(tela, campoEmail).ValidarCodigo()) {
-			
-		} 
-		
-	}
-	
-	
 	
 }

@@ -3,8 +3,6 @@ package jefferson.telaDeRecuperacao;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 
-import jefferson.telaDeRecuperacao.telasParaRecuperacao.*;
-
 public class Teste {
 
 	public static void main(String[] args) {

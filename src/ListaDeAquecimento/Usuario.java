@@ -73,4 +73,13 @@ public abstract class Usuario{
 	public void setPerfilAtivo(boolean perfilAtivo) {
 		this.perfilAtivo = perfilAtivo;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		Usuario usuarioDeFora = (Usuario) obj;
+		if (id == usuarioDeFora.getId() && email.equals(usuarioDeFora.getEmail())) {
+			return true;
+		}
+		return false;
+	}
 }

@@ -82,20 +82,18 @@ public class Mensageiro extends MultiPartEmail{
 	}
 	
 	public boolean enviarCodigoDeRecuperacao(String email, String codigoChave, String titulo) {
-		if (verificarEmail(email)) {
-			try {
-				addTo(email);
-				setMsg("Sua chave é: " + codigoChave);
-				
-				send();
-				System.out.println("Enviado");
-				return true;
-			} catch (EmailException e) {
-				
-				JOptionPane.showMessageDialog(null, "Email não enviado");
-				
-			}
-		} 
+		try {
+			addTo(email);
+			setMsg("Sua chave é: " + codigoChave);
+			
+			send();
+			System.out.println("Enviado");
+			return true;
+		} catch (EmailException e) {
+			
+			JOptionPane.showMessageDialog(null, "Email não enviado");
+			
+		}
 		return false;
 	}
 }

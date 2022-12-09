@@ -22,6 +22,7 @@ public class OuvinteCodigoChave extends SimpleEmail implements ActionListener{
 	private String emailDestinatario;
 	private String codigoChave;
 	private JFrame telaAtual;
+	private JTextField linhaEmail;
 
 	public OuvinteCodigoChave(JFrame tela, JTextField linha) {
 		emailDestinatario = linha.getText();
@@ -37,21 +38,14 @@ public class OuvinteCodigoChave extends SimpleEmail implements ActionListener{
 		// TODO Descomentar essas verificações.
 //		if (new CentralDeInformacoes().recuperarUsuarioPeloEmail(emailDestinatario) != null) {
 
+			if (new Mensageiro().verificarEmail(emailDestinatario)) {
+				new Mensageiro().enviarCodigoDeRecuperacao(emailDestinatario, codigoChave, "Chave de recuperação");
+				telaAtual.dispose();
+			}
 			
-			new Mensageiro().enviarCodigoDeRecuperacao(emailDestinatario, codigoChave, "Chave de recuperação");
-			
-			telaAtual.dispose();
-			
-			new TelaVerificarCodigo(codigoChave);
+			new TelaVerificarCodigo(codigoChave, linhaEmail);
 //		} else { JOptionPane.showMessageDialog(null, "Usuário não está cadastrado."); }
 	}
 
-	public boolean ValidarCodigo() {
-		
-		
-		return true;
-	}
-	
-	
 	
 }
