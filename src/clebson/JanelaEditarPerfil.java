@@ -16,6 +16,16 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 	private JLabel lbEmail;
 	private JLabel lbTipoDeUsuario;
 	
+	public JLabel getLbTipoDeUsuario() {
+		return lbTipoDeUsuario;
+	}
+
+
+	public void setLbTipoDeUsuario(JLabel lbTipoDeUsuario) {
+		this.lbTipoDeUsuario = lbTipoDeUsuario;
+	}
+
+
 	public JanelaEditarPerfil() {
 		super("Editar Perfil");
 		adicionarTextos();
@@ -77,19 +87,12 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 		add (btEditarNome);
 		btEditarNome.addActionListener(ouvinteEditarNome);
 		
-		
 		JButton btEditarEmail = new JButton();
 		btEditarEmail.setBounds(350, 205, 100, 20);
 		btEditarEmail.setText("Editar E-mail");
 		btEditarEmail.setFont(new Font("Tahoma",Font.BOLD,10));
 		add (btEditarEmail);
 		btEditarEmail.addActionListener(ouvinteEditarEmail);
-		
-		JButton btEditarTipo = new JButton();
-		btEditarTipo.setBounds(350, 240, 100, 20);
-		btEditarTipo.setText("Editar Tipo");
-		btEditarTipo.setFont(new Font("Tahoma",Font.BOLD,10));
-		add (btEditarTipo);
 		
 		JButton btDeletarPerfil = new JButton();
 		btDeletarPerfil.setBounds(174, 362, 150, 20);
