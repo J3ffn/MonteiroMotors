@@ -28,15 +28,20 @@ public class Teste {
 //		}
 //		new TelaVerificarCodigo("a7b9858");
 		
-		try {
-			InternetAddress emailAddr = new InternetAddress("");
-			emailAddr.validate();
-		} catch (AddressException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+//		try {
+//			InternetAddress emailAddr = new InternetAddress("");
+//			emailAddr.validate();
+//		} catch (AddressException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		
+		for(int i = 0; i < 3; i++) {
+			if(i == 1) {
+				break;
+			}
 		}
-		
-		
+		System.out.println("Passou");
 		
 	}
 }
