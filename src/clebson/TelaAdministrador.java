@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import clebsonOuvintesExternos.OuvinteBotaoDeslogar;
 import clebsonOuvintesExternos.OuvinteBotaoEditarPerfil;
 
+@SuppressWarnings("serial")
 public class TelaAdministrador extends JanelaPadrao {
 	
 	private JButton btDeslogar;
