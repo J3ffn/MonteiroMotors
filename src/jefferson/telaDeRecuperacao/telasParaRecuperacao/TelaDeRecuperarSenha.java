@@ -3,6 +3,8 @@ package jefferson.telaDeRecuperacao.telasParaRecuperacao;
 import java.awt.Font;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -11,11 +13,10 @@ import javax.swing.JTextField;
 
 import ListaDeAquecimento.Mensageiro;
 import clebson.JanelaPadrao;
-import jefferson.telaDeRecuperacao.OuvinteGestorDeInformacoes;
-import jefferson.telaDeRecuperacao.ouvintesTelaRecuperacao.*;
+import jefferson.telaDeRecuperacao.ouvintesTelaRecuperacao.OuvinteCodigoChave;
 
 @SuppressWarnings("serial")
-public class TelaDeRecuperarSenha extends JanelaPadrao implements OuvinteGestorDeInformacoes{
+public class TelaDeRecuperarSenha extends JanelaPadrao {
 	
 	// Referência da tela -> 498, 462
 	private JButton botaoEnviar;
@@ -64,8 +65,18 @@ public class TelaDeRecuperarSenha extends JanelaPadrao implements OuvinteGestorD
 			@Override
 			public void focusLost(FocusEvent e) {
 				emailDigitado = (JTextField) e.getSource();
-				
-				gestor(emailDigitado.getText(), telaEmail, emailDigitado);
+				if (new Mensageiro().verificarEmail(emailDigitado.getText())) {
+					
+					botaoEnviar.addMouseListener(new MouseAdapter() {
+						
+						@Override
+						public void mouseClicked(MouseEvent e) {
+							botaoEnviar.addActionListener(new OuvinteCodigoChave(telaEmail, linhaEmail, botaoEnviar));
+						};
+						
+					});
+					
+				}
 			}
 			
 			@Override
@@ -78,12 +89,4 @@ public class TelaDeRecuperarSenha extends JanelaPadrao implements OuvinteGestorD
 		add(linhaEmail);
 	}
 	
-	@Override
-	public void gestor(String texto, JFrame tela, JTextField campoEmail) {
-		if (new Mensageiro().verificarEmail(texto)) {
-			botaoEnviar.addMouseListener(new OuvinteBotao(botaoEnviar, telaEmail, campoEmail));
-		}
-		
-	}
-
 }

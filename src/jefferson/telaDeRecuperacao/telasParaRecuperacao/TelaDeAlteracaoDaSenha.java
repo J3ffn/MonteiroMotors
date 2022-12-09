@@ -51,8 +51,8 @@ public final class TelaDeAlteracaoDaSenha extends TelaDeRecuperarSenha {
 		JTextField linhaConfirmarPassword = new JTextField();
 		linhaConfirmarPassword.setBounds(115, 225, 250, 40);
 		
-		if (linhaPassword.getText().length() != 0 && linhaPassword.getText().equals(linhaConfirmarPassword.getText()))
-			linhaConfirmarPassword.addActionListener(new OuvinteAlteracaoDeSenha(this, linhaPassword/*, usuarioParaAlteracao*/));
+		if (linhaPassword.getText().length() != 0)
+			linhaConfirmarPassword.addActionListener(new OuvinteAlteracaoDeSenha(this, linhaPassword, usuarioParaAlteracao));
 		
 		add(subTextoSenha);
 		add(linhaPassword);

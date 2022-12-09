@@ -7,18 +7,20 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import jefferson.telaDeRecuperacao.OuvinteGestorDeInformacoes;
+import jefferson.telaDeRecuperacao.ouvintesTelaRecuperacao.OuvinteVerificacao;
 
 @SuppressWarnings("serial")
-public final class TelaVerificarCodigo extends TelaDeRecuperarSenha implements OuvinteGestorDeInformacoes{
+public final class TelaVerificarCodigo extends TelaDeRecuperarSenha {
 
 	private String codigoEnviado;
 	private JButton botao;
 	private JTextField infoEmail;
+	private JFrame tela = this;
 	
 	public TelaVerificarCodigo(String codigoChave, JTextField linhaEmail) {
 		codigoEnviado = codigoChave;
@@ -59,8 +61,9 @@ public final class TelaVerificarCodigo extends TelaDeRecuperarSenha implements O
 						JTextField infoLinha = (JTextField) e.getSource();
 						String codigoDigitado = infoLinha.getText();
 						if (codigoDigitado.equals(codigoEnviado)) {
-							dispose();
-							new TelaDeAlteracaoDaSenha(infoEmail.getText());
+							
+							botao.addMouseListener(new OuvinteVerificacao(tela, infoEmail));
+						
 						} else 
 							JOptionPane.showMessageDialog(null, "Código incorreto!");
 					}
