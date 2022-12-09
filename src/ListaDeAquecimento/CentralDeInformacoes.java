@@ -1,7 +1,6 @@
 package ListaDeAquecimento;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class CentralDeInformacoes {
@@ -122,8 +121,5 @@ public class CentralDeInformacoes {
 			}
 		}
 		return lista;
-	}
-	public ArrayList<Corrida> getCorridas() {
-		return corridas;
 	}
 }

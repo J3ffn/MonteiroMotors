@@ -1,4 +1,4 @@
-package eduardo.Janelas;
+package eduardo;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -20,8 +20,6 @@ import ListaDeAquecimento.Corrida;
 import ListaDeAquecimento.Passageiro;
 import ListaDeAquecimento.Persistencia;
 import clebson.JanelaPadrao;
-import eduardo.Ouvintes.OuvinteBotaoCancelar;
-import eduardo.Ouvintes.OuvinteDoTecladoParaApenasNumerico;
 
 public class JanelaDeCadastroDeCorrida extends JanelaPadrao{
 	CentralDeInformacoes central;

@@ -10,7 +10,7 @@ import ListaDeAquecimento.CentralDeInformacoes;
 import ListaDeAquecimento.Passageiro;
 import ListaDeAquecimento.Persistencia;
 import clebsonOuvintesExternos.OuvinteBotaoDeslogar;
-import eduardo.Janelas.JanelaDeCadastroDeCorrida;
+import eduardo.JanelaDeCadastroDeCorrida;
 
 public class TelaPassageiro extends JanelaPadrao{
 	private CentralDeInformacoes central;

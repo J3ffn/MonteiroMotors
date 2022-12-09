@@ -1,4 +1,4 @@
-package eduardo.Janelas;
+package eduardo;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -15,9 +15,7 @@ import ListaDeAquecimento.Corrida;
 import ListaDeAquecimento.MotoTaxistaSemCreditosCreditosException;
 import ListaDeAquecimento.Mototaxista;
 import ListaDeAquecimento.Persistencia;
-import ListaDeAquecimento.Status;
 import clebson.JanelaPadrao;
-import eduardo.Ouvintes.OuvinteBotaoCancelar;
 
 public class JanelaDeReividicacaoDeCorrida extends JanelaPadrao{
 	JLabel txLocaldePartida;
@@ -66,7 +64,7 @@ public class JanelaDeReividicacaoDeCorrida extends JanelaPadrao{
 		public void actionPerformed(ActionEvent e) {
 			if(e.getActionCommand().equals("Confirmar")) {
 			int esc = JOptionPane.showConfirmDialog(janela, "Deseja reivindicar essa corrida?");
-			if(esc == 0 && corrida.getStatus() == Status.PENDENTE) {
+			if(esc == 0) {
 				try {
 					mototaxista.reinvidicarCorrida(corrida);
 					JOptionPane.showMessageDialog(janela, "Corrida Reivindicada!", "Reivindicada!", JOptionPane.INFORMATION_MESSAGE);
@@ -87,8 +85,6 @@ public class JanelaDeReividicacaoDeCorrida extends JanelaPadrao{
 				} catch (MotoTaxistaSemCreditosCreditosException erro) {
 					JOptionPane.showMessageDialog(janela, erro.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
 				}
-			} else if(corrida.getStatus() != Status.PENDENTE) {
-				JOptionPane.showMessageDialog(janela, "Esta corrida já foi reinvindicada", "Erro!", JOptionPane.ERROR_MESSAGE);
 			}
 			}
 		}
