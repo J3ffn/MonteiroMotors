@@ -10,7 +10,7 @@ import ListaDeAquecimento.CentralDeInformacoes;
 import ListaDeAquecimento.Passageiro;
 import ListaDeAquecimento.Persistencia;
 import clebsonOuvintesExternos.OuvinteBotaoDeslogar;
-import eduardo.JanelaDeCadastroDeCorrida;
+import eduardo.Janelas.JanelaDeCadastroDeCorrida;
 
 public class TelaPassageiro extends JanelaPadrao{
 	private CentralDeInformacoes central;
@@ -18,7 +18,6 @@ public class TelaPassageiro extends JanelaPadrao{
 	private Passageiro p;
 	private JButton btDeslogar;
 	private JButton btEditarPerfil;
-	
 	
 	
 	public TelaPassageiro(CentralDeInformacoes central, Persistencia persistencia, Passageiro p) {

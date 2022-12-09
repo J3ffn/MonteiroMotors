@@ -3,7 +3,7 @@ package ListaDeAquecimento;
 import java.time.LocalDate;
 import java.util.Scanner;
 
-import eduardo.JanelaDeRegistro;
+import eduardo.Janelas.JanelaDeRegistro;
 
 public class Programa {
 	public static void main(String[] args) {

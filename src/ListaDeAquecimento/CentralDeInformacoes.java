@@ -122,4 +122,8 @@ public class CentralDeInformacoes {
 		}
 		return lista;
 	}
+	public ArrayList<Corrida> getCorridas() {
+		
+		return corridas;
+	}
 }
