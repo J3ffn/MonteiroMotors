@@ -10,7 +10,6 @@ import clebsonOuvintesExternos.OuvinteBotaoEditarPerfil;
 =======
 import eduardo.Janelas.JanelaDeDefinicaoDeValorDosCreditos;
 import eduardo.Ouvintes.OuvinteBotaoListarCorridas;
->>>>>>> parent of c555896 (Janela Listagem Usuarios)
 
 @SuppressWarnings("serial")
 public class TelaAdministrador extends JanelaPadrao {
