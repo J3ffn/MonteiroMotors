@@ -1,9 +1,6 @@
-package eduardo;
+package eduardo.Janelas;
 
 import java.awt.Color;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
@@ -11,43 +8,51 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import ListaDeAquecimento.Administrador;
 import ListaDeAquecimento.CentralDeInformacoes;
 import ListaDeAquecimento.ComparacaoData;
 import ListaDeAquecimento.Mototaxista;
+import ListaDeAquecimento.Passageiro;
 import ListaDeAquecimento.Persistencia;
-import ListaDeAquecimento.Status;
+import ListaDeAquecimento.Usuario;
 import clebson.JanelaPadrao;
+import eduardo.Ouvintes.OuvinteBotaoCancelar;
 import ListaDeAquecimento.Corrida;
 
 public class JanelaDeCorridasDisponiveis extends JanelaPadrao{
-	Mototaxista mototaxista;
+	Usuario usuario;
 	CentralDeInformacoes central;
 	ArrayList <Corrida> corridasTodasAsDisponiveis;
 	JScrollPane painel;
 	Persistencia persistencia;
-	JPanel painel1;
 	JComboBox < String > filtro;
 	
-	public JanelaDeCorridasDisponiveis(Mototaxista m, CentralDeInformacoes c, Persistencia per) {
+	public JanelaDeCorridasDisponiveis(Usuario u, CentralDeInformacoes c, Persistencia per) {
 		super("Janela de Corridas Disponiveis");
-		mototaxista = m;
+		usuario = u;
 		central = c;
 		persistencia = per;
-		corridasTodasAsDisponiveis = central.recuperarCorridasPossiveisParaoMototaxista(mototaxista);
 		adicionarPainel();
 		adicionarBotoes();
 		this.setVisible(true);
 	}
 	public void adicionarBotoes() {
+		String[] opcoes = {"Todas", "Mais Recentes", "Mais Antigas"};
+		
+		JLabel texto = new JLabel("Corridas Disponiveis");
+		texto.setBounds(20, 40, 440, 20);
+		texto.setBackground(Color.GRAY);
+		texto.setOpaque(true);
+		texto.setHorizontalAlignment(JLabel.CENTER);
+		this.add(texto);
+		
 		JButton b = new JButton("< Voltar");
 		b.setBounds(5, 5, 80, 20);
 		b.addActionListener(new OuvinteBotaoCancelar(this));
 		this.add(b);
 		
-		String[] opcoes = {"Todas", "Mais Recentes"};
 		
 		filtro = new JComboBox < String >(opcoes);
 		filtro.setBounds(350, 5, 110, 20);
@@ -72,7 +77,11 @@ public class JanelaDeCorridasDisponiveis extends JanelaPadrao{
 					corridasTodasAsDisponiveis.sort(comparacao);
 					
 				} else if(filtro.getSelectedItem().equals("Todas")) {
-					corridasTodasAsDisponiveis = central.recuperarCorridasPossiveisParaoMototaxista(mototaxista);
+					if(usuario instanceof Mototaxista) {
+						corridasTodasAsDisponiveis = central.recuperarCorridasPossiveisParaoMototaxista((Mototaxista)usuario);
+					} else if (usuario instanceof Administrador) {
+						corridasTodasAsDisponiveis = central.getCorridas();
+					}
 				}
 				JButton botao = (JButton) e.getSource();
 				botao.transferFocus();
@@ -90,45 +99,13 @@ public class JanelaDeCorridasDisponiveis extends JanelaPadrao{
 			public void mouseExited(MouseEvent e) {}
 	}
 	public void adicionarPainel() {
-		
-		JLabel texto = new JLabel("Corridas Disponiveis");
-		texto.setBounds(20, 40, 440, 20);
-		texto.setBackground(Color.GRAY);
-		texto.setOpaque(true);
-		texto.setHorizontalAlignment(JLabel.CENTER);
-		this.add(texto);
-		
-		painel1 = new JPanel();
-		painel1.setBackground(Color.WHITE);
-		int y = 10;
-		painel1.setLayout(null);
-		
-		
-		if(corridasTodasAsDisponiveis != null) {
-			for (Corrida c : corridasTodasAsDisponiveis) {
-				if(c.getStatus() == Status.PENDENTE) {
-					JLabel corrida = new JLabel("Corrida: " + c.getId());
-					corrida.setBounds(10, y, 170, 20);
-					
-					JButton botao = new JButton("Reivindicar");
-					botao.setBounds(310, y, 115, 40);
-					botao.addActionListener(new ActionListener() {
-						public void actionPerformed(ActionEvent e) {
-							new JanelaDeReividicacaoDeCorrida(central, persistencia, c, mototaxista);
-						}
-					});
-					painel1.add(corrida);
-					painel1.add(botao);
-					y += 45;
-				}
-			}
+		if(usuario instanceof Mototaxista) {
+			painel = new JScrollPane(new PainelListaCorridasMototaxista(corridasTodasAsDisponiveis, central, persistencia, (Mototaxista) usuario));
+		} else if (usuario instanceof Administrador) {
+			painel = new JScrollPane(new PainelListaCorridasAdministrador(corridasTodasAsDisponiveis, central, persistencia, (Administrador) usuario));
+		} else if(usuario instanceof Passageiro) {
+			painel = new JScrollPane(new PainelListaCorridasPassageiro(corridasTodasAsDisponiveis, central, persistencia, (Passageiro) usuario));
 		}
-		if(corridasTodasAsDisponiveis.size() > 6) {
-			GridLayout layout = new GridLayout(0, 2, 150, 20);
-			painel1.setLayout(layout);
-		}
-		painel = new JScrollPane(painel1);
-		
 		painel.setBounds(20, 60, 440, 340);
 		
 		this.add(painel);

@@ -1,4 +1,4 @@
-package eduardo;
+package eduardo.Janelas;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
