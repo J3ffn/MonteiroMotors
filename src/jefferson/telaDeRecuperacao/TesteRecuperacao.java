@@ -8,6 +8,6 @@ public class TesteRecuperacao {
 	public static void main(String[] args) {
 
 		TelaDeRecuperarSenha telaDeRecuperacao = new TelaDeRecuperarSenha();
-		TelaVerificarCodigo tela = new TelaVerificarCodigo("Jeff");
+//		TelaVerificarCodigo tela = new TelaVerificarCodigo("Jeff");
 	}
 }
