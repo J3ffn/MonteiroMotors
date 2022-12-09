@@ -23,6 +23,7 @@ public class PainelListaCorridasAdministrador extends Painel{
 	public PainelListaCorridasAdministrador(ArrayList<Corrida> corridasTodasAsDisponiveis, CentralDeInformacoes central,
 			Persistencia persistencia, Administrador usuario) {
 		super(corridasTodasAsDisponiveis, central, persistencia, usuario);
+		
 	}
 	public void preencherPainel() {
 		corridasTodasAsDisponiveis = central.getCorridas();

@@ -50,6 +50,6 @@ public class Teste2 {
 		//JanelaDeCorridasDisponiveis j2 = new JanelaDeCorridasDisponiveis(n, central, per);
 
 		new TelaAdministrador(central, per, central.recuperarAdministradorDoSistema());
-		new JanelaMototaxista(central, per, n1);
+		//new JanelaMototaxista(central, per, n1);
 	}
 }

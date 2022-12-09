@@ -61,39 +61,45 @@ public class JanelaDeCorridasDisponiveis extends JanelaPadrao{
 		btAtualizar.addMouseListener(new OuvinteDoAtualizar(this));
 		this.add(btAtualizar);
 	}
+	
 	private class OuvinteDoAtualizar implements MouseListener{
 		JanelaDeCorridasDisponiveis janela;
-		private ComparacaoData comparacao;
 		
 		public OuvinteDoAtualizar(JanelaDeCorridasDisponiveis j) {
 			janela = j;
 		}
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if(filtro.getSelectedItem().equals("Mais Recentes")) {
-					corridasTodasAsDisponiveis = painel1.getCorridasOrganizadasMaisRecentes();
-				} else if(filtro.getSelectedItem().equals("Todas")) {
-					if(usuario instanceof Mototaxista) {
-						corridasTodasAsDisponiveis = central.recuperarCorridasPossiveisParaoMototaxista((Mototaxista)usuario);
-					} else if (usuario instanceof Administrador) {
-						corridasTodasAsDisponiveis = central.getCorridas();
-					}
+		public void mouseClicked(MouseEvent e) {
+			if(filtro.getSelectedItem().equals("Mais Recentes")) {
+				corridasTodasAsDisponiveis = painel1.getCorridasOrganizadasMaisRecentes();
+				
+			} else if(filtro.getSelectedItem().equals("Todas")) {
+				if(usuario instanceof Mototaxista) {
+					corridasTodasAsDisponiveis = central.recuperarCorridasPossiveisParaoMototaxista((Mototaxista)usuario);
+				} else if (usuario instanceof Administrador) {
+					corridasTodasAsDisponiveis = central.getCorridas();
+				} else if (usuario instanceof Passageiro) {
+					corridasTodasAsDisponiveis = central.recuperarCorridasDeUmPassageiro(usuario.getEmail());
 				}
-				JButton botao = (JButton) e.getSource();
-				botao.transferFocus();
-				janela.remove(painel);
-				adicionarPainel();
-				janela.repaint();
+			} else if(filtro.getSelectedItem().equals("Mais Antigas")) {
+				corridasTodasAsDisponiveis = painel1.getCorridasOrganizadasMaisAntigas();
 			}
-			@Override
-			public void mousePressed(MouseEvent e) {}
-			@Override
-			public void mouseReleased(MouseEvent e) {}
-			@Override
-			public void mouseEntered(MouseEvent e) {}
-			@Override
-			public void mouseExited(MouseEvent e) {}
+			
+			JButton botao = (JButton) e.getSource();
+			botao.transferFocus();
+			janela.remove(painel);
+			adicionarPainel();
+			janela.repaint();
+		}
+		@Override
+		public void mousePressed(MouseEvent e) {}
+		@Override
+		public void mouseReleased(MouseEvent e) {}
+		@Override
+		public void mouseEntered(MouseEvent e) {}
+		@Override
+		public void mouseExited(MouseEvent e) {}
 	}
+	
 	public void adicionarPainel() {
 		if(usuario instanceof Mototaxista) {
 			painel1 = new PainelListaCorridasMototaxista(corridasTodasAsDisponiveis, central, persistencia, (Mototaxista) usuario);

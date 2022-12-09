@@ -24,7 +24,6 @@ public class PainelListaCorridasPassageiro extends Painel{
 	}
 	public void preencherPainel() {
 		corridasTodasAsDisponiveis = central.recuperarCorridasDeUmPassageiro(usuario.getEmail());
-		
 		this.setBackground(Color.WHITE);
 		this.setLayout(null);
 		
@@ -32,10 +31,11 @@ public class PainelListaCorridasPassageiro extends Painel{
 		int y = 10;
 		if(corridasTodasAsDisponiveis != null) {
 			for (Corrida c : corridasTodasAsDisponiveis) {
-				JLabel corrida = new JLabel("Corrida: " + c.getId());
+				JLabel corrida = new JLabel("Corrida: " + c.getId() + "  " + c.getData());
 				corrida.setBounds(10, y, 170, 20);
 				JButton botao = new JButton("Detalhes");
 				botao.setBounds(310, y, 115, 40);
+				
 				this.add(corrida);
 				this.add(botao);
 				y += 45;

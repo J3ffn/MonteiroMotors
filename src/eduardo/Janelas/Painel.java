@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 
 import ListaDeAquecimento.CentralDeInformacoes;
 import ListaDeAquecimento.ComparacaoData;
+import ListaDeAquecimento.ComparacaoData2;
 import ListaDeAquecimento.Corrida;
 import ListaDeAquecimento.Persistencia;
 import ListaDeAquecimento.Usuario;
@@ -40,6 +41,11 @@ public abstract class Painel extends JPanel{
 	public ArrayList<Corrida> getCorridasOrganizadasMaisRecentes() {
 		ArrayList<Corrida> corrida = corridasTodasAsDisponiveis;
 		corrida.sort(new ComparacaoData());
+		return corrida;
+	}
+	public ArrayList<Corrida> getCorridasOrganizadasMaisAntigas() {
+		ArrayList<Corrida> corrida = corridasTodasAsDisponiveis;
+		corrida.sort(new ComparacaoData2());
 		return corrida;
 	}
 }
