@@ -6,6 +6,8 @@ import javax.swing.JButton;
 
 import clebsonOuvintesExternos.OuvinteBotaoDeslogar;
 import clebsonOuvintesExternos.OuvinteBotaoEditarPerfil;
+import eduardo.Janelas.JanelaDeDefinicaoDeValorDosCreditos;
+import eduardo.Ouvintes.OuvinteBotaoListarCorridas;
 
 @SuppressWarnings("serial")
 public class TelaAdministrador extends JanelaPadrao {
