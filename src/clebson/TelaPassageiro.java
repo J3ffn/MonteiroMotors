@@ -9,12 +9,17 @@ import javax.swing.JButton;
 import ListaDeAquecimento.CentralDeInformacoes;
 import ListaDeAquecimento.Passageiro;
 import ListaDeAquecimento.Persistencia;
+import clebsonOuvintesExternos.OuvinteBotaoDeslogar;
 import eduardo.JanelaDeCadastroDeCorrida;
 
 public class TelaPassageiro extends JanelaPadrao{
 	private CentralDeInformacoes central;
 	private Persistencia persistencia;
 	private Passageiro p;
+	private JButton btDeslogar;
+	private JButton btEditarPerfil;
+	
+	
 	
 	public TelaPassageiro(CentralDeInformacoes central, Persistencia persistencia, Passageiro p) {
 		super("Passageiro");
@@ -36,27 +41,30 @@ public class TelaPassageiro extends JanelaPadrao{
 		JButton btCadastroCorrida = new JButton();
 		btCadastroCorrida.setBounds(170, 121, 130, 50);
 		btCadastroCorrida.setText("Cadastrar Corrida");
-		btCadastroCorrida.setFont(new Font("Arial",Font.BOLD,10));
+		btCadastroCorrida.setFont(new Font("Tahoma",Font.BOLD,10));
 		btCadastroCorrida.addActionListener(new OuvinteDeBtCadastroCorrida());
 		add (btCadastroCorrida);
 		
 		JButton btListarCorridas = new JButton();
 		btListarCorridas.setBounds(170, 191, 130, 30);
 		btListarCorridas.setText("Listar Corridas");
-		btListarCorridas.setFont(new Font("Arial",Font.BOLD,10));
+		btListarCorridas.setFont(new Font("Tahoma",Font.BOLD,10));
 		add (btListarCorridas);
 		
-		JButton btEditarPerfil = new JButton();
+		btEditarPerfil  = new JButton();
 		btEditarPerfil.setBounds(340, 320, 130, 35);
 		btEditarPerfil.setText("Editar Perfil");
-		btEditarPerfil.setFont(new Font("Arial",Font.BOLD,10));
-		add (btEditarPerfil);
+		btEditarPerfil.setFont(new Font("Tahoma",Font.BOLD,10));
+		add (btEditarPerfil);		
 		
-		JButton btDeslogar = new JButton();
+		
+		btDeslogar = new JButton();
 		btDeslogar.setBounds(340, 370, 130, 35);
 		btDeslogar.setText("Deslogar");
-		btDeslogar.setFont(new Font("Arial",Font.BOLD,10));
+		btDeslogar.setFont(new Font("Tahoma",Font.BOLD,10));
 		add (btDeslogar);
+		OuvinteBotaoDeslogar ouvinteDeslogar = new OuvinteBotaoDeslogar(this);
+		btDeslogar.addActionListener(ouvinteDeslogar);
 		
 	}
 	

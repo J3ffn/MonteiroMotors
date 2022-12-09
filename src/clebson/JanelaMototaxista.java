@@ -7,9 +7,14 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
+import clebsonOuvintesExternos.OuvinteBotaoDeslogar;
+
 
 
 public class JanelaMototaxista extends JanelaPadrao{
+	
+	private JButton btDeslogar;
+	private JButton btEditarPerfil;
 	
 	public JanelaMototaxista() {
 		super("Mototaxista");
@@ -25,10 +30,6 @@ public class JanelaMototaxista extends JanelaPadrao{
 		lbCreditos.setFont(new Font("Arial",Font.BOLD,12));
 		add(lbCreditos);
 		
-//		ImageIcon icone = new ImageIcon("download.png");
-//		JLabel lbquantidadeCreditos = new JLabel(x, icone, null);
-//		lbquantidadeCreditos.setBounds(390, 30, 60, 20);
-//		lbquantidadeCreditos.setFont(new Font("Arial",Font.BOLD,12));
 		
 	}
 	
@@ -36,26 +37,29 @@ public class JanelaMototaxista extends JanelaPadrao{
 		JButton btListarCorridas = new JButton();
 		btListarCorridas.setBounds(170, 121, 130, 40);
 		btListarCorridas.setText("Listar Corridas");
-		btListarCorridas.setFont(new Font("Arial",Font.BOLD,12));
+		btListarCorridas.setFont(new Font("Tahoma",Font.BOLD,10));
 		add (btListarCorridas);
 		
 		JButton btChamadas = new JButton();
 		btChamadas.setBounds(170, 181, 130, 60);
 		btChamadas.setText("Chamadas para corridas");
-		btChamadas.setFont(new Font("Arial",Font.BOLD,12));
+		btChamadas.setFont(new Font("Tahoma",Font.BOLD,8));
 		add (btChamadas);
 		
-		JButton btEditarPerfil = new JButton();
+		btEditarPerfil  = new JButton();
 		btEditarPerfil.setBounds(340, 320, 130, 35);
 		btEditarPerfil.setText("Editar Perfil");
-		btEditarPerfil.setFont(new Font("Arial",Font.BOLD,10));
-		add (btEditarPerfil);
+		btEditarPerfil.setFont(new Font("Tahoma",Font.BOLD,10));
+		add (btEditarPerfil);		
 		
-		JButton btDeslogar = new JButton();
+		
+		btDeslogar = new JButton();
 		btDeslogar.setBounds(340, 370, 130, 35);
 		btDeslogar.setText("Deslogar");
-		btDeslogar.setFont(new Font("Arial",Font.BOLD,10));
+		btDeslogar.setFont(new Font("Tahoma",Font.BOLD,10));
 		add (btDeslogar);
+		OuvinteBotaoDeslogar ouvinteDeslogar = new OuvinteBotaoDeslogar(this);
+		btDeslogar.addActionListener(ouvinteDeslogar);
 		
 		
 		
