@@ -11,6 +11,7 @@ import clebsonOuvintesExternos.OuvinteBotaoDeslogar;
 
 
 
+@SuppressWarnings("serial")
 public class JanelaMototaxista extends JanelaPadrao{
 	
 	private JButton btDeslogar;
