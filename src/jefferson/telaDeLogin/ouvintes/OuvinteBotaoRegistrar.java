@@ -1,5 +1,6 @@
 package jefferson.telaDeLogin.ouvintes;
 
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -22,5 +23,6 @@ public class OuvinteBotaoRegistrar implements ActionListener{
 		tela.dispose();
 		new JanelaDeRegistro(new CentralDeInformacoes(), new Persistencia());
 	}
+	
 	
 }
