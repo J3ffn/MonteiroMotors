@@ -10,6 +10,7 @@ public abstract class Usuario{
 	private String email;
 	private String id;
 	private boolean perfilAtivo;
+	private TipoDeConta tipoDeConta;
 	
 	public Usuario(String nome, String sexo, String email, String senha, LocalDate i) {
 		this.nome = nome;
@@ -76,6 +77,10 @@ public abstract class Usuario{
 	}
 	public void setPerfilAtivo(boolean perfilAtivo) {
 		this.perfilAtivo = perfilAtivo;
+	}
+	
+	public TipoDeConta getTipoDeConta() {
+		return tipoDeConta;
 	}
 	
 	@Override

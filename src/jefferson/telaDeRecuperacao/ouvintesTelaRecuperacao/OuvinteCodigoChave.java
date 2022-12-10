@@ -14,7 +14,6 @@ import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.SimpleEmail;
 
 import ListaDeAquecimento.Mensageiro;
-import jefferson.telaDeRecuperacao.OuvinteGestorDeInformacoes;
 import jefferson.telaDeRecuperacao.telasParaRecuperacao.TelaDeAlteracaoDaSenha;
 import jefferson.telaDeRecuperacao.telasParaRecuperacao.TelaVerificarCodigo;
 
