@@ -38,19 +38,17 @@ public class TelaDeRecuperarSenha extends JanelaPadrao {
 	// Botões da tela:
 	protected void addBotoesDaTela() {
 		botaoEnviar = new JButton("ENVIAR CÓDIGO");
-
 		botaoEnviar.setBounds(170, 270, 125, 40);
-		
 		botaoEnviar.addMouseListener(new MouseAdapter() {
 			
 			@Override
-			public void mouseClicked(MouseEvent e) {
-				
-				if (emailDigitado.getText() != null) {
-					botaoEnviar.addActionListener(new OuvinteCodigoChave(tela, emailDigitado, botaoEnviar));
-				}
+			public void mouseReleased(MouseEvent e) {
+				botaoEnviar.addActionListener(new OuvinteCodigoChave(tela, emailDigitado, botaoEnviar));
 			}
+			
 		});
+		
+		/*-----------------------------------------*/
 		
 		add(botaoEnviar);
 	}

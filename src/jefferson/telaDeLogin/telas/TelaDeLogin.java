@@ -102,10 +102,13 @@ public class TelaDeLogin extends JanelaPadrao{
 	public void addImagem() {
 		ImageIcon imagem = new ImageIcon("icones/Logo.png");
 		
+		/*---------------------------------------*/
+		
 		JLabel logo = new JLabel();
 		logo.setIcon(imagem);
 		logo.setBounds(140, -55, 300, 300);
 		
+		/*---------------------------------------*/
 		
 		add(logo);
 	}
