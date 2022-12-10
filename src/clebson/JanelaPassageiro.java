@@ -9,20 +9,19 @@ import javax.swing.JButton;
 import ListaDeAquecimento.CentralDeInformacoes;
 import ListaDeAquecimento.Passageiro;
 import ListaDeAquecimento.Persistencia;
-import clebsonOuvintesExternos.OuvinteBotaoDeslogar;
 import eduardo.Janelas.JanelaDeCadastroDeCorrida;
 import eduardo.Ouvintes.OuvinteBotaoListarCorridas;
 
-public class TelaPassageiro extends JanelaPadrao{
-	private JButton btDeslogar;
-	private JButton btEditarPerfil;
+@SuppressWarnings("serial")
+public class JanelaPassageiro extends JanelaPadraoUsuario{
+
 	
-	public TelaPassageiro(CentralDeInformacoes central, Persistencia persistencia, Passageiro p) {
+	public JanelaPassageiro(CentralDeInformacoes central, Persistencia persistencia, Passageiro p) {
 		super("Passageiro");
 		this.central = central;
 		this.persistencia = persistencia;
 		this.usuario = p;
-		adicionarBotoes();
+		adicionarBotoesPassageiro();
 		
 		setVisible(true);
 	}
@@ -33,7 +32,9 @@ public class TelaPassageiro extends JanelaPadrao{
 		}
 	}
 	
-	private void adicionarBotoes() {
+	private void adicionarBotoesPassageiro() {
+		super.adicionarBotoes();
+		
 		JButton btCadastroCorrida = new JButton();
 		btCadastroCorrida.setBounds(170, 121, 130, 50);
 		btCadastroCorrida.setText("Cadastrar Corrida");
@@ -48,20 +49,6 @@ public class TelaPassageiro extends JanelaPadrao{
 		btListarCorridas.setFont(new Font("Tahoma",Font.BOLD,10));
 		add (btListarCorridas);
 		
-		btEditarPerfil  = new JButton();
-		btEditarPerfil.setBounds(340, 320, 130, 35);
-		btEditarPerfil.setText("Editar Perfil");
-		btEditarPerfil.setFont(new Font("Tahoma",Font.BOLD,10));
-		add (btEditarPerfil);		
-		
-		
-		btDeslogar = new JButton();
-		btDeslogar.setBounds(340, 370, 130, 35);
-		btDeslogar.setText("Deslogar");
-		btDeslogar.setFont(new Font("Tahoma",Font.BOLD,10));
-		add (btDeslogar);
-		OuvinteBotaoDeslogar ouvinteDeslogar = new OuvinteBotaoDeslogar(this);
-		btDeslogar.addActionListener(ouvinteDeslogar);
 		
 	}
 	

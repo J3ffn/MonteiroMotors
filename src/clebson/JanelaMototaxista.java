@@ -11,8 +11,6 @@ import javax.swing.JLabel;
 import ListaDeAquecimento.CentralDeInformacoes;
 import ListaDeAquecimento.Mototaxista;
 import ListaDeAquecimento.Persistencia;
-import clebsonOuvintesExternos.OuvinteBotaoDeslogar;
-
 import eduardo.Janelas.PainelListaCorridasMototaxista;
 
 import eduardo.Ouvintes.OuvinteBotaoListarCorridas;
@@ -21,10 +19,9 @@ import eduardo.Ouvintes.OuvinteBotaoListarCorridas;
 
 
 @SuppressWarnings("serial")
-public class JanelaMototaxista extends JanelaPadrao{
+public class JanelaMototaxista extends JanelaPadraoUsuario{
 	
-	private JButton btDeslogar;
-	private JButton btEditarPerfil;
+
 	
 	public JanelaMototaxista(CentralDeInformacoes central, Persistencia per, Mototaxista mototaxista) {
 		super("Mototaxista");
@@ -32,7 +29,7 @@ public class JanelaMototaxista extends JanelaPadrao{
 		this.persistencia = per;
 		this.usuario = mototaxista;
 		adicionarTextos();
-		adicionarBotoes();
+		adicionarBotoesMototaxista();
 		
 		setVisible(true);
 	}
@@ -68,7 +65,9 @@ public class JanelaMototaxista extends JanelaPadrao{
 		}
 	}
 	
-	private void adicionarBotoes() {
+	private void adicionarBotoesMototaxista() {
+		super.adicionarBotoes();
+		
 		JButton btListarCorridas = new JButton();
 		btListarCorridas.setBounds(170, 121, 130, 40);
 		btListarCorridas.setText("Listar Corridas");
@@ -83,21 +82,6 @@ public class JanelaMototaxista extends JanelaPadrao{
 		btChamadas.setText("Chamadas para corridas");
 		btChamadas.setFont(new Font("Tahoma",Font.BOLD,8));
 		add (btChamadas);
-		
-		btEditarPerfil  = new JButton();
-		btEditarPerfil.setBounds(340, 320, 130, 35);
-		btEditarPerfil.setText("Editar Perfil");
-		btEditarPerfil.setFont(new Font("Tahoma",Font.BOLD,10));
-		add (btEditarPerfil);		
-		
-		
-		btDeslogar = new JButton();
-		btDeslogar.setBounds(340, 370, 130, 35);
-		btDeslogar.setText("Deslogar");
-		btDeslogar.setFont(new Font("Tahoma",Font.BOLD,10));
-		add (btDeslogar);
-		OuvinteBotaoDeslogar ouvinteDeslogar = new OuvinteBotaoDeslogar(this);
-		btDeslogar.addActionListener(ouvinteDeslogar);
 		
 		
 	}

@@ -12,8 +12,8 @@ import ListaDeAquecimento.Mototaxista;
 import ListaDeAquecimento.Passageiro;
 import ListaDeAquecimento.Persistencia;
 import clebson.JanelaMototaxista;
-import clebson.TelaAdministrador;
-import clebson.TelaPassageiro;
+import clebson.JanelaAdministrador;
+import clebson.JanelaPassageiro;
 import eduardo.Janelas.JanelaDeCadastroDeCorrida;
 import eduardo.Janelas.JanelaDeCorridasDisponiveis;
 import eduardo.Janelas.JanelaDeDefinicaoDeValorDosCreditos;
@@ -45,11 +45,11 @@ public class Teste2 {
 		//n.adicionarCreditos(2, central);
 		//JanelaDeReividicacaoDeCorrida janela2 = new JanelaDeReividicacaoDeCorrida(central, c, n);
 		//JanelaDeCadastroDeCorrida janela5 = new JanelaDeCadastroDeCorrida(central, per, n);
-		TelaPassageiro janela2 = new TelaPassageiro(central, per, n);
+		JanelaPassageiro janela2 = new JanelaPassageiro(central, per, n);
 		//JanelaDeDefinicaoDeValorDosCreditos j = new JanelaDeDefinicaoDeValorDosCreditos(adm);
 		//JanelaDeCorridasDisponiveis j2 = new JanelaDeCorridasDisponiveis(n, central, per);
 
-		new TelaAdministrador(central, per, central.recuperarAdministradorDoSistema());
+		new JanelaAdministrador(central, per, central.recuperarAdministradorDoSistema());
 		//new JanelaMototaxista(central, per, n1);
 	}
 }

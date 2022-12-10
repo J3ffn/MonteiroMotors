@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
+import jefferson.telaDeLogin.telas.TelaDeLogin;
+
 public class OuvinteBotaoDeslogar implements ActionListener{
 
 	JFrame janela;
@@ -13,6 +15,7 @@ public class OuvinteBotaoDeslogar implements ActionListener{
 	}
 	public void actionPerformed(ActionEvent e) {
 		janela.dispose();
+		new TelaDeLogin();
 	}
 
 }

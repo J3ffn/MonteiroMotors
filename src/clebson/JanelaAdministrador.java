@@ -9,29 +9,27 @@ import javax.swing.JButton;
 import ListaDeAquecimento.Administrador;
 import ListaDeAquecimento.CentralDeInformacoes;
 import ListaDeAquecimento.Persistencia;
-import clebsonOuvintesExternos.OuvinteBotaoDeslogar;
-import clebsonOuvintesExternos.OuvinteBotaoEditarPerfil;
 import eduardo.Janelas.JanelaDeDefinicaoDeValorDosCreditos;
 import eduardo.Janelas.JanelaDeListagemDeUsuarios;
 import eduardo.Ouvintes.OuvinteBotaoListarCorridas;
 
 @SuppressWarnings("serial")
-public class TelaAdministrador extends JanelaPadrao {
+public class JanelaAdministrador extends JanelaPadraoUsuario {
 	
-	private JButton btDeslogar;
-	private JButton btEditarPerfil;
 	
-	public TelaAdministrador(CentralDeInformacoes central, Persistencia per, Administrador administrador) {
+	public JanelaAdministrador(CentralDeInformacoes central, Persistencia per, Administrador administrador) {
 		super("Administrador");
 		this.central = central;
 		this.persistencia = per;
 		this.usuario = administrador;
-		adicionarBotoes();
+		adicionarBotoesAdministrador();
 		
 		setVisible(true);
 	}
 
-	private void adicionarBotoes() {
+	private void adicionarBotoesAdministrador() {
+		super.adicionarBotoes();
+		
 		JButton btListarUsuarios = new JButton();
 		btListarUsuarios.setBounds(70, 121, 130, 40);
 		btListarUsuarios.setText("Listar Usuarios");
@@ -73,22 +71,6 @@ public class TelaAdministrador extends JanelaPadrao {
 		btDefinirValor.setFont(new Font("Tahoma",Font.BOLD,10));
 		add (btDefinirValor);
 		
-		btEditarPerfil  = new JButton();
-		btEditarPerfil.setBounds(340, 320, 130, 35);
-		btEditarPerfil.setText("Editar Perfil");
-		btEditarPerfil.setFont(new Font("Tahoma",Font.BOLD,10));
-		add (btEditarPerfil);
-		OuvinteBotaoEditarPerfil ouvinteEditarPerfil = new OuvinteBotaoEditarPerfil(this);
-		btEditarPerfil.addActionListener(ouvinteEditarPerfil);
-		
-		
-		btDeslogar = new JButton();
-		btDeslogar.setBounds(340, 370, 130, 35);
-		btDeslogar.setText("Deslogar");
-		btDeslogar.setFont(new Font("Tahoma",Font.BOLD,10));
-		add (btDeslogar);
-		OuvinteBotaoDeslogar ouvinteDeslogar = new OuvinteBotaoDeslogar(this);
-		btDeslogar.addActionListener(ouvinteDeslogar);
 	
 	}
 }

@@ -10,8 +10,8 @@ import javax.swing.JTextField;
 
 import ListaDeAquecimento.*;
 import clebson.JanelaMototaxista;
-import clebson.TelaAdministrador;
-import clebson.TelaPassageiro;
+import clebson.JanelaAdministrador;
+import clebson.JanelaPassageiro;
 import jefferson.UsuarioTeste;
 
 public class OuvinteBotaoLogin implements ActionListener{
@@ -46,11 +46,11 @@ public class OuvinteBotaoLogin implements ActionListener{
 			switch(usuario.getTipoDeConta()) {
 			case ADMINISTRADOR:
 				Administrador adm = (Administrador) usuario;
-				new TelaAdministrador(central, new Persistencia(), adm);
+				new JanelaAdministrador(central, new Persistencia(), adm);
 				break;
 			case PASSAGEIRO:
 				Passageiro pass = (Passageiro) usuario;
-				new TelaPassageiro(central, new Persistencia(), pass);
+				new JanelaPassageiro(central, new Persistencia(), pass);
 				break;
 			case MOTOTAXISTA:
 				Mototaxista mtx = (Mototaxista) usuario;
