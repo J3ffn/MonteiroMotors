@@ -4,6 +4,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
@@ -41,6 +42,13 @@ public class JanelaMototaxista extends JanelaPadrao{
 		lbCreditos.setBounds(390, 10, 60, 20);
 		lbCreditos.setFont(new Font("Arial",Font.BOLD,12));
 		add(lbCreditos);
+		
+		ImageIcon moeda = new ImageIcon("icones/Coin (1).png");
+		JLabel lbMoeda = new JLabel("XXXXXX", moeda, JLabel.CENTER);
+		lbMoeda.setBounds(370, 50, 100, 20);
+		lbMoeda.setFont(new Font("Arial",Font.BOLD,12));
+		add(lbMoeda);
+		
 	}
 	
 	public class OuvinteBotaoListarCorridas implements ActionListener{

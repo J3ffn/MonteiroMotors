@@ -40,5 +40,6 @@ OuvinteBotaoEditarTipo ouvinteEditarTipo = new OuvinteBotaoEditarTipo();
 		btEditarTipo.setFont(new Font("Tahoma",Font.BOLD,10));
 		btEditarTipo.addActionListener(ouvinteEditarTipo);
 		add (btEditarTipo);
+		
 	}
 }
