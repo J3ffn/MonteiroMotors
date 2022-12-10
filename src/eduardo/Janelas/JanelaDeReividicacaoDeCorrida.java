@@ -20,20 +20,20 @@ import clebson.JanelaPadrao;
 import eduardo.Ouvintes.OuvinteBotaoCancelar;
 
 public class JanelaDeReividicacaoDeCorrida extends JanelaPadrao{
-	JLabel txLocaldePartida;
-	JLabel txLocaldeDestino;
-	JLabel txData;
-	JButton btConfirmar;
-	JButton btCancelar;
-	Corrida corrida;
-	JLabel txCreditos;
+	private JLabel txLocaldePartida;
+	private JLabel txLocaldeDestino;
+	private JLabel txData;
+	private JButton btConfirmar;
+	private JButton btCancelar;
+	private Corrida corrida;
+	private JLabel txCreditos;
 	
 	public JanelaDeReividicacaoDeCorrida(CentralDeInformacoes cen, Persistencia per, Corrida c, Mototaxista m) {
 		super("Reivindicação de corrida");
-		this.central = cen;
-		this.usuario = m;
+		this.setCentral(cen);
+		this.setUsuario(m);
 		corrida = c;
-		persistencia = per;
+		setPersistencia(per);
 		this.setSize(400, 177);
 		this.setLocationRelativeTo(null);
 		
@@ -64,7 +64,7 @@ public class JanelaDeReividicacaoDeCorrida extends JanelaPadrao{
 			int esc = JOptionPane.showConfirmDialog(janela, "Deseja reivindicar essa corrida?");
 			if(esc == 0 && corrida.getStatus() == Status.PENDENTE) {
 				try {
-					((Mototaxista) usuario).reinvidicarCorrida(corrida);
+					((Mototaxista) getUsuario()).reinvidicarCorrida(corrida);
 					JOptionPane.showMessageDialog(janela, "Corrida Reivindicada!", "Reivindicada!", JOptionPane.INFORMATION_MESSAGE);
 					txLocaldePartida.setText(String.format("Local de Partida: %s", corrida.getEnderecoDePartida()));
 					txLocaldeDestino.setText(String.format("Local de Destino: %s", corrida.getEnderecoDeDestino()));
@@ -74,7 +74,7 @@ public class JanelaDeReividicacaoDeCorrida extends JanelaPadrao{
 					btConfirmar.setEnabled(false);
 					
 					try {
-						persistencia.salvar(central, "dados-passageiros.xml");
+						getPersistencia().salvar(getCentral(), "dados-passageiros.xml");
 						
 					} catch (Exception erro){
 						System.out.println("Houve um erro ao salvar os dados!");
@@ -113,7 +113,7 @@ public class JanelaDeReividicacaoDeCorrida extends JanelaPadrao{
 		this.add(txData);
 		
 		ImageIcon i = new ImageIcon("icones/icons8-barato-2-12.png");
-		txCreditos = new JLabel(String.format("Creditos: %s",  ((Mototaxista) usuario).getCreditos().size()));
+		txCreditos = new JLabel(String.format("Creditos: %s",  ((Mototaxista) getUsuario()).getCreditos().size()));
 		txCreditos.setIcon(i);
 		txCreditos.setBounds(285, 0, 90, 30);
 		this.add(txCreditos);

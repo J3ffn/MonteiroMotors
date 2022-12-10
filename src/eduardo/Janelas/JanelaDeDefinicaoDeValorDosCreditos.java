@@ -18,9 +18,9 @@ import eduardo.Ouvintes.OuvinteBotaoCancelar;
 
 public class JanelaDeDefinicaoDeValorDosCreditos extends JanelaPadrao{
 	
-	JFormattedTextField inputValorCreditos;
-	JButton btConfirmar;
-	Administrador administrador;
+	private JFormattedTextField inputValorCreditos;
+	private JButton btConfirmar;
+	private Administrador administrador;
 	
 	public JanelaDeDefinicaoDeValorDosCreditos(Administrador adm) {
 		super("Definir Valor Dos Creditos");

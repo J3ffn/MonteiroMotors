@@ -27,21 +27,21 @@ import eduardo.Ouvintes.OuvinteDoTecladoParaApenasNumerico;
 public class JanelaDeCadastroDeCorrida extends JanelaPadrao{
 	
 	
-	JTextField inputEnderecoPartida;
-	JTextField inputEnderecoDestino;
-	JFormattedTextField inputDistancia;
-	JFormattedTextField inputDataDaCorrida;
-	JFormattedTextField inputHoraDaCorrida;
-	JCheckBox checkBCorridaParaAgora;
+	private JTextField inputEnderecoPartida;
+	private JTextField inputEnderecoDestino;
+	private JFormattedTextField inputDistancia;
+	private JFormattedTextField inputDataDaCorrida;
+	private JFormattedTextField inputHoraDaCorrida;
+	private JCheckBox checkBCorridaParaAgora;
 	
 	public JanelaDeCadastroDeCorrida(CentralDeInformacoes c, Persistencia per, Usuario p) {
 		super("Cadastrar Solicitação de Corrida");
 		this.adicionarBotoes();
 		this.adicionarTextos();
 		this.setSize(500, 320);
-		central = c;
-		this.usuario = p;
-		persistencia = per;
+		setCentral(c);
+		this.setUsuario(p);
+		setPersistencia(per);
 		this.setVisible(true);
 	}
 	public void adicionarBotoes() {
@@ -79,11 +79,11 @@ public class JanelaDeCadastroDeCorrida extends JanelaPadrao{
 							Float.parseFloat(inputDistancia.getText()), 
 							checkBCorridaParaAgora.isSelected(), 
 							dataDaCorrida,
-							usuario);
-					central.adicionarCorrida(c);
+							getUsuario());
+					getCentral().adicionarCorrida(c);
 					
 					try {
-						persistencia.salvar(central, "dados-passageiros.xml");
+						getPersistencia().salvar(getCentral(), "dados-passageiros.xml");
 					} catch (Exception e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();

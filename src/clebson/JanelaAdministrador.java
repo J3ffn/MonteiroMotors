@@ -19,9 +19,9 @@ public class JanelaAdministrador extends JanelaPadraoUsuario {
 	
 	public JanelaAdministrador(CentralDeInformacoes central, Persistencia per, Administrador administrador) {
 		super("Administrador");
-		this.central = central;
-		this.persistencia = per;
-		this.usuario = administrador;
+		this.setCentral(central);
+		this.setPersistencia(per);
+		this.setUsuario(administrador);
 		adicionarBotoesAdministrador();
 		
 		setVisible(true);
@@ -37,7 +37,7 @@ public class JanelaAdministrador extends JanelaPadraoUsuario {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new JanelaDeListagemDeUsuarios((Administrador) usuario, central, persistencia);
+				new JanelaDeListagemDeUsuarios((Administrador) getUsuario(), getCentral(), getPersistencia());
 			}
 			
 		});
@@ -47,7 +47,7 @@ public class JanelaAdministrador extends JanelaPadraoUsuario {
 		JButton btListarCorridas = new JButton();
 		btListarCorridas.setBounds(280, 121, 130, 40);
 		btListarCorridas.setText("Listar Corridas");
-		btListarCorridas.addActionListener(new OuvinteBotaoListarCorridas(usuario, central, persistencia));
+		btListarCorridas.addActionListener(new OuvinteBotaoListarCorridas(getUsuario(), getCentral(), getPersistencia()));
 		btListarCorridas.setFont(new Font("Tahoma",Font.BOLD,10));
 		add (btListarCorridas);
 		
@@ -64,7 +64,7 @@ public class JanelaAdministrador extends JanelaPadraoUsuario {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new JanelaDeDefinicaoDeValorDosCreditos((Administrador) usuario);
+				new JanelaDeDefinicaoDeValorDosCreditos((Administrador) getUsuario());
 			}
 			
 		});

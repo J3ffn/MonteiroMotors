@@ -2,15 +2,11 @@ package ListaDeAquecimento;
 
 import java.util.Comparator;
 
-public class ComparacaoData2 implements Comparator{
-	
-	@Override
-	public int compare(Object o1, Object o2) {
-		Corrida c1 = (Corrida)o1;
-		Corrida c2 = (Corrida)o2;
-		if(c1.getData().isAfter(c2.getData())) {
+public class ComparacaoData2 implements Comparator <Corrida>{
+	public int compare(Corrida o1, Corrida o2) {
+		if(o1.getData().isAfter(o2.getData())) {
 			return -1;
-		} else if (c1.getData().isBefore(c2.getData())) {
+		} else if (o1.getData().isBefore(o2.getData())) {
 			return 1;
 		}
 		return 0;

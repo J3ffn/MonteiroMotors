@@ -1,4 +1,4 @@
-package eduardo.Janelas;
+package eduardo.JanelaCorridasDisponiveis;
 
 import java.util.ArrayList;
 
@@ -12,20 +12,22 @@ import ListaDeAquecimento.Persistencia;
 import ListaDeAquecimento.Usuario;
 
 public abstract class Painel extends JPanel{
-	protected ArrayList < Corrida > corridasTodasAsDisponiveis;
-	protected CentralDeInformacoes central;
-	protected Persistencia persistencia; 
-	protected Usuario usuario;
+	private ArrayList < Corrida > corridasTodasAsDisponiveis;
+	private  CentralDeInformacoes central;
+
+	private Persistencia persistencia; 
+	private Usuario usuario;
 	
 	public Painel(ArrayList<Corrida> corridasTodasAsDisponiveis, CentralDeInformacoes central,
 			Persistencia persistencia, Usuario usuario) {
-		this.corridasTodasAsDisponiveis = corridasTodasAsDisponiveis;
+		this.setCorridasTodasAsDisponiveis(corridasTodasAsDisponiveis);
 		this.central = central;
 		this.persistencia = persistencia;
 		this.usuario = usuario;
 		this.preencherPainel();
 	}
 	public abstract void preencherPainel();
+	
 	public ArrayList<Corrida> getCorridasTodasAsDisponiveis() {
 		return corridasTodasAsDisponiveis;
 	}
@@ -39,13 +41,18 @@ public abstract class Painel extends JPanel{
 		return usuario;
 	}
 	public ArrayList<Corrida> getCorridasOrganizadasMaisRecentes() {
-		ArrayList<Corrida> corrida = corridasTodasAsDisponiveis;
-		corrida.sort(new ComparacaoData());
+		ArrayList<Corrida> corrida = getCorridasTodasAsDisponiveis();
+		ComparacaoData c = new ComparacaoData();
+		corrida.sort(c);
 		return corrida;
 	}
-	public ArrayList<Corrida> getCorridasOrganizadasMaisAntigas() {
-		ArrayList<Corrida> corrida = corridasTodasAsDisponiveis;
-		corrida.sort(new ComparacaoData2());
+	public ArrayList <Corrida> getCorridasOrganizadasMaisAntigas() {
+		ArrayList <Corrida> corrida = getCorridasTodasAsDisponiveis();
+		ComparacaoData2 c = new ComparacaoData2();
+		corrida.sort(c);
 		return corrida;
+	}
+	public void setCorridasTodasAsDisponiveis(ArrayList < Corrida > corridasTodasAsDisponiveis) {
+		this.corridasTodasAsDisponiveis = corridasTodasAsDisponiveis;
 	}
 }

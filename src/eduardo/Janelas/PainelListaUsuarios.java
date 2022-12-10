@@ -18,9 +18,10 @@ import ListaDeAquecimento.Persistencia;
 import ListaDeAquecimento.Status;
 import ListaDeAquecimento.Usuario;
 import clebson.JanelaEditarPerfil;
+import eduardo.JanelaCorridasDisponiveis.Painel;
 
 public class PainelListaUsuarios extends Painel{
-	ArrayList <Usuario> usuarios = central.getTodosOsUsuarios();
+	ArrayList <Usuario> usuarios = getCentral().getTodosOsUsuarios();
 	
 	public PainelListaUsuarios(CentralDeInformacoes central,
 			Persistencia persistencia, Administrador usuario) {

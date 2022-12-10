@@ -1,4 +1,4 @@
-package eduardo.Janelas;
+package eduardo.JanelaCorridasDisponiveis;
 
 import java.awt.Color;
 import java.awt.event.MouseEvent;
@@ -22,16 +22,17 @@ import eduardo.Ouvintes.OuvinteBotaoCancelar;
 import ListaDeAquecimento.Corrida;
 
 public class JanelaDeCorridasDisponiveis extends JanelaPadrao{
-	ArrayList <Corrida> corridasTodasAsDisponiveis;
-	JScrollPane painel;
-	Painel painel1;
-	JComboBox < String > filtro;
+	private ArrayList <Corrida> corridasTodasAsDisponiveis;
+	private JScrollPane painel;
+	private Painel painel1;
+	private JComboBox < String > cbFiltro;
+	private Filtro filtro;
 	
 	public JanelaDeCorridasDisponiveis(Usuario u, CentralDeInformacoes c, Persistencia per) {
 		super("Janela de Corridas Disponiveis");
-		usuario = u;
-		central = c;
-		persistencia = per;
+		setUsuario(u);
+		setCentral(c);
+		setPersistencia(per);
 		adicionarPainel();
 		adicionarBotoes();
 		this.setVisible(true);
@@ -52,9 +53,9 @@ public class JanelaDeCorridasDisponiveis extends JanelaPadrao{
 		this.add(b);
 		
 		
-		filtro = new JComboBox < String >(opcoes);
-		filtro.setBounds(350, 5, 110, 20);
-		this.add(filtro);
+		cbFiltro = new JComboBox < String >(opcoes);
+		cbFiltro.setBounds(350, 5, 110, 20);
+		this.add(cbFiltro);
 		
 		JButton btAtualizar = new JButton("Atualizar");
 		btAtualizar.setBounds(90, 5, 100, 20);
@@ -69,20 +70,17 @@ public class JanelaDeCorridasDisponiveis extends JanelaPadrao{
 			janela = j;
 		}
 		public void mouseClicked(MouseEvent e) {
-			if(filtro.getSelectedItem().equals("Mais Recentes")) {
-				corridasTodasAsDisponiveis = painel1.getCorridasOrganizadasMaisRecentes();
-				
-			} else if(filtro.getSelectedItem().equals("Todas")) {
-				if(usuario instanceof Mototaxista) {
-					corridasTodasAsDisponiveis = central.recuperarCorridasPossiveisParaoMototaxista((Mototaxista)usuario);
-				} else if (usuario instanceof Administrador) {
-					corridasTodasAsDisponiveis = central.getCorridas();
-				} else if (usuario instanceof Passageiro) {
-					corridasTodasAsDisponiveis = central.recuperarCorridasDeUmPassageiro(usuario.getEmail());
+			String sel = cbFiltro.getSelectedItem().toString().toUpperCase();
+			String sel2 = sel.replace(' ', '_');
+			filtro = Filtro.valueOf(sel2);
+			
+				if(getUsuario() instanceof Mototaxista) {
+					corridasTodasAsDisponiveis = getCentral().recuperarCorridasPossiveisParaoMototaxista((Mototaxista)getUsuario());
+				} else if (getUsuario() instanceof Administrador) {
+					corridasTodasAsDisponiveis = getCentral().getCorridas();
+				} else if (getUsuario() instanceof Passageiro) {
+					corridasTodasAsDisponiveis = getCentral().recuperarCorridasDeUmPassageiro(getUsuario().getEmail());
 				}
-			} else if(filtro.getSelectedItem().equals("Mais Antigas")) {
-				corridasTodasAsDisponiveis = painel1.getCorridasOrganizadasMaisAntigas();
-			}
 			
 			JButton botao = (JButton) e.getSource();
 			botao.transferFocus();
@@ -101,12 +99,12 @@ public class JanelaDeCorridasDisponiveis extends JanelaPadrao{
 	}
 	
 	public void adicionarPainel() {
-		if(usuario instanceof Mototaxista) {
-			painel1 = new PainelListaCorridasMototaxista(corridasTodasAsDisponiveis, central, persistencia, (Mototaxista) usuario);
-		} else if (usuario instanceof Administrador) {
-			painel1 = new PainelListaCorridasAdministrador(corridasTodasAsDisponiveis, central, persistencia, (Administrador) usuario);
-		} else if(usuario instanceof Passageiro) {
-			painel1 = new PainelListaCorridasPassageiro(corridasTodasAsDisponiveis, central, persistencia, (Passageiro) usuario);
+		if(getUsuario() instanceof Mototaxista) {
+			painel1 = new PainelListaCorridasMototaxista(corridasTodasAsDisponiveis, filtro, getCentral(), getPersistencia(), (Mototaxista) getUsuario());
+		} else if (getUsuario() instanceof Administrador) {
+			painel1 = new PainelListaCorridasAdministrador(corridasTodasAsDisponiveis, filtro, getCentral(), getPersistencia(), (Administrador) getUsuario());
+		} else if(getUsuario() instanceof Passageiro) {
+			painel1 = new PainelListaCorridasPassageiro(corridasTodasAsDisponiveis, getCentral(), getPersistencia(), (Passageiro) getUsuario());
 		}
 		painel = new JScrollPane(painel1);
 		

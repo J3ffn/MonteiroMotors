@@ -1,4 +1,4 @@
-package eduardo.Janelas;
+package eduardo.JanelaCorridasDisponiveis;
 
 import java.awt.Color;
 import java.awt.GridLayout;
@@ -23,14 +23,14 @@ public class PainelListaCorridasPassageiro extends Painel{
 		super(corridasTodasAsDisponiveis, central, persistencia, usuario);
 	}
 	public void preencherPainel() {
-		corridasTodasAsDisponiveis = central.recuperarCorridasDeUmPassageiro(usuario.getEmail());
+		setCorridasTodasAsDisponiveis(getCentral().recuperarCorridasDeUmPassageiro(getUsuario().getEmail()));
 		this.setBackground(Color.WHITE);
 		this.setLayout(null);
 		
 		
 		int y = 10;
-		if(corridasTodasAsDisponiveis != null) {
-			for (Corrida c : corridasTodasAsDisponiveis) {
+		if(getCorridasTodasAsDisponiveis() != null) {
+			for (Corrida c : getCorridasTodasAsDisponiveis()) {
 				JLabel corrida = new JLabel("Corrida: " + c.getId() + "  " + c.getData());
 				corrida.setBounds(10, y, 170, 20);
 				JButton botao = new JButton("Detalhes");
@@ -40,7 +40,7 @@ public class PainelListaCorridasPassageiro extends Painel{
 				this.add(botao);
 				y += 45;
 			}
-			if(corridasTodasAsDisponiveis.size() > 6) {
+			if(getCorridasTodasAsDisponiveis().size() > 6) {
 				GridLayout layout = new GridLayout(0, 2, 150, 20);
 				this.setLayout(layout);
 			}

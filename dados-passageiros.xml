@@ -1,11 +1,11 @@
 <ListaDeAquecimento.CentralDeInformacoes>
   <todosOsUsuarios>
     <ListaDeAquecimento.Administrador>
-      <nome>Eduardo</nome>
+      <nome>Eduardo José</nome>
       <sexo>MASCULINO</sexo>
       <dataDeNascimento>2004-02-21</dataDeNascimento>
-      <email>eduardojose71952@gmail.com</email>
-      <id>eduardojose71952@gmail.com</id>
+      <email>eduardojose71953@gmail.com</email>
+      <id>eduardojose71953@gmail.com</id>
       <perfilAtivo>true</perfilAtivo>
       <valorDosCreditos>0.5</valorDosCreditos>
     </ListaDeAquecimento.Administrador>
@@ -21,173 +21,23 @@
   </todosOsUsuarios>
   <corridas>
     <ListaDeAquecimento.Corrida>
-      <id>1670595043798</id>
-      <status>REINVINDICADA</status>
-      <enderecoDePartida>ooooooooooooo</enderecoDePartida>
-      <enderecoDeDestino>oooooooooo</enderecoDeDestino>
-      <distancia>12.0</distancia>
-      <paraAgora>true</paraAgora>
-      <data>2022-12-09T11:10:43.7970349</data>
-      <usuario class="ListaDeAquecimento.Passageiro">
-        <nome>Eduardo</nome>
-        <sexo>MASCULINO</sexo>
-        <email>eduardo</email>
-        <id>eduardo</id>
-        <perfilAtivo>true</perfilAtivo>
-        <mototaxistasBloqueados/>
-      </usuario>
-      <mototaxista>
-        <nome>Eduardo</nome>
-        <sexo>MASCULINO</sexo>
-        <email>eduardo</email>
-        <id>eduardo</id>
-        <perfilAtivo>true</perfilAtivo>
-        <avaliacoes/>
-        <creditos>
-          <ListaDeAquecimento.Credito>
-            <valor>0.5</valor>
-          </ListaDeAquecimento.Credito>
-        </creditos>
-      </mototaxista>
-    </ListaDeAquecimento.Corrida>
-    <ListaDeAquecimento.Corrida>
-      <id>1670595128070</id>
-      <status>REINVINDICADA</status>
-      <enderecoDePartida>dllll</enderecoDePartida>
-      <enderecoDeDestino>sllllllllll</enderecoDeDestino>
-      <distancia>0.1</distancia>
-      <paraAgora>true</paraAgora>
-      <data>2022-12-09T11:12:08.0704008</data>
-      <usuario class="ListaDeAquecimento.Passageiro">
-        <nome>Eduardo</nome>
-        <sexo>MASCULINO</sexo>
-        <email>eduardo</email>
-        <id>eduardo</id>
-        <perfilAtivo>true</perfilAtivo>
-        <mototaxistasBloqueados/>
-      </usuario>
-      <mototaxista>
-        <nome>Eduardo</nome>
-        <sexo>MASCULINO</sexo>
-        <email>eduardo</email>
-        <id>eduardo</id>
-        <perfilAtivo>true</perfilAtivo>
-        <avaliacoes/>
-        <creditos>
-          <ListaDeAquecimento.Credito>
-            <valor>0.5</valor>
-          </ListaDeAquecimento.Credito>
-        </creditos>
-      </mototaxista>
-    </ListaDeAquecimento.Corrida>
-    <ListaDeAquecimento.Corrida>
-      <id>1670595243025</id>
-      <status>REINVINDICADA</status>
-      <enderecoDePartida>LLLLLLLLLll</enderecoDePartida>
-      <enderecoDeDestino>LLLLLLLLLLLLll</enderecoDeDestino>
-      <distancia>0.1</distancia>
-      <paraAgora>true</paraAgora>
-      <data>2022-12-09T11:14:03.0259309</data>
-      <usuario class="ListaDeAquecimento.Passageiro">
-        <nome>Eduardo</nome>
-        <sexo>MASCULINO</sexo>
-        <email>eduardo</email>
-        <id>eduardo</id>
-        <perfilAtivo>true</perfilAtivo>
-        <mototaxistasBloqueados/>
-      </usuario>
-      <mototaxista>
-        <nome>Eduardo</nome>
-        <sexo>MASCULINO</sexo>
-        <email>eduardo</email>
-        <id>eduardo</id>
-        <perfilAtivo>true</perfilAtivo>
-        <avaliacoes/>
-        <creditos>
-          <ListaDeAquecimento.Credito>
-            <valor>0.5</valor>
-          </ListaDeAquecimento.Credito>
-        </creditos>
-      </mototaxista>
-    </ListaDeAquecimento.Corrida>
-    <ListaDeAquecimento.Corrida>
-      <id>1670595390482</id>
-      <status>REINVINDICADA</status>
-      <enderecoDePartida>xlllllllllll</enderecoDePartida>
-      <enderecoDeDestino>xlllllllllllllll</enderecoDeDestino>
-      <distancia>0.3</distancia>
-      <paraAgora>true</paraAgora>
-      <data>2022-12-09T11:16:30.4820318</data>
-      <usuario class="ListaDeAquecimento.Passageiro">
-        <nome>Eduardo</nome>
-        <sexo>MASCULINO</sexo>
-        <email>eduardo</email>
-        <id>eduardo</id>
-        <perfilAtivo>true</perfilAtivo>
-        <mototaxistasBloqueados/>
-      </usuario>
-      <mototaxista>
-        <nome>Eduardo</nome>
-        <sexo>MASCULINO</sexo>
-        <email>eduardo</email>
-        <id>eduardo</id>
-        <perfilAtivo>true</perfilAtivo>
-        <avaliacoes/>
-        <creditos>
-          <ListaDeAquecimento.Credito>
-            <valor>0.5</valor>
-          </ListaDeAquecimento.Credito>
-        </creditos>
-      </mototaxista>
-    </ListaDeAquecimento.Corrida>
-    <ListaDeAquecimento.Corrida>
-      <id>1670595534670</id>
-      <status>REINVINDICADA</status>
-      <enderecoDePartida>ckckckck</enderecoDePartida>
-      <enderecoDeDestino>kdkdkdk</enderecoDeDestino>
+      <id>1670678397877</id>
+      <status>PENDENTE</status>
+      <enderecoDePartida>kddkdkdk</enderecoDePartida>
+      <enderecoDeDestino>dkdkdkddk</enderecoDeDestino>
       <distancia>0.9</distancia>
       <paraAgora>true</paraAgora>
-      <data>2022-12-09T11:18:54.6709462</data>
-      <usuario class="ListaDeAquecimento.Passageiro">
-        <nome>Eduardo</nome>
-        <sexo>MASCULINO</sexo>
-        <email>eduardo</email>
-        <id>eduardo</id>
-        <perfilAtivo>true</perfilAtivo>
-        <mototaxistasBloqueados/>
-      </usuario>
-      <mototaxista>
-        <nome>Eduardo</nome>
-        <sexo>MASCULINO</sexo>
-        <email>eduardo</email>
-        <id>eduardo</id>
-        <perfilAtivo>true</perfilAtivo>
-        <avaliacoes/>
-        <creditos>
-          <ListaDeAquecimento.Credito>
-            <valor>0.5</valor>
-          </ListaDeAquecimento.Credito>
-        </creditos>
-      </mototaxista>
-    </ListaDeAquecimento.Corrida>
-    <ListaDeAquecimento.Corrida>
-      <id>1670614740612</id>
-      <status>PENDENTE</status>
-      <enderecoDePartida>SKsksksk</enderecoDePartida>
-      <enderecoDeDestino>skssksk</enderecoDeDestino>
-      <distancia>0.1</distancia>
-      <paraAgora>true</paraAgora>
-      <data>2022-12-09T16:39:00.6120315</data>
+      <data>2022-12-10T10:19:57.8773459</data>
       <usuario class="ListaDeAquecimento.Passageiro" reference="../../../todosOsUsuarios/ListaDeAquecimento.Passageiro"/>
     </ListaDeAquecimento.Corrida>
     <ListaDeAquecimento.Corrida>
-      <id>1670614966680</id>
+      <id>1670678661082</id>
       <status>PENDENTE</status>
-      <enderecoDePartida>ksksksks</enderecoDePartida>
-      <enderecoDeDestino>dlddldldl</enderecoDeDestino>
-      <distancia>0.2</distancia>
-      <paraAgora>true</paraAgora>
-      <data>2022-12-09T16:42:46.6799063</data>
+      <enderecoDePartida>lflfflfl</enderecoDePartida>
+      <enderecoDeDestino>flflfl</enderecoDeDestino>
+      <distancia>0.9</distancia>
+      <paraAgora>false</paraAgora>
+      <data>2004-02-21T12:40:00</data>
       <usuario class="ListaDeAquecimento.Passageiro">
         <nome>Eduardo1</nome>
         <sexo>MASCULINO</sexo>
@@ -199,14 +49,22 @@
       </usuario>
     </ListaDeAquecimento.Corrida>
     <ListaDeAquecimento.Corrida>
-      <id>1670614996190</id>
+      <id>1670678964458</id>
       <status>PENDENTE</status>
-      <enderecoDePartida>sllslssl</enderecoDePartida>
-      <enderecoDeDestino>dlddddd</enderecoDeDestino>
-      <distancia>0.1</distancia>
-      <paraAgora>true</paraAgora>
-      <data>2022-12-09T16:43:16.1902793</data>
-      <usuario class="ListaDeAquecimento.Passageiro" reference="../../ListaDeAquecimento.Corrida[7]/usuario"/>
+      <enderecoDePartida>ldldl</enderecoDePartida>
+      <enderecoDeDestino>ldldld</enderecoDeDestino>
+      <distancia>11.1</distancia>
+      <paraAgora>false</paraAgora>
+      <data>2023-02-02T11:20:00</data>
+      <usuario class="ListaDeAquecimento.Passageiro">
+        <nome>Eduardo1</nome>
+        <sexo>MASCULINO</sexo>
+        <dataDeNascimento>2000-12-20</dataDeNascimento>
+        <email>eduardo</email>
+        <id>eduardo</id>
+        <perfilAtivo>true</perfilAtivo>
+        <mototaxistasBloqueados/>
+      </usuario>
     </ListaDeAquecimento.Corrida>
   </corridas>
   <caixaDoSistema>0.0</caixaDoSistema>

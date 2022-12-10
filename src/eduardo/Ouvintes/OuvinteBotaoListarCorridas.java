@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import ListaDeAquecimento.CentralDeInformacoes;
 import ListaDeAquecimento.Persistencia;
 import ListaDeAquecimento.Usuario;
-import eduardo.Janelas.JanelaDeCorridasDisponiveis;
+import eduardo.JanelaCorridasDisponiveis.JanelaDeCorridasDisponiveis;
 
 public class OuvinteBotaoListarCorridas implements ActionListener{
 	private Usuario usuario;

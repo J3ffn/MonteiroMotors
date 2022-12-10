@@ -58,7 +58,7 @@ public class OuvinteBotaoLogin implements ActionListener{
 				break;
 			} 
 			
-		}else {
+		} else {
 			JOptionPane.showMessageDialog(null, "Usuário não encontrado");
 			
 		}

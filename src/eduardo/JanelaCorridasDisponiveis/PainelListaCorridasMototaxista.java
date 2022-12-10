@@ -1,4 +1,4 @@
-package eduardo.Janelas;
+package eduardo.JanelaCorridasDisponiveis;
 
 import java.awt.Color;
 import java.awt.GridLayout;
@@ -16,10 +16,11 @@ import ListaDeAquecimento.Mototaxista;
 import ListaDeAquecimento.Passageiro;
 import ListaDeAquecimento.Persistencia;
 import ListaDeAquecimento.Status;
+import eduardo.Janelas.JanelaDeReividicacaoDeCorrida;
 
 public class PainelListaCorridasMototaxista extends Painel{
-
-	public PainelListaCorridasMototaxista(ArrayList<Corrida> corridasTodasAsDisponiveis, CentralDeInformacoes central,
+	Filtro filtro;
+	public PainelListaCorridasMototaxista(ArrayList<Corrida> corridasTodasAsDisponiveis, Filtro filtro,CentralDeInformacoes central,
 			Persistencia persistencia, Mototaxista usuario) {
 		super(corridasTodasAsDisponiveis, central, persistencia, usuario);
 
@@ -27,15 +28,22 @@ public class PainelListaCorridasMototaxista extends Painel{
 
 	@Override
 	public void preencherPainel() {
-    corridasTodasAsDisponiveis = central.recuperarCorridasPossiveisParaoMototaxista((Mototaxista) usuario);
+    setCorridasTodasAsDisponiveis(getCentral().recuperarCorridasPossiveisParaoMototaxista((Mototaxista) getUsuario()));
 		
 		this.setBackground(Color.WHITE);
 		int y = 10;
 		this.setLayout(null);
 		
 		
-		if(corridasTodasAsDisponiveis != null) {
-			for (Corrida c : corridasTodasAsDisponiveis) {
+		if(getCorridasTodasAsDisponiveis() != null) {
+			if(filtro == Filtro.MAIS_RECENTES) {
+				this.setCorridasTodasAsDisponiveis(this.getCorridasOrganizadasMaisRecentes());
+			} else if (filtro == Filtro.MAIS_ANTIGAS){
+				this.setCorridasTodasAsDisponiveis(this.getCorridasOrganizadasMaisAntigas());
+			} else {
+				this.setCorridasTodasAsDisponiveis(this.getCorridasTodasAsDisponiveis());
+			}
+			for (Corrida c : getCorridasTodasAsDisponiveis()) {
 				if(c.getStatus() == Status.PENDENTE) {
 					JLabel corrida = new JLabel("Corrida: " + c.getId());
 					corrida.setBounds(10, y, 170, 20);
@@ -44,7 +52,7 @@ public class PainelListaCorridasMototaxista extends Painel{
 					botao.setBounds(310, y, 115, 40);
 					botao.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
-							new JanelaDeReividicacaoDeCorrida(central, persistencia, c, (Mototaxista) usuario);
+							new JanelaDeReividicacaoDeCorrida(getCentral(), getPersistencia(), c, (Mototaxista) getUsuario());
 						}
 					});
 					this.add(corrida);
@@ -52,7 +60,7 @@ public class PainelListaCorridasMototaxista extends Painel{
 					y += 45;
 				}
 			}
-			if(corridasTodasAsDisponiveis.size() > 6) {
+			if(getCorridasTodasAsDisponiveis().size() > 6) {
 				GridLayout layout = new GridLayout(0, 2, 150, 20);
 				this.setLayout(layout);
 			}

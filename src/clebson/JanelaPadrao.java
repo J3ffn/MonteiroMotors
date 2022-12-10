@@ -9,9 +9,9 @@ import ListaDeAquecimento.Usuario;
 
 @SuppressWarnings("serial")
 public class JanelaPadrao extends JFrame {
-	protected CentralDeInformacoes central;
-	protected Persistencia persistencia;
-	protected Usuario usuario;
+	private CentralDeInformacoes central;
+	private Persistencia persistencia;
+	private Usuario usuario;
 	
 	public CentralDeInformacoes getCentral() {
 		return central;
@@ -33,6 +33,18 @@ public class JanelaPadrao extends JFrame {
 		setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
+	}
+
+	public void setCentral(CentralDeInformacoes central) {
+		this.central = central;
+	}
+
+	public void setPersistencia(Persistencia persistencia) {
+		this.persistencia = persistencia;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 }

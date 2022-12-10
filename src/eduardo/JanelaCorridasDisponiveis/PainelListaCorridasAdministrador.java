@@ -1,4 +1,4 @@
-package eduardo.Janelas;
+package eduardo.JanelaCorridasDisponiveis;
 
 import java.awt.Color;
 import java.awt.GridLayout;
@@ -19,22 +19,32 @@ import ListaDeAquecimento.Status;
 import ListaDeAquecimento.Usuario;
 
 public class PainelListaCorridasAdministrador extends Painel{
-
-	public PainelListaCorridasAdministrador(ArrayList<Corrida> corridasTodasAsDisponiveis, CentralDeInformacoes central,
+	private ArrayList <Corrida> corridas;
+	private Filtro filtro;
+	
+	public PainelListaCorridasAdministrador(ArrayList<Corrida> corridasTodasAsDisponiveis, Filtro filtro,CentralDeInformacoes central,
 			Persistencia persistencia, Administrador usuario) {
 		super(corridasTodasAsDisponiveis, central, persistencia, usuario);
-		
+		this.filtro = filtro;
+		preencherPainel();
 	}
 	public void preencherPainel() {
-		corridasTodasAsDisponiveis = central.getCorridas();
+		this.setCorridasTodasAsDisponiveis(getCentral().getCorridas());
 		
 		this.setBackground(Color.WHITE);
 		int y = 10;
 		this.setLayout(null);
 		
 		
-		if(corridasTodasAsDisponiveis != null) {
-			for (Corrida c : corridasTodasAsDisponiveis) {
+		if(getCorridasTodasAsDisponiveis() != null) {
+			if(filtro == Filtro.MAIS_RECENTES) {
+				this.corridas = this.getCorridasOrganizadasMaisRecentes();
+			} else if (filtro == Filtro.MAIS_ANTIGAS){
+				this.corridas = this.getCorridasOrganizadasMaisAntigas();
+			} else {
+				this.corridas = this.getCorridasTodasAsDisponiveis();
+			}
+			for (Corrida c : corridas) {
 					JLabel corrida = new JLabel("Corrida: " + c.getId());
 					corrida.setBounds(10, y, 170, 20);
 					
@@ -44,7 +54,7 @@ public class PainelListaCorridasAdministrador extends Painel{
 					this.add(botao);
 					y += 45;
 			}
-			if(corridasTodasAsDisponiveis.size() > 6) {
+			if(getCorridasTodasAsDisponiveis().size() > 6) {
 				GridLayout layout = new GridLayout(0, 2, 150, 20);
 				this.setLayout(layout);
 			}

@@ -18,9 +18,9 @@ public class JanelaPassageiro extends JanelaPadraoUsuario{
 	
 	public JanelaPassageiro(CentralDeInformacoes central, Persistencia persistencia, Passageiro p) {
 		super("Passageiro");
-		this.central = central;
-		this.persistencia = persistencia;
-		this.usuario = p;
+		this.setCentral(central);
+		this.setPersistencia(persistencia);
+		this.setUsuario(p);
 		adicionarBotoesPassageiro();
 		
 		setVisible(true);
@@ -28,7 +28,7 @@ public class JanelaPassageiro extends JanelaPadraoUsuario{
 	
 	private class OuvinteDeBtCadastroCorrida implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
-			new JanelaDeCadastroDeCorrida(central, persistencia, usuario);
+			new JanelaDeCadastroDeCorrida(getCentral(), getPersistencia(), getUsuario());
 		}
 	}
 	
@@ -45,7 +45,7 @@ public class JanelaPassageiro extends JanelaPadraoUsuario{
 		JButton btListarCorridas = new JButton();
 		btListarCorridas.setBounds(170, 191, 130, 30);
 		btListarCorridas.setText("Listar Corridas");
-		btListarCorridas.addActionListener(new OuvinteBotaoListarCorridas(usuario, central, persistencia));
+		btListarCorridas.addActionListener(new OuvinteBotaoListarCorridas(getUsuario(), getCentral(), getPersistencia()));
 		btListarCorridas.setFont(new Font("Tahoma",Font.BOLD,10));
 		add (btListarCorridas);
 		

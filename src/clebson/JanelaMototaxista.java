@@ -11,8 +11,7 @@ import javax.swing.JLabel;
 import ListaDeAquecimento.CentralDeInformacoes;
 import ListaDeAquecimento.Mototaxista;
 import ListaDeAquecimento.Persistencia;
-import eduardo.Janelas.PainelListaCorridasMototaxista;
-
+import eduardo.JanelaCorridasDisponiveis.PainelListaCorridasMototaxista;
 import eduardo.Ouvintes.OuvinteBotaoListarCorridas;
 
 
@@ -25,9 +24,9 @@ public class JanelaMototaxista extends JanelaPadraoUsuario{
 	
 	public JanelaMototaxista(CentralDeInformacoes central, Persistencia per, Mototaxista mototaxista) {
 		super("Mototaxista");
-		this.central = central;
-		this.persistencia = per;
-		this.usuario = mototaxista;
+		this.setCentral(central);
+		this.setPersistencia(per);
+		this.setUsuario(mototaxista);
 		adicionarTextos();
 		adicionarBotoesMototaxista();
 		

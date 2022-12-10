@@ -32,19 +32,19 @@ import eduardo.Ouvintes.OuvinteBotaoCancelar;
 
 public class JanelaDeRegistro extends JanelaPadrao{
 	
-	JComboBox < String > cbTipoUsuario;
-	JButton btCriarConta;
-	JButton btCancelar;
-	JTextField inputNome;
-	JTextField inputEmail;
-	JPasswordField inputSenha;
-	JPasswordField inputConfirmacaoSenha;
-	JFormattedTextField inputDataDeNascimento; JComboBox <String> cbSexo;
+	private JComboBox < String > cbTipoUsuario;
+	private JButton btCriarConta;
+	private JButton btCancelar;
+	private JTextField inputNome;
+	private JTextField inputEmail;
+	private JPasswordField inputSenha;
+	private JPasswordField inputConfirmacaoSenha;
+	private JFormattedTextField inputDataDeNascimento; JComboBox <String> cbSexo;
 	
 	public JanelaDeRegistro(CentralDeInformacoes central, Persistencia per) {
 		super("Registro de Usuário");
-		this.central = central;
-		this.persistencia = per;
+		this.setCentral(central);
+		this.setPersistencia(per);
 		this.adicionarBotoes();
 		this.adicionarCaixasDeTexto();
 		this.setVisible(true);
@@ -56,7 +56,7 @@ public class JanelaDeRegistro extends JanelaPadrao{
 		String[] tiposUsuarios = {"Administrador", "Mototaxista", "Passageiro"};
 		cbTipoUsuario = new JComboBox < String >(tiposUsuarios);
 		cbTipoUsuario.setBounds(190, 7, 110, 30);
-		if(central.getTodosOsUsuarios().isEmpty()) {
+		if(getCentral().getTodosOsUsuarios().isEmpty()) {
 			cbTipoUsuario.setEnabled(false);
 		} else {
 			cbTipoUsuario.removeItemAt(0);
@@ -176,7 +176,7 @@ public class JanelaDeRegistro extends JanelaPadrao{
 			LocalDate dataNascimento = LocalDate.of(Integer.parseInt(datas[2]), 
 					Integer.parseInt(datas[1]), 
 					Integer.parseInt(datas[0]));
-			if(central.getTodosOsUsuarios().isEmpty()) {
+			if(getCentral().getTodosOsUsuarios().isEmpty()) {
 				
 				u = new Administrador(inputNome.getText(), 
 									  (String) cbSexo.getSelectedItem(), 
@@ -199,9 +199,9 @@ public class JanelaDeRegistro extends JanelaPadrao{
 									  dataNascimento);
 				}
 			}
-			central.adicionarUsuario(u);
+			getCentral().adicionarUsuario(u);
 			try {
-				persistencia.salvar(central, "dados-passageiros.xml");
+				getPersistencia().salvar(getCentral(), "dados-passageiros.xml");
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
