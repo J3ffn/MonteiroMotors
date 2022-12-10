@@ -39,36 +39,33 @@ public class OuvinteBotaoLogin implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		try {
-		String senha = new String(campoSenha.getPassword());
-		usuario = central.fazerLogin(senha, senha);
-		if (UsuarioTeste.email.equals(campoLogin.getText()) && UsuarioTeste.senha.equals(senha)) {
+			String senha = new String(campoSenha.getPassword());
+			usuario = central.fazerLogin(campoLogin.getText(), senha);
+			//if (UsuarioTeste.email.equals(campoLogin.getText()) && UsuarioTeste.senha.equals(senha)) {
 			JOptionPane.showMessageDialog(null, "Está dentro");
 			tela.dispose();
 			
 			switch(usuario.getTipoDeConta()) {
 			case ADMINISTRADOR:
 				Administrador adm = (Administrador) usuario;
-				new JanelaAdministrador(central, new Persistencia(), adm);
+				new JanelaAdministrador(adm);
 				break;
 			case PASSAGEIRO:
 				Passageiro pass = (Passageiro) usuario;
-				new JanelaPassageiro(central, new Persistencia(), pass);
+				new JanelaPassageiro(pass);
 				break;
 			case MOTOTAXISTA:
 				Mototaxista mtx = (Mototaxista) usuario;
-				new JanelaMototaxista(central, new Persistencia(), mtx);
+				new JanelaMototaxista(mtx);
 				break;
-			} 
-			
-		} else {
-			JOptionPane.showMessageDialog(null, "Usuário não encontrado");
-			
-		}
+			}
 		} catch (SenhaIncorretaException erro) {
+			
 			JOptionPane.showMessageDialog(null, "Senha Incorreta!");
 		} catch (PerfilDesativadoException erro) {
-			JOptionPane.showMessageDialog(null, "Usuario não encontrado!");
-			
+			JOptionPane.showMessageDialog(null, "Perfil Desativado!");
+		} catch (UsuarioNaoCadastradoException e1) {
+			JOptionPane.showMessageDialog(null, "Usuario Não Cadastrado no Sistema!");
 		}
 	}
 	

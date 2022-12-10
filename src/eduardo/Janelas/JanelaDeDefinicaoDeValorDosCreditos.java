@@ -20,11 +20,10 @@ public class JanelaDeDefinicaoDeValorDosCreditos extends JanelaPadrao{
 	
 	private JFormattedTextField inputValorCreditos;
 	private JButton btConfirmar;
-	private Administrador administrador;
+
 	
 	public JanelaDeDefinicaoDeValorDosCreditos(Administrador adm) {
-		super("Definir Valor Dos Creditos");
-		administrador = adm;
+		super("Definir Valor Dos Creditos", adm);
 		this.setSize(500, 300);
 		this.setLocationRelativeTo(null);
 		this.adicionarCamposTexto();
@@ -72,6 +71,7 @@ public class JanelaDeDefinicaoDeValorDosCreditos extends JanelaPadrao{
 			if(!inputValorCreditos.getText().equals("R$   .  ")){
 				String v = inputValorCreditos.getText().substring(3);
 				if(JOptionPane.showConfirmDialog(janela, "Deseja alterar o valor dos creditos para R$ " + v + " ?") == 0){
+					Administrador administrador = (Administrador) janela.getUsuario();
 					administrador.atualizarValorDosCreditos(Float.parseFloat(v));
 					JOptionPane.showMessageDialog(janela, "Valor atualizado!", "Mensagem", JOptionPane.INFORMATION_MESSAGE);
 				}

@@ -15,14 +15,15 @@ public abstract class Painel extends JPanel{
 	private ArrayList < Corrida > corridasTodasAsDisponiveis;
 	private  CentralDeInformacoes central;
 
-	private Persistencia persistencia; 
 	private Usuario usuario;
 	
-	public Painel(ArrayList<Corrida> corridasTodasAsDisponiveis, CentralDeInformacoes central,
-			Persistencia persistencia, Usuario usuario) {
+	public Painel(ArrayList<Corrida> corridasTodasAsDisponiveis, Usuario usuario) {
 		this.setCorridasTodasAsDisponiveis(corridasTodasAsDisponiveis);
-		this.central = central;
-		this.persistencia = persistencia;
+		try {
+			this.central = (CentralDeInformacoes)new Persistencia().recuperar("dados-passageiros.xml");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		this.usuario = usuario;
 		this.preencherPainel();
 	}
@@ -33,9 +34,6 @@ public abstract class Painel extends JPanel{
 	}
 	public CentralDeInformacoes getCentral() {
 		return central;
-	}
-	public Persistencia getPersistencia() {
-		return persistencia;
 	}
 	public Usuario getUsuario() {
 		return usuario;
@@ -55,4 +53,11 @@ public abstract class Painel extends JPanel{
 	public void setCorridasTodasAsDisponiveis(ArrayList < Corrida > corridasTodasAsDisponiveis) {
 		this.corridasTodasAsDisponiveis = corridasTodasAsDisponiveis;
 	}
+	public void setCentral(CentralDeInformacoes central) {
+		this.central = central;
+	}
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+	
 }

@@ -27,7 +27,7 @@ public class TelaDeRecuperarSenha extends JanelaPadrao {
 	private JTextField emailDigitado;
 	
 	public TelaDeRecuperarSenha() {
-		super("Recuperação senha");
+		super("Recuperação senha", null);
 		addTituloDaTela();
 		addCampoTextField();
 		addBotoesDaTela();

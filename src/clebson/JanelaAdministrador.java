@@ -16,12 +16,10 @@ import eduardo.Ouvintes.OuvinteBotaoListarCorridas;
 @SuppressWarnings("serial")
 public class JanelaAdministrador extends JanelaPadraoUsuario {
 	
-	
-	public JanelaAdministrador(CentralDeInformacoes central, Persistencia per, Administrador administrador) {
-		super("Administrador");
-		this.setCentral(central);
-		this.setPersistencia(per);
-		this.setUsuario(administrador);
+
+	public JanelaAdministrador(Administrador adm) {
+		super("Administrador", adm);
+		
 		adicionarBotoesAdministrador();
 		
 		setVisible(true);
@@ -37,7 +35,7 @@ public class JanelaAdministrador extends JanelaPadraoUsuario {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new JanelaDeListagemDeUsuarios((Administrador) getUsuario(), getCentral(), getPersistencia());
+				new JanelaDeListagemDeUsuarios((Administrador) getUsuario());
 			}
 			
 		});

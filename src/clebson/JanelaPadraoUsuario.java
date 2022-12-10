@@ -4,6 +4,7 @@ import java.awt.Font;
 
 import javax.swing.JButton;
 
+import ListaDeAquecimento.Usuario;
 import clebsonOuvintesExternos.OuvinteBotaoDeslogar;
 import clebsonOuvintesExternos.OuvinteBotaoEditarPerfil;
 
@@ -12,8 +13,8 @@ public class JanelaPadraoUsuario extends JanelaPadrao{
 	private JButton btDeslogar;
 	private JButton btEditarPerfil;
 
-	public JanelaPadraoUsuario(String nome) {
-		super(nome);
+	public JanelaPadraoUsuario(String nome, Usuario usuario) {
+		super(nome, usuario);
 		adicionarBotoes();
 	}
 	
@@ -24,7 +25,7 @@ public class JanelaPadraoUsuario extends JanelaPadrao{
 		btEditarPerfil.setText("Editar Perfil");
 		btEditarPerfil.setFont(new Font("Tahoma",Font.BOLD,10));
 		add (btEditarPerfil);		
-		OuvinteBotaoEditarPerfil ouvinteEditarPerfil = new OuvinteBotaoEditarPerfil(this);
+		OuvinteBotaoEditarPerfil ouvinteEditarPerfil = new OuvinteBotaoEditarPerfil(this, getUsuario());
 		btEditarPerfil.addActionListener(ouvinteEditarPerfil);
 		
 		btDeslogar = new JButton();
@@ -32,7 +33,7 @@ public class JanelaPadraoUsuario extends JanelaPadrao{
 		btDeslogar.setText("Deslogar");
 		btDeslogar.setFont(new Font("Tahoma",Font.BOLD,10));
 		add (btDeslogar);
-		OuvinteBotaoDeslogar ouvinteDeslogar = new OuvinteBotaoDeslogar(this);
+		OuvinteBotaoDeslogar ouvinteDeslogar = new OuvinteBotaoDeslogar(this, this.getCentral());
 		btDeslogar.addActionListener(ouvinteDeslogar);
 	}
 }

@@ -9,6 +9,7 @@ public class Mototaxista extends Usuario{
 	
 	public Mototaxista(String nome, String sexo, String email, String senha, LocalDate i) {
 		super(nome, sexo, email, senha, i);
+		this.setTipoDeConta(TipoDeConta.MOTOTAXISTA);
 	}
 	public String recuperarCargo() {
 		return "Mototaxista";

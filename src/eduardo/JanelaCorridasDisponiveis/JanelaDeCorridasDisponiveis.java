@@ -28,11 +28,8 @@ public class JanelaDeCorridasDisponiveis extends JanelaPadrao{
 	private JComboBox < String > cbFiltro;
 	private Filtro filtro;
 	
-	public JanelaDeCorridasDisponiveis(Usuario u, CentralDeInformacoes c, Persistencia per) {
-		super("Janela de Corridas Disponiveis");
-		setUsuario(u);
-		setCentral(c);
-		setPersistencia(per);
+	public JanelaDeCorridasDisponiveis(Usuario u) {
+		super("Janela de Corridas Disponiveis", u);
 		adicionarPainel();
 		adicionarBotoes();
 		this.setVisible(true);
@@ -96,11 +93,11 @@ public class JanelaDeCorridasDisponiveis extends JanelaPadrao{
 	
 	public void adicionarPainel() {
 		if(getUsuario() instanceof Mototaxista) {
-			painel1 = new PainelListaCorridasMototaxista(corridasTodasAsDisponiveis, getCentral(), getPersistencia(), (Mototaxista) getUsuario());
+			painel1 = new PainelListaCorridasMototaxista(corridasTodasAsDisponiveis, (Mototaxista) getUsuario());
 		} else if (getUsuario() instanceof Administrador) {
-			painel1 = new PainelListaCorridasAdministrador(corridasTodasAsDisponiveis, getCentral(), getPersistencia(), (Administrador) getUsuario());
+			painel1 = new PainelListaCorridasAdministrador(corridasTodasAsDisponiveis, (Administrador) getUsuario());
 		} else if(getUsuario() instanceof Passageiro) {
-			painel1 = new PainelListaCorridasPassageiro(corridasTodasAsDisponiveis, getCentral(), getPersistencia(), (Passageiro) getUsuario());
+			painel1 = new PainelListaCorridasPassageiro(corridasTodasAsDisponiveis, (Passageiro) getUsuario());
 		}
 		painel = new JScrollPane(painel1);
 		

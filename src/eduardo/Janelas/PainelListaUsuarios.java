@@ -24,9 +24,8 @@ import eduardo.JanelaCorridasDisponiveis.Painel;
 public class PainelListaUsuarios extends Painel{
 	ArrayList <Usuario> usuarios = getCentral().getTodosOsUsuarios();
 	
-	public PainelListaUsuarios(CentralDeInformacoes central,
-			Persistencia persistencia, Administrador usuario) {
-		super(null, central, persistencia, usuario);
+	public PainelListaUsuarios(Administrador usuario) {
+		super(null, usuario);
 		preencherPainel();
 	}
 	public void preencherPainel() {
@@ -45,7 +44,7 @@ public class PainelListaUsuarios extends Painel{
 					botao.setBounds(310, y, 115, 40);
 					botao.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
-							new JanelaEditarPerfilAdmin();
+							new JanelaEditarPerfilAdmin((Administrador) getUsuario());
 						}
 					});
 					this.add(corrida);

@@ -29,6 +29,7 @@ import ListaDeAquecimento.Persistencia;
 import ListaDeAquecimento.Usuario;
 import clebson.JanelaPadrao;
 import eduardo.Ouvintes.OuvinteBotaoCancelar;
+import jefferson.telaDeLogin.telas.TelaDeLogin;
 
 public class JanelaDeRegistro extends JanelaPadrao{
 	
@@ -41,10 +42,13 @@ public class JanelaDeRegistro extends JanelaPadrao{
 	private JPasswordField inputConfirmacaoSenha;
 	private JFormattedTextField inputDataDeNascimento; JComboBox <String> cbSexo;
 	
-	public JanelaDeRegistro(CentralDeInformacoes central, Persistencia per) {
-		super("Registro de Usuário");
-		this.setCentral(central);
-		this.setPersistencia(per);
+	public JanelaDeRegistro() {
+		super("Registro de Usuário", null);
+		try {
+			this.setCentral((CentralDeInformacoes) new Persistencia().recuperar("dados-passageiros.xml"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		this.adicionarBotoes();
 		this.adicionarCaixasDeTexto();
 		this.setVisible(true);
@@ -201,12 +205,13 @@ public class JanelaDeRegistro extends JanelaPadrao{
 			}
 			getCentral().adicionarUsuario(u);
 			try {
-				getPersistencia().salvar(getCentral(), "dados-passageiros.xml");
+				new Persistencia().salvar(getCentral(), "dados-passageiros.xml");
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
 			JOptionPane.showMessageDialog(j, "Usuário cadastrado Com Sucesso!");
 			j.dispose();
+			new TelaDeLogin(getCentral(), new Persistencia());
 			} } catch (Exception erro){
 			JOptionPane.showMessageDialog(j, "Ocorreu um erro, corrija os campos!", "Erro!", JOptionPane.ERROR_MESSAGE);
 		}

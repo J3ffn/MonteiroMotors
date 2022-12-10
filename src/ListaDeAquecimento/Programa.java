@@ -31,7 +31,7 @@ public class Programa {
 				switch(escolha) {
 				
 				case "1":
-					JanelaDeRegistro janela = new JanelaDeRegistro(central, per);
+					JanelaDeRegistro janela = new JanelaDeRegistro();
 					break;
 					
 				case "2":

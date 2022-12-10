@@ -12,15 +12,19 @@ import eduardo.Janelas.JanelaDeRegistro;
 public class OuvinteBotaoRegistrar implements ActionListener{
 
 	private JFrame tela;
+	private CentralDeInformacoes central;
+	private Persistencia persistencia;
 	
-	public OuvinteBotaoRegistrar(JFrame tela) {
+	public OuvinteBotaoRegistrar(JFrame tela, CentralDeInformacoes c, Persistencia p) {
 		this.tela = tela;
+		this.central = c;
+		this.persistencia = p;
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		tela.dispose();
-		new JanelaDeRegistro(new CentralDeInformacoes(), new Persistencia());
+		new JanelaDeRegistro();
 	}
 	
 }

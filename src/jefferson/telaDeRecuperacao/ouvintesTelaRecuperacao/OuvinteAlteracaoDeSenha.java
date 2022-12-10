@@ -66,7 +66,7 @@ public class OuvinteAlteracaoDeSenha implements ActionListener {
 			System.out.println(usuarioTeste.senha);
 			
 			tela.dispose();
-			new TelaDeLogin();
+			new TelaDeLogin(central, new Persistencia());
 			
 		} else {
 			JOptionPane.showMessageDialog(null, "Senhas diferentes");

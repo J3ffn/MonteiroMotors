@@ -28,12 +28,9 @@ public class JanelaDeReividicacaoDeCorrida extends JanelaPadrao{
 	private Corrida corrida;
 	private JLabel txCreditos;
 	
-	public JanelaDeReividicacaoDeCorrida(CentralDeInformacoes cen, Persistencia per, Corrida c, Mototaxista m) {
-		super("Reivindicação de corrida");
-		this.setCentral(cen);
-		this.setUsuario(m);
+	public JanelaDeReividicacaoDeCorrida(Corrida c, Mototaxista m) {
+		super("Reivindicação de corrida", m);
 		corrida = c;
-		setPersistencia(per);
 		this.setSize(400, 177);
 		this.setLocationRelativeTo(null);
 		

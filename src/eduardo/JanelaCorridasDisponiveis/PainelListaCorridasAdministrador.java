@@ -21,9 +21,8 @@ import ListaDeAquecimento.Usuario;
 public class PainelListaCorridasAdministrador extends Painel{
 	private ArrayList <Corrida> corridas;
 	
-	public PainelListaCorridasAdministrador(ArrayList<Corrida> corridasTodasAsDisponiveis, CentralDeInformacoes central,
-			Persistencia persistencia, Administrador usuario) {
-		super(corridasTodasAsDisponiveis, central, persistencia, usuario);
+	public PainelListaCorridasAdministrador(ArrayList<Corrida> corridasTodasAsDisponiveis, Administrador usuario) {
+		super(corridasTodasAsDisponiveis, usuario);
 	}
 	public void preencherPainel() {
 		this.setCorridasTodasAsDisponiveis(getCentral().getCorridas());

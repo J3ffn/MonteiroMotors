@@ -19,6 +19,6 @@ public class OuvinteBotaoListarCorridas implements ActionListener{
 		persistencia = p;
 	}
 	public void actionPerformed(ActionEvent e) {
-		JanelaDeCorridasDisponiveis janela = new JanelaDeCorridasDisponiveis(usuario, central, persistencia);
+		JanelaDeCorridasDisponiveis janela = new JanelaDeCorridasDisponiveis(usuario);
 	}
 }

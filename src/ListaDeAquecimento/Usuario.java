@@ -17,6 +17,7 @@ public abstract class Usuario{
 		this.sexo = Sexo.valueOf(sexo.toUpperCase());
 		this.dataDeNascimento = i;
 		this.email = email;
+		this.senha = senha;
 		id = email;
 		setPerfilAtivo(true);
 	}
@@ -83,6 +84,10 @@ public abstract class Usuario{
 		return tipoDeConta;
 	}
 	
+	public void setTipoDeConta(TipoDeConta tipoDeConta) {
+		this.tipoDeConta = tipoDeConta;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		Usuario usuarioDeFora = (Usuario) obj;
