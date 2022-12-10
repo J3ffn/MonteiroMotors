@@ -11,6 +11,18 @@ import javax.swing.JOptionPane;
 @SuppressWarnings("serial")
 public class JanelaEditarPerfilAdmin extends JanelaEditarPerfil{
 	
+	private JLabel lbTipo;
+	
+	public JLabel getLbTipo() {
+		return lbTipo;
+	}
+
+
+	public void setLbTipo(JLabel lbTipo) {
+		this.lbTipo = lbTipo;
+	}
+
+
 	public JanelaEditarPerfilAdmin() {
 
 		adicionarTextos();
@@ -22,10 +34,15 @@ public class JanelaEditarPerfilAdmin extends JanelaEditarPerfil{
 public class OuvinteBotaoEditarTipo implements ActionListener{
 		
 		public void actionPerformed(ActionEvent e) {
-			String tipo = JOptionPane.showInputDialog("Digite o novo Tipo de usuario: ");
+			JLabel tipo = getLbTipo();
+			String novoTipo = JOptionPane.showInputDialog("Digite o novo tipo:");
 			JOptionPane.showMessageDialog(null, "Mudança Concluida");
-			JLabel LbTipo = new JLabel (tipo);
-			setLbTipoDeUsuario(LbTipo);
+			if ((novoTipo != null)) {
+				lbTipo.setText("TIPO: "+novoTipo);
+			}else {
+				lbTipo = tipo;
+			}
+
 		}
 	}
 OuvinteBotaoEditarTipo ouvinteEditarTipo = new OuvinteBotaoEditarTipo();
