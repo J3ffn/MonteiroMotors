@@ -40,6 +40,11 @@ public class CentralDeInformacoes {
 		}
 		return null;
 	}
+	public Usuario fazerLogin(String email, String senha) throws SenhaIncorretaException, PerfilDesativadoException {
+		Usuario u = recuperarUsuarioPeloEmail(email);
+		u.fazerLogin(senha);
+		return u;
+	}
 	public String listarTodosOsUsuarios() {
 		String txt = "Lista de Passageiros: \n";
 		for(Usuario usuario : todosOsUsuarios) {

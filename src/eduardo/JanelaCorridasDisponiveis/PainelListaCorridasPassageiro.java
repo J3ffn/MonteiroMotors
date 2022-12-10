@@ -23,10 +23,8 @@ public class PainelListaCorridasPassageiro extends Painel{
 		super(corridasTodasAsDisponiveis, central, persistencia, usuario);
 	}
 	public void preencherPainel() {
-		setCorridasTodasAsDisponiveis(getCentral().recuperarCorridasDeUmPassageiro(getUsuario().getEmail()));
 		this.setBackground(Color.WHITE);
 		this.setLayout(null);
-		
 		
 		int y = 10;
 		if(getCorridasTodasAsDisponiveis() != null) {

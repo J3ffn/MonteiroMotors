@@ -20,13 +20,10 @@ import ListaDeAquecimento.Usuario;
 
 public class PainelListaCorridasAdministrador extends Painel{
 	private ArrayList <Corrida> corridas;
-	private Filtro filtro;
 	
-	public PainelListaCorridasAdministrador(ArrayList<Corrida> corridasTodasAsDisponiveis, Filtro filtro,CentralDeInformacoes central,
+	public PainelListaCorridasAdministrador(ArrayList<Corrida> corridasTodasAsDisponiveis, CentralDeInformacoes central,
 			Persistencia persistencia, Administrador usuario) {
 		super(corridasTodasAsDisponiveis, central, persistencia, usuario);
-		this.filtro = filtro;
-		preencherPainel();
 	}
 	public void preencherPainel() {
 		this.setCorridasTodasAsDisponiveis(getCentral().getCorridas());
@@ -37,14 +34,7 @@ public class PainelListaCorridasAdministrador extends Painel{
 		
 		
 		if(getCorridasTodasAsDisponiveis() != null) {
-			if(filtro == Filtro.MAIS_RECENTES) {
-				this.corridas = this.getCorridasOrganizadasMaisRecentes();
-			} else if (filtro == Filtro.MAIS_ANTIGAS){
-				this.corridas = this.getCorridasOrganizadasMaisAntigas();
-			} else {
-				this.corridas = this.getCorridasTodasAsDisponiveis();
-			}
-			for (Corrida c : corridas) {
+			for (Corrida c : this.getCorridasTodasAsDisponiveis()) {
 					JLabel corrida = new JLabel("Corrida: " + c.getId());
 					corrida.setBounds(10, y, 170, 20);
 					

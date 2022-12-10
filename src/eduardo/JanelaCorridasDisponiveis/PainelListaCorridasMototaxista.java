@@ -20,7 +20,7 @@ import eduardo.Janelas.JanelaDeReividicacaoDeCorrida;
 
 public class PainelListaCorridasMototaxista extends Painel{
 	Filtro filtro;
-	public PainelListaCorridasMototaxista(ArrayList<Corrida> corridasTodasAsDisponiveis, Filtro filtro,CentralDeInformacoes central,
+	public PainelListaCorridasMototaxista(ArrayList<Corrida> corridasTodasAsDisponiveis, CentralDeInformacoes central,
 			Persistencia persistencia, Mototaxista usuario) {
 		super(corridasTodasAsDisponiveis, central, persistencia, usuario);
 
@@ -36,13 +36,6 @@ public class PainelListaCorridasMototaxista extends Painel{
 		
 		
 		if(getCorridasTodasAsDisponiveis() != null) {
-			if(filtro == Filtro.MAIS_RECENTES) {
-				this.setCorridasTodasAsDisponiveis(this.getCorridasOrganizadasMaisRecentes());
-			} else if (filtro == Filtro.MAIS_ANTIGAS){
-				this.setCorridasTodasAsDisponiveis(this.getCorridasOrganizadasMaisAntigas());
-			} else {
-				this.setCorridasTodasAsDisponiveis(this.getCorridasTodasAsDisponiveis());
-			}
 			for (Corrida c : getCorridasTodasAsDisponiveis()) {
 				if(c.getStatus() == Status.PENDENTE) {
 					JLabel corrida = new JLabel("Corrida: " + c.getId());

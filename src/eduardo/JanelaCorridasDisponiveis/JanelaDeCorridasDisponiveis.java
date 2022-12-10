@@ -70,10 +70,6 @@ public class JanelaDeCorridasDisponiveis extends JanelaPadrao{
 			janela = j;
 		}
 		public void mouseClicked(MouseEvent e) {
-			String sel = cbFiltro.getSelectedItem().toString().toUpperCase();
-			String sel2 = sel.replace(' ', '_');
-			filtro = Filtro.valueOf(sel2);
-			
 				if(getUsuario() instanceof Mototaxista) {
 					corridasTodasAsDisponiveis = getCentral().recuperarCorridasPossiveisParaoMototaxista((Mototaxista)getUsuario());
 				} else if (getUsuario() instanceof Administrador) {
@@ -100,9 +96,9 @@ public class JanelaDeCorridasDisponiveis extends JanelaPadrao{
 	
 	public void adicionarPainel() {
 		if(getUsuario() instanceof Mototaxista) {
-			painel1 = new PainelListaCorridasMototaxista(corridasTodasAsDisponiveis, filtro, getCentral(), getPersistencia(), (Mototaxista) getUsuario());
+			painel1 = new PainelListaCorridasMototaxista(corridasTodasAsDisponiveis, getCentral(), getPersistencia(), (Mototaxista) getUsuario());
 		} else if (getUsuario() instanceof Administrador) {
-			painel1 = new PainelListaCorridasAdministrador(corridasTodasAsDisponiveis, filtro, getCentral(), getPersistencia(), (Administrador) getUsuario());
+			painel1 = new PainelListaCorridasAdministrador(corridasTodasAsDisponiveis, getCentral(), getPersistencia(), (Administrador) getUsuario());
 		} else if(getUsuario() instanceof Passageiro) {
 			painel1 = new PainelListaCorridasPassageiro(corridasTodasAsDisponiveis, getCentral(), getPersistencia(), (Passageiro) getUsuario());
 		}

@@ -38,7 +38,9 @@ public class OuvinteBotaoLogin implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		try {
 		String senha = new String(campoSenha.getPassword());
+		usuario = central.fazerLogin(senha, senha);
 		if (UsuarioTeste.email.equals(campoLogin.getText()) && UsuarioTeste.senha.equals(senha)) {
 			JOptionPane.showMessageDialog(null, "Está dentro");
 			tela.dispose();
@@ -60,6 +62,12 @@ public class OuvinteBotaoLogin implements ActionListener{
 			
 		} else {
 			JOptionPane.showMessageDialog(null, "Usuário não encontrado");
+			
+		}
+		} catch (SenhaIncorretaException erro) {
+			JOptionPane.showMessageDialog(null, "Senha Incorreta!");
+		} catch (PerfilDesativadoException erro) {
+			JOptionPane.showMessageDialog(null, "Usuario não encontrado!");
 			
 		}
 	}

@@ -18,6 +18,7 @@ import ListaDeAquecimento.Persistencia;
 import ListaDeAquecimento.Status;
 import ListaDeAquecimento.Usuario;
 import clebson.JanelaEditarPerfil;
+import clebson.JanelaEditarPerfilAdmin;
 import eduardo.JanelaCorridasDisponiveis.Painel;
 
 public class PainelListaUsuarios extends Painel{
@@ -44,7 +45,7 @@ public class PainelListaUsuarios extends Painel{
 					botao.setBounds(310, y, 115, 40);
 					botao.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
-							new JanelaEditarPerfil();
+							new JanelaEditarPerfilAdmin();
 						}
 					});
 					this.add(corrida);

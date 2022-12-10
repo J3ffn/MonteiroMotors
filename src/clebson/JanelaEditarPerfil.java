@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import clebsonOuvintesExternos.OuvinteBotaoDeletarPerfil;
+import eduardo.Ouvintes.OuvinteBotaoCancelar;
 
 @SuppressWarnings("serial")
 public class JanelaEditarPerfil extends JanelaPadrao{
@@ -136,5 +137,12 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 		btDeletarPerfil.setFont(new Font("Tahoma",Font.BOLD,10));
 		add (btDeletarPerfil);
 		btDeletarPerfil.addActionListener(ouvinteDeletarPerfil);
+		
+		JButton btVoltar = new JButton();
+		btVoltar.setBounds(174, 387, 150, 20);
+		btVoltar.setText("Cancelar");
+		btVoltar.setFont(new Font("Tahoma",Font.BOLD,10));
+		btVoltar.addActionListener(new OuvinteBotaoCancelar(this));
+		add (btVoltar);
 	}
 }
