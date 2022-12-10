@@ -2,7 +2,6 @@ package jefferson.telaDeRecuperacao.ouvintesTelaRecuperacao;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -13,7 +12,7 @@ import ListaDeAquecimento.Persistencia;
 import ListaDeAquecimento.Usuario;
 //import ListaDeAquecimento.Usuario;
 import jefferson.UsuarioTeste;
-import jefferson.telaDeLogin.TelaDeLogin;
+import jefferson.telaDeLogin.telas.TelaDeLogin;
 
 public class OuvinteAlteracaoDeSenha implements ActionListener {
 	

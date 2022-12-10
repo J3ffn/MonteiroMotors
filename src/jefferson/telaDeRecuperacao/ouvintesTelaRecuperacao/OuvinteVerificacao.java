@@ -1,27 +1,34 @@
 package jefferson.telaDeRecuperacao.ouvintesTelaRecuperacao;
 
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 
 import jefferson.telaDeRecuperacao.telasParaRecuperacao.TelaDeAlteracaoDaSenha;
 
-public class OuvinteVerificacao extends MouseAdapter {
+public final class OuvinteVerificacao implements ActionListener {
 	
-	private String email;
 	private JFrame jtela;
+	private JTextField codigoDigitado;
+	private String email;
+	private String codigoDeVerificacao;
 	
-	public OuvinteVerificacao(JFrame tela, JTextField textField) {
+	public OuvinteVerificacao(JFrame tela, JTextField linhaCodigo, String codigo, String emailDoUsuario) {
 		jtela = tela;
-		email = textField.getText();
+		codigoDigitado = linhaCodigo;
+		codigoDeVerificacao = codigo;
+		email = emailDoUsuario;
 	}
 	
 	@Override
-	public void mouseClicked(MouseEvent e) {
-		jtela.dispose();
-		new TelaDeAlteracaoDaSenha(email);
-	};
+	public void actionPerformed(ActionEvent e) {
+		if (codigoDeVerificacao.equals(codigoDigitado.getText())) {
+			jtela.dispose();
+			new TelaDeAlteracaoDaSenha(email);
+		}
 		
+	}
+
 }

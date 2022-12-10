@@ -2,7 +2,7 @@ package jefferson;
 
 public class UsuarioTeste {
 
-	public String nome = "jefferson";
-	public String email = "jefferson.mangueira@acedemico.ifpb.edu.br";
-	public String senha = "12345";
+	public static String nome = "jefferson";
+	public static String email = "jefferson.mangueira@academico.ifpb.edu.br";
+	public static String senha = "12345";
 }
