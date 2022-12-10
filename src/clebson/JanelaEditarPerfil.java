@@ -9,11 +9,13 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
+import clebsonOuvintesExternos.OuvinteBotaoDeletarPerfil;
+
 @SuppressWarnings("serial")
 public class JanelaEditarPerfil extends JanelaPadrao{
 	
 	private JLabel lbNome;
-	private JLabel lbEmail;
+	private JLabel novoTipo;
 	
 	public JLabel getLbNome() {
 		return lbNome;
@@ -26,12 +28,12 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 
 
 	public JLabel getLbEmail() {
-		return lbEmail;
+		return novoTipo;
 	}
 
 
 	public void setLbEmail(JLabel lbEmail) {
-		this.lbEmail = lbEmail;
+		this.novoTipo = lbEmail;
 	}
 
 
@@ -62,10 +64,10 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 		lbNome.setFont(new Font("Arial",Font.BOLD,12));
 		add(lbNome);
 		
-		lbEmail = new JLabel("EMAIL: ");		
-		lbEmail.setBounds(100,205 , 220, 20);
-		lbEmail.setFont(new Font("Arial",Font.BOLD,12));
-		add(lbEmail);
+		novoTipo = new JLabel("EMAIL: ");		
+		novoTipo.setBounds(100,205 , 220, 20);
+		novoTipo.setFont(new Font("Arial",Font.BOLD,12));
+		add(novoTipo);
 		
 		lbTipoDeUsuario = new JLabel("TIPO DE USUÁRIO: ");		
 		lbTipoDeUsuario.setBounds(100,240 , 220, 20);
@@ -100,17 +102,18 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 			String novoEmail = JOptionPane.showInputDialog("Digite o novo email: ");
 			JOptionPane.showMessageDialog(null, "Mudança Concluida");
 			//corrigir erro ao deixar em branco
-			if ((novoEmail != null) & (novoEmail != "")){
-				lbEmail.setText("EMAIL: " + novoEmail);
+			if ((novoEmail != null)){
+				novoTipo.setText("EMAIL: " + novoEmail);
 			}else {
-				lbEmail = email;
+				novoTipo = email;
 			}
 			
 		}
 	}
+	
 	OuvinteBotaoEditarNome ouvinteEditarNome = new OuvinteBotaoEditarNome();
 	OuvinteBotaoEditarEmail ouvinteEditarEmail = new OuvinteBotaoEditarEmail();
-	
+	OuvinteBotaoDeletarPerfil ouvinteDeletarPerfil = new OuvinteBotaoDeletarPerfil();
 	
 	public void adicionarBotoes() {
 		JButton btEditarNome = new JButton();
@@ -132,5 +135,6 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 		btDeletarPerfil.setText("Deletar Perfil");
 		btDeletarPerfil.setFont(new Font("Tahoma",Font.BOLD,10));
 		add (btDeletarPerfil);
+		btDeletarPerfil.addActionListener(ouvinteDeletarPerfil);
 	}
 }
