@@ -1,6 +1,5 @@
 package jefferson.telaDeLogin.ouvintes;
 
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -21,6 +20,5 @@ public class OuvinteBotaoEsqueceuSenha  implements ActionListener{
 		tela.dispose();
 		new TelaDeRecuperarSenha();
 	}
-	
 	
 }
