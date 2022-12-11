@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import ListaDeAquecimento.CentralDeInformacoes;
 import ListaDeAquecimento.Mototaxista;
 import ListaDeAquecimento.Persistencia;
+import ListaDeAquecimento.Usuario;
 import eduardo.JanelaCorridasDisponiveis.JanelaDeCorridasDisponiveis;
 import eduardo.JanelaCorridasDisponiveis.PainelListaCorridasMototaxista;
 import eduardo.Ouvintes.OuvinteBotaoListarCorridas;
@@ -45,13 +46,7 @@ public class JanelaMototaxista extends JanelaPadraoUsuario{
 		
 	}
 	
-	public class OuvinteBotaoListarCorridas implements ActionListener{
-		
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			//Abrir Lista de Corridas
-		}
-	}
+
 	
 	public class OuvinteBotaoChamadas implements ActionListener{
 		
@@ -59,9 +54,10 @@ public class JanelaMototaxista extends JanelaPadraoUsuario{
 		public void actionPerformed(ActionEvent e) {
 			// Abrir Chamadas
 			JanelaDeCorridasDisponiveis janela = new JanelaDeCorridasDisponiveis(getUsuario());
-			
 		}
 	}
+		
+		OuvinteBotaoListarCorridas ouvinteCorridas = new OuvinteBotaoListarCorridas(getUsuario(), getCentral(), getPersistencia());
 	
 	private void adicionarBotoesMototaxista() {
 		super.adicionarBotoes();
@@ -69,10 +65,10 @@ public class JanelaMototaxista extends JanelaPadraoUsuario{
 		JButton btListarCorridas = new JButton();
 		btListarCorridas.setBounds(170, 121, 130, 40);
 		btListarCorridas.setText("Listar Corridas");
-		btListarCorridas.addActionListener(new OuvinteBotaoListarCorridas());
 		btListarCorridas.setFont(new Font("Tahoma",Font.BOLD,10));
+		btListarCorridas.addActionListener(ouvinteCorridas);
 		add (btListarCorridas);
-		OuvinteBotaoListarCorridas ouvinteCorridas = new OuvinteBotaoListarCorridas();
+		
 		
 		JButton btChamadas = new JButton();
 		btChamadas.setBounds(170, 181, 130, 60);
