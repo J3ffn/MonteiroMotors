@@ -58,10 +58,5 @@ public class Teste2 {
 
 		new JanelaAdministrador(central.recuperarAdministradorDoSistema());
 		//new JanelaMototaxista(central, per, n1);
-		try {
-			new Persistencia().salvar(central, "dados-passageiros.xml");
-		} catch (Exception e1) {
-			e1.printStackTrace();
-		}
 	}
 }

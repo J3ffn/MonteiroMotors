@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 
 import ListaDeAquecimento.Corrida;
 import ListaDeAquecimento.Mototaxista;
+import ListaDeAquecimento.Passageiro;
 import ListaDeAquecimento.Status;
 import ListaDeAquecimento.Usuario;
 import eduardo.Janelas.JanelaDeReividicacaoDeCorrida;
@@ -30,7 +31,8 @@ public class PainelReinvindicacao extends Painel {
 		
 		if(getCorridasTodasAsDisponiveis() != null) {
 			for (Corrida c : getCorridasTodasAsDisponiveis()) {
-				if(c.getStatus() == Status.PENDENTE) {
+				Passageiro p = (Passageiro) c.getUsuario();
+				if(c.getStatus() == Status.PENDENTE && !p.verificarSeEBloqueado((Mototaxista) this.getUsuario())) {
 					JLabel corrida = new JLabel("Corrida: " + c.getId());
 					corrida.setBounds(10, y, 170, 20);
 					

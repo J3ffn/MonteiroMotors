@@ -19,17 +19,8 @@ import ListaDeAquecimento.Status;
 import eduardo.Janelas.JanelaDeReividicacaoDeCorrida;
 
 public class PainelListaCorridasMototaxista extends Painel{
-	private TipoPainel tipo;
 	
 	public PainelListaCorridasMototaxista(ArrayList<Corrida> corridasTodasAsDisponiveis, Mototaxista usuario) {
 		super(corridasTodasAsDisponiveis, usuario);
-	}
-	
-	public TipoPainel getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(TipoPainel tipo) {
-		this.tipo = tipo;
 	}
 }
