@@ -71,24 +71,28 @@ public class JanelaDeCadastroDeCorrida extends JanelaPadrao{
 					} else {
 						dataDaCorrida = LocalDateTime.now();
 					}
-					int valorDaCorrida = 3;
-					Corrida c = new Corrida(inputEnderecoPartida.getText(), 
-							inputEnderecoDestino.getText(), 
-							Float.parseFloat(inputDistancia.getText()), 
-							checkBCorridaParaAgora.isSelected(), 
-							dataDaCorrida,
-							getUsuario(), valorDaCorrida);
-					getCentral().adicionarCorrida(c);
-					
-					try {
-						new Persistencia().salvar(getCentral(), "dados-passageiros.xml");
-					} catch (Exception e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
+					if(dataDaCorrida.isAfter(LocalDateTime.now())) {
+						int valorDaCorrida = 3;
+						Corrida c = new Corrida(inputEnderecoPartida.getText(), 
+								inputEnderecoDestino.getText(), 
+								Float.parseFloat(inputDistancia.getText()), 
+								checkBCorridaParaAgora.isSelected(), 
+								dataDaCorrida,
+								getUsuario(), valorDaCorrida);
+						getCentral().adicionarCorrida(c);
+						
+						try {
+							new Persistencia().salvar(getCentral(), "dados-passageiros.xml");
+						} catch (Exception e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+						
+						JOptionPane.showMessageDialog(janela, "Corrida adicionada com Sucesso!");
+						janela.dispose();
+					} else {
+						JOptionPane.showMessageDialog(janela, "Agende a corrida para agora ou para uma data futura!", "ERRO!", JOptionPane.ERROR_MESSAGE);
 					}
-					
-					JOptionPane.showMessageDialog(janela, "Corrida adicionada com Sucesso!");
-					janela.dispose();
 				} else {
 					JOptionPane.showMessageDialog(janela, "Preencha os campos corretamente", "ERRO!", JOptionPane.ERROR_MESSAGE);
 				}
