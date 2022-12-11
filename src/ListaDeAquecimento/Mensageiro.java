@@ -131,7 +131,23 @@ public class Mensageiro extends MultiPartEmail{
 	}
 	
 	public boolean enviarRelatorioFinancas(String email) {
+		try {
+			setSubject("Relatório de finanças");
+			addTo(email);
+			EmailAttachment anexo = new EmailAttachment();
+			anexo.setPath("relatorios/relatorio-Financas.pdf");
+			anexo.setName("Relatório de Finanças.pdf");
+			
+			attach(anexo);
+			System.out.println("Finanças enviado com sucesso");
+			JOptionPane.showMessageDialog(null, "O relatório foi enviado");
+			send();
+			return true;
+		} catch (EmailException e) {
+			
+			JOptionPane.showMessageDialog(null, "Não foi possível enviar o relatório");
 		
+		}
 		return false;
 	}
 	public boolean enviarBoleto() {

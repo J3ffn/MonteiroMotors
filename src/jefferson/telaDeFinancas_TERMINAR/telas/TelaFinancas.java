@@ -5,7 +5,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -17,6 +17,7 @@ import javax.swing.text.MaskFormatter;
 
 import ListaDeAquecimento.Administrador;
 import ListaDeAquecimento.CentralDeInformacoes;
+import ListaDeAquecimento.Corrida;
 import ListaDeAquecimento.Persistencia;
 import clebson.JanelaAdministrador;
 import jefferson.UsuarioTeste;
@@ -29,9 +30,12 @@ public class TelaFinancas extends JFrame{
 	private String email;
 	private JFormattedTextField linhaData;
 	private CentralDeInformacoes central;
-	private MaskFormatter campoDigitarData;
-	private LocalDate data;
+	private LocalDateTime data;
 	private JComboBox<String> box;
+	
+	public void setData(LocalDateTime data) {
+		this.data = data;
+	}
 	
 	public TelaFinancas(Administrador adm) {
 		super("Finanças");
@@ -47,8 +51,12 @@ public class TelaFinancas extends JFrame{
 		
 		addTitulo();
 		addComboBox();
-		addBotoes(adm);
 		
+		// TODO remover teste
+//		testeAdicionarCorridas();
+		
+		addBotoes(adm);
+
 		setVisible(true);
 	}
 	
@@ -60,10 +68,19 @@ public class TelaFinancas extends JFrame{
 		}
 	}
 	
+//	private void testeAdicionarCorridas() {
+//		Corrida corrida = new Corrida();
+//		corrida.setEnderecoDeDestino("UmEMAILQUALQUER@gmail.com");
+//		corrida.setData(LocalDateTime.of(2022, 11, 11, 0, 0));
+//		corrida.setEnderecoDeDestino("Rua das cabaça");
+//		corrida.setEnderecoDePartida("Monteiro");
+//		central.adicionarCorrida(corrida);
+//	}
+	
 	private void addTitulo() {
 		JLabel titulo = new JLabel();
 		titulo.setFont(new Font("", Font.BOLD, 20));
-		titulo.setBounds(00, 100, 483, 30);
+		titulo.setBounds(0, 100, 483, 30);
 		titulo.setHorizontalAlignment(SwingConstants.CENTER);
 		titulo.setText("O email será enviado para:");
 		
@@ -99,7 +116,7 @@ public class TelaFinancas extends JFrame{
 		botaoEnviar.setBounds(180, 300, 120, 40);
 		Administrador usuario = new UsuarioTeste();
 		// TODO substituir na instancia usuario por: central.recuperarUsuarioPeloEmail(email)
-		botaoEnviar.addActionListener(new OuvinteDeFinancas(usuario, central.getCorridas(), data, (String)box.getSelectedItem()));
+		botaoEnviar.addActionListener(new OuvinteDeFinancas(this, usuario, central.getCorridas(), data, box, linhaData));
 		
 		add(botaoVoltar);
 		add(botaoEnviar);
@@ -109,7 +126,7 @@ public class TelaFinancas extends JFrame{
 		JLabel subtitulo = new JLabel("Filtrar por:");
 		subtitulo.setBounds(180, 172, 60, 40);
 		
-		String [] opcoes = {"Tudo", "Recentes", "Antigas"}; 
+		String[] opcoes = {"Tudo", "Recentes", "Antigas"}; 
 		box = new JComboBox<>(opcoes);
 		box.setBounds(180, 200, 120, 40);
 		
@@ -122,10 +139,12 @@ public class TelaFinancas extends JFrame{
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		box.addActionListener(new OuvinteComboBox(this, linhaData, data));
+		box.addActionListener(new OuvinteComboBox(this, linhaData));
 		
 		add(subtitulo);
 		add(box);
 		add(linhaData);
 	}
+	
+	
 }
