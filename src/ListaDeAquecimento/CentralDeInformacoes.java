@@ -66,6 +66,24 @@ public class CentralDeInformacoes {
 	public ArrayList<Usuario> getTodosOsUsuarios() {
 		return todosOsUsuarios;
 	}
+	public ArrayList<Usuario> getTodosOsMototaxistas() {
+		ArrayList <Usuario> mtxs = new ArrayList<Usuario>();
+		for(Usuario u: todosOsUsuarios) {
+			if(u instanceof Mototaxista) {
+				mtxs.add(u);
+			}
+		}
+		return mtxs;
+	}
+	public ArrayList<Usuario> getTodosOsPassageiros() {
+		ArrayList <Usuario> mtxs = new ArrayList<Usuario>();
+		for(Usuario u: todosOsUsuarios) {
+			if(u instanceof Passageiro) {
+				mtxs.add(u);
+			}
+		}
+		return mtxs;
+	}
 	public void setTodosOsUsuarios(ArrayList<Usuario> todosOsUsuarios) {
 		this.todosOsUsuarios = todosOsUsuarios;
 	}

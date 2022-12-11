@@ -22,10 +22,11 @@ import clebson.JanelaEditarPerfilAdmin;
 import eduardo.JanelaCorridasDisponiveis.Painel;
 
 public class PainelListaUsuarios extends Painel{
-	ArrayList <Usuario> usuarios = getCentral().getTodosOsUsuarios();
+	ArrayList <Usuario> usuarios;
 	
-	public PainelListaUsuarios(Administrador usuario) {
+	public PainelListaUsuarios(Administrador usuario, ArrayList<Usuario> usuarios) {
 		super(null, usuario);
+		this.usuarios = usuarios;
 		preencherPainel();
 	}
 	public void preencherPainel() {
@@ -57,4 +58,11 @@ public class PainelListaUsuarios extends Painel{
 			}
 		}
 	}
+	public ArrayList<Usuario> getUsuarios() {
+		return usuarios;
+	}
+	public void setUsuarios(ArrayList<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
+	
 }
