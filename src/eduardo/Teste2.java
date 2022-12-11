@@ -39,8 +39,9 @@ public class Teste2 {
 		Passageiro n = new Passageiro("Eduardo1", "Masculino", "eduardo", "kkk", dataN);
 		Mototaxista n1 = new Mototaxista("Eduardo", "Masculino", "eduardo", "kkk", null);
 		Administrador adm =  new Administrador("Eduardo", "Masculino", "edd", "kkk", null);
-		
-		Corrida c = new Corrida("Bla", "Bla", 60f, true, data, adm);
+		// TODO valor ficticio, desenvolver a lógica do valor.
+		int valor = 3;
+		Corrida c = new Corrida("Bla", "Bla", 60f, true, data, adm, valor);
 		try {
 			n1.adicionarCreditos(2, central);
 		} catch (AdicaoInvalidaException e) {

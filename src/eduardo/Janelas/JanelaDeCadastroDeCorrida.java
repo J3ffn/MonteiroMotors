@@ -71,12 +71,13 @@ public class JanelaDeCadastroDeCorrida extends JanelaPadrao{
 					} else {
 						dataDaCorrida = LocalDateTime.now();
 					}
+					int valorDaCorrida = 3;
 					Corrida c = new Corrida(inputEnderecoPartida.getText(), 
 							inputEnderecoDestino.getText(), 
 							Float.parseFloat(inputDistancia.getText()), 
 							checkBCorridaParaAgora.isSelected(), 
 							dataDaCorrida,
-							getUsuario());
+							getUsuario(), valorDaCorrida);
 					getCentral().adicionarCorrida(c);
 					
 					try {

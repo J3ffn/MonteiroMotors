@@ -75,7 +75,8 @@ public class TelaDeAdicionarCreditos extends JFrame{
 					try {
 						JOptionPane.showMessageDialog(null, "uma N-fe foi enviada ao seu email");
 						mototaxista.adicionarCreditos(valorcreditos, central);
-						mensageiro.enviarNotaFiscal(mototaxista.getEmail());
+						// TODO configurar enviarBoleto
+						mensageiro.enviarBoleto();
 						tela.dispose();
 					} catch (AdicaoInvalidaException e1) {
 						e1.printStackTrace();
