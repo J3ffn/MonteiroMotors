@@ -106,6 +106,7 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 	public class OuvinteBotaoEditarEmail implements ActionListener{
 		
 		private Usuario usuario;
+
 		
 		public OuvinteBotaoEditarEmail(Usuario usuario) {
 			// TODO Auto-generated constructor stub
@@ -122,30 +123,24 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 		}
 	}
 	public class OuvinteBotaoEditarTipo implements ActionListener{
+		public Usuario usuario;
+		
+		public OuvinteBotaoEditarTipo(Usuario usuario) {
+			this.usuario = usuario;
+		}
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-			new JanelaAlternativaPequenasOperacoes("Mudar Tipo");
-			adicionarBotoesTipo();
-			
-			setVisible(true);
+			new JanelaMudançaTipo();
+
 		}
-		public void adicionarBotoesTipo(){
-			JComboBox<TipoDeConta> tipos = new JComboBox<TipoDeConta>();
-			tipos.setBounds(50, 75, 100, 50);;
-			tipos.addItem(TipoDeConta.ADMINISTRADOR);
-			tipos.addItem(TipoDeConta.MOTOTAXISTA);
-			tipos.addItem(TipoDeConta.PASSAGEIRO);
-			add(tipos);
-			
+				
 		}
-	}
 	
 	
 	OuvinteBotaoEditarNome ouvinteEditarNome = new OuvinteBotaoEditarNome(this.getUsuario());
 	OuvinteBotaoEditarEmail ouvinteEditarEmail = new OuvinteBotaoEditarEmail(this.getUsuario());
 	OuvinteBotaoDeletarPerfil ouvinteDeletarPerfil = new OuvinteBotaoDeletarPerfil();
-	OuvinteBotaoEditarTipo ouvinteEditarTipo = new OuvinteBotaoEditarTipo();
+	OuvinteBotaoEditarTipo ouvinteEditarTipo = new OuvinteBotaoEditarTipo(this.getUsuario());
 	
 	public void adicionarBotoes(Usuario usuario) {
 		JButton btEditarNome = new JButton();
