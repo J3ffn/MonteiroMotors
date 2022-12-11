@@ -45,6 +45,40 @@
       <tipoDeConta>PASSAGEIRO</tipoDeConta>
       <mototaxistasBloqueados/>
     </ListaDeAquecimento.Passageiro>
+    <ListaDeAquecimento.Passageiro>
+      <nome>eu</nome>
+      <sexo>MASCULINO</sexo>
+      <senha>oo</senha>
+      <dataDeNascimento>2004-02-21</dataDeNascimento>
+      <email>bolo</email>
+      <id>bolo</id>
+      <perfilAtivo>true</perfilAtivo>
+      <tipoDeConta>PASSAGEIRO</tipoDeConta>
+      <mototaxistasBloqueados/>
+    </ListaDeAquecimento.Passageiro>
+    <ListaDeAquecimento.Mototaxista>
+      <nome>Auau</nome>
+      <sexo>MASCULINO</sexo>
+      <senha>adm</senha>
+      <dataDeNascimento>2004-02-21</dataDeNascimento>
+      <email>lobo</email>
+      <id>lobo</id>
+      <perfilAtivo>true</perfilAtivo>
+      <tipoDeConta>MOTOTAXISTA</tipoDeConta>
+      <avaliacoes/>
+      <creditos/>
+    </ListaDeAquecimento.Mototaxista>
+    <ListaDeAquecimento.Passageiro>
+      <nome>nick</nome>
+      <sexo>MASCULINO</sexo>
+      <senha>poo</senha>
+      <dataDeNascimento>2004-02-21</dataDeNascimento>
+      <email>oop</email>
+      <id>oop</id>
+      <perfilAtivo>true</perfilAtivo>
+      <tipoDeConta>PASSAGEIRO</tipoDeConta>
+      <mototaxistasBloqueados/>
+    </ListaDeAquecimento.Passageiro>
   </todosOsUsuarios>
   <corridas>
     <ListaDeAquecimento.Corrida>
@@ -102,6 +136,106 @@
         <dataDeNascimento>2004-02-21</dataDeNascimento>
         <email>maria</email>
         <id>maria</id>
+        <perfilAtivo>true</perfilAtivo>
+        <tipoDeConta>PASSAGEIRO</tipoDeConta>
+        <mototaxistasBloqueados/>
+      </usuario>
+    </ListaDeAquecimento.Corrida>
+    <ListaDeAquecimento.Corrida>
+      <id>1670725431219</id>
+      <status>PENDENTE</status>
+      <enderecoDePartida>RUa</enderecoDePartida>
+      <enderecoDeDestino>slsls</enderecoDeDestino>
+      <distancia>2.0</distancia>
+      <paraAgora>true</paraAgora>
+      <data>2022-12-10T23:23:51.2198071</data>
+      <usuario class="ListaDeAquecimento.Passageiro">
+        <nome>eu</nome>
+        <sexo>MASCULINO</sexo>
+        <senha>oo</senha>
+        <dataDeNascimento>2004-02-21</dataDeNascimento>
+        <email>bolo</email>
+        <id>bolo</id>
+        <perfilAtivo>true</perfilAtivo>
+        <tipoDeConta>PASSAGEIRO</tipoDeConta>
+        <mototaxistasBloqueados/>
+      </usuario>
+    </ListaDeAquecimento.Corrida>
+    <ListaDeAquecimento.Corrida>
+      <id>1670725562958</id>
+      <status>PENDENTE</status>
+      <enderecoDePartida>alalal</enderecoDePartida>
+      <enderecoDeDestino>slslsl</enderecoDeDestino>
+      <distancia>0.1</distancia>
+      <paraAgora>true</paraAgora>
+      <data>2022-12-10T23:26:02.9582503</data>
+      <usuario class="ListaDeAquecimento.Passageiro">
+        <nome>eu</nome>
+        <sexo>MASCULINO</sexo>
+        <senha>oo</senha>
+        <dataDeNascimento>2004-02-21</dataDeNascimento>
+        <email>bolo</email>
+        <id>bolo</id>
+        <perfilAtivo>true</perfilAtivo>
+        <tipoDeConta>PASSAGEIRO</tipoDeConta>
+        <mototaxistasBloqueados/>
+      </usuario>
+    </ListaDeAquecimento.Corrida>
+    <ListaDeAquecimento.Corrida>
+      <id>1670726530576</id>
+      <status>PENDENTE</status>
+      <enderecoDePartida>dldldld</enderecoDePartida>
+      <enderecoDeDestino>dldldl</enderecoDeDestino>
+      <distancia>0.1</distancia>
+      <paraAgora>false</paraAgora>
+      <data>2004-02-21T10:30:00</data>
+      <usuario class="ListaDeAquecimento.Passageiro">
+        <nome>eu</nome>
+        <sexo>MASCULINO</sexo>
+        <senha>oo</senha>
+        <dataDeNascimento>2004-02-21</dataDeNascimento>
+        <email>bolo</email>
+        <id>bolo</id>
+        <perfilAtivo>true</perfilAtivo>
+        <tipoDeConta>PASSAGEIRO</tipoDeConta>
+        <mototaxistasBloqueados/>
+      </usuario>
+    </ListaDeAquecimento.Corrida>
+    <ListaDeAquecimento.Corrida>
+      <id>1670729997808</id>
+      <status>PENDENTE</status>
+      <enderecoDePartida>nnnn</enderecoDePartida>
+      <enderecoDeDestino>nnnn</enderecoDeDestino>
+      <distancia>0.2</distancia>
+      <paraAgora>true</paraAgora>
+      <data>2022-12-11T00:39:57.8077826</data>
+      <usuario class="ListaDeAquecimento.Passageiro">
+        <nome>eu</nome>
+        <sexo>MASCULINO</sexo>
+        <senha>oo</senha>
+        <dataDeNascimento>2004-02-21</dataDeNascimento>
+        <email>bolo</email>
+        <id>bolo</id>
+        <perfilAtivo>true</perfilAtivo>
+        <tipoDeConta>PASSAGEIRO</tipoDeConta>
+        <mototaxistasBloqueados/>
+      </usuario>
+    </ListaDeAquecimento.Corrida>
+    <ListaDeAquecimento.Corrida>
+      <id>1670737795602</id>
+      <status>PENDENTE</status>
+      <enderecoDePartida>sslssl</enderecoDePartida>
+      <enderecoDeDestino>ddldldldl</enderecoDeDestino>
+      <distancia>0.2</distancia>
+      <paraAgora>false</paraAgora>
+      <data>1998-02-12T12:30:00</data>
+      <usuario class="ListaDeAquecimento.Passageiro">
+        <nome>nick</nome>
+        <sexo>MASCULINO</sexo>
+        <senha>poo</senha>
+        <dataDeNascimento>2004-02-21</dataDeNascimento>
+        <email>oop</email>
+        <id>oop</id>
         <perfilAtivo>true</perfilAtivo>
         <tipoDeConta>PASSAGEIRO</tipoDeConta>
         <mototaxistasBloqueados/>

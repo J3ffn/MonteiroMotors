@@ -27,11 +27,10 @@ public class PainelListaCorridasMototaxista extends Painel{
 
 	@Override
 	public void preencherPainel() {
-    setCorridasTodasAsDisponiveis(getCentral().recuperarCorridasPossiveisParaoMototaxista((Mototaxista) getUsuario()));
-		
 		this.setBackground(Color.WHITE);
 		int y = 10;
 		this.setLayout(null);
+		this.repaint();
 		
 		
 		if(getCorridasTodasAsDisponiveis() != null) {

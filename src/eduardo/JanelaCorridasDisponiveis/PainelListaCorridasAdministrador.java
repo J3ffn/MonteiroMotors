@@ -19,18 +19,14 @@ import ListaDeAquecimento.Status;
 import ListaDeAquecimento.Usuario;
 
 public class PainelListaCorridasAdministrador extends Painel{
-	private ArrayList <Corrida> corridas;
 	
 	public PainelListaCorridasAdministrador(ArrayList<Corrida> corridasTodasAsDisponiveis, Administrador usuario) {
 		super(corridasTodasAsDisponiveis, usuario);
 	}
 	public void preencherPainel() {
-		this.setCorridasTodasAsDisponiveis(getCentral().getCorridas());
-		
 		this.setBackground(Color.WHITE);
 		int y = 10;
 		this.setLayout(null);
-		
 		
 		if(getCorridasTodasAsDisponiveis() != null) {
 			for (Corrida c : this.getCorridasTodasAsDisponiveis()) {

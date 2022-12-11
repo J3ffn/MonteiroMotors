@@ -53,7 +53,7 @@ public class JanelaMototaxista extends JanelaPadraoUsuario{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// Abrir Chamadas
-			JanelaDeCorridasDisponiveis janela = new JanelaDeCorridasDisponiveis(getUsuario());
+			JanelaDeCorridasDisponiveis janela = new JanelaDeCorridasDisponiveis(getUsuario(), getCentral(), getPersistencia());
 		}
 	}
 		

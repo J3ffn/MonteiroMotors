@@ -152,6 +152,7 @@ public class JanelaDeCadastroDeCorrida extends JanelaPadrao{
 					inputHoraDaCorrida.setEnabled(false);
 				} else {
 					inputDataDaCorrida.setEnabled(true);
+					inputHoraDaCorrida.setEnabled(true);
 				}
 			}
 			

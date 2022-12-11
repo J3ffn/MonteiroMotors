@@ -15,6 +15,7 @@ import clebson.JanelaMototaxista;
 import clebson.JanelaAdministrador;
 import clebson.JanelaPassageiro;
 import eduardo.JanelaCorridasDisponiveis.JanelaDeCorridasDisponiveis;
+import eduardo.Janelas.AdicaoInvalidaException;
 import eduardo.Janelas.JanelaDeCadastroDeCorrida;
 import eduardo.Janelas.JanelaDeDefinicaoDeValorDosCreditos;
 import eduardo.Janelas.JanelaDeRegistro;
@@ -40,7 +41,12 @@ public class Teste2 {
 		Administrador adm =  new Administrador("Eduardo", "Masculino", "edd", "kkk", null);
 		
 		Corrida c = new Corrida("Bla", "Bla", 60f, true, data, adm);
-		n1.adicionarCreditos(2, central);
+		try {
+			n1.adicionarCreditos(2, central);
+		} catch (AdicaoInvalidaException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		central.adicionarUsuario(n);
 		//n.adicionarCreditos(2, central);
 		//JanelaDeReividicacaoDeCorrida janela2 = new JanelaDeReividicacaoDeCorrida(central, c, n);

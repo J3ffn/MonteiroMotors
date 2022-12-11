@@ -135,4 +135,42 @@ public class CentralDeInformacoes {
 		
 		return corridas;
 	}
+	public ArrayList<Corrida> recuperarReinvindicadas(Usuario p) {
+		ArrayList <Corrida> lista = new ArrayList <Corrida>();
+		if(p instanceof Passageiro) {
+			for(Corrida c : corridas) {
+				Passageiro p1 = (Passageiro) c.getUsuario();
+				if(c.getStatus() == Status.REINVINDICADA && p1.equals(p)) {
+					lista.add(c);
+				}
+			}
+		} else if (p instanceof Administrador) {
+			for(Corrida c : corridas) {
+				Passageiro p1 = (Passageiro) c.getUsuario();
+				if(c.getStatus() == Status.REINVINDICADA) {
+					lista.add(c);
+				}
+			}
+		}
+		return lista;
+	}
+	public ArrayList<Corrida> recuperarNaoReinvindicadas(Usuario p) {
+		ArrayList <Corrida> lista = new ArrayList <Corrida>();
+		if(p instanceof Passageiro) {
+			for(Corrida c : corridas) {
+				Passageiro p1 = (Passageiro) c.getUsuario();
+				if(c.getStatus() == Status.PENDENTE && p1.equals(p)) {
+					lista.add(c);
+				}
+			}
+		} else if (p instanceof Administrador) {
+			for(Corrida c : corridas) {
+				Passageiro p1 = (Passageiro) c.getUsuario();
+				if(c.getStatus() == Status.PENDENTE) {
+					lista.add(c);
+				}
+			}
+		}
+		return lista;
+	}
 }
