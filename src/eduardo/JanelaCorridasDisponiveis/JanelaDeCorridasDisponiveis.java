@@ -75,6 +75,12 @@ public class JanelaDeCorridasDisponiveis extends JanelaPadrao{
 		} else if (this.getUsuario() instanceof Passageiro) {
 			filtro.removeItemAt(1);
 			filtro.removeItemAt(1);
+		} else if (this.getUsuario() instanceof Administrador) {
+			for(Usuario u : this.getCentral().getTodosOsUsuarios()) {
+				if(u instanceof Mototaxista || u instanceof Passageiro) {
+					filtro.addItem(u.getEmail());
+				}
+			}
 		}
 		filtro.setSelectedItem(opcoes[0]);
 		filtro.setBounds(350, 5, 110, 20);
@@ -151,7 +157,11 @@ public class JanelaDeCorridasDisponiveis extends JanelaPadrao{
 					listaCorridasQueVaoAparecer = getCentral().recuperarCorridasDeUmPassageiro(getUsuario().getEmail());
 				}
 				setCorridasTodasAsDisponiveis(listaCorridasQueVaoAparecer);
+			} else {
+				String email = (String) filtro.getSelectedItem();
+				setCorridasTodasAsDisponiveis(getCentral().recuperarCorridasDeUmPassageiro(email));
 			}
+			
 			JButton botao = (JButton) e.getSource();
 			botao.setText("Atualizar!");
 			botao.transferFocus();

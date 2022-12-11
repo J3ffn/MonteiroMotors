@@ -59,6 +59,8 @@ public class JanelaDeChamadasDeCorridas extends JanelaDeCorridasDisponiveis{
 						e1.printStackTrace();
 					}
 				}
+			} else {
+				JOptionPane.showMessageDialog(janela, "Reinvindique uma corrida primeiro!");
 			}
 		}
 		
