@@ -23,12 +23,12 @@ public class JanelaAdministrador extends JanelaPadraoUsuario {
 		super("Administrador", adm);
 		email = adm.getEmail();
 		
-		adicionarBotoesAdministrador();
+		adicionarBotoesAdministrador(adm);
 		
 		setVisible(true);
 	}
 
-	private void adicionarBotoesAdministrador() {
+	private void adicionarBotoesAdministrador(Administrador adm) {
 		super.adicionarBotoes();
 		
 		JButton btListarUsuarios = new JButton();
@@ -38,6 +38,7 @@ public class JanelaAdministrador extends JanelaPadraoUsuario {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				dispose();
 				new JanelaDeListagemDeUsuarios((Administrador) getUsuario());
 			}
 			
@@ -60,8 +61,8 @@ public class JanelaAdministrador extends JanelaPadraoUsuario {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new TelaFinancas(email);
-				
+				dispose();
+				new TelaFinancas(adm);
 			}
 		});
 		add (btFinancas);
@@ -73,6 +74,7 @@ public class JanelaAdministrador extends JanelaPadraoUsuario {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				dispose();
 				new JanelaDeDefinicaoDeValorDosCreditos((Administrador) getUsuario());
 			}
 			

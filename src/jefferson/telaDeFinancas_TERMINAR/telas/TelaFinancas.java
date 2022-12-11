@@ -6,28 +6,38 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
+import ListaDeAquecimento.Administrador;
 import ListaDeAquecimento.CentralDeInformacoes;
 import ListaDeAquecimento.Mensageiro;
 import ListaDeAquecimento.Persistencia;
+import clebson.JanelaAdministrador;
 import clebson.JanelaPadrao;
 import jefferson.telaDeFinancas_TERMINAR.ouvintes.OuvinteDeFinancas;
 
 @SuppressWarnings("serial")
-public class TelaFinancas extends JanelaPadrao{
+public class TelaFinancas extends JFrame{
 
 	private String email;
 	private CentralDeInformacoes central;
 	
-	public TelaFinancas(String email) {
-		super("Finanças", null);
-		this.email = email;
+	public TelaFinancas(Administrador adm) {
+		super("Finanças");
+		this.email = adm.getEmail();
+		
 		adicionarCentral();
 		
+		setSize(498, 462);
+		setResizable(false);
+		setLocationRelativeTo(null);			
+		setLayout(null);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		addTitulo();
-		addBotoes();
+		addBotoes(adm);
 		
 		setVisible(true);
 	}
@@ -63,14 +73,21 @@ public class TelaFinancas extends JanelaPadrao{
 		add(informacao);
 	}
 	
-	private void addBotoes() {
+	private void addBotoes(Administrador adm) {
 		JButton botaoVoltar = new JButton("< voltar");
 		botaoVoltar.setBounds(5, 5, 80, 20);
-		
+		botaoVoltar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new JanelaAdministrador(adm);
+			}
+		});
 		
 		JButton botaoEnviar = new JButton("Enviar");
 		botaoEnviar.setBounds(180, 280, 120, 40);
-		botaoEnviar.addActionListener(new OuvinteDeFinancas(central.recuperarUsuarioPeloEmail(email)));
+//		botaoEnviar.addActionListener(new OuvinteDeFinancas(central.recuperarUsuarioPeloEmail(email)));
 		
 		add(botaoVoltar);
 		add(botaoEnviar);

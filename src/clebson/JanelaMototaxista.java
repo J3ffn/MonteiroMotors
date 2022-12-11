@@ -15,6 +15,7 @@ import ListaDeAquecimento.Usuario;
 import eduardo.JanelaCorridasDisponiveis.JanelaDeCorridasDisponiveis;
 import eduardo.JanelaCorridasDisponiveis.PainelListaCorridasMototaxista;
 import eduardo.Ouvintes.OuvinteBotaoListarCorridas;
+import jefferson.telaDeAdicionarCreditos.telasParaAdicionar.TelaDeAdicionarCreditos;
 
 
 
@@ -23,13 +24,14 @@ import eduardo.Ouvintes.OuvinteBotaoListarCorridas;
 public class JanelaMototaxista extends JanelaPadraoUsuario{
 	
 	private int qtddDeCretidos;
+	private Mototaxista mototaxista;
 	
 	public JanelaMototaxista(Mototaxista mtx) {
 		super("Mototaxista", mtx);
 		qtddDeCretidos = mtx.getCreditos().size();
 		
 		adicionarTextosDeCredito();
-		adicionarBotoesMototaxista();
+		adicionarBotoesMototaxista(mtx);
 //		adicionarCampoCreditos();
 		
 		setVisible(true);
@@ -61,7 +63,7 @@ public class JanelaMototaxista extends JanelaPadraoUsuario{
 		
 		OuvinteBotaoListarCorridas ouvinteCorridas = new OuvinteBotaoListarCorridas(getUsuario(), getCentral(), getPersistencia());
 	
-	private void adicionarBotoesMototaxista() {
+	private void adicionarBotoesMototaxista(Mototaxista mtx) {
 		super.adicionarBotoes();
 		
 		JButton btListarCorridas = new JButton();
@@ -80,6 +82,23 @@ public class JanelaMototaxista extends JanelaPadraoUsuario{
 		add (btChamadas);
 		
 		
+		ImageIcon icone = new ImageIcon("icones/+.png");
+		JButton adicionarCredito = new JButton(icone);
+		adicionarCredito.setFont(new Font("ARIAL", Font.BOLD, 12));
+		adicionarCredito.setFocusable(false);
+		adicionarCredito.setOpaque(true);
+		adicionarCredito.setBorderPainted(false);
+		adicionarCredito.setBounds(450, 10, 25, 20);
+		
+		adicionarCredito.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new TelaDeAdicionarCreditos(mtx, getCentral());
+			}
+		});
+		
+		add (adicionarCredito);
 	}
 	
 }

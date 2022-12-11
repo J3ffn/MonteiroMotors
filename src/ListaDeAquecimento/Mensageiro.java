@@ -102,4 +102,15 @@ public class Mensageiro extends MultiPartEmail{
 		
 		return false;
 	}
+	
+	public boolean enviarNotaFiscal(String email) {
+		try {
+			addTo(email);
+		} catch (EmailException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
 }
