@@ -6,9 +6,11 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
+import ListaDeAquecimento.TipoDeConta;
 import ListaDeAquecimento.Usuario;
 import clebsonOuvintesExternos.OuvinteBotaoDeletarPerfil;
 import eduardo.Ouvintes.OuvinteBotaoCancelar;
@@ -54,7 +56,7 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 	public JanelaEditarPerfil(Usuario usuario) {
 		super("Editar Perfil", usuario);
 		adicionarTextos(usuario);
-		adicionarBotoes();
+		adicionarBotoes(usuario);
 		setVisible(true);
 	}
 	
@@ -119,12 +121,33 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 			
 		}
 	}
+	public class OuvinteBotaoEditarTipo implements ActionListener{
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			new JanelaAlternativaPequenasOperacoes("Mudar Tipo");
+			adicionarBotoesTipo();
+			
+			setVisible(true);
+		}
+		public void adicionarBotoesTipo(){
+			JComboBox<TipoDeConta> tipos = new JComboBox<TipoDeConta>();
+			tipos.setBounds(50, 75, 100, 50);;
+			tipos.addItem(TipoDeConta.ADMINISTRADOR);
+			tipos.addItem(TipoDeConta.MOTOTAXISTA);
+			tipos.addItem(TipoDeConta.PASSAGEIRO);
+			add(tipos);
+			
+		}
+	}
+	
 	
 	OuvinteBotaoEditarNome ouvinteEditarNome = new OuvinteBotaoEditarNome(this.getUsuario());
 	OuvinteBotaoEditarEmail ouvinteEditarEmail = new OuvinteBotaoEditarEmail(this.getUsuario());
 	OuvinteBotaoDeletarPerfil ouvinteDeletarPerfil = new OuvinteBotaoDeletarPerfil();
+	OuvinteBotaoEditarTipo ouvinteEditarTipo = new OuvinteBotaoEditarTipo();
 	
-	public void adicionarBotoes() {
+	public void adicionarBotoes(Usuario usuario) {
 		JButton btEditarNome = new JButton();
 		btEditarNome.setBounds(350, 170, 100, 20);
 		btEditarNome.setText("Editar Nome");
@@ -152,5 +175,15 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 		btVoltar.setFont(new Font("Tahoma",Font.BOLD,10));
 		btVoltar.addActionListener(new OuvinteBotaoCancelar(this));
 		add (btVoltar);
+		
+		if (usuario.getTipoDeConta() == TipoDeConta.ADMINISTRADOR) {
+			JButton btEditarPerfil = new JButton();
+			btEditarPerfil.setBounds(350, 240, 100, 20);
+			btEditarPerfil.setText("Editar Tipo");
+			btEditarPerfil.setFont(new Font("Tahoma",Font.BOLD,10));
+			btEditarPerfil.addActionListener(ouvinteEditarTipo);
+			add (btEditarPerfil);
+			
+		}
 	}
 }
