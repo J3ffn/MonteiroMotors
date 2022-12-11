@@ -22,38 +22,40 @@ import eduardo.Ouvintes.OuvinteBotaoListarCorridas;
 @SuppressWarnings("serial")
 public class JanelaMototaxista extends JanelaPadraoUsuario{
 	
-
+	private int qtddDeCretidos;
 	
 	public JanelaMototaxista(Mototaxista mtx) {
 		super("Mototaxista", mtx);
-		adicionarTextos();
+		qtddDeCretidos = mtx.getCreditos().size();
+		
+		adicionarTextosDeCredito();
 		adicionarBotoesMototaxista();
+//		adicionarCampoCreditos();
 		
 		setVisible(true);
 	}
 	
-	private void adicionarTextos() {
+	private void adicionarTextosDeCredito() {
 		JLabel lbCreditos = new JLabel("Créditos: ");		
-		lbCreditos.setBounds(390, 10, 60, 20);
+		lbCreditos.setBounds(340, 10, 60, 20);
 		lbCreditos.setFont(new Font("Arial",Font.BOLD,12));
 		add(lbCreditos);
 		
 		ImageIcon moeda = new ImageIcon("icones/Coin (1).png");
-		JLabel lbMoeda = new JLabel("XXXXXX", moeda, JLabel.CENTER);
-		lbMoeda.setBounds(370, 50, 100, 20);
+		JLabel lbMoeda = new JLabel(qtddDeCretidos + "", moeda, JLabel.CENTER);
+		lbMoeda.setBounds(370, 10, 100, 20);
 		lbMoeda.setFont(new Font("Arial",Font.BOLD,12));
 		add(lbMoeda);
 		
 	}
 	
-
 	
 	public class OuvinteBotaoChamadas implements ActionListener{
 		
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// Abrir Chamadas
-			JanelaDeCorridasDisponiveis janela = new JanelaDeCorridasDisponiveis(getUsuario(), getCentral(), getPersistencia());
+			new JanelaDeCorridasDisponiveis(getUsuario(), getCentral(), getPersistencia());
 		}
 	}
 		
@@ -79,4 +81,5 @@ public class JanelaMototaxista extends JanelaPadraoUsuario{
 		
 		
 	}
+	
 }

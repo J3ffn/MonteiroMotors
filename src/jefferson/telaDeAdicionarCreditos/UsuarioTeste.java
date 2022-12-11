@@ -2,7 +2,9 @@ package jefferson.telaDeAdicionarCreditos;
 
 import java.time.LocalDate;
 
+import ListaDeAquecimento.CentralDeInformacoes;
 import ListaDeAquecimento.Mototaxista;
+import ListaDeAquecimento.Persistencia;
 import ListaDeAquecimento.TipoDeConta;
 
 public class UsuarioTeste extends Mototaxista{
@@ -15,6 +17,14 @@ public class UsuarioTeste extends Mototaxista{
 	
 	public UsuarioTeste() {
 		super("Jefferson", "MASCULINO", email, senha, dataDeNascimento);
+		CentralDeInformacoes central;
+		try {
+			central = (CentralDeInformacoes) new Persistencia().recuperar("dados-passageiros.xml");
+			super.adicionarCreditos(500, central);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 }

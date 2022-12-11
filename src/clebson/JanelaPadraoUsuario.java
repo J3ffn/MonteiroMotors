@@ -10,6 +10,7 @@ import clebsonOuvintesExternos.OuvinteBotaoEditarPerfil;
 
 @SuppressWarnings("serial")
 public class JanelaPadraoUsuario extends JanelaPadrao{
+	
 	private JButton btDeslogar;
 	private JButton btEditarPerfil;
 

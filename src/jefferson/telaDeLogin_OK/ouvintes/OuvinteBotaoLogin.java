@@ -12,7 +12,7 @@ import ListaDeAquecimento.*;
 import clebson.JanelaMototaxista;
 import clebson.JanelaAdministrador;
 import clebson.JanelaPassageiro;
-import jefferson.UsuarioTeste;
+import jefferson.telaDeAdicionarCreditos.UsuarioTeste;
 
 public class OuvinteBotaoLogin implements ActionListener{
 
@@ -41,23 +41,24 @@ public class OuvinteBotaoLogin implements ActionListener{
 //		try {
 			String senha = new String(campoSenha.getPassword());
 //			Usuario usuario = central.fazerLogin(campoLogin.getText(), senha);
-			UsuarioTeste usuarioTeste = new UsuarioTeste();
+			Mototaxista usuarioTeste = new UsuarioTeste();
 			//if (UsuarioTeste.email.equals(campoLogin.getText()) && UsuarioTeste.senha.equals(senha)) {
 			JOptionPane.showMessageDialog(null, "Está dentro");
 			tela.dispose();
 			
 			// TODO alterar o switch.
-			switch(TipoDeConta.ADMINISTRADOR) {
+			switch(TipoDeConta.MOTOTAXISTA) {
 			case ADMINISTRADOR:
-				Administrador adm = new Administrador(usuarioTeste.nome, usuarioTeste.getSexo()+"", usuarioTeste.email, usuarioTeste.senha, usuarioTeste.getDataDeNascimento());
-				new JanelaAdministrador(adm);
+//				Administrador adm = new Administrador(usuarioTeste.nome, usuarioTeste.getSexo()+"", usuarioTeste.email, usuarioTeste.senha, usuarioTeste.getDataDeNascimento());
+//				new JanelaAdministrador(adm);
 				break;
 			case PASSAGEIRO:
-				Passageiro pass = new Passageiro(usuarioTeste.nome, usuarioTeste.getSexo()+"", usuarioTeste.email, usuarioTeste.senha, usuarioTeste.getDataDeNascimento());;
-				new JanelaPassageiro(pass);
+//				Passageiro pass = new Passageiro(usuarioTeste.nome, usuarioTeste.getSexo()+"", usuarioTeste.email, usuarioTeste.senha, usuarioTeste.getDataDeNascimento());;
+//				new JanelaPassageiro(pass);
 				break;
 			case MOTOTAXISTA:
-				Mototaxista mtx = new Mototaxista(usuarioTeste.nome, usuarioTeste.getSexo()+"", usuarioTeste.email, usuarioTeste.senha, usuarioTeste.getDataDeNascimento());;
+//				Mototaxista mtx = new Mototaxista(usuarioTeste.nome, usuarioTeste.getSexo()+"", usuarioTeste.email, usuarioTeste.senha, usuarioTeste.getDataDeNascimento());;
+				Mototaxista mtx = usuarioTeste;
 				new JanelaMototaxista(mtx);
 				break;
 			}
