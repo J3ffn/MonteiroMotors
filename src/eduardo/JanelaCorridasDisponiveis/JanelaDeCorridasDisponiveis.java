@@ -160,7 +160,7 @@ public class JanelaDeCorridasDisponiveis extends JanelaPadrao{
 					listaCorridasQueVaoAparecer = getCentral().recuperarCorridasDeUmPassageiro(getUsuario().getEmail());
 				}
 				setCorridasTodasAsDisponiveis(listaCorridasQueVaoAparecer);
-			} else {
+			} else if(getUsuario() instanceof Administrador){
 				Usuario u = passageiros.get(filtro.getSelectedIndex() - opcoes.length);
 				String email = (u.getEmail());//(String) filtro.getSelectedItem(); getCentral(
 				setCorridasTodasAsDisponiveis(getCentral().recuperarCorridasDeUmPassageiro(email));
