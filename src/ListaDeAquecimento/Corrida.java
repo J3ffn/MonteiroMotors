@@ -20,17 +20,20 @@ public class Corrida {
 	
 	private Avaliacao avaliacao;
 	
+	private ValorCorrida valorCorrida;
+	
 	public Corrida() {
 		id = System.currentTimeMillis();
 	}
-	public Corrida(String enderecoDePartida, String enderecoDeDestino, float distancia, boolean paraAgora, LocalDateTime data, Usuario usuario) {
+	public Corrida(String enderecoDePartida, String enderecoDeDestino, float distancia, boolean paraAgora, LocalDateTime data, Usuario usuario, ValorCorrida valor) {
 		this();
 		this.enderecoDePartida = enderecoDePartida;
 		this.enderecoDeDestino = enderecoDeDestino;
 		this.distancia = distancia;
 		this.paraAgora = paraAgora;
 		this.data = data;
-
+		this.valorCorrida = valor;
+		
 		this.usuario = usuario;
 	}
 	public String toString() {
@@ -86,7 +89,9 @@ public class Corrida {
 		this.mototaxista = mototaxista;
 		status = Status.REINVINDICADA;
 	}
-	
+	public ValorCorrida getValor() {
+		return valorCorrida;
+	}
 	public Avaliacao getAvaliacao() {
 		return avaliacao;
 	}

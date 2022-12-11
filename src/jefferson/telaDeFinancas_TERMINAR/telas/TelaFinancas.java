@@ -4,25 +4,34 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
+import java.time.LocalDate;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+import javax.swing.text.MaskFormatter;
 
 import ListaDeAquecimento.Administrador;
 import ListaDeAquecimento.CentralDeInformacoes;
-import ListaDeAquecimento.Mensageiro;
 import ListaDeAquecimento.Persistencia;
 import clebson.JanelaAdministrador;
-import clebson.JanelaPadrao;
+import jefferson.UsuarioTeste;
+import jefferson.telaDeAdicionarCreditos.ouvintesAdicionar.OuvinteComboBox;
 import jefferson.telaDeFinancas_TERMINAR.ouvintes.OuvinteDeFinancas;
 
 @SuppressWarnings("serial")
 public class TelaFinancas extends JFrame{
 
 	private String email;
+	private JFormattedTextField linhaData;
 	private CentralDeInformacoes central;
+	private MaskFormatter campoDigitarData;
+	private LocalDate data;
+	private JComboBox<String> box;
 	
 	public TelaFinancas(Administrador adm) {
 		super("Finanças");
@@ -37,6 +46,7 @@ public class TelaFinancas extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		addTitulo();
+		addComboBox();
 		addBotoes(adm);
 		
 		setVisible(true);
@@ -86,10 +96,36 @@ public class TelaFinancas extends JFrame{
 		});
 		
 		JButton botaoEnviar = new JButton("Enviar");
-		botaoEnviar.setBounds(180, 280, 120, 40);
-//		botaoEnviar.addActionListener(new OuvinteDeFinancas(central.recuperarUsuarioPeloEmail(email)));
+		botaoEnviar.setBounds(180, 300, 120, 40);
+		Administrador usuario = new UsuarioTeste();
+		// TODO substituir na instancia usuario por: central.recuperarUsuarioPeloEmail(email)
+		botaoEnviar.addActionListener(new OuvinteDeFinancas(usuario, central.getCorridas(), data, (String)box.getSelectedItem()));
 		
 		add(botaoVoltar);
 		add(botaoEnviar);
+	}
+	
+	private void addComboBox() {
+		JLabel subtitulo = new JLabel("Filtrar por:");
+		subtitulo.setBounds(180, 172, 60, 40);
+		
+		String [] opcoes = {"Tudo", "Recentes", "Antigas"}; 
+		box = new JComboBox<>(opcoes);
+		box.setBounds(180, 200, 120, 40);
+		
+		try {
+			MaskFormatter mascara = new MaskFormatter("##/##/####");
+			linhaData = new JFormattedTextField(mascara);
+			linhaData.setBounds(180, 250, 120, 40);
+			linhaData.setHorizontalAlignment(JFormattedTextField.CENTER);
+			linhaData.setVisible(false);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		box.addActionListener(new OuvinteComboBox(this, linhaData, data));
+		
+		add(subtitulo);
+		add(box);
+		add(linhaData);
 	}
 }
