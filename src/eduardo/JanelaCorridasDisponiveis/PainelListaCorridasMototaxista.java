@@ -23,7 +23,6 @@ public class PainelListaCorridasMototaxista extends Painel{
 	
 	public PainelListaCorridasMototaxista(ArrayList<Corrida> corridasTodasAsDisponiveis, Mototaxista usuario) {
 		super(corridasTodasAsDisponiveis, usuario);
-
 	}
 	
 	public TipoPainel getTipo() {

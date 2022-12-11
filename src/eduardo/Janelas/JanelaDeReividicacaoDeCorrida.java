@@ -57,11 +57,12 @@ public class JanelaDeReividicacaoDeCorrida extends JanelaPadrao{
 		}
 		
 		public void actionPerformed(ActionEvent e) {
+			Mototaxista m = ((Mototaxista) getUsuario());
 			if(e.getActionCommand().equals("Confirmar")) {
 			int esc = JOptionPane.showConfirmDialog(janela, "Deseja reivindicar essa corrida?");
-			if(esc == 0 && corrida.getStatus() == Status.PENDENTE) {
+			if(esc == 0 && corrida.getStatus() == Status.PENDENTE && m.getCorridaAtual() == null) {
 				try {
-					((Mototaxista) getUsuario()).reinvidicarCorrida(corrida);
+					m.reinvidicarCorrida(corrida);
 					JOptionPane.showMessageDialog(janela, "Corrida Reivindicada!", "Reivindicada!", JOptionPane.INFORMATION_MESSAGE);
 					txLocaldePartida.setText(String.format("Local de Partida: %s", corrida.getEnderecoDePartida()));
 					txLocaldeDestino.setText(String.format("Local de Destino: %s", corrida.getEnderecoDeDestino()));
@@ -82,6 +83,8 @@ public class JanelaDeReividicacaoDeCorrida extends JanelaPadrao{
 				}
 			} else if(corrida.getStatus() != Status.PENDENTE) {
 				JOptionPane.showMessageDialog(janela, "Esta corrida já foi reinvindicada", "Erro!", JOptionPane.ERROR_MESSAGE);
+			} else if ( m.getCorridaAtual() != null) {
+				JOptionPane.showMessageDialog(janela, "Você não pode reivindicar mais que uma corrida por vez!", "Erro!", JOptionPane.ERROR_MESSAGE);
 			}
 			}
 		}

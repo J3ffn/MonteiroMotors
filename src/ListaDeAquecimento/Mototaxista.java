@@ -8,6 +8,7 @@ import eduardo.Janelas.AdicaoInvalidaException;
 public class Mototaxista extends Usuario{
 	private ArrayList < Avaliacao > avaliacoes = new ArrayList < Avaliacao >();
 	private ArrayList < Credito > creditos = new ArrayList < Credito > ();
+	private Corrida corridaAtual;
 	
 	public Mototaxista(String nome, String sexo, String email, String senha, LocalDate i) {
 		super(nome, sexo, email, senha, i);
@@ -44,10 +45,18 @@ public class Mototaxista extends Usuario{
 	public void reinvidicarCorrida(Corrida corrida) throws MotoTaxistaSemCreditosCreditosException {
 		if(!creditos.isEmpty()) {
 			creditos.remove(0);
+			corridaAtual = corrida;
 			corrida.setMototaxista(this);
 			corrida.setStatus(Status.REINVINDICADA);
 		} else {
 			throw new MotoTaxistaSemCreditosCreditosException();
 		}
+	}
+	public void concluirCorrida() {
+		corridaAtual.setStatus(Status.CONCLUIDA);
+		corridaAtual = null;
+	}
+	public Corrida getCorridaAtual() {
+		return corridaAtual;
 	}
 }

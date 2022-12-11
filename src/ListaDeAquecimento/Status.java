@@ -1,5 +1,5 @@
 package ListaDeAquecimento;
 
 public enum Status {
-	PENDENTE, REINVINDICADA;
+	PENDENTE, REINVINDICADA, CONCLUIDA;
 }
