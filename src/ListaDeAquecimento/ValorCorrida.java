@@ -20,4 +20,9 @@ public class ValorCorrida {
 		return data;
 	}
 	
+	@Override
+	public String toString() {
+		return String.format("%d - %s", valor, data);
+	}
+	
 }
