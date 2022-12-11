@@ -19,7 +19,7 @@ public class OuvinteBotaoLogin implements ActionListener{
 	private JTextField campoLogin;
 	private JPasswordField campoSenha;
 	private CentralDeInformacoes central;
-	private Usuario usuario;
+//	private Usuario usuario;
 	private JFrame tela;
 	
 	public OuvinteBotaoLogin(JTextField campoLogin, JPasswordField campoSenha, JFrame tela) {
@@ -38,35 +38,36 @@ public class OuvinteBotaoLogin implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		try {
+//		try {
 			String senha = new String(campoSenha.getPassword());
-			usuario = central.fazerLogin(campoLogin.getText(), senha);
+//			Usuario usuario = central.fazerLogin(campoLogin.getText(), senha);
+			UsuarioTeste usuarioTeste = new UsuarioTeste();
 			//if (UsuarioTeste.email.equals(campoLogin.getText()) && UsuarioTeste.senha.equals(senha)) {
 			JOptionPane.showMessageDialog(null, "Está dentro");
 			tela.dispose();
 			
-			switch(usuario.getTipoDeConta()) {
+			// TODO alterar o switch.
+			switch(TipoDeConta.ADMINISTRADOR) {
 			case ADMINISTRADOR:
-				Administrador adm = (Administrador) usuario;
+				Administrador adm = new Administrador(usuarioTeste.nome, usuarioTeste.getSexo()+"", usuarioTeste.email, usuarioTeste.senha, usuarioTeste.getDataDeNascimento());
 				new JanelaAdministrador(adm);
 				break;
 			case PASSAGEIRO:
-				Passageiro pass = (Passageiro) usuario;
+				Passageiro pass = new Passageiro(usuarioTeste.nome, usuarioTeste.getSexo()+"", usuarioTeste.email, usuarioTeste.senha, usuarioTeste.getDataDeNascimento());;
 				new JanelaPassageiro(pass);
 				break;
 			case MOTOTAXISTA:
-				Mototaxista mtx = (Mototaxista) usuario;
+				Mototaxista mtx = new Mototaxista(usuarioTeste.nome, usuarioTeste.getSexo()+"", usuarioTeste.email, usuarioTeste.senha, usuarioTeste.getDataDeNascimento());;
 				new JanelaMototaxista(mtx);
 				break;
 			}
-		} catch (SenhaIncorretaException erro) {
-			
-			JOptionPane.showMessageDialog(null, "Senha Incorreta!");
-		} catch (PerfilDesativadoException erro) {
-			JOptionPane.showMessageDialog(null, "Perfil Desativado!");
-		} catch (UsuarioNaoCadastradoException e1) {
-			JOptionPane.showMessageDialog(null, "Usuario Não Cadastrado no Sistema!");
-		}
+//		} catch (SenhaIncorretaException erro) {
+//			JOptionPane.showMessageDialog(null, "Senha Incorreta!");
+//		} catch (PerfilDesativadoException erro) {
+//			JOptionPane.showMessageDialog(null, "Perfil Desativado!");
+//		} catch (UsuarioNaoCadastradoException e1) {
+//			JOptionPane.showMessageDialog(null, "Usuario Não Cadastrado no Sistema!");
+//		}
 	}
 	
 }
