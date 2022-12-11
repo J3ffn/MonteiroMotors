@@ -3,31 +3,26 @@ package jefferson.telaDeRecuperacao.telasParaRecuperacao;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.util.UUID;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import ListaDeAquecimento.Mensageiro;
 import clebson.JanelaPadrao;
-import jefferson.telaDeRecuperacao.ouvintesTelaRecuperacao.OuvinteCodigoChave;
 
 @SuppressWarnings("serial")
 public class TelaDeRecuperarSenha extends JanelaPadrao {
 	
 	// Referência da tela -> 498, 462
 	private JButton botaoEnviar;
-	private JFrame tela = this;
 	private JTextField emailDigitado;
+	private TelaDeRecuperarSenha tela = this;
 	
 	public TelaDeRecuperarSenha() {
-		super("Recuperação senha");
+		super("Recuperação senha", null);
 		addTituloDaTela();
 		addCampoTextField();
 		addBotoesDaTela();
@@ -39,13 +34,38 @@ public class TelaDeRecuperarSenha extends JanelaPadrao {
 	protected void addBotoesDaTela() {
 		botaoEnviar = new JButton("ENVIAR CÓDIGO");
 		botaoEnviar.setBounds(170, 270, 125, 40);
-		botaoEnviar.addMouseListener(new MouseAdapter() {
+		botaoEnviar.addActionListener(new ActionListener() {
 			
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				botaoEnviar.addActionListener(new OuvinteCodigoChave(tela, emailDigitado, botaoEnviar));
+			private String gerarCodigo() {
+				UUID geradorID = UUID.randomUUID();
+				String codigoChave = String.valueOf(geradorID).substring(0, 7);
+				return codigoChave;
 			}
 			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String emailDestinatario = emailDigitado.getText();
+				Mensageiro mensageiro = new Mensageiro();
+				String codigoChave = gerarCodigo();
+				
+				System.out.println("Email:" + emailDestinatario);
+				
+				// TODO Descomentar essas verificações.
+//				if (new CentralDeInformacoes().recuperarUsuarioPeloEmail(emailDestinatario) != null) {
+				
+					System.out.println(emailDestinatario);
+					if (mensageiro.verificarEmail(emailDestinatario)) {
+						
+						System.out.println(codigoChave);
+						mensageiro.enviarCodigoDeRecuperacao(emailDestinatario, codigoChave, "Chave de recuperação");
+						
+						tela.dispose();
+						new TelaVerificarCodigo(codigoChave, emailDigitado);
+						
+					} else {JOptionPane.showMessageDialog(null, "Email inválido");}
+				}
+			
+//				else {JOptionPane.showMessageDialog(null, "Usuário não encontrado");}
 		});
 		
 		/*-----------------------------------------*/
@@ -58,7 +78,7 @@ public class TelaDeRecuperarSenha extends JanelaPadrao {
 		linhaTitulo.setBounds(150, 100, 190, 40);
 		linhaTitulo.setFont(new Font("", Font.BOLD, 18));
 		linhaTitulo.setHorizontalTextPosition((int) CENTER_ALIGNMENT);
-
+		
 		add(linhaTitulo);
 	}
 
@@ -69,11 +89,11 @@ public class TelaDeRecuperarSenha extends JanelaPadrao {
 		textoEmail.setFont(new Font("", Font.BOLD, 12));
 
 		// Campo para digitar o email
-		JTextField linhaEmail = new JTextField();
-		linhaEmail.setBounds(115, 185, 250, 40);
-
+		emailDigitado = new JTextField();
+		emailDigitado.setBounds(115, 185, 250, 40);
+		
 		add(textoEmail);
-		add(linhaEmail);
+		add(emailDigitado);
 	}
 	
 }

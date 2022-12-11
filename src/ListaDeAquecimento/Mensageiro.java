@@ -83,6 +83,7 @@ public class Mensageiro extends MultiPartEmail{
 	
 	public boolean enviarCodigoDeRecuperacao(String email, String codigoChave, String titulo) {
 		try {
+			setSubject(titulo);
 			addTo(email);
 			setMsg("Sua chave é: " + codigoChave);
 			
