@@ -57,6 +57,7 @@ public class JanelaDeCadastroDeCorrida extends JanelaPadrao{
 			janela = j;
 		}
 			public void actionPerformed(ActionEvent e) {
+				LocalDateTime agora =  LocalDateTime.now();
 				if(!(inputEnderecoPartida.getText().equals("") || inputEnderecoDestino.getText().equals("") || inputDistancia.getText().equals("    . ") || inputDistancia.getText().equals("0000.0"))) {
 					LocalDateTime dataDaCorrida = null;
 					if(!checkBCorridaParaAgora.isSelected()) {
@@ -69,9 +70,9 @@ public class JanelaDeCadastroDeCorrida extends JanelaPadrao{
 								Integer.parseInt(hora[1]));
 						
 					} else {
-						dataDaCorrida = LocalDateTime.now();
+						dataDaCorrida = agora;
 					}
-					if(dataDaCorrida.isAfter(LocalDateTime.now())) {
+					if(dataDaCorrida.isAfter(agora)) {
 						int valorDaCorrida = 3;
 						Corrida c = new Corrida(inputEnderecoPartida.getText(), 
 								inputEnderecoDestino.getText(), 
