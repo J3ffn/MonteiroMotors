@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -90,17 +89,24 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 	private class OuvinteBotaoEditarNome implements ActionListener{
 		
 		private Usuario usuario;
+		private String nome;
 		
 		public OuvinteBotaoEditarNome(Usuario usuario) {
 			this.usuario = usuario;
 		}
 		public void actionPerformed(ActionEvent e) {
+			try {
 			String novoNome = JOptionPane.showInputDialog("Digite o novo nome: ");
-			usuario.setNome(novoNome);
-			lbNome.setText("NOME: " + usuario.getNome());
-			JOptionPane.showMessageDialog(null, "Mudança Concluida");
+			if (!novoNome.equals("")) {
+				usuario.setNome(novoNome);
+				lbNome.setText("NOME: " + usuario.getNome());
+			}
 			
-	
+			}catch (NullPointerException erro){
+				
+			}finally{
+				JOptionPane.showMessageDialog(null, "Mudança Concluida");
+			}
 		}
 	}
 	private class OuvinteBotaoEditarEmail implements ActionListener{
@@ -114,12 +120,18 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 		}
 		
 		public void actionPerformed(ActionEvent e) {
+			try {
 			String novoEmail = JOptionPane.showInputDialog("Digite o novo email: ");
+			if (!novoEmail.equals("")) {
 			usuario.setEmail(novoEmail);
 			lbEmailDeUsuario.setText("EMAIL: " + usuario.getEmail());
+			}
+			}catch(NullPointerException erro) {
+				
+			}finally {
 			JOptionPane.showMessageDialog(null, "Mudança Concluida");
 		
-			
+			}
 		}
 	}
 	private class OuvinteBotaoEditarTipo implements ActionListener{
@@ -162,7 +174,7 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 		
 		JButton btVoltar = new JButton();
 		btVoltar.setBounds(174, 387, 150, 20);
-		btVoltar.setText("Cancelar");
+		btVoltar.setText("Voltar");
 		btVoltar.setFont(new Font("Tahoma",Font.BOLD,10));
 		btVoltar.addActionListener(new OuvinteBotaoCancelar(this));
 		add (btVoltar);
