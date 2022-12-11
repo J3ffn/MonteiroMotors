@@ -17,12 +17,12 @@ import clebson.JanelaPadrao;
 public class TelaDeRecuperarSenha extends JanelaPadrao {
 	
 	// Referência da tela -> 498, 462
-	private JButton botaoEnviar;
 	private JTextField emailDigitado;
 	private TelaDeRecuperarSenha tela = this;
 	
 	public TelaDeRecuperarSenha() {
 		super("Recuperação senha", null);
+		
 		addTituloDaTela();
 		addCampoTextField();
 		addBotoesDaTela();
@@ -32,7 +32,7 @@ public class TelaDeRecuperarSenha extends JanelaPadrao {
 
 	// Botões da tela:
 	protected void addBotoesDaTela() {
-		botaoEnviar = new JButton("ENVIAR CÓDIGO");
+		JButton botaoEnviar = new JButton("ENVIAR CÓDIGO");
 		botaoEnviar.setBounds(170, 270, 125, 40);
 		botaoEnviar.addActionListener(new ActionListener() {
 			
@@ -48,8 +48,6 @@ public class TelaDeRecuperarSenha extends JanelaPadrao {
 				Mensageiro mensageiro = new Mensageiro();
 				String codigoChave = gerarCodigo();
 				
-				System.out.println("Email:" + emailDestinatario);
-				
 				// TODO Descomentar essas verificações.
 //				if (new CentralDeInformacoes().recuperarUsuarioPeloEmail(emailDestinatario) != null) {
 				
@@ -60,7 +58,7 @@ public class TelaDeRecuperarSenha extends JanelaPadrao {
 						mensageiro.enviarCodigoDeRecuperacao(emailDestinatario, codigoChave, "Chave de recuperação");
 						
 						tela.dispose();
-						new TelaVerificarCodigo(codigoChave, emailDigitado);
+						new TelaVerificarCodigo(codigoChave, emailDigitado.getText());
 						
 					} else {JOptionPane.showMessageDialog(null, "Email inválido");}
 				}
