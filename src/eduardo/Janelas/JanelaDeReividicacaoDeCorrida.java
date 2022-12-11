@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 
 import ListaDeAquecimento.CentralDeInformacoes;
 import ListaDeAquecimento.Corrida;
+import ListaDeAquecimento.Mensageiro;
 import ListaDeAquecimento.MotoTaxistaSemCreditosCreditosException;
 import ListaDeAquecimento.Mototaxista;
 import ListaDeAquecimento.Persistencia;
@@ -67,7 +68,7 @@ public class JanelaDeReividicacaoDeCorrida extends JanelaPadrao{
 					txLocaldePartida.setText(String.format("Local de Partida: %s", corrida.getEnderecoDePartida()));
 					txLocaldeDestino.setText(String.format("Local de Destino: %s", corrida.getEnderecoDeDestino()));
 					txData.setText(String.format("Data: %s/%s/%s    Hora: %d:%d", corrida.getData().getDayOfMonth(), corrida.getData().getMonthValue(), corrida.getData().getYear(), corrida.getData().getHour(), corrida.getData().getMinute()));
-					
+					new Mensageiro().enviarQueCorridaFoiReinvindicada(corrida.getUsuario().getEmail(), corrida, m);
 					txCreditos.repaint();
 					btConfirmar.setEnabled(false);
 					
@@ -84,7 +85,7 @@ public class JanelaDeReividicacaoDeCorrida extends JanelaPadrao{
 			} else if(corrida.getStatus() != Status.PENDENTE) {
 				JOptionPane.showMessageDialog(janela, "Esta corrida já foi reinvindicada", "Erro!", JOptionPane.ERROR_MESSAGE);
 			} else if ( m.getCorridaAtual() != null) {
-				JOptionPane.showMessageDialog(janela, "Você não pode reivindicar mais que uma corrida por vez!", "Erro!", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(janela, "Você não pode reinvindicar mais que uma corrida por vez!", "Erro!", JOptionPane.ERROR_MESSAGE);
 			}
 			}
 		}

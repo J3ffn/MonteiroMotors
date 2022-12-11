@@ -97,6 +97,38 @@ public class Mensageiro extends MultiPartEmail{
 		}
 		return false;
 	}
+	public boolean enviarQueCorridaFoiConcluida(String email, Corrida corrida) {
+		try {
+			setSubject("Corrida concluida!");
+			addTo(email);
+			setMsg("A corrida de id: " + corrida.getId() + "foi concluida!\nAgora você pode avaliá-la no menu de detalhamento!\nAgradecemos por dar preferencia aos nossos serviços!\n");
+			
+			send();
+			System.out.println("Enviado");
+			return true;
+		} catch (EmailException e) {
+			
+			JOptionPane.showMessageDialog(null, "Email não enviado");
+			
+		}
+		return false;
+	}
+	public boolean enviarQueCorridaFoiReinvindicada(String email, Corrida corrida, Mototaxista m) {
+		try {
+			setSubject("Corrida reinvindicada!");
+			addTo(email);
+			setMsg("A corrida de id: " + corrida.getId() + "foi reinvindicada pelo mototaxista: \n" + m.getNome() + "\nEmail: "+ m.getEmail() + "\nAguarde até que ele/a chegue!");
+			
+			send();
+			System.out.println("Enviado");
+			return true;
+		} catch (EmailException e) {
+			
+			JOptionPane.showMessageDialog(null, "Email não enviado");
+			
+		}
+		return false;
+	}
 	
 	public boolean enviarRelatorioFinancas(String email) {
 		

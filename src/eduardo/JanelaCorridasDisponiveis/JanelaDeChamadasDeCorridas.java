@@ -9,6 +9,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 
 import ListaDeAquecimento.Administrador;
+import ListaDeAquecimento.Corrida;
+import ListaDeAquecimento.Mensageiro;
 import ListaDeAquecimento.Mototaxista;
 import ListaDeAquecimento.Passageiro;
 import ListaDeAquecimento.Persistencia;
@@ -46,7 +48,10 @@ public class JanelaDeChamadasDeCorridas extends JanelaDeCorridasDisponiveis{
 			if(m.getCorridaAtual() != null) {
 				int esc = JOptionPane.showConfirmDialog(janela, "Deseja concluir a corrida de id: " + m.getCorridaAtual().getId() + "?");
 				if(esc == 0) {
+					Corrida c = m.getCorridaAtual();
 					m.concluirCorrida();
+					new Mensageiro().enviarQueCorridaFoiConcluida(c.getUsuario().getEmail(), c);
+					
 					JOptionPane.showMessageDialog(janela, "Corrida Concluida!");
 					try {
 						new Persistencia().salvar(getCentral(), "dados-passageiros.xml");
