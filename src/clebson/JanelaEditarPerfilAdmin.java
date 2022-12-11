@@ -27,7 +27,7 @@ public class JanelaEditarPerfilAdmin extends JanelaEditarPerfil{
 
 	public JanelaEditarPerfilAdmin(Administrador adm) {
 		super(adm);
-		adicionarTextos();
+		adicionarTextos(adm);
 		adicionarBotoes();
 		
 		setVisible(true);

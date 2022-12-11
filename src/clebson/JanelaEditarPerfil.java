@@ -17,7 +17,7 @@ import eduardo.Ouvintes.OuvinteBotaoCancelar;
 public class JanelaEditarPerfil extends JanelaPadrao{
 	
 	private JLabel lbNome;
-	private JLabel novoTipo;
+	private JLabel lbEmailDeUsuario;
 	
 	public JLabel getLbNome() {
 		return lbNome;
@@ -30,12 +30,12 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 
 
 	public JLabel getLbEmail() {
-		return novoTipo;
+		return lbEmailDeUsuario;
 	}
 
 
 	public void setLbEmail(JLabel lbEmail) {
-		this.novoTipo = lbEmail;
+		this.lbEmailDeUsuario = lbEmail;
 	}
 
 
@@ -53,24 +53,27 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 
 	public JanelaEditarPerfil(Usuario usuario) {
 		super("Editar Perfil", usuario);
-		adicionarTextos();
+		adicionarTextos(usuario);
 		adicionarBotoes();
 		setVisible(true);
 	}
 	
 
-	public void adicionarTextos() {
-		lbNome = new JLabel("NOME: " + this.getUsuario().getNome());		
+	public void adicionarTextos(Usuario usuario) {
+		lbNome = new JLabel();
+		lbNome.setText("NOME: " + usuario.getNome());
 		lbNome.setBounds(100,170 , 220, 20);
 		lbNome.setFont(new Font("Arial",Font.BOLD,12));
 		add(lbNome);
 		
-		novoTipo = new JLabel("EMAIL: " + this.getUsuario().getEmail());		
-		novoTipo.setBounds(100,205 , 220, 20);
-		novoTipo.setFont(new Font("Arial",Font.BOLD,12));
-		add(novoTipo);
+		lbEmailDeUsuario = new JLabel();
+		lbEmailDeUsuario.setText("EMAIL: " + usuario.getEmail());
+		lbEmailDeUsuario.setBounds(100,205 , 220, 20);
+		lbEmailDeUsuario.setFont(new Font("Arial",Font.BOLD,12));
+		add(lbEmailDeUsuario);
 		
-		lbTipoDeUsuario = new JLabel("TIPO DE USUÁRIO: " + this.getUsuario().recuperarCargo());		
+		lbTipoDeUsuario = new JLabel();
+		lbTipoDeUsuario.setText("TIPO DE USUÁRIO: " + usuario.recuperarCargo());
 		lbTipoDeUsuario.setBounds(100,240 , 220, 20);
 		lbTipoDeUsuario.setFont(new Font("Arial",Font.BOLD,12));
 		add(lbTipoDeUsuario);
@@ -84,36 +87,41 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 	
 	public class OuvinteBotaoEditarNome implements ActionListener{
 		
+		private Usuario usuario;
+		
+		public OuvinteBotaoEditarNome(Usuario usuario) {
+			this.usuario = usuario;
+		}
 		public void actionPerformed(ActionEvent e) {
-			JLabel nome = getLbNome();
 			String novoNome = JOptionPane.showInputDialog("Digite o novo nome: ");
+			usuario.setNome(novoNome);
+			lbNome.setText("NOME: " + usuario.getNome());
 			JOptionPane.showMessageDialog(null, "Mudança Concluida");
-			//corrigir erro ao deixar em branco
-			if (novoNome != null) {
-			lbNome.setText("NOME: "+novoNome);
-			}else {
-				lbNome = nome;
-			}
+			
+	
 		}
 	}
 	public class OuvinteBotaoEditarEmail implements ActionListener{
 		
+		private Usuario usuario;
+		
+		public OuvinteBotaoEditarEmail(Usuario usuario) {
+			// TODO Auto-generated constructor stub
+			this.usuario = usuario;
+		}
+		
 		public void actionPerformed(ActionEvent e) {
-			JLabel email = getLbEmail();
 			String novoEmail = JOptionPane.showInputDialog("Digite o novo email: ");
+			usuario.setEmail(novoEmail);
+			lbEmailDeUsuario.setText("EMAIL: " + usuario.getEmail());
 			JOptionPane.showMessageDialog(null, "Mudança Concluida");
-			//corrigir erro ao deixar em branco
-			if ((novoEmail != null)){
-				novoTipo.setText("EMAIL: " + novoEmail);
-			}else {
-				novoTipo = email;
-			}
+		
 			
 		}
 	}
 	
-	OuvinteBotaoEditarNome ouvinteEditarNome = new OuvinteBotaoEditarNome();
-	OuvinteBotaoEditarEmail ouvinteEditarEmail = new OuvinteBotaoEditarEmail();
+	OuvinteBotaoEditarNome ouvinteEditarNome = new OuvinteBotaoEditarNome(this.getUsuario());
+	OuvinteBotaoEditarEmail ouvinteEditarEmail = new OuvinteBotaoEditarEmail(this.getUsuario());
 	OuvinteBotaoDeletarPerfil ouvinteDeletarPerfil = new OuvinteBotaoDeletarPerfil();
 	
 	public void adicionarBotoes() {
