@@ -53,7 +53,7 @@ public class JanelaMototaxista extends JanelaPadraoUsuario{
 	}
 	
 	
-	public class OuvinteBotaoChamadas implements ActionListener{
+	private class OuvinteBotaoChamadas implements ActionListener{
 		
 		@Override
 		public void actionPerformed(ActionEvent e) {
