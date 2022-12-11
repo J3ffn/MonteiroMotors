@@ -74,8 +74,12 @@ public class JanelaAdministrador extends JanelaPadraoUsuario {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				dispose();
 				new JanelaDeDefinicaoDeValorDosCreditos((Administrador) getUsuario());
+				try {
+					new Persistencia().salvar(getCentral(), "dados-passageiros.xml");
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
 			}
 			
 		});

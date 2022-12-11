@@ -22,5 +22,4 @@ public class OuvinteBotaoDeslogar implements ActionListener{
 		janela.dispose();
 		new TelaDeLogin(central, new Persistencia());
 	}
-
 }

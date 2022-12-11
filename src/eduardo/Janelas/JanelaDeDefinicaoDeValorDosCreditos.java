@@ -13,6 +13,7 @@ import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
 import ListaDeAquecimento.Administrador;
+import ListaDeAquecimento.Persistencia;
 import clebson.JanelaPadrao;
 import eduardo.Ouvintes.OuvinteBotaoCancelar;
 
@@ -38,6 +39,9 @@ public class JanelaDeDefinicaoDeValorDosCreditos extends JanelaPadrao{
 		JLabel txtNovoValor = new JLabel("Novo Valor:");
 		txtNovoValor.setBounds(70, 100, 100, 20);
 		
+		JLabel txtValorAtual = new JLabel("Valor atual: R$ " + ((Administrador) this.getUsuario()).getValorDosCreditos());
+		txtValorAtual.setBounds(200, 5, 150, 20);
+		
 		try {
 			MaskFormatter msk = new MaskFormatter("R$ ##.##");
 			inputValorCreditos = new JFormattedTextField(msk);
@@ -48,6 +52,7 @@ public class JanelaDeDefinicaoDeValorDosCreditos extends JanelaPadrao{
 		
 		this.add(titulo1);
 		this.add(txtNovoValor);
+		this.add(txtValorAtual);
 		this.add(inputValorCreditos);
 	}
 	public void adicionarBotoes() {
@@ -74,6 +79,11 @@ public class JanelaDeDefinicaoDeValorDosCreditos extends JanelaPadrao{
 					Administrador administrador = (Administrador) janela.getUsuario();
 					administrador.atualizarValorDosCreditos(Float.parseFloat(v));
 					JOptionPane.showMessageDialog(janela, "Valor atualizado!", "Mensagem", JOptionPane.INFORMATION_MESSAGE);
+				}
+				try {
+					new Persistencia().salvar(getCentral(), "dados-passageiros.xml");
+				} catch (Exception e1) {
+					e1.printStackTrace();
 				}
 				janela.dispose();
 			} else {
