@@ -8,7 +8,7 @@ public class Teste {
 	public static void main(String[] args) {
 
 		Administrador admin = new Administrador("Fulano", "MASCULINO", "fulandodetal@gmail.com", "666", null); 
-		admin.setTipoDeConta(TipoDeConta.PASSAGEIRO);
+		admin.setTipoDeConta(TipoDeConta.ADMINISTRADOR);
 		new JanelaEditarPerfil(admin);
 	}
 }

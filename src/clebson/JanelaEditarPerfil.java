@@ -61,7 +61,7 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 	}
 	
 
-	public void adicionarTextos(Usuario usuario) {
+	private void adicionarTextos(Usuario usuario) {
 		lbNome = new JLabel();
 		lbNome.setText("NOME: " + usuario.getNome());
 		lbNome.setBounds(100,170 , 220, 20);
@@ -87,7 +87,7 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 		
 	}
 	
-	public class OuvinteBotaoEditarNome implements ActionListener{
+	private class OuvinteBotaoEditarNome implements ActionListener{
 		
 		private Usuario usuario;
 		
@@ -103,9 +103,10 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 	
 		}
 	}
-	public class OuvinteBotaoEditarEmail implements ActionListener{
+	private class OuvinteBotaoEditarEmail implements ActionListener{
 		
 		private Usuario usuario;
+
 		
 		public OuvinteBotaoEditarEmail(Usuario usuario) {
 			// TODO Auto-generated constructor stub
@@ -121,25 +122,15 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 			
 		}
 	}
-	public class OuvinteBotaoEditarTipo implements ActionListener{
+	private class OuvinteBotaoEditarTipo implements ActionListener{
+		
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-			new JanelaAlternativaPequenasOperacoes("Mudar Tipo");
-			adicionarBotoesTipo();
-			
-			setVisible(true);
+			new JanelaMudançaTipo();
+
 		}
-		public void adicionarBotoesTipo(){
-			JComboBox<TipoDeConta> tipos = new JComboBox<TipoDeConta>();
-			tipos.setBounds(50, 75, 100, 50);;
-			tipos.addItem(TipoDeConta.ADMINISTRADOR);
-			tipos.addItem(TipoDeConta.MOTOTAXISTA);
-			tipos.addItem(TipoDeConta.PASSAGEIRO);
-			add(tipos);
-			
+				
 		}
-	}
 	
 	
 	OuvinteBotaoEditarNome ouvinteEditarNome = new OuvinteBotaoEditarNome(this.getUsuario());
@@ -147,7 +138,7 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 	OuvinteBotaoDeletarPerfil ouvinteDeletarPerfil = new OuvinteBotaoDeletarPerfil();
 	OuvinteBotaoEditarTipo ouvinteEditarTipo = new OuvinteBotaoEditarTipo();
 	
-	public void adicionarBotoes(Usuario usuario) {
+	private void adicionarBotoes(Usuario usuario) {
 		JButton btEditarNome = new JButton();
 		btEditarNome.setBounds(350, 170, 100, 20);
 		btEditarNome.setText("Editar Nome");
