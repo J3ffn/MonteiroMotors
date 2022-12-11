@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 
 import ListaDeAquecimento.CentralDeInformacoes;
 import ListaDeAquecimento.Persistencia;
-import jefferson.telaDeLogin.telas.TelaDeLogin;
+import jefferson.telaDeLogin_OK.telas.TelaDeLogin;
 
 public class OuvinteBotaoDeslogar implements ActionListener{
 

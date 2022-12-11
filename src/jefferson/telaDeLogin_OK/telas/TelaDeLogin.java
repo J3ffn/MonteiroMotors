@@ -1,4 +1,4 @@
-package jefferson.telaDeLogin.telas;
+package jefferson.telaDeLogin_OK.telas;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -13,9 +13,9 @@ import javax.swing.JTextField;
 import ListaDeAquecimento.CentralDeInformacoes;
 import ListaDeAquecimento.Persistencia;
 import clebson.JanelaPadrao;
-import jefferson.telaDeLogin.ouvintes.OuvinteBotaoEsqueceuSenha;
-import jefferson.telaDeLogin.ouvintes.OuvinteBotaoLogin;
-import jefferson.telaDeLogin.ouvintes.OuvinteBotaoRegistrar;
+import jefferson.telaDeLogin_OK.ouvintes.OuvinteBotaoEsqueceuSenha;
+import jefferson.telaDeLogin_OK.ouvintes.OuvinteBotaoLogin;
+import jefferson.telaDeLogin_OK.ouvintes.OuvinteBotaoRegistrar;
 
 @SuppressWarnings("serial")
 public class TelaDeLogin extends JanelaPadrao{

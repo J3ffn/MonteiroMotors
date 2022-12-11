@@ -1,4 +1,4 @@
-package jefferson.telaDeRecuperacao;
+package jefferson.telaDeRecuperacao_OK;
 
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;

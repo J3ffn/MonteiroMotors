@@ -97,4 +97,9 @@ public class Mensageiro extends MultiPartEmail{
 		}
 		return false;
 	}
+	
+	public boolean enviarRelatorioFinancas(String email) {
+		
+		return false;
+	}
 }

@@ -1,4 +1,4 @@
-package jefferson.telaDeRecuperacao.telasParaRecuperacao;
+package jefferson.telaDeRecuperacao_OK.telasParaRecuperacao;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;

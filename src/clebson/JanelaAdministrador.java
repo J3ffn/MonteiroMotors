@@ -12,13 +12,16 @@ import ListaDeAquecimento.Persistencia;
 import eduardo.Janelas.JanelaDeDefinicaoDeValorDosCreditos;
 import eduardo.Janelas.JanelaDeListagemDeUsuarios;
 import eduardo.Ouvintes.OuvinteBotaoListarCorridas;
+import jefferson.telaDeFinancas_TERMINAR.telas.TelaFinancas;
 
 @SuppressWarnings("serial")
 public class JanelaAdministrador extends JanelaPadraoUsuario {
 	
-
+	private String email;
+	
 	public JanelaAdministrador(Administrador adm) {
 		super("Administrador", adm);
+		email = adm.getEmail();
 		
 		adicionarBotoesAdministrador();
 		
@@ -53,6 +56,14 @@ public class JanelaAdministrador extends JanelaPadraoUsuario {
 		btFinancas.setBounds(70, 191, 130, 40);
 		btFinancas.setText("Finanças");
 		btFinancas.setFont(new Font("Tahoma",Font.BOLD,10));
+		btFinancas.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new TelaFinancas(email);
+				
+			}
+		});
 		add (btFinancas);
 		
 		JButton btDefinirValor = new JButton();

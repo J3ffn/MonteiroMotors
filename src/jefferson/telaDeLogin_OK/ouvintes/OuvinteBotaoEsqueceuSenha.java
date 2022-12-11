@@ -1,11 +1,11 @@
-package jefferson.telaDeLogin.ouvintes;
+package jefferson.telaDeLogin_OK.ouvintes;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
-import jefferson.telaDeRecuperacao.telasParaRecuperacao.TelaDeRecuperarSenha;
+import jefferson.telaDeRecuperacao_OK.telasParaRecuperacao.TelaDeRecuperarSenha;
 
 public class OuvinteBotaoEsqueceuSenha  implements ActionListener{
 	

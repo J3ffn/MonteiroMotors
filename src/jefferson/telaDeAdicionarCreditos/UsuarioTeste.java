@@ -1,11 +1,11 @@
-package jefferson;
+package jefferson.telaDeAdicionarCreditos;
 
 import java.time.LocalDate;
 
+import ListaDeAquecimento.Mototaxista;
 import ListaDeAquecimento.TipoDeConta;
-import ListaDeAquecimento.Usuario;
 
-public class UsuarioTeste extends Usuario{
+public class UsuarioTeste extends Mototaxista{
 
 	public static String nome = "jefferson";
 	public static String email = "jefferson.mangueira@academico.ifpb.edu.br";
@@ -15,12 +15,6 @@ public class UsuarioTeste extends Usuario{
 	
 	public UsuarioTeste() {
 		super("Jefferson", "MASCULINO", email, senha, dataDeNascimento);
-	}
-	
-	@Override
-	public String recuperarCargo() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 	
 }

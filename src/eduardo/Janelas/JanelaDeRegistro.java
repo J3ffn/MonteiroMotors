@@ -29,7 +29,7 @@ import ListaDeAquecimento.Persistencia;
 import ListaDeAquecimento.Usuario;
 import clebson.JanelaPadrao;
 import eduardo.Ouvintes.OuvinteBotaoCancelar;
-import jefferson.telaDeLogin.telas.TelaDeLogin;
+import jefferson.telaDeLogin_OK.telas.TelaDeLogin;
 
 public class JanelaDeRegistro extends JanelaPadrao{
 	

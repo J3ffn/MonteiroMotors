@@ -1,4 +1,4 @@
-package jefferson.telaDeRecuperacao.telasParaRecuperacao;
+package jefferson.telaDeRecuperacao_OK.telasParaRecuperacao;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -15,7 +15,7 @@ import ListaDeAquecimento.CentralDeInformacoes;
 import ListaDeAquecimento.Persistencia;
 import ListaDeAquecimento.Usuario;
 import clebson.JanelaPadrao;
-import jefferson.telaDeLogin.telas.TelaDeLogin;
+import jefferson.telaDeLogin_OK.telas.TelaDeLogin;
 
 @SuppressWarnings("serial")
 public final class TelaDeAlteracaoDaSenha extends JanelaPadrao {
