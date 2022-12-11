@@ -152,9 +152,10 @@ public class CentralDeInformacoes {
 				}
 			}
 		} else if(p instanceof Mototaxista) {
+			Mototaxista a = (Mototaxista) p;
 			for(Corrida c : corridas) {
 				Mototaxista p1 = c.getMototaxista();
-				if(c.getStatus() == Status.REINVINDICADA && p1.equals(p)) {
+				if(c.getStatus() == Status.REINVINDICADA && a.equals(p1)) {
 					lista.add(c);
 				}
 			}

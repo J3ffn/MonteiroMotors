@@ -91,7 +91,7 @@ public abstract class Usuario{
 	@Override
 	public boolean equals(Object obj) {
 		Usuario usuarioDeFora = (Usuario) obj;
-		if (id == usuarioDeFora.getId() && email.equals(usuarioDeFora.getEmail())) {
+		if (id.equals(usuarioDeFora.getId()) && email.equals(usuarioDeFora.getEmail())) {
 			return true;
 		}
 		return false;
