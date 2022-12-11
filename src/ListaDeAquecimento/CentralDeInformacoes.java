@@ -151,6 +151,13 @@ public class CentralDeInformacoes {
 					lista.add(c);
 				}
 			}
+		} else if(p instanceof Mototaxista) {
+			for(Corrida c : corridas) {
+				Mototaxista p1 = c.getMototaxista();
+				if(c.getStatus() == Status.REINVINDICADA && p1.equals(p)) {
+					lista.add(c);
+				}
+			}
 		}
 		return lista;
 	}

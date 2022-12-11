@@ -40,7 +40,7 @@ public class JanelaPassageiro extends JanelaPadraoUsuario{
 		JButton btListarCorridas = new JButton();
 		btListarCorridas.setBounds(170, 191, 130, 30);
 		btListarCorridas.setText("Listar Corridas");
-		btListarCorridas.addActionListener(new OuvinteBotaoListarCorridas(getUsuario(), getCentral(), getPersistencia()));
+		btListarCorridas.addActionListener(new OuvinteBotaoListarCorridas(getUsuario()));
 		btListarCorridas.setFont(new Font("Tahoma",Font.BOLD,10));
 		add (btListarCorridas);
 		

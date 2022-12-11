@@ -3,7 +3,7 @@ package eduardo;
 import ListaDeAquecimento.CentralDeInformacoes;
 import ListaDeAquecimento.Persistencia;
 import eduardo.Janelas.JanelaDeRegistro;
-import jefferson.telaDeLogin.telas.TelaDeLogin;
+import jefferson.telaDeLogin_OK.telas.TelaDeLogin;
 
 public class Programa {
 	

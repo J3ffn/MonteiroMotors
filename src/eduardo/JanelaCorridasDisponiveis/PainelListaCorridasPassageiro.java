@@ -22,27 +22,4 @@ public class PainelListaCorridasPassageiro extends Painel{
 	public PainelListaCorridasPassageiro(ArrayList < Corrida > corridasTodasAsDisponiveis, Passageiro usuario) {
 		super(corridasTodasAsDisponiveis, usuario);
 	}
-	public void preencherPainel() {
-		setCorridasTodasAsDisponiveis(getCentral().recuperarCorridasDeUmPassageiro(getUsuario().getEmail()));
-		this.setBackground(Color.WHITE);
-		this.setLayout(null);
-		
-		int y = 10;
-		if(getCorridasTodasAsDisponiveis() != null) {
-			for (Corrida c : getCorridasTodasAsDisponiveis()) {
-				JLabel corrida = new JLabel("Corrida: " + c.getId());
-				corrida.setBounds(10, y, 170, 20);
-				JButton botao = new JButton("Detalhes");
-				botao.setBounds(310, y, 115, 40);
-				
-				this.add(corrida);
-				this.add(botao);
-				y += 45;
-			}
-			if(getCorridasTodasAsDisponiveis().size() > 6) {
-				GridLayout layout = new GridLayout(0, 2, 150, 20);
-				this.setLayout(layout);
-			}
-		}
-	}
 }

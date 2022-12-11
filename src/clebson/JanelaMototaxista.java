@@ -12,6 +12,7 @@ import ListaDeAquecimento.CentralDeInformacoes;
 import ListaDeAquecimento.Mototaxista;
 import ListaDeAquecimento.Persistencia;
 import ListaDeAquecimento.Usuario;
+import eduardo.JanelaCorridasDisponiveis.JanelaDeChamadasDeCorridas;
 import eduardo.JanelaCorridasDisponiveis.JanelaDeCorridasDisponiveis;
 import eduardo.JanelaCorridasDisponiveis.PainelListaCorridasMototaxista;
 import eduardo.Ouvintes.OuvinteBotaoListarCorridas;
@@ -57,11 +58,11 @@ public class JanelaMototaxista extends JanelaPadraoUsuario{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// Abrir Chamadas
-			new JanelaDeCorridasDisponiveis(getUsuario(), getCentral(), getPersistencia());
+			new JanelaDeChamadasDeCorridas(getUsuario());
 		}
 	}
 		
-		OuvinteBotaoListarCorridas ouvinteCorridas = new OuvinteBotaoListarCorridas(getUsuario(), getCentral(), getPersistencia());
+		OuvinteBotaoListarCorridas ouvinteCorridas = new OuvinteBotaoListarCorridas(getUsuario());
 	
 	private void adicionarBotoesMototaxista(Mototaxista mtx) {
 		super.adicionarBotoes();

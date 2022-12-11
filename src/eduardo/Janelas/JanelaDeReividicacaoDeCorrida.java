@@ -71,7 +71,7 @@ public class JanelaDeReividicacaoDeCorrida extends JanelaPadrao{
 					btConfirmar.setEnabled(false);
 					
 					try {
-						getPersistencia().salvar(getCentral(), "dados-passageiros.xml");
+						new Persistencia().salvar(getCentral(), "dados-passageiros.xml");
 						
 					} catch (Exception erro){
 						System.out.println("Houve um erro ao salvar os dados!");

@@ -1,7 +1,11 @@
 package eduardo.JanelaCorridasDisponiveis;
 
+import java.awt.Color;
+import java.awt.GridLayout;
 import java.util.ArrayList;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import ListaDeAquecimento.CentralDeInformacoes;
@@ -27,7 +31,31 @@ public abstract class Painel extends JPanel{
 		this.usuario = usuario;
 		this.preencherPainel();
 	}
-	public abstract void preencherPainel();
+	
+	public void preencherPainel() {
+		this.setBackground(Color.WHITE);
+		int y = 10;
+		this.setLayout(null);
+		this.repaint();
+		
+		
+		if(getCorridasTodasAsDisponiveis() != null) {
+			for (Corrida c : getCorridasTodasAsDisponiveis()) {
+					JLabel corrida = new JLabel("Corrida: " + c.getId());
+					corrida.setBounds(10, y, 170, 20);
+					
+					JButton botao = new JButton("Detalhes");
+					botao.setBounds(310, y, 115, 40);
+					this.add(corrida);
+					this.add(botao);
+					y += 45;
+			}
+			if(getCorridasTodasAsDisponiveis().size() > 6) {
+				GridLayout layout = new GridLayout(0, 2, 150, 20);
+				this.setLayout(layout);
+			}
+		}
+	}
 	
 	public ArrayList<Corrida> getCorridasTodasAsDisponiveis() {
 		return corridasTodasAsDisponiveis;

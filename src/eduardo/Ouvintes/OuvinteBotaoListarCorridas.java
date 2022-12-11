@@ -10,15 +10,11 @@ import eduardo.JanelaCorridasDisponiveis.JanelaDeCorridasDisponiveis;
 
 public class OuvinteBotaoListarCorridas implements ActionListener{
 	private Usuario usuario;
-	private CentralDeInformacoes central;
-	private Persistencia persistencia;
 	
-	public OuvinteBotaoListarCorridas(Usuario u, CentralDeInformacoes c, Persistencia p) {
+	public OuvinteBotaoListarCorridas(Usuario u) {
 		usuario = u;
-		central = c;
-		persistencia = p;
 	}
 	public void actionPerformed(ActionEvent e) {
-		JanelaDeCorridasDisponiveis janela = new JanelaDeCorridasDisponiveis(usuario, central, persistencia);
+		JanelaDeCorridasDisponiveis janela = new JanelaDeCorridasDisponiveis(usuario);
 	}
 }

@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 
 public class OuvinteBotaoCancelar implements ActionListener {
 	JFrame janela;
+	
 	public OuvinteBotaoCancelar(JFrame j) {
 		janela = j;
 	}
