@@ -3,9 +3,11 @@ package ListaDeAquecimento;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import eduardo.Janelas.AdicaoInvalidaException;
+
 public class Mototaxista extends Usuario{
 	private ArrayList < Avaliacao > avaliacoes = new ArrayList < Avaliacao >();
-	private ArrayList < Credito > creditos = new ArrayList < Credito >();
+	private ArrayList < Credito > creditos = new ArrayList < Credito > ();
 	
 	public Mototaxista(String nome, String sexo, String email, String senha, LocalDate i) {
 		super(nome, sexo, email, senha, i);
@@ -20,14 +22,24 @@ public class Mototaxista extends Usuario{
 	public ArrayList<Credito> getCreditos() {
 		return creditos;
 	}
-	public float adicionarCreditos(int num, CentralDeInformacoes central) {
-		float totalASerPago = 0;
-		for(int i = 0; i < num; i++) {
-			Credito c = new Credito(central);
-			creditos.add(c);
-			totalASerPago += c.getValor();
+	public float adicionarCreditos(int num, CentralDeInformacoes central) throws AdicaoInvalidaException{
+		if(num <= 0 ) {
+			throw new AdicaoInvalidaException();
+		} else {
+			float totalASerPago = 0;
+			for(int i = 0; i < num; i++) {
+				Credito c = new Credito(central);
+				creditos.add(c);
+				totalASerPago += c.getValor();
+			}
+			try {
+				new Persistencia().salvar(central, "dados-passageiros.xml");
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+			
+			return totalASerPago;
 		}
-		return totalASerPago;
 	}
 	public void reinvidicarCorrida(Corrida corrida) throws MotoTaxistaSemCreditosCreditosException {
 		if(!creditos.isEmpty()) {
