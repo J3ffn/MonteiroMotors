@@ -32,7 +32,7 @@ public class CentralDeInformacoes {
 		this.corridas = corridas;
 	}
 
-	public Usuario recuperarUsuarioPeloEmail(String email) {
+	public Usuario recuperarUsuarioPeloEmail(String email){
 		for(Usuario usuario : todosOsUsuarios) {
 			if(usuario.getEmail().equals(email)) {
 				return usuario;
@@ -40,9 +40,13 @@ public class CentralDeInformacoes {
 		}
 		return null;
 	}
-	public Usuario fazerLogin(String email, String senha) throws SenhaIncorretaException, PerfilDesativadoException {
+	public Usuario fazerLogin(String email, String senha) throws SenhaIncorretaException, PerfilDesativadoException , UsuarioNaoCadastradoException{
 		Usuario u = recuperarUsuarioPeloEmail(email);
-		u.fazerLogin(senha);
+		if(u != null) {
+			u.fazerLogin(senha);
+		} else {
+			throw new UsuarioNaoCadastradoException();
+		}
 		return u;
 	}
 	public String listarTodosOsUsuarios() {

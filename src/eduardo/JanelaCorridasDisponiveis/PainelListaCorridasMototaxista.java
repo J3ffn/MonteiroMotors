@@ -20,9 +20,8 @@ import eduardo.Janelas.JanelaDeReividicacaoDeCorrida;
 
 public class PainelListaCorridasMototaxista extends Painel{
 	Filtro filtro;
-	public PainelListaCorridasMototaxista(ArrayList<Corrida> corridasTodasAsDisponiveis, CentralDeInformacoes central,
-			Persistencia persistencia, Mototaxista usuario) {
-		super(corridasTodasAsDisponiveis, central, persistencia, usuario);
+	public PainelListaCorridasMototaxista(ArrayList<Corrida> corridasTodasAsDisponiveis, Mototaxista usuario) {
+		super(corridasTodasAsDisponiveis, usuario);
 
 	}
 
@@ -45,7 +44,7 @@ public class PainelListaCorridasMototaxista extends Painel{
 					botao.setBounds(310, y, 115, 40);
 					botao.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
-							new JanelaDeReividicacaoDeCorrida(getCentral(), getPersistencia(), c, (Mototaxista) getUsuario());
+							new JanelaDeReividicacaoDeCorrida(c, (Mototaxista) getUsuario());
 						}
 					});
 					this.add(corrida);

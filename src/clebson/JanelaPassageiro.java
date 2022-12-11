@@ -15,20 +15,15 @@ import eduardo.Ouvintes.OuvinteBotaoListarCorridas;
 @SuppressWarnings("serial")
 public class JanelaPassageiro extends JanelaPadraoUsuario{
 
-	
-	public JanelaPassageiro(CentralDeInformacoes central, Persistencia persistencia, Passageiro p) {
-		super("Passageiro");
-		this.setCentral(central);
-		this.setPersistencia(persistencia);
-		this.setUsuario(p);
+	public JanelaPassageiro(Passageiro p) {
+		super("Passageiro", p);
 		adicionarBotoesPassageiro();
-		
 		setVisible(true);
 	}
 	
 	private class OuvinteDeBtCadastroCorrida implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
-			new JanelaDeCadastroDeCorrida(getCentral(), getPersistencia(), getUsuario());
+			new JanelaDeCadastroDeCorrida(getUsuario());
 		}
 	}
 	

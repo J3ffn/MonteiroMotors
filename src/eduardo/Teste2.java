@@ -26,7 +26,7 @@ public class Teste2 {
 		CentralDeInformacoes central = null;
 		try {
 			central = (CentralDeInformacoes) per.recuperar("dados-passageiros.xml");
-			JanelaDeRegistro janela = new JanelaDeRegistro(central, per);
+			JanelaDeRegistro janela = new JanelaDeRegistro();
 			per.salvar(central, "dados-passageiros.xml");
 			
 		} catch (Exception erro){
@@ -45,11 +45,11 @@ public class Teste2 {
 		//n.adicionarCreditos(2, central);
 		//JanelaDeReividicacaoDeCorrida janela2 = new JanelaDeReividicacaoDeCorrida(central, c, n);
 		//JanelaDeCadastroDeCorrida janela5 = new JanelaDeCadastroDeCorrida(central, per, n);
-		JanelaPassageiro janela2 = new JanelaPassageiro(central, per, n);
+		JanelaPassageiro janela2 = new JanelaPassageiro(n);
 		//JanelaDeDefinicaoDeValorDosCreditos j = new JanelaDeDefinicaoDeValorDosCreditos(adm);
 		//JanelaDeCorridasDisponiveis j2 = new JanelaDeCorridasDisponiveis(n, central, per);
 
-		new JanelaAdministrador(central, per, central.recuperarAdministradorDoSistema());
+		new JanelaAdministrador(central.recuperarAdministradorDoSistema());
 		//new JanelaMototaxista(central, per, n1);
 	}
 }

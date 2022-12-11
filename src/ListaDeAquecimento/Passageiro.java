@@ -9,6 +9,7 @@ public class Passageiro extends Usuario{
 	
 	public Passageiro(String nome, String sexo, String email, String senha, LocalDate i) {
 		super(nome, sexo, email, senha, i);
+		this.setTipoDeConta(TipoDeConta.PASSAGEIRO);
 	}
 	public String recuperarCargo() {
 		return "Passageiro";

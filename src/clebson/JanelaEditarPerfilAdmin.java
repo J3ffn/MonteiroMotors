@@ -8,6 +8,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
+import ListaDeAquecimento.Administrador;
+
 @SuppressWarnings("serial")
 public class JanelaEditarPerfilAdmin extends JanelaEditarPerfil{
 	
@@ -23,8 +25,8 @@ public class JanelaEditarPerfilAdmin extends JanelaEditarPerfil{
 	}
 
 
-	public JanelaEditarPerfilAdmin() {
-
+	public JanelaEditarPerfilAdmin(Administrador adm) {
+		super(adm);
 		adicionarTextos();
 		adicionarBotoes();
 		

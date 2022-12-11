@@ -19,8 +19,8 @@ import ListaDeAquecimento.Status;
 
 public class PainelListaCorridasPassageiro extends Painel{
 	
-	public PainelListaCorridasPassageiro(ArrayList < Corrida > corridasTodasAsDisponiveis, CentralDeInformacoes central, Persistencia persistencia, Passageiro usuario) {
-		super(corridasTodasAsDisponiveis, central, persistencia, usuario);
+	public PainelListaCorridasPassageiro(ArrayList < Corrida > corridasTodasAsDisponiveis, Passageiro usuario) {
+		super(corridasTodasAsDisponiveis, usuario);
 	}
 	public void preencherPainel() {
 		this.setBackground(Color.WHITE);

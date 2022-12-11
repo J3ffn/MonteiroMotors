@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
+import ListaDeAquecimento.Usuario;
 import clebsonOuvintesExternos.OuvinteBotaoDeletarPerfil;
 import eduardo.Ouvintes.OuvinteBotaoCancelar;
 
@@ -50,27 +51,26 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 	}
 
 
-	public JanelaEditarPerfil() {
-		super("Editar Perfil");
+	public JanelaEditarPerfil(Usuario usuario) {
+		super("Editar Perfil", usuario);
 		adicionarTextos();
 		adicionarBotoes();
-		
 		setVisible(true);
 	}
 	
 
 	public void adicionarTextos() {
-		lbNome = new JLabel("NOME: ");		
+		lbNome = new JLabel("NOME: " + this.getUsuario().getNome());		
 		lbNome.setBounds(100,170 , 220, 20);
 		lbNome.setFont(new Font("Arial",Font.BOLD,12));
 		add(lbNome);
 		
-		novoTipo = new JLabel("EMAIL: ");		
+		novoTipo = new JLabel("EMAIL: " + this.getUsuario().getEmail());		
 		novoTipo.setBounds(100,205 , 220, 20);
 		novoTipo.setFont(new Font("Arial",Font.BOLD,12));
 		add(novoTipo);
 		
-		lbTipoDeUsuario = new JLabel("TIPO DE USUÁRIO: ");		
+		lbTipoDeUsuario = new JLabel("TIPO DE USUÁRIO: " + this.getUsuario().recuperarCargo());		
 		lbTipoDeUsuario.setBounds(100,240 , 220, 20);
 		lbTipoDeUsuario.setFont(new Font("Arial",Font.BOLD,12));
 		add(lbTipoDeUsuario);

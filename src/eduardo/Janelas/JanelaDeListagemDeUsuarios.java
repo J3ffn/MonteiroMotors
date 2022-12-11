@@ -23,11 +23,8 @@ public class JanelaDeListagemDeUsuarios extends JanelaPadrao {
 	private Painel painel1;
 	private JComboBox < String > filtro;
 	
-	public JanelaDeListagemDeUsuarios(Administrador u, CentralDeInformacoes c, Persistencia per) {
-		super("Janela de Listagem de Usuarios");
-		setUsuario(u);
-		setCentral(c);
-		setPersistencia(per);
+	public JanelaDeListagemDeUsuarios(Administrador u) {
+		super("Janela de Listagem de Usuarios", u);
 		adicionarPainel();
 		adicionarBotoes();
 		this.setVisible(true);
@@ -54,7 +51,7 @@ public class JanelaDeListagemDeUsuarios extends JanelaPadrao {
 		
 	}
 	public void adicionarPainel() {
-		painel1 = new PainelListaUsuarios(getCentral(), getPersistencia(), (Administrador) getUsuario());
+		painel1 = new PainelListaUsuarios((Administrador) getUsuario());
 		painel = new JScrollPane(painel1);
 		
 		painel.setBounds(20, 60, 440, 340);

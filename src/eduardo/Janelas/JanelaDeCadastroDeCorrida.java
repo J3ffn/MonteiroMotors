@@ -34,14 +34,11 @@ public class JanelaDeCadastroDeCorrida extends JanelaPadrao{
 	private JFormattedTextField inputHoraDaCorrida;
 	private JCheckBox checkBCorridaParaAgora;
 	
-	public JanelaDeCadastroDeCorrida(CentralDeInformacoes c, Persistencia per, Usuario p) {
-		super("Cadastrar Solicitação de Corrida");
+	public JanelaDeCadastroDeCorrida(Usuario p) {
+		super("Cadastrar Solicitação de Corrida", p);
 		this.adicionarBotoes();
 		this.adicionarTextos();
 		this.setSize(500, 320);
-		setCentral(c);
-		this.setUsuario(p);
-		setPersistencia(per);
 		this.setVisible(true);
 	}
 	public void adicionarBotoes() {
@@ -83,7 +80,7 @@ public class JanelaDeCadastroDeCorrida extends JanelaPadrao{
 					getCentral().adicionarCorrida(c);
 					
 					try {
-						getPersistencia().salvar(getCentral(), "dados-passageiros.xml");
+						new Persistencia().salvar(getCentral(), "dados-passageiros.xml");
 					} catch (Exception e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();

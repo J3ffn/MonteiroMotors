@@ -25,7 +25,13 @@ public class JanelaPadrao extends JFrame {
 		return usuario;
 	}
 
-	public JanelaPadrao(String titulo) {
+	public JanelaPadrao(String titulo, Usuario usuario) {
+		try {
+			this.setCentral((CentralDeInformacoes)new Persistencia().recuperar("dados-passageiros.xml"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		this.usuario = usuario;
 		setTitle(titulo);
 		setSize(498, 462);
 		setResizable(false);

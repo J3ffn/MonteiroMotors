@@ -5,17 +5,22 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
+import ListaDeAquecimento.CentralDeInformacoes;
+import ListaDeAquecimento.Persistencia;
 import jefferson.telaDeLogin.telas.TelaDeLogin;
 
 public class OuvinteBotaoDeslogar implements ActionListener{
 
 	JFrame janela;
-	public OuvinteBotaoDeslogar(JFrame j) {
+	CentralDeInformacoes central;
+	
+	public OuvinteBotaoDeslogar(JFrame j, CentralDeInformacoes c) {
 		janela = j;
+		central = c;
 	}
 	public void actionPerformed(ActionEvent e) {
 		janela.dispose();
-		new TelaDeLogin();
+		new TelaDeLogin(central, new Persistencia());
 	}
 
 }
