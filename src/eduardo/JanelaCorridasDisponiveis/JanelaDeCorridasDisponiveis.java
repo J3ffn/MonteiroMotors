@@ -49,24 +49,9 @@ public class JanelaDeCorridasDisponiveis extends JanelaPadrao{
 		JButton b = new JButton("< Voltar");
 		b.setBounds(5, 5, 80, 20);
 		b.addMouseListener((new MouseListener() {
-
-			@Override
-			public void mouseClicked(MouseEvent e) {
-			}
-
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
+			public void mouseClicked(MouseEvent e) {}
+			public void mousePressed(MouseEvent e) {}
+			public void mouseReleased(MouseEvent e) {}
 			public void mouseEntered(MouseEvent e) {
 				try {
 					new Persistencia().salvar(getCentral(), "dados-passageiros.xml");
@@ -75,12 +60,7 @@ public class JanelaDeCorridasDisponiveis extends JanelaPadrao{
 				}
 				
 			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+			public void mouseExited(MouseEvent e) {}
 		
 		}));
 		b.addActionListener(new OuvinteBotaoCancelar(this));
@@ -104,54 +84,6 @@ public class JanelaDeCorridasDisponiveis extends JanelaPadrao{
 		btAtualizar.setBounds(90, 5, 100, 20);
 		btAtualizar.addMouseListener(new OuvinteDoAtualizar(this));
 		this.add(btAtualizar);
-	}
-	private class OuvinteDoAtualizar implements MouseListener{
-		JanelaDeCorridasDisponiveis janela;
-		
-		public OuvinteDoAtualizar(JanelaDeCorridasDisponiveis j) {
-			janela = j;
-		}
-			public void mouseClicked(MouseEvent e) {
-				if(filtro.getSelectedItem().equals("Mais Antigas") && getCorridasTodasAsDisponiveis() != null) {
-						getCorridasTodasAsDisponiveis().sort(new ComparacaoData());
-					
-				} else if(filtro.getSelectedItem().equals("Mais Recentes")  && getCorridasTodasAsDisponiveis() != null) {
-						getCorridasTodasAsDisponiveis().sort(new ComparacaoData2());
-						
-				} else if(filtro.getSelectedItem().equals("Não Reinvindicadas")) {
-					setCorridasTodasAsDisponiveis(getCentral().recuperarNaoReinvindicadas(getUsuario()));
-					
-				} else if(filtro.getSelectedItem().equals("Reinvindicadas")) {
-					setCorridasTodasAsDisponiveis(getCentral().recuperarReinvindicadas(getUsuario()));
-				
-				} else if(filtro.getSelectedItem().equals("Todas")) {
-					if(getUsuario() instanceof Mototaxista) {
-						if(janela instanceof JanelaDeChamadasDeCorridas) {
-							setCorridasTodasAsDisponiveis(getCentral().recuperarCorridasPossiveisParaoMototaxista((Mototaxista)getUsuario()));
-						} else {
-							setCorridasTodasAsDisponiveis(getCentral().recuperarReinvindicadas((Mototaxista)getUsuario()));
-						}
-					} else if (getUsuario() instanceof Administrador) {
-						setCorridasTodasAsDisponiveis(getCentral().getCorridas());
-					} else if (getUsuario() instanceof Passageiro) {
-						setCorridasTodasAsDisponiveis(getCentral().recuperarCorridasDeUmPassageiro(getUsuario().getEmail()));
-					}
-				}
-				JButton botao = (JButton) e.getSource();
-				botao.setText("Atualizar!");
-				botao.transferFocus();
-				janela.remove(painel);
-				adicionarPainel();
-				janela.repaint();
-			}
-			@Override
-			public void mousePressed(MouseEvent e) {}
-			@Override
-			public void mouseReleased(MouseEvent e) {}
-			@Override
-			public void mouseEntered(MouseEvent e) {}
-			@Override
-			public void mouseExited(MouseEvent e) {}
 	}
 	public void adicionarPainel() {
 		if(getUsuario() instanceof Mototaxista) {
@@ -185,5 +117,55 @@ public class JanelaDeCorridasDisponiveis extends JanelaPadrao{
 	}
 	public void setCorridasTodasAsDisponiveis(ArrayList <Corrida> corridasTodasAsDisponiveis) {
 		this.corridasTodasAsDisponiveis = corridasTodasAsDisponiveis;
+	}
+	private class OuvinteDoAtualizar implements MouseListener{
+		JanelaDeCorridasDisponiveis janela;
+		
+		public OuvinteDoAtualizar(JanelaDeCorridasDisponiveis j) {
+			janela = j;
+		}
+		public void mouseClicked(MouseEvent e) {
+			if(filtro.getSelectedItem().equals("Mais Antigas") && getCorridasTodasAsDisponiveis() != null) {
+				getCorridasTodasAsDisponiveis().sort(new ComparacaoData());
+				
+			} else if(filtro.getSelectedItem().equals("Mais Recentes")  && getCorridasTodasAsDisponiveis() != null) {
+				getCorridasTodasAsDisponiveis().sort(new ComparacaoData2());
+				
+			} else if(filtro.getSelectedItem().equals("Não Reinvindicadas")) {
+				setCorridasTodasAsDisponiveis(getCentral().recuperarNaoReinvindicadas(getUsuario()));
+				
+			} else if(filtro.getSelectedItem().equals("Reinvindicadas")) {
+				setCorridasTodasAsDisponiveis(getCentral().recuperarReinvindicadas(getUsuario()));
+				
+			} else if(filtro.getSelectedItem().equals("Todas")) {
+				ArrayList <Corrida> listaCorridasQueVaoAparecer = null;
+				if(getUsuario() instanceof Mototaxista) {
+					if(janela instanceof JanelaDeChamadasDeCorridas) {
+						listaCorridasQueVaoAparecer = getCentral().recuperarCorridasPossiveisParaoMototaxista((Mototaxista)getUsuario());
+					} else {
+						listaCorridasQueVaoAparecer = getCentral().recuperarReinvindicadas((Mototaxista)getUsuario());
+					}
+				} else if (getUsuario() instanceof Administrador) {
+					listaCorridasQueVaoAparecer = getCentral().getCorridas();
+				} else if (getUsuario() instanceof Passageiro) {
+					listaCorridasQueVaoAparecer = getCentral().recuperarCorridasDeUmPassageiro(getUsuario().getEmail());
+				}
+				setCorridasTodasAsDisponiveis(listaCorridasQueVaoAparecer);
+			}
+			JButton botao = (JButton) e.getSource();
+			botao.setText("Atualizar!");
+			botao.transferFocus();
+			janela.remove(painel);
+			adicionarPainel();
+			janela.repaint();
+		}
+		@Override
+		public void mousePressed(MouseEvent e) {}
+		@Override
+		public void mouseReleased(MouseEvent e) {}
+		@Override
+		public void mouseEntered(MouseEvent e) {}
+		@Override
+		public void mouseExited(MouseEvent e) {}
 	}
 }
