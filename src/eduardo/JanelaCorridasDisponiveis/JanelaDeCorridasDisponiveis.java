@@ -26,9 +26,11 @@ import ListaDeAquecimento.Corrida;
 
 public class JanelaDeCorridasDisponiveis extends JanelaPadrao{
 	private ArrayList <Corrida> corridasTodasAsDisponiveis;
+	private ArrayList <Passageiro> passageiros = new ArrayList<Passageiro>();;
 	private JScrollPane painel;
 	private Painel painel1;
 	private JButton btAtualizar;
+	private String[] opcoes = { "Todas", "Mais Recentes", "Mais Antigas", "Reinvindicadas", "Não Reinvindicadas"};
 	private JComboBox < String > filtro;
 	
 	public JanelaDeCorridasDisponiveis(Usuario u) {
@@ -38,7 +40,6 @@ public class JanelaDeCorridasDisponiveis extends JanelaPadrao{
 		this.setVisible(true);
 	}
 	public void adicionarBotoes() {
-		String[] opcoes = { "Todas", "Mais Recentes", "Mais Antigas", "Reinvindicadas", "Não Reinvindicadas"};
 		JLabel texto = new JLabel("Corridas Disponiveis");
 		texto.setBounds(20, 40, 440, 20);
 		texto.setBackground(Color.GRAY);
@@ -75,10 +76,12 @@ public class JanelaDeCorridasDisponiveis extends JanelaPadrao{
 		} else if (this.getUsuario() instanceof Passageiro) {
 			filtro.removeItemAt(1);
 			filtro.removeItemAt(1);
+			
 		} else if (this.getUsuario() instanceof Administrador) {
 			for(Usuario u : this.getCentral().getTodosOsUsuarios()) {
-				if(u instanceof Mototaxista || u instanceof Passageiro) {
-					filtro.addItem(u.getEmail());
+				if(u instanceof Passageiro) {
+					filtro.addItem(u.getNome());
+					passageiros.add((Passageiro) u);
 				}
 			}
 		}
@@ -158,7 +161,8 @@ public class JanelaDeCorridasDisponiveis extends JanelaPadrao{
 				}
 				setCorridasTodasAsDisponiveis(listaCorridasQueVaoAparecer);
 			} else {
-				String email = (String) filtro.getSelectedItem();
+				Usuario u = passageiros.get(filtro.getSelectedIndex() - opcoes.length);
+				String email = (u.getEmail());//(String) filtro.getSelectedItem(); getCentral(
 				setCorridasTodasAsDisponiveis(getCentral().recuperarCorridasDeUmPassageiro(email));
 			}
 			

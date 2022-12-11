@@ -41,7 +41,7 @@ public class Teste2 {
 		Administrador adm =  new Administrador("Eduardo", "Masculino", "edd", "kkk", null);
 		// TODO valor ficticio, desenvolver a lógica do valor.
 		int valor = 3;
-		Corrida c = new Corrida("Bla", "Bla", 60f, true, data, adm, valor);
+		Corrida c = new Corrida("Bla", "Bla", 60f, true, data, adm, null);
 		try {
 			n1.adicionarCreditos(2, central);
 		} catch (AdicaoInvalidaException e) {

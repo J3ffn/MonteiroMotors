@@ -18,7 +18,6 @@ import ListaDeAquecimento.Persistencia;
 import ListaDeAquecimento.Status;
 import ListaDeAquecimento.Usuario;
 import clebson.JanelaEditarPerfil;
-import clebson.JanelaEditarPerfilAdmin;
 import eduardo.JanelaCorridasDisponiveis.Painel;
 
 public class PainelListaUsuarios extends Painel{

@@ -79,7 +79,7 @@ public class JanelaDeCadastroDeCorrida extends JanelaPadrao{
 								Float.parseFloat(inputDistancia.getText()), 
 								checkBCorridaParaAgora.isSelected(), 
 								dataDaCorrida,
-								getUsuario(), valorDaCorrida);
+								getUsuario(), null);
 						getCentral().adicionarCorrida(c);
 						
 						try {
