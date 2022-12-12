@@ -7,19 +7,33 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+
+import ListaDeAquecimento.CentralDeInformacoes;
+import ListaDeAquecimento.Persistencia;
 import ListaDeAquecimento.TipoDeConta;
 import ListaDeAquecimento.Usuario;
 
 @SuppressWarnings("serial")
 public class JanelaMudancaTipo extends JFrame{
+	private CentralDeInformacoes central;
 	private Usuario usuario;
 	private JComboBox<TipoDeConta> tipos = new JComboBox<TipoDeConta>();
+	
 	public JComboBox<TipoDeConta> getTipos() {
 		return tipos;
 	}
 	
+	public void setCentral(CentralDeInformacoes central) {
+		this.central = central;
+	}
+
 	public JanelaMudancaTipo(Usuario usuario) {
 		this.usuario = usuario;
+		try {
+			this.setCentral((CentralDeInformacoes)new Persistencia().recuperar("dados-passageiros.xml"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		setTitle("Mudança de Tipo");
 		setSize(350, 200);
 		setResizable(false);
@@ -59,8 +73,16 @@ public class JanelaMudancaTipo extends JFrame{
 			String tipo = (String) tipos.getSelectedItem();
 			switch(tipo) {
 			case("ADMINISTRADOR"):
-				usuario.setSexo();
+				central.recuperarUsuarioPeloEmail(usuario.getEmail()).setTipoDeConta(TipoDeConta.ADMINISTRADOR);
+				break;
+			case("MOTOTAXISTA"):
+				central.recuperarUsuarioPeloEmail(usuario.getEmail()).setTipoDeConta(TipoDeConta.MOTOTAXISTA);
+				break;
+			case("PASSAGEIRO"):
+				central.recuperarUsuarioPeloEmail(usuario.getEmail()).setTipoDeConta(TipoDeConta.PASSAGEIRO);
+				break;
 			}
+			
 			janela.dispose();
 		}
 	}
