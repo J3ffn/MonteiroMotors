@@ -109,7 +109,7 @@ public final class TelaDeAlteracaoDaSenha extends JanelaPadrao {
 						new Persistencia().salvar(central, "dados-passageiros.xml");
 						
 						tela.dispose();
-						new TelaDeLogin(central, new Persistencia());
+						new TelaDeLogin();
 					} catch (Exception e1) {
 						
 						e1.printStackTrace();

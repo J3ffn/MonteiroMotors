@@ -29,7 +29,7 @@ public class Mototaxista extends Usuario{
 		} else {
 			float totalASerPago = 0;
 			for(int i = 0; i < num; i++) {
-				Credito c = new Credito(central);
+				Credito c = new Credito(central, LocalDate.now());
 				creditos.add(c);
 				totalASerPago += c.getValor();
 			}

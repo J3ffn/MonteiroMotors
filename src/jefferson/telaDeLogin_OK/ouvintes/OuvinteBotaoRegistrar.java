@@ -5,20 +5,14 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
-import ListaDeAquecimento.CentralDeInformacoes;
-import ListaDeAquecimento.Persistencia;
 import eduardo.Janelas.JanelaDeRegistro;
 
 public class OuvinteBotaoRegistrar implements ActionListener{
 
 	private JFrame tela;
-	private CentralDeInformacoes central;
-	private Persistencia persistencia;
 	
-	public OuvinteBotaoRegistrar(JFrame tela, CentralDeInformacoes c, Persistencia p) {
+	public OuvinteBotaoRegistrar(JFrame tela) {
 		this.tela = tela;
-		this.central = c;
-		this.persistencia = p;
 	}
 	
 	@Override

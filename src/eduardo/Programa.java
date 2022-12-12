@@ -16,10 +16,9 @@ public class Programa {
 			if(central.getTodosOsUsuarios().isEmpty()) {
 				new JanelaDeRegistro();
 			} else {
-				TelaDeLogin tela1 = new TelaDeLogin(central, per);
+				TelaDeLogin tela1 = new TelaDeLogin();
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

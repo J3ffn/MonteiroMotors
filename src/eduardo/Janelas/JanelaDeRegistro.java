@@ -211,7 +211,7 @@ public class JanelaDeRegistro extends JanelaPadrao{
 			}
 			JOptionPane.showMessageDialog(j, "Usuário cadastrado Com Sucesso!");
 			j.dispose();
-			new TelaDeLogin(getCentral(), new Persistencia());
+			new TelaDeLogin();
 			} } catch (Exception erro){
 			JOptionPane.showMessageDialog(j, "Ocorreu um erro, corrija os campos!", "Erro!", JOptionPane.ERROR_MESSAGE);
 		}

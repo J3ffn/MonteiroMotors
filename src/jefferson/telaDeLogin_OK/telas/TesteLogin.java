@@ -11,7 +11,7 @@ public class TesteLogin {
 		CentralDeInformacoes central;
 		try {
 			central = (CentralDeInformacoes) per.recuperar("dados-passageiros.xml");
-			TelaDeLogin tela1 = new TelaDeLogin(central, per);
+			TelaDeLogin tela1 = new TelaDeLogin();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -11,7 +11,6 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import ListaDeAquecimento.CentralDeInformacoes;
-import ListaDeAquecimento.Persistencia;
 import clebson.JanelaPadrao;
 import jefferson.telaDeLogin_OK.ouvintes.OuvinteBotaoEsqueceuSenha;
 import jefferson.telaDeLogin_OK.ouvintes.OuvinteBotaoLogin;
@@ -19,19 +18,17 @@ import jefferson.telaDeLogin_OK.ouvintes.OuvinteBotaoRegistrar;
 
 @SuppressWarnings("serial")
 public class TelaDeLogin extends JanelaPadrao{
-	private CentralDeInformacoes central;
-	private Persistencia persistencia;
 	
 	private JTextField campoEmail;
 	private JPasswordField campoPassword;
 	
-	public TelaDeLogin(CentralDeInformacoes c, Persistencia p) {
+	public TelaDeLogin() {
 		super("Tela de Login", null);
 		addTextField();
 		addImagem();
 		addBotoes();
-		central = c;
-		persistencia = p;
+		new CentralDeInformacoes() ;
+		
 		setVisible(true);
 	}
 	
@@ -50,7 +47,7 @@ public class TelaDeLogin extends JanelaPadrao{
 			
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				registrar.addActionListener(new OuvinteBotaoRegistrar(tela, central, persistencia));
+				registrar.addActionListener(new OuvinteBotaoRegistrar(tela));
 			}
 			
 		});

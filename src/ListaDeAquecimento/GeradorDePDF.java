@@ -108,10 +108,10 @@ public class GeradorDePDF{
 		
 	}
 	
-	public void gerarRelatorioFinancas(ArrayList<Corrida> listaCorridas) {
+	public void gerarRelatorioFinancas(ArrayList<Mototaxista> mototaxistas) {
 		Document doc = new Document();
 		
-		String arquivoPDF = "Relatório_de_Finanças.pdf";
+		String arquivoPDF = "Relatorio_de_Finanças.pdf";
 		
 		try {
 			PdfWriter.getInstance(doc, new FileOutputStream(arquivoPDF));
@@ -126,22 +126,25 @@ public class GeradorDePDF{
 			
 			PdfPTable tabela = new PdfPTable(3);
 			
-			PdfPCell celula1 = new PdfPCell(new Paragraph("Corrida"));
-			PdfPCell celula2 = new PdfPCell(new Paragraph("Situacao"));
+			PdfPCell celula1 = new PdfPCell(new Paragraph("Tipo"));
+			PdfPCell celula2 = new PdfPCell(new Paragraph("Data"));
 			PdfPCell celula3 = new PdfPCell(new Paragraph("Valor"));
 			
 			tabela.addCell(celula1);
 			tabela.addCell(celula2);
 			tabela.addCell(celula3);
 			
-			for(Corrida c: listaCorridas) {
-				celula1 = new PdfPCell(new Paragraph(c.toString()));
-				celula2 = new PdfPCell(new Paragraph(c.getStatus() + ""));
-				celula3 = new PdfPCell(new Paragraph(1));
+			for(Mototaxista c: mototaxistas) {
+				for(int i = 0; i < c.getCreditos().size(); i++) {
+					celula1 = new PdfPCell(new Paragraph("Mototaxista"));
+					celula2 = new PdfPCell(new Paragraph(c.getCreditos().get(i).getData() + ""));
+					celula3 = new PdfPCell(new Paragraph(c.getCreditos().get(i).getValor() + ""));
+					
+					tabela.addCell(celula1);
+					tabela.addCell(celula2);
+					tabela.addCell(celula3);
+				}
 				
-				tabela.addCell(celula1);
-				tabela.addCell(celula2);
-				tabela.addCell(celula3);
 			}
 			
 			doc.add(tabela);

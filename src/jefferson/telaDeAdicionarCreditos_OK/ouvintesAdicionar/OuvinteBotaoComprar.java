@@ -2,6 +2,7 @@ package jefferson.telaDeAdicionarCreditos_OK.ouvintesAdicionar;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
@@ -12,6 +13,7 @@ import ListaDeAquecimento.GeradorDePDF;
 import ListaDeAquecimento.Mensageiro;
 import ListaDeAquecimento.Mototaxista;
 import ListaDeAquecimento.Persistencia;
+import ListaDeAquecimento.Usuario;
 import clebson.JanelaMototaxista;
 import eduardo.Janelas.AdicaoInvalidaException;
 
@@ -43,11 +45,20 @@ public class OuvinteBotaoComprar implements ActionListener{
 				
 				mensageiro.enviarBoleto(mototaxista.getEmail());
 				
+				ArrayList<Usuario> usuarios = central.getTodosOsUsuarios();
+				for(int i = 0; i < usuarios.size(); i++) {
+					if (usuarios.get(i).equals(mototaxista)) {
+						usuarios.remove(i);
+						usuarios.add(mototaxista);
+					}
+				}
+				central.setTodosOsUsuarios(usuarios);
 				new Persistencia().salvar(central, "dados-passageiros.xml");
 				
 				telaAtual.dispose();
 				
 				new JanelaMototaxista(mototaxista);
+				
 				
 			} catch (Exception e1) {
 				e1.printStackTrace();

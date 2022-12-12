@@ -20,18 +20,7 @@ public class OuvinteComboBox implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		JComboBox<String> box = (JComboBox<String>) e.getSource();
 		
-		String selecionado = (String) box.getSelectedItem();
-		System.out.println(selecionado);
-		
-		switch (selecionado) {
-		case "Tudo":
-			campoDigitarData.setVisible(false);
-			break;
-		default:
-			campoDigitarData.setVisible(true);
-		}
 	}
 	
 }

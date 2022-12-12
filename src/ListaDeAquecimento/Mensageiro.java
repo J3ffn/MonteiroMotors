@@ -135,8 +135,8 @@ public class Mensageiro extends MultiPartEmail{
 			setSubject("Relatório de finanças");
 			addTo(email);
 			EmailAttachment anexo = new EmailAttachment();
-			anexo.setPath("relatorios/relatorio-Financas.pdf");
-			anexo.setName("Relatório de Finanças.pdf");
+			anexo.setPath("Relatorio_de_Finanças.pdf");
+			anexo.setName("Relatório_de_finanças.pdf");
 			
 			attach(anexo);
 			JOptionPane.showMessageDialog(null, "O relatório foi enviado");

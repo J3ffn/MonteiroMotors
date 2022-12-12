@@ -16,35 +16,36 @@ import javax.swing.JOptionPane;
 
 import com.itextpdf.text.Document;
 
+import ListaDeAquecimento.CentralDeInformacoes;
 import ListaDeAquecimento.Corrida;
 import ListaDeAquecimento.GeradorDePDF;
 import ListaDeAquecimento.Mensageiro;
+import ListaDeAquecimento.Mototaxista;
+import ListaDeAquecimento.TipoDeConta;
 import ListaDeAquecimento.Usuario;
 
 public class OuvinteDeFinancas implements ActionListener {
 
-	private JFrame telaAtual;
 	private ArrayList< Corrida > corridas;
 	private LocalDateTime dataFiltro;
 	private JComboBox<String> campoBox;
 	private JFormattedTextField dataDigitada;
 	private Mensageiro mensageiro = new Mensageiro();
 	private String email;
+	private CentralDeInformacoes central;
 	
-	public OuvinteDeFinancas(JFrame tela, Usuario usuario, ArrayList<Corrida> listaCorridas, LocalDateTime data, JComboBox<String> box, JFormattedTextField campoData){
-		telaAtual = tela;
+	public OuvinteDeFinancas(Usuario usuario, ArrayList<Corrida> listaCorridas, LocalDateTime data, JComboBox<String> box, JFormattedTextField campoData, CentralDeInformacoes centralI){
 		email = usuario.getEmail();
 		corridas = listaCorridas;
 		dataFiltro = data;
 		campoBox = box;
 		dataDigitada = campoData;
+		central = centralI;
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (corridas.size() > 0) {
-			
-			String selecionado = (String) campoBox.getSelectedItem();
 			
 			String textoData = dataDigitada.getText();
 			
@@ -80,9 +81,14 @@ public class OuvinteDeFinancas implements ActionListener {
 					}
 				}
 			}
+			ArrayList<Mototaxista> mototaxistas = new ArrayList<>();
 			
-			new GeradorDePDF().gerarRelatorioFinancas(corridasFiltradas);
-			mensageiro.enviarRelatorioFinancas(email);
+			for(Usuario m: central.getTodosOsMototaxistas()) {
+				mototaxistas.add( (Mototaxista) m );
+			}
+			
+			new GeradorDePDF().gerarRelatorioFinancas(mototaxistas);
+			mensageiro.enviarRelatorioFinancas(/*email*/ "jefferson.mangueira@academico.ifpb.edu.br");
 		} else {
 			JOptionPane.showConfirmDialog(null, "Não há registro de compras", "Impossível", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
 		}

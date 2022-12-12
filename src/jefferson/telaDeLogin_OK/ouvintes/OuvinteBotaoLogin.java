@@ -8,11 +8,18 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import ListaDeAquecimento.*;
-import clebson.JanelaMototaxista;
+import ListaDeAquecimento.Administrador;
+import ListaDeAquecimento.CentralDeInformacoes;
+import ListaDeAquecimento.Mototaxista;
+import ListaDeAquecimento.Passageiro;
+import ListaDeAquecimento.PerfilDesativadoException;
+import ListaDeAquecimento.Persistencia;
+import ListaDeAquecimento.SenhaIncorretaException;
+import ListaDeAquecimento.Usuario;
+import ListaDeAquecimento.UsuarioNaoCadastradoException;
 import clebson.JanelaAdministrador;
+import clebson.JanelaMototaxista;
 import clebson.JanelaPassageiro;
-import jefferson.telaDeAdicionarCreditos_OK.UsuarioTeste;
 
 public class OuvinteBotaoLogin implements ActionListener{
 
@@ -51,16 +58,13 @@ public class OuvinteBotaoLogin implements ActionListener{
 				// TODO alterar o switch.
 				switch(usuario.getTipoDeConta()) {
 				case ADMINISTRADOR:
-					Administrador adm = new Administrador(usuario.getNome(), usuario.getSexo() + "", usuario.getEmail(), usuario.getSenha(), usuario.getDataDeNascimento());
-					new JanelaAdministrador(adm);
+					new JanelaAdministrador((Administrador) usuario);
 					break;
 				case PASSAGEIRO:
-					Passageiro pass = new Passageiro(usuario.getNome(), usuario.getSexo() + "", usuario.getEmail(), usuario.getSenha(), usuario.getDataDeNascimento());;
-					new JanelaPassageiro(pass);
+					new JanelaPassageiro((Passageiro) usuario);
 					break;
 				case MOTOTAXISTA:
-					Mototaxista mtx = new Mototaxista(usuario.getNome(), usuario.getSexo() + "", usuario.getEmail(), usuario.getSenha(), usuario.getDataDeNascimento());;
-					new JanelaMototaxista(mtx);
+					new JanelaMototaxista((Mototaxista) usuario);
 					break;
 				}
 			}
