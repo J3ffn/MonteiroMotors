@@ -35,14 +35,13 @@ public class OuvinteBotaoComprar implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		System.out.println(quantidadeCreditos.getText());
 		if (!quantidadeCreditos.getText().isBlank()) {
-			int valorcreditos = Integer.parseInt(quantidadeCreditos.getText());
+			int quantidadeCreditosComprados = Integer.parseInt(quantidadeCreditos.getText());
 			try {
-				mototaxista.adicionarCreditos(valorcreditos, central);
+				float valor = mototaxista.adicionarCreditos(quantidadeCreditosComprados, central);
 				
-				new GeradorDePDF().gerarBoleto(central, mototaxista, valorcreditos);
+				new GeradorDePDF().gerarBoleto(central, mototaxista, valor);
 				
-				mensageiro.enviarBoleto(/*mototaxista.getEmail()*/ "jefferson.mangueira@academico.ifpb.edu.br");
-				mototaxista.adicionarCreditos(valorcreditos, central);
+				mensageiro.enviarBoleto(mototaxista.getEmail());
 				
 				new Persistencia().salvar(central, "dados-passageiros.xml");
 				

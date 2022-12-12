@@ -31,7 +31,10 @@ public class CentralDeInformacoes {
 	public void setCorridas(ArrayList<Corrida> corridas) {
 		this.corridas = corridas;
 	}
-
+	
+	public void deletarPerfil(Usuario u) {
+		todosOsUsuarios.remove(u);
+	}
 	public Usuario recuperarUsuarioPeloEmail(String email){
 		for(Usuario usuario : todosOsUsuarios) {
 			if(usuario.getEmail().equals(email)) {

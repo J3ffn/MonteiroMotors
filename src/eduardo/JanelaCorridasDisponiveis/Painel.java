@@ -46,7 +46,7 @@ public abstract class Painel extends JPanel{
 			
 			for (int i = 0; i < getCorridasTodasAsDisponiveis().size(); i++) {
 				JLabel corrida = new JLabel("Corrida: " + corridasTodasAsDisponiveis.get(i).getId());
-				corrida.setBounds(10, y, 170, 20);
+				corrida.setBounds(10, y+10, 170, 20);
 				
 				JButton botao = new JButton("Detalhes");
 				botao.setBounds(310, y, 115, 40);

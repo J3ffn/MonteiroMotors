@@ -25,7 +25,6 @@ public class JanelaDeDetalhesDeUmaCorrida extends JFrame {
 		this.usuario = usuario;
 		
 		setResizable(false);
-		setLocationRelativeTo(null);				
 		setLayout(null);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
@@ -36,6 +35,7 @@ public class JanelaDeDetalhesDeUmaCorrida extends JFrame {
 			addTabela();
 			addBotoes();
 		}
+		setLocationRelativeTo(null);				
 		setVisible(true);
 	}
 	

@@ -34,11 +34,23 @@
       <avaliacoes/>
       <creditos/>
     </ListaDeAquecimento.Mototaxista>
+    <ListaDeAquecimento.Mototaxista>
+      <nome>Eduardo m</nome>
+      <sexo>MASCULINO</sexo>
+      <senha>edu</senha>
+      <dataDeNascimento>2004-02-21</dataDeNascimento>
+      <email>eduardojose71953@gmail.com</email>
+      <id>eduardojose71953@gmail.com</id>
+      <perfilAtivo>true</perfilAtivo>
+      <tipoDeConta>MOTOTAXISTA</tipoDeConta>
+      <avaliacoes/>
+      <creditos/>
+    </ListaDeAquecimento.Mototaxista>
   </todosOsUsuarios>
   <corridas>
     <ListaDeAquecimento.Corrida>
       <id>1670793305556</id>
-      <status>PENDENTE</status>
+      <status>REINVINDICADA</status>
       <enderecoDePartida>Rua Fascida</enderecoDePartida>
       <enderecoDeDestino>IFPB</enderecoDeDestino>
       <distancia>5.0</distancia>
@@ -55,6 +67,47 @@
         <tipoDeConta>PASSAGEIRO</tipoDeConta>
         <mototaxistasBloqueados/>
       </usuario>
+      <mototaxista>
+        <nome>Eduardo m</nome>
+        <sexo>MASCULINO</sexo>
+        <senha>edu</senha>
+        <dataDeNascimento>2004-02-21</dataDeNascimento>
+        <email>eduardojose71953@gmail.com</email>
+        <id>eduardojose71953@gmail.com</id>
+        <perfilAtivo>true</perfilAtivo>
+        <tipoDeConta>MOTOTAXISTA</tipoDeConta>
+        <avaliacoes/>
+        <creditos>
+          <ListaDeAquecimento.Credito>
+            <valor>0.5</valor>
+          </ListaDeAquecimento.Credito>
+          <ListaDeAquecimento.Credito>
+            <valor>0.5</valor>
+          </ListaDeAquecimento.Credito>
+          <ListaDeAquecimento.Credito>
+            <valor>0.5</valor>
+          </ListaDeAquecimento.Credito>
+          <ListaDeAquecimento.Credito>
+            <valor>0.5</valor>
+          </ListaDeAquecimento.Credito>
+          <ListaDeAquecimento.Credito>
+            <valor>0.5</valor>
+          </ListaDeAquecimento.Credito>
+          <ListaDeAquecimento.Credito>
+            <valor>0.5</valor>
+          </ListaDeAquecimento.Credito>
+          <ListaDeAquecimento.Credito>
+            <valor>0.5</valor>
+          </ListaDeAquecimento.Credito>
+          <ListaDeAquecimento.Credito>
+            <valor>0.5</valor>
+          </ListaDeAquecimento.Credito>
+          <ListaDeAquecimento.Credito>
+            <valor>0.5</valor>
+          </ListaDeAquecimento.Credito>
+        </creditos>
+        <corridaAtual reference="../.."/>
+      </mototaxista>
     </ListaDeAquecimento.Corrida>
     <ListaDeAquecimento.Corrida>
       <id>1670803996172</id>
