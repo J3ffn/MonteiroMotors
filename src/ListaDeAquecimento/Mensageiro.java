@@ -139,7 +139,6 @@ public class Mensageiro extends MultiPartEmail{
 			anexo.setName("Relatório de Finanças.pdf");
 			
 			attach(anexo);
-			System.out.println("Finanças enviado com sucesso");
 			JOptionPane.showMessageDialog(null, "O relatório foi enviado");
 			send();
 			return true;
@@ -150,7 +149,24 @@ public class Mensageiro extends MultiPartEmail{
 		}
 		return false;
 	}
-	public boolean enviarBoleto() {
+	public boolean enviarBoleto(String email) {
+		
+		setSubject("Boleto gerado");
+		try {
+			addTo(email);
+			EmailAttachment anexo = new EmailAttachment();
+			anexo.setPath("boleto.pdf");
+			anexo.setName("BOLETO_GERADO.pdf");
+			
+			attach(anexo);
+			send();
+			
+			JOptionPane.showMessageDialog(null, "Boleto foi enviado ao seu email.");
+			
+		} catch (EmailException e) {
+			JOptionPane.showMessageDialog(null, "Não foi possível gerar o boleto");
+		}
+		
 		
 		return false;
 	}

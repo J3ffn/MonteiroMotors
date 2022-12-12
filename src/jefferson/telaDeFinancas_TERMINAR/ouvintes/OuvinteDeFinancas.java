@@ -46,8 +46,6 @@ public class OuvinteDeFinancas implements ActionListener {
 			
 			String selecionado = (String) campoBox.getSelectedItem();
 			
-			System.out.println(selecionado);
-			
 			String textoData = dataDigitada.getText();
 			
 			String dataDigitada = textoData + " 00:00";

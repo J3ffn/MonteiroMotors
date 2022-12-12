@@ -95,6 +95,7 @@ public class JanelaMototaxista extends JanelaPadraoUsuario{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				dispose();
 				new TelaDeAdicionarCreditos(mtx, getCentral());
 			}
 		});
