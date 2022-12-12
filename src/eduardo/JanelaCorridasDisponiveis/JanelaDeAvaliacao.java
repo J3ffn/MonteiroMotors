@@ -6,8 +6,10 @@ import java.awt.event.ActionListener;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
+import javax.swing.JTextArea;
 
 import ListaDeAquecimento.Avaliacao;
 import ListaDeAquecimento.Corrida;
@@ -31,12 +33,16 @@ public class JanelaDeAvaliacao extends JanelaDeDetalhesDeUmaCorrida{
 		
 		addRadioButton();
 		addBotao();
+		addCampoComentario();
 		
-		setSize(298, 162);
+		setSize(298, 262);
 		setVisible(true);
 	}
 	
 	public void addRadioButton() {
+		JLabel subTexto = new JLabel("SUA AVALIAÇÃO:");
+		subTexto.setBounds(30, 5, 100, 30);
+		
 		avaliacao1 = new JRadioButton("1", false);
 		avaliacao1.setBounds(39, 25, 35, 30);
 		
@@ -60,6 +66,7 @@ public class JanelaDeAvaliacao extends JanelaDeDetalhesDeUmaCorrida{
 		bg.add(avaliacao5);
 		
 		
+		add(subTexto);
 		add(avaliacao1);
 		add(avaliacao2);
 		add(avaliacao3);
@@ -77,9 +84,20 @@ public class JanelaDeAvaliacao extends JanelaDeDetalhesDeUmaCorrida{
 		return null;
 	}
 	
+	public void addCampoComentario() {
+		JLabel subTexto = new JLabel("COMENTARIO:");
+		subTexto.setBounds(30, 60, 100, 40);
+		
+		JTextArea campoTexto = new JTextArea();
+		campoTexto.setBounds(30, 90, 225, 60);
+		
+		add(subTexto);
+		add(campoTexto);
+	}
+	
 	public void addBotao() {
 		JButton botaoAvaliar = new JButton("Avaliar");
-		botaoAvaliar.setBounds(85, 60, 110, 40);
+		botaoAvaliar.setBounds(85, 165, 110, 40);
 		
 		botaoAvaliar.addActionListener(new ActionListener() {
 			

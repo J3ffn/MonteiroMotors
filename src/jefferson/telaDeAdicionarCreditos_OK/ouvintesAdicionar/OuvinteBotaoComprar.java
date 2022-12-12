@@ -8,8 +8,11 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import ListaDeAquecimento.CentralDeInformacoes;
+import ListaDeAquecimento.GeradorDePDF;
 import ListaDeAquecimento.Mensageiro;
 import ListaDeAquecimento.Mototaxista;
+import ListaDeAquecimento.Persistencia;
+import clebson.JanelaMototaxista;
 import eduardo.Janelas.AdicaoInvalidaException;
 
 public class OuvinteBotaoComprar implements ActionListener{
@@ -35,12 +38,19 @@ public class OuvinteBotaoComprar implements ActionListener{
 			int valorcreditos = Integer.parseInt(quantidadeCreditos.getText());
 			try {
 				mototaxista.adicionarCreditos(valorcreditos, central);
-				// TODO configurar enviarBoleto
-				mensageiro.enviarBoleto();
-				telaAtual.dispose();
+				
+				new GeradorDePDF().gerarBoleto(central, mototaxista, valorcreditos);
+				
+				mensageiro.enviarBoleto(/*mototaxista.getEmail()*/ "jefferson.mangueira@academico.ifpb.edu.br");
 				mototaxista.adicionarCreditos(valorcreditos, central);
-				JOptionPane.showMessageDialog(null, "uma N-fe foi enviada ao seu email");
-			} catch (AdicaoInvalidaException e1) {
+				
+				new Persistencia().salvar(central, "dados-passageiros.xml");
+				
+				telaAtual.dispose();
+				
+				new JanelaMototaxista(mototaxista);
+				
+			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
 		} else {

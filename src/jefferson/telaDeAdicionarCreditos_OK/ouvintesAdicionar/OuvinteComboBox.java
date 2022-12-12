@@ -31,7 +31,6 @@ public class OuvinteComboBox implements ActionListener{
 			break;
 		default:
 			campoDigitarData.setVisible(true);
-			break;
 		}
 	}
 	
