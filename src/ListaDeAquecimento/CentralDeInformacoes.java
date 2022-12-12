@@ -37,6 +37,16 @@ public class CentralDeInformacoes {
 		}
 	}
 	
+	public Usuario getUsuarioPeloId (String Id) {
+		for (Usuario usuario: todosOsUsuarios) {
+			if(usuario.getId().equals(Id)) {
+				return usuario;
+			}
+		}
+		return null;
+	}
+	
+	
 	public void setCorridas(ArrayList<Corrida> corridas) {
 		this.corridas = corridas;
 	}

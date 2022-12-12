@@ -66,13 +66,13 @@ public class JanelaMudancaTipo extends JFrame{
 			String tipo = (String) tipos.getSelectedItem();
 			switch(tipo) {
 			case("ADMINISTRADOR"):
-				central.recuperarUsuarioPeloEmail(usuario.getEmail()).setTipoDeConta(TipoDeConta.ADMINISTRADOR);
+				central.getUsuarioPeloId(usuario.getId()).setTipoDeConta(TipoDeConta.ADMINISTRADOR);
 				break;
 			case("MOTOTAXISTA"):
-				central.recuperarUsuarioPeloEmail(usuario.getEmail()).setTipoDeConta(TipoDeConta.MOTOTAXISTA);
+				central.getUsuarioPeloId(usuario.getId()).setTipoDeConta(TipoDeConta.MOTOTAXISTA);
 				break;
 			case("PASSAGEIRO"):
-				central.recuperarUsuarioPeloEmail(usuario.getEmail()).setTipoDeConta(TipoDeConta.PASSAGEIRO);
+				central.getUsuarioPeloId(usuario.getId()).setTipoDeConta(TipoDeConta.PASSAGEIRO);
 				break;
 			default:
 				break;

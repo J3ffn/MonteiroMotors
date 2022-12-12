@@ -143,20 +143,18 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 			try {
 			String novoEmail = JOptionPane.showInputDialog("Digite o novo email: ");
 			if (!novoEmail.equals("")) {
-			central.recuperarUsuarioPeloEmail(usuario.getEmail()).setEmail(novoEmail);
-			usuario.setEmail(novoEmail);
-			central.recuperarUsuarioPeloEmail(usuario.getEmail()).setEmail(usuario.getEmail());
-
-			lbEmailDeUsuario.setText("EMAIL: " + usuario.getEmail());
+				usuario.setEmail(novoEmail);
+				central.getUsuarioPeloId(usuario.getId()).setEmail(novoEmail);
+				lbEmailDeUsuario.setText("EMAIL: " + usuario.getEmail());
+				}
+				}catch(NullPointerException erro) {
+					
+				}finally {
+				JOptionPane.showMessageDialog(null, "Mudança Concluida");
+				new JanelaEditarPerfil(usuario);
+				janela.dispose();
+				}
 			}
-			}catch(NullPointerException erro) {
-				
-			}finally {
-			JOptionPane.showMessageDialog(null, "Mudança Concluida");
-			new JanelaEditarPerfil(usuario);
-			janela.dispose();
-			}
-		}
 	}
 	private class OuvinteBotaoEditarTipo implements ActionListener{
 		private Usuario usuario;
