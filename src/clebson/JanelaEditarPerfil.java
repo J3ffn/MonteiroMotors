@@ -21,18 +21,8 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 
 	private JLabel lbNome;
 	private JLabel lbEmailDeUsuario;
-	private CentralDeInformacoes central;
-	
-	
-
-	public void setCentral(CentralDeInformacoes central) {
-		this.central = central;
-	}
 
 
-	public CentralDeInformacoes getCentral() {
-		return central;
-	}
 
 
 	public JLabel getLbNome() {
@@ -69,7 +59,6 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 
 	public JanelaEditarPerfil(Usuario usuario) {
 		super("Editar Perfil", usuario);
-		central = super.getCentral();
 		adicionarTextos(usuario);
 		adicionarBotoes(usuario);
 		setVisible(true);
@@ -116,8 +105,9 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 			String novoNome = JOptionPane.showInputDialog("Digite o novo nome: ");
 			if (!novoNome.equals("")) {
 				usuario.setNome(novoNome);
-				central.recuperarUsuarioPeloEmail(usuario.getEmail()).setNome(usuario.getNome());
+				getCentral().recuperarUsuarioPeloEmail(usuario.getEmail()).setNome(usuario.getNome());
 				lbNome.setText("NOME: " + usuario.getNome());
+				getCentral().atualizarCentral(usuario);
 			}
 			
 			}catch (NullPointerException erro){
@@ -144,12 +134,13 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 			String novoEmail = JOptionPane.showInputDialog("Digite o novo email: ");
 			if (!novoEmail.equals("")) {
 				usuario.setEmail(novoEmail);
-				central.getUsuarioPeloId(usuario.getId()).setEmail(novoEmail);
+				getCentral().getUsuarioPeloId(usuario.getId()).setEmail(novoEmail);
 				lbEmailDeUsuario.setText("EMAIL: " + usuario.getEmail());
+				getCentral().atualizarCentral(usuario);
 				}
 				}catch(NullPointerException erro) {
 					
-				}finally {
+				} finally {
 				JOptionPane.showMessageDialog(null, "Mudança Concluida");
 				new JanelaEditarPerfil(usuario);
 				janela.dispose();
@@ -164,7 +155,7 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 		
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			new JanelaMudancaTipo(central ,usuario);
+			new JanelaMudancaTipo(getCentral() ,usuario);
 			
 		}
 		
