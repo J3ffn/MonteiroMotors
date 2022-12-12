@@ -1,4 +1,4 @@
-package Programa;
+package programa;
 
 import ListaDeAquecimento.CentralDeInformacoes;
 import ListaDeAquecimento.Persistencia;
