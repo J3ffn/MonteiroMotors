@@ -1,7 +1,5 @@
 package programa;
 
-import ListaDeAquecimento.CentralDeInformacoes;
-import ListaDeAquecimento.Persistencia;
 import jefferson.telaDeLogin_OK.telas.TelaDeLogin;
 
 public class ProgramaPrincipal {

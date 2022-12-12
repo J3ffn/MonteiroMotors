@@ -8,34 +8,31 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import ListaDeAquecimento.CentralDeInformacoes;
-import ListaDeAquecimento.GeradorDePDF;
+import ListaDeAquecimento.*;
 import ListaDeAquecimento.Mensageiro;
-import ListaDeAquecimento.Mototaxista;
-import ListaDeAquecimento.Persistencia;
-import ListaDeAquecimento.Usuario;
 import clebson.JanelaMototaxista;
-import eduardo.Janelas.AdicaoInvalidaException;
 
 public class OuvinteBotaoComprar implements ActionListener{
 
 	private JFormattedTextField quantidadeCreditos;
 	private JFrame telaAtual;
 	
+	private Mensageiro mensageiro;
+	
 	private CentralDeInformacoes central;
 	private Mototaxista mototaxista;
-	private Mensageiro mensageiro = new Mensageiro();
 	
 	public OuvinteBotaoComprar(JFrame tela, JFormattedTextField campoCreditos, Mototaxista infoMototaxista, CentralDeInformacoes centralD) {
 		telaAtual = tela;
 		quantidadeCreditos = campoCreditos;
 		mototaxista = infoMototaxista;
 		central = centralD;
+		
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
+		mensageiro = new Mensageiro();
 		if (!quantidadeCreditos.getText().isBlank()) {
 			int quantidadeCreditosComprados = Integer.parseInt(quantidadeCreditos.getText());
 			try {

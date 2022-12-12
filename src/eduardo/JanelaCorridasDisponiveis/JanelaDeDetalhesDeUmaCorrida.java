@@ -27,7 +27,7 @@ public class JanelaDeDetalhesDeUmaCorrida extends JFrame {
 		setResizable(false);
 		setLayout(null);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
+		
 		if (num == 1) {
 			setSize(598, 162);
 			setTitle("Detalhes da corrida");

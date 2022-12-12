@@ -29,6 +29,7 @@ public class TelaDeAdicionarCreditos extends JFrame{
 		setResizable(false);
 		setLocationRelativeTo(null);				
 		setLayout(null);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		setSize(300, 170);
 		addCampoTextField();

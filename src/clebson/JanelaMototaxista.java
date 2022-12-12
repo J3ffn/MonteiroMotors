@@ -33,7 +33,6 @@ public class JanelaMototaxista extends JanelaPadraoUsuario{
 		
 		adicionarTextosDeCredito();
 		adicionarBotoesMototaxista(mtx);
-//		adicionarCampoCreditos();
 		
 		setVisible(true);
 	}

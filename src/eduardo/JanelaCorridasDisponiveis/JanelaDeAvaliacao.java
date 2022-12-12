@@ -33,7 +33,7 @@ public class JanelaDeAvaliacao extends JanelaDeDetalhesDeUmaCorrida {
 		addRadioButton();
 		addBotao();
 		addCampoComentario();
-
+		
 		setSize(298, 262);
 		setVisible(true);
 	}

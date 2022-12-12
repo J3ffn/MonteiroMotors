@@ -8,25 +8,14 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import ListaDeAquecimento.Administrador;
-import ListaDeAquecimento.CentralDeInformacoes;
-import ListaDeAquecimento.Mototaxista;
-import ListaDeAquecimento.Passageiro;
-import ListaDeAquecimento.PerfilDesativadoException;
-import ListaDeAquecimento.Persistencia;
-import ListaDeAquecimento.SenhaIncorretaException;
-import ListaDeAquecimento.Usuario;
-import ListaDeAquecimento.UsuarioNaoCadastradoException;
-import clebson.JanelaAdministrador;
-import clebson.JanelaMototaxista;
-import clebson.JanelaPassageiro;
+import ListaDeAquecimento.*;
+import clebson.*;
 
 public class OuvinteBotaoLogin implements ActionListener{
 
 	private JTextField campoLogin;
 	private JPasswordField campoSenha;
 	private CentralDeInformacoes central;
-//	private Usuario usuario;
 	private JFrame tela;
 	
 	public OuvinteBotaoLogin(JTextField campoLogin, JPasswordField campoSenha, JFrame tela) {
@@ -48,7 +37,6 @@ public class OuvinteBotaoLogin implements ActionListener{
 		try {
 			String senha = new String(campoSenha.getPassword());
 			Usuario usuario = central.fazerLogin(campoLogin.getText(), senha);
-//			Mototaxista usuarioTeste = new UsuarioTeste();
 			
 			if (usuario.getEmail().equals(campoLogin.getText()) && usuario.getSenha().equals(senha)) {
 				JOptionPane.showMessageDialog(null, "Está dentro");
