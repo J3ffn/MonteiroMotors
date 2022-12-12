@@ -36,39 +36,42 @@ public class OuvinteBotaoLogin implements ActionListener{
 		}
 	}
 	
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-//		try {
+		try {
 			String senha = new String(campoSenha.getPassword());
-//			Usuario usuario = central.fazerLogin(campoLogin.getText(), senha);
-			Mototaxista usuarioTeste = new UsuarioTeste();
-			//if (UsuarioTeste.email.equals(campoLogin.getText()) && UsuarioTeste.senha.equals(senha)) {
-			JOptionPane.showMessageDialog(null, "Está dentro");
-			tela.dispose();
+			Usuario usuario = central.fazerLogin(campoLogin.getText(), senha);
+//			Mototaxista usuarioTeste = new UsuarioTeste();
 			
-			// TODO alterar o switch.
-			switch(TipoDeConta.MOTOTAXISTA) {
-			case ADMINISTRADOR:
-//				Administrador adm = new Administrador(usuarioTeste.nome, usuarioTeste.getSexo()+"", usuarioTeste.email, usuarioTeste.senha, usuarioTeste.getDataDeNascimento());
-//				new JanelaAdministrador(adm);
-				break;
-			case PASSAGEIRO:
-//				Passageiro pass = new Passageiro(usuarioTeste.nome, usuarioTeste.getSexo()+"", usuarioTeste.email, usuarioTeste.senha, usuarioTeste.getDataDeNascimento());;
-//				new JanelaPassageiro(pass);
-				break;
-			case MOTOTAXISTA:
-//				Mototaxista mtx = new Mototaxista(usuarioTeste.nome, usuarioTeste.getSexo()+"", usuarioTeste.email, usuarioTeste.senha, usuarioTeste.getDataDeNascimento());;
-				Mototaxista mtx = usuarioTeste;
-				new JanelaMototaxista(mtx);
-				break;
+			if (usuario.getEmail().equals(campoLogin.getText()) && usuario.getSenha().equals(senha)) {
+				JOptionPane.showMessageDialog(null, "Está dentro");
+				tela.dispose();
+				
+				// TODO alterar o switch.
+				switch(usuario.getTipoDeConta()) {
+				case ADMINISTRADOR:
+					Administrador adm = new Administrador(usuario.getNome(), usuario.getSexo() + "", usuario.getEmail(), usuario.getSenha(), usuario.getDataDeNascimento());
+					new JanelaAdministrador(adm);
+					break;
+				case PASSAGEIRO:
+					Passageiro pass = new Passageiro(usuario.getNome(), usuario.getSexo() + "", usuario.getEmail(), usuario.getSenha(), usuario.getDataDeNascimento());;
+					new JanelaPassageiro(pass);
+					break;
+				case MOTOTAXISTA:
+					Mototaxista mtx = new Mototaxista(usuario.getNome(), usuario.getSexo() + "", usuario.getEmail(), usuario.getSenha(), usuario.getDataDeNascimento());;
+					new JanelaMototaxista(mtx);
+					break;
+				}
 			}
-//		} catch (SenhaIncorretaException erro) {
-//			JOptionPane.showMessageDialog(null, "Senha Incorreta!");
-//		} catch (PerfilDesativadoException erro) {
-//			JOptionPane.showMessageDialog(null, "Perfil Desativado!");
-//		} catch (UsuarioNaoCadastradoException e1) {
-//			JOptionPane.showMessageDialog(null, "Usuario Não Cadastrado no Sistema!");
-//		}
+		} catch (SenhaIncorretaException erro) {
+			JOptionPane.showMessageDialog(null, "Senha Incorreta!");
+		} catch (PerfilDesativadoException erro) {
+			JOptionPane.showMessageDialog(null, "Perfil Desativado!");
+		} catch (UsuarioNaoCadastradoException e1) {
+			JOptionPane.showMessageDialog(null, "Usuario Não Cadastrado no Sistema!");
+		}
+			
 	}
 	
 }

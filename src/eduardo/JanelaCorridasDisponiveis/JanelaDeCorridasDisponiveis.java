@@ -3,9 +3,12 @@ package eduardo.JanelaCorridasDisponiveis;
 
 
 import java.awt.Color;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -49,10 +52,8 @@ public class JanelaDeCorridasDisponiveis extends JanelaPadrao{
 		
 		JButton b = new JButton("< Voltar");
 		b.setBounds(5, 5, 80, 20);
-		b.addMouseListener((new MouseListener() {
-			public void mouseClicked(MouseEvent e) {}
-			public void mousePressed(MouseEvent e) {}
-			public void mouseReleased(MouseEvent e) {}
+		b.addMouseListener((new MouseAdapter() {
+		
 			public void mouseEntered(MouseEvent e) {
 				try {
 					new Persistencia().salvar(getCentral(), "dados-passageiros.xml");
@@ -61,7 +62,6 @@ public class JanelaDeCorridasDisponiveis extends JanelaPadrao{
 				}
 				
 			}
-			public void mouseExited(MouseEvent e) {}
 		
 		}));
 		b.addActionListener(new OuvinteBotaoCancelar(this));
@@ -127,7 +127,7 @@ public class JanelaDeCorridasDisponiveis extends JanelaPadrao{
 	public void setCorridasTodasAsDisponiveis(ArrayList <Corrida> corridasTodasAsDisponiveis) {
 		this.corridasTodasAsDisponiveis = corridasTodasAsDisponiveis;
 	}
-	private class OuvinteDoAtualizar implements MouseListener{
+	private class OuvinteDoAtualizar extends MouseAdapter{
 		JanelaDeCorridasDisponiveis janela;
 		
 		public OuvinteDoAtualizar(JanelaDeCorridasDisponiveis j) {
@@ -173,13 +173,5 @@ public class JanelaDeCorridasDisponiveis extends JanelaPadrao{
 			adicionarPainel();
 			janela.repaint();
 		}
-		@Override
-		public void mousePressed(MouseEvent e) {}
-		@Override
-		public void mouseReleased(MouseEvent e) {}
-		@Override
-		public void mouseEntered(MouseEvent e) {}
-		@Override
-		public void mouseExited(MouseEvent e) {}
 	}
 }

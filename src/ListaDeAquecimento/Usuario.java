@@ -65,7 +65,9 @@ public abstract class Usuario{
 	public void setSexo(Sexo sexo) {
 		this.sexo = sexo;
 	}
-	
+	public String getSenha() {
+		return senha;
+	}
 	public void alterarSenha(String senha) {
 		this.senha = senha;
 	}

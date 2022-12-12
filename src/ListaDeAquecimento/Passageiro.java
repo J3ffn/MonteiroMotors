@@ -15,7 +15,7 @@ public class Passageiro extends Usuario{
 		return "Passageiro";
 	}
 	public void cadastrarCorrida(String enderecoP, String enderecoD, float distancia, boolean paraAgora, LocalDateTime data, CentralDeInformacoes central) throws CorridaNaoAdicionadaException{
-		boolean deuCerto = central.adicionarCorrida(new Corrida(enderecoP, enderecoD, distancia, paraAgora, data, this));
+		boolean deuCerto = central.adicionarCorrida(new Corrida(enderecoP, enderecoD, distancia, paraAgora, data, this, new ValorCorrida(1, data)));
 		if(!deuCerto)
 			throw new CorridaNaoAdicionadaException();
 	}

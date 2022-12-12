@@ -15,7 +15,9 @@ import javax.swing.text.MaskFormatter;
 import ListaDeAquecimento.CentralDeInformacoes;
 import ListaDeAquecimento.Mensageiro;
 import ListaDeAquecimento.Mototaxista;
+import clebson.JanelaMototaxista;
 import eduardo.Janelas.AdicaoInvalidaException;
+import jefferson.telaDeAdicionarCreditos.ouvintesAdicionar.OuvinteBotaoComprar;
 
 @SuppressWarnings({ "serial" })
 public class TelaDeAdicionarCreditos extends JFrame{
@@ -31,7 +33,6 @@ public class TelaDeAdicionarCreditos extends JFrame{
 		setResizable(false);
 		setLocationRelativeTo(null);				
 		setLayout(null);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		setSize(300, 170);
 		addCampoTextField();
@@ -60,32 +61,18 @@ public class TelaDeAdicionarCreditos extends JFrame{
 	private void addBotoes(CentralDeInformacoes central) {
 		JButton botaoVoltar = new JButton("< voltar");
 		botaoVoltar.setBounds(5, 5, 80, 20);
-		
-		JButton botaoComprar = new JButton("Comprar");
-		botaoComprar.setBounds(150, 60, 110, 40);
-		botaoComprar.addActionListener(new ActionListener() {
-			
-			private Mensageiro mensageiro = new Mensageiro();
+		botaoVoltar.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println(quantidadeCreditos.getText());
-				if (!quantidadeCreditos.getText().isBlank()) {
-					int valorcreditos = Integer.parseInt(quantidadeCreditos.getText());
-					try {
-						JOptionPane.showMessageDialog(null, "uma N-fe foi enviada ao seu email");
-						mototaxista.adicionarCreditos(valorcreditos, central);
-						// TODO configurar enviarBoleto
-						mensageiro.enviarBoleto();
-						tela.dispose();
-					} catch (AdicaoInvalidaException e1) {
-						e1.printStackTrace();
-					}
-				} else {
-					JOptionPane.showConfirmDialog(null, "Digite um valor", "ALERTA", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE);
-				}
+				tela.dispose();
+				new JanelaMototaxista(mototaxista);
 			}
 		});
+		
+		JButton botaoComprar = new JButton("Comprar");
+		botaoComprar.setBounds(150, 60, 110, 40);
+		botaoComprar.addActionListener(new OuvinteBotaoComprar(tela, quantidadeCreditos, mototaxista, central));
 		
 		add(botaoVoltar);
 		add(botaoComprar);

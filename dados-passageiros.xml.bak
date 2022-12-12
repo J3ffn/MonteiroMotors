@@ -1,0 +1,29 @@
+<ListaDeAquecimento.CentralDeInformacoes>
+  <todosOsUsuarios>
+    <ListaDeAquecimento.Administrador>
+      <nome>Jefferson</nome>
+      <sexo>MASCULINO</sexo>
+      <senha>12345</senha>
+      <dataDeNascimento>2003-02-12</dataDeNascimento>
+      <email>jefferson.mangueira@academico.ifpb.edu.br</email>
+      <id>jefferson.mangueira@academico.ifpb.edu.br</id>
+      <perfilAtivo>true</perfilAtivo>
+      <tipoDeConta>ADMINISTRADOR</tipoDeConta>
+      <valorDosCreditos>0.5</valorDosCreditos>
+    </ListaDeAquecimento.Administrador>
+    <ListaDeAquecimento.Mototaxista>
+      <nome>jeffin passageiro</nome>
+      <sexo>MASCULINO</sexo>
+      <senha>12345</senha>
+      <dataDeNascimento>2001-04-15</dataDeNascimento>
+      <email>jefferson.mangueira@gmail.com</email>
+      <id>jefferson.mangueira@gmail.com</id>
+      <perfilAtivo>true</perfilAtivo>
+      <tipoDeConta>MOTOTAXISTA</tipoDeConta>
+      <avaliacoes/>
+      <creditos/>
+    </ListaDeAquecimento.Mototaxista>
+  </todosOsUsuarios>
+  <corridas/>
+  <caixaDoSistema>0.0</caixaDoSistema>
+</ListaDeAquecimento.CentralDeInformacoes>

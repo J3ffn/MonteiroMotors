@@ -1,13 +1,13 @@
 package ListaDeAquecimento;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class ValorCorrida {
 
 	private int valor;
-	private LocalDate data;
+	private LocalDateTime data;
 	
-	public ValorCorrida(int valor, LocalDate data){
+	public ValorCorrida(int valor, LocalDateTime data){
 		this.valor = valor;
 		this.data = data;
 	}
@@ -16,7 +16,7 @@ public class ValorCorrida {
 		return valor;
 	}
 
-	public LocalDate getData() {
+	public LocalDateTime getData() {
 		return data;
 	}
 	
