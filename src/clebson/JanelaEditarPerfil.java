@@ -6,11 +6,11 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import ListaDeAquecimento.CentralDeInformacoes;
-import ListaDeAquecimento.Persistencia;
 import ListaDeAquecimento.TipoDeConta;
 import ListaDeAquecimento.Usuario;
 import clebsonOuvintesExternos.OuvinteBotaoDeletarPerfil;
@@ -105,16 +105,18 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 	private class OuvinteBotaoEditarNome implements ActionListener{
 		
 		private Usuario usuario;
+		private JFrame janela;
 		
-		public OuvinteBotaoEditarNome(Usuario usuario) {
+		public OuvinteBotaoEditarNome(Usuario usuario, JFrame janela) {
 			this.usuario = usuario;
+			this.janela = janela;
 		}
 		public void actionPerformed(ActionEvent e) {
 			try {
 			String novoNome = JOptionPane.showInputDialog("Digite o novo nome: ");
 			if (!novoNome.equals("")) {
-				central.recuperarUsuarioPeloEmail(usuario.getEmail()).setNome(novoNome);
 				usuario.setNome(novoNome);
+				central.recuperarUsuarioPeloEmail(usuario.getEmail()).setNome(usuario.getNome());
 				lbNome.setText("NOME: " + usuario.getNome());
 			}
 			
@@ -122,15 +124,17 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 				
 			}finally{
 				JOptionPane.showMessageDialog(null, "Mudança Concluida");
+				new JanelaEditarPerfil(usuario);
+				janela.dispose();
 			}
 		}
 	}
 	private class OuvinteBotaoEditarEmail implements ActionListener{
 		
 		private Usuario usuario;
-
+		private JFrame janela;
 		
-		public OuvinteBotaoEditarEmail(Usuario usuario) {
+		public OuvinteBotaoEditarEmail(Usuario usuario, JFrame janela) {
 			// TODO Auto-generated constructor stub
 			this.usuario = usuario;
 		}
@@ -141,13 +145,16 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 			if (!novoEmail.equals("")) {
 			central.recuperarUsuarioPeloEmail(usuario.getEmail()).setEmail(novoEmail);
 			usuario.setEmail(novoEmail);
+			central.recuperarUsuarioPeloEmail(usuario.getEmail()).setEmail(usuario.getEmail());
+
 			lbEmailDeUsuario.setText("EMAIL: " + usuario.getEmail());
 			}
 			}catch(NullPointerException erro) {
 				
 			}finally {
 			JOptionPane.showMessageDialog(null, "Mudança Concluida");
-		
+			new JanelaEditarPerfil(usuario);
+			janela.dispose();
 			}
 		}
 	}
@@ -166,9 +173,9 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 		}
 	
 	
-	OuvinteBotaoEditarNome ouvinteEditarNome = new OuvinteBotaoEditarNome(this.getUsuario());
-	OuvinteBotaoEditarEmail ouvinteEditarEmail = new OuvinteBotaoEditarEmail(this.getUsuario());
-	OuvinteBotaoDeletarPerfil ouvinteDeletarPerfil = new OuvinteBotaoDeletarPerfil(this.getUsuario());
+	OuvinteBotaoEditarNome ouvinteEditarNome = new OuvinteBotaoEditarNome(this.getUsuario(),this);
+	OuvinteBotaoEditarEmail ouvinteEditarEmail = new OuvinteBotaoEditarEmail(this.getUsuario(), this);
+	OuvinteBotaoDeletarPerfil ouvinteDeletarPerfil = new OuvinteBotaoDeletarPerfil(this.getUsuario(),this);
 	OuvinteBotaoEditarTipo ouvinteEditarTipo = new OuvinteBotaoEditarTipo(this.getUsuario());
 	
 	private void adicionarBotoes(Usuario usuario) {
