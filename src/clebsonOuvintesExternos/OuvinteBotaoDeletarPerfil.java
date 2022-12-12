@@ -5,18 +5,32 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
+import ListaDeAquecimento.CentralDeInformacoes;
+import ListaDeAquecimento.Persistencia;
 import ListaDeAquecimento.Usuario;
 
 
 
 public class OuvinteBotaoDeletarPerfil implements ActionListener{
-
+	private CentralDeInformacoes central;
 	private Usuario usuario;
 	
 	
+	public CentralDeInformacoes getCentral() {
+		return central;
+	}
+
+	public void setCentral(CentralDeInformacoes central) {
+		this.central = central;
+	}
+
 	public OuvinteBotaoDeletarPerfil(Usuario usuario) {
 		this.usuario = usuario;
-
+		try {
+			this.setCentral((CentralDeInformacoes)new Persistencia().recuperar("dados-passageiros.xml"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void actionPerformed(ActionEvent e) {
