@@ -89,7 +89,6 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 	private class OuvinteBotaoEditarNome implements ActionListener{
 		
 		private Usuario usuario;
-		private String nome;
 		
 		public OuvinteBotaoEditarNome(Usuario usuario) {
 			this.usuario = usuario;
@@ -136,9 +135,13 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 	}
 	private class OuvinteBotaoEditarTipo implements ActionListener{
 		
+		private Usuario usuario;
+		public OuvinteBotaoEditarTipo(Usuario usuario) {
+			this.usuario = usuario;
+		}
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			new JanelaMudançaTipo();
+			new JanelaMudançaTipo(usuario);
 
 		}
 				
@@ -148,7 +151,7 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 	OuvinteBotaoEditarNome ouvinteEditarNome = new OuvinteBotaoEditarNome(this.getUsuario());
 	OuvinteBotaoEditarEmail ouvinteEditarEmail = new OuvinteBotaoEditarEmail(this.getUsuario());
 	OuvinteBotaoDeletarPerfil ouvinteDeletarPerfil = new OuvinteBotaoDeletarPerfil();
-	OuvinteBotaoEditarTipo ouvinteEditarTipo = new OuvinteBotaoEditarTipo();
+	OuvinteBotaoEditarTipo ouvinteEditarTipo = new OuvinteBotaoEditarTipo(this.getUsuario());
 	
 	private void adicionarBotoes(Usuario usuario) {
 		JButton btEditarNome = new JButton();
