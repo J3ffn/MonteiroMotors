@@ -163,29 +163,26 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 					switch(novoTipo.toUpperCase()) {
 					case ("ADMINISTRADOR"):
 						usuario.setTipoDeConta(TipoDeConta.ADMINISTRADOR);
-						getCentral().getUsuarioPeloId(usuario.getId()).setTipoDeConta(TipoDeConta.ADMINISTRADOR);
 						getCentral().atualizarCentral(usuario);
+						lbTipoDeUsuario.setText("TIPO: " + usuario.getTipoDeConta());
 						break;
 					case("MOTOTAXISTA"):
 						usuario.setTipoDeConta(TipoDeConta.MOTOTAXISTA);
-					getCentral().getUsuarioPeloId(usuario.getId()).setTipoDeConta(TipoDeConta.MOTOTAXISTA);
-					getCentral().atualizarCentral(usuario);
+						getCentral().atualizarCentral(usuario);
+						lbTipoDeUsuario.setText("TIPO: " + usuario.getTipoDeConta());
 					break;
 					case("PASSAGEIRO"):
 						usuario.setTipoDeConta(TipoDeConta.PASSAGEIRO);
-					getCentral().getUsuarioPeloId(usuario.getId()).setTipoDeConta(TipoDeConta.PASSAGEIRO);
-					getCentral().atualizarCentral(usuario);
+						getCentral().atualizarCentral(usuario);
+						lbTipoDeUsuario.setText("TIPO: " + usuario.getTipoDeConta());
 					break;
 					}
 					}
 					}catch(NullPointerException erro) {
 						
 					} finally {
-					JOptionPane.showMessageDialog(null, "Mudança Concluida");
-					getCentral().atualizarCentral(usuario);
-					new JanelaEditarPerfil(usuario);
-					lbTipoDeUsuario.setText("TIPO: " + usuario.getTipoDeConta());
-					janela.dispose();
+						JOptionPane.showMessageDialog(null, "Mudança Concluida");
+						getCentral().atualizarCentral(usuario);
 					}
 			
 		}
