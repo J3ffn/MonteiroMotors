@@ -28,6 +28,15 @@ public class CentralDeInformacoes {
 				return (Administrador) u;
 		return null;
 	}
+	public void atualizarCentral(Usuario u) {
+		for(int i = 0; i < todosOsUsuarios.size(); i++) {
+			if(todosOsUsuarios.get(i).equals(u)) {
+				todosOsUsuarios.remove(i);
+				todosOsUsuarios.add(i, u);
+			}
+		}
+	}
+	
 	public void setCorridas(ArrayList<Corrida> corridas) {
 		this.corridas = corridas;
 	}
