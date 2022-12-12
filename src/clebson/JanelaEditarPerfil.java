@@ -6,8 +6,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -18,10 +16,10 @@ import eduardo.Ouvintes.OuvinteBotaoCancelar;
 
 @SuppressWarnings("serial")
 public class JanelaEditarPerfil extends JanelaPadrao{
-	
+
 	private JLabel lbNome;
 	private JLabel lbEmailDeUsuario;
-	
+
 	public JLabel getLbNome() {
 		return lbNome;
 	}

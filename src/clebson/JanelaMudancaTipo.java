@@ -1,19 +1,21 @@
 package clebson;
 
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 
 import ListaDeAquecimento.TipoDeConta;
+import clebsonOuvintesExternos.OuvinteBotaoConfirmaTrocaDeTipo;
 
 @SuppressWarnings("serial")
 public class JanelaMudancaTipo extends JFrame{
 	
-	JComboBox<TipoDeConta> tipos = new JComboBox<TipoDeConta>();
+	private JComboBox<TipoDeConta> tipos;
+
+	public JComboBox<TipoDeConta> getTipos() {
+		return tipos;
+	}
 
 	public JanelaMudancaTipo() {
 	// TODO Auto-generated constructor stub
@@ -28,16 +30,6 @@ public class JanelaMudancaTipo extends JFrame{
 	
 	setVisible(true);
 }
-
-	public class OuvinteBotaoConfirmar implements ActionListener{
-		
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			
-		}
-	}
-	
-	OuvinteBotaoConfirmar ouvinteConfirmar = new OuvinteBotaoConfirmar();
 	
 	private void adicionarCombo(){
 		tipos.setBounds(30, 55, 150, 50);;
@@ -53,7 +45,9 @@ public class JanelaMudancaTipo extends JFrame{
 		confirmar.setBounds(200, 55, 100, 50);
 		confirmar.setFont(new Font("Tahoma",Font.BOLD,12));
 		add(confirmar);
-		confirmar.addActionListener(ouvinteConfirmar);
+		OuvinteBotaoConfirmaTrocaDeTipo ouvinteTrocaPerfil = new OuvinteBotaoConfirmaTrocaDeTipo(this);
+		confirmar.addActionListener(ouvinteTrocaPerfil);
+
 		
 	
 }
