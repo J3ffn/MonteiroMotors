@@ -8,6 +8,7 @@ import java.util.Arrays;
 import ListaDeAquecimento.Administrador;
 import ListaDeAquecimento.CentralDeInformacoes;
 import ListaDeAquecimento.Corrida;
+import ListaDeAquecimento.GeradorDePDF;
 import ListaDeAquecimento.Mototaxista;
 import ListaDeAquecimento.Passageiro;
 import ListaDeAquecimento.Persistencia;
@@ -27,7 +28,7 @@ public class Teste2 {
 		CentralDeInformacoes central = null;
 		try {
 			central = (CentralDeInformacoes) per.recuperar("dados-passageiros.xml");
-			JanelaDeRegistro janela = new JanelaDeRegistro();
+			//JanelaDeRegistro janela = new JanelaDeRegistro();
 			per.salvar(central, "dados-passageiros.xml");
 			
 		} catch (Exception erro){
@@ -37,7 +38,7 @@ public class Teste2 {
 		LocalDateTime data = LocalDateTime.now();
 		LocalDate dataN = LocalDate.of(2000, 12, 20);
 		Passageiro n = new Passageiro("Eduardo1", "Masculino", "eduardo", "kkk", dataN);
-		Mototaxista n1 = new Mototaxista("Eduardo", "Masculino", "eduardo", "kkk", null);
+		Mototaxista n1 = new Mototaxista("Eduardo", "Masculino", "eduardo@gmail.com", "kkk", null);
 		Administrador adm =  new Administrador("Eduardo", "Masculino", "edd", "kkk", null);
 		// TODO valor ficticio, desenvolver a lógica do valor.
 		int valor = 3;
@@ -52,11 +53,13 @@ public class Teste2 {
 		//n.adicionarCreditos(2, central);
 		//JanelaDeReividicacaoDeCorrida janela2 = new JanelaDeReividicacaoDeCorrida(central, c, n);
 		//JanelaDeCadastroDeCorrida janela5 = new JanelaDeCadastroDeCorrida(central, per, n);
-		JanelaPassageiro janela2 = new JanelaPassageiro(n);
+		//JanelaPassageiro janela2 = new JanelaPassageiro(n);
 		//JanelaDeDefinicaoDeValorDosCreditos j = new JanelaDeDefinicaoDeValorDosCreditos(adm);
 		//JanelaDeCorridasDisponiveis j2 = new JanelaDeCorridasDisponiveis(n, central, per);
 
-		new JanelaAdministrador(central.recuperarAdministradorDoSistema());
+		//new JanelaAdministrador(central.recuperarAdministradorDoSistema());
 		//new JanelaMototaxista(central, per, n1);
+		GeradorDePDF g = new GeradorDePDF();
+		g.gerarBoleto(central, n1, 1);
 	}
 }
