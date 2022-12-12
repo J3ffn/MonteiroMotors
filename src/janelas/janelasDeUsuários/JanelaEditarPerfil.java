@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 
 import ouvintes.botoesPerfil.OuvinteBotaoDeletarPerfil;
 import ouvintes.listagemDeCorridas.OuvinteBotaoCancelar;
+import sistemas.GestãoDeInformacoes.Persistencia;
 import sistemas.Usuários.TipoDeConta;
 import sistemas.Usuários.Usuario;
 import sistemas.janela.JanelaPadrao;
@@ -49,9 +50,14 @@ public class JanelaEditarPerfil extends JanelaPadrao {
 
 	public JanelaEditarPerfil(Usuario usuario) {
 		super("Editar Perfil", usuario);
-		adicionarTextos(usuario);
-		adicionarBotoes(usuario);
-		setVisible(true);
+		try {
+			new Persistencia().salvar(getCentral(), getName());
+			adicionarTextos(usuario);
+			adicionarBotoes(usuario);
+			setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	private void adicionarTextos(Usuario usuario) {
