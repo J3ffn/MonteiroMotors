@@ -9,6 +9,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
+import ListaDeAquecimento.CentralDeInformacoes;
+import ListaDeAquecimento.Persistencia;
 import ListaDeAquecimento.TipoDeConta;
 import ListaDeAquecimento.Usuario;
 import clebsonOuvintesExternos.OuvinteBotaoDeletarPerfil;
@@ -19,6 +21,19 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 
 	private JLabel lbNome;
 	private JLabel lbEmailDeUsuario;
+	private CentralDeInformacoes central;
+	
+	
+
+	public CentralDeInformacoes getCentral() {
+		return central;
+	}
+
+
+	public void setCentral(CentralDeInformacoes central) {
+		this.central = central;
+	}
+
 
 	public JLabel getLbNome() {
 		return lbNome;
@@ -54,6 +69,11 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 
 	public JanelaEditarPerfil(Usuario usuario) {
 		super("Editar Perfil", usuario);
+		try {
+			this.setCentral((CentralDeInformacoes)new Persistencia().recuperar("dados-passageiros.xml"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		adicionarTextos(usuario);
 		adicionarBotoes(usuario);
 		setVisible(true);
@@ -97,6 +117,7 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 			try {
 			String novoNome = JOptionPane.showInputDialog("Digite o novo nome: ");
 			if (!novoNome.equals("")) {
+				central.recuperarUsuarioPeloEmail(usuario.getEmail()).setNome(novoNome);
 				usuario.setNome(novoNome);
 				lbNome.setText("NOME: " + usuario.getNome());
 			}
@@ -122,6 +143,7 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 			try {
 			String novoEmail = JOptionPane.showInputDialog("Digite o novo email: ");
 			if (!novoEmail.equals("")) {
+			central.recuperarUsuarioPeloEmail(usuario.getEmail()).setEmail(novoEmail);
 			usuario.setEmail(novoEmail);
 			lbEmailDeUsuario.setText("EMAIL: " + usuario.getEmail());
 			}
@@ -134,16 +156,13 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 		}
 	}
 	private class OuvinteBotaoEditarTipo implements ActionListener{
-		
-		private Usuario usuario;
-		
-		public OuvinteBotaoEditarTipo(Usuario usuario) {
-			this.usuario = usuario;
+				
+		public OuvinteBotaoEditarTipo() {
 		}
 		
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			new JanelaMudancaTipo(usuario);
+			new JanelaMudancaTipo();
 			
 		}
 		
@@ -153,7 +172,7 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 	OuvinteBotaoEditarNome ouvinteEditarNome = new OuvinteBotaoEditarNome(this.getUsuario());
 	OuvinteBotaoEditarEmail ouvinteEditarEmail = new OuvinteBotaoEditarEmail(this.getUsuario());
 	OuvinteBotaoDeletarPerfil ouvinteDeletarPerfil = new OuvinteBotaoDeletarPerfil(this.getUsuario());
-	OuvinteBotaoEditarTipo ouvinteEditarTipo = new OuvinteBotaoEditarTipo(this.getUsuario());
+	OuvinteBotaoEditarTipo ouvinteEditarTipo = new OuvinteBotaoEditarTipo();
 	
 	private void adicionarBotoes(Usuario usuario) {
 		JButton btEditarNome = new JButton();
