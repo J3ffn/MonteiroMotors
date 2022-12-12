@@ -63,7 +63,7 @@ public class JanelaDeReividicacaoDeCorrida extends JanelaPadrao{
 			int esc = JOptionPane.showConfirmDialog(janela, "Deseja reivindicar essa corrida?");
 			if(esc == 0 && corrida.getStatus() == Status.PENDENTE && m.getCorridaAtual() == null) {
 				try {
-					m.reinvidicarCorrida(corrida);
+					m.reinvidicarCorrida(corrida, getCentral());
 					JOptionPane.showMessageDialog(janela, "Corrida Reivindicada!", "Reivindicada!", JOptionPane.INFORMATION_MESSAGE);
 					txLocaldePartida.setText(String.format("Local de Partida: %s", corrida.getEnderecoDePartida()));
 					txLocaldeDestino.setText(String.format("Local de Destino: %s", corrida.getEnderecoDeDestino()));

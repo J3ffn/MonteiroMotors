@@ -49,7 +49,7 @@ public class JanelaDeChamadasDeCorridas extends JanelaDeCorridasDisponiveis{
 				int esc = JOptionPane.showConfirmDialog(janela, "Deseja concluir a corrida de id: " + m.getCorridaAtual().getId() + "?");
 				if(esc == 0) {
 					Corrida c = m.getCorridaAtual();
-					m.concluirCorrida();
+					m.concluirCorrida(getCentral());
 					new Mensageiro().enviarQueCorridaFoiConcluida(c.getUsuario().getEmail(), c);
 					
 					JOptionPane.showMessageDialog(janela, "Corrida Concluida!");

@@ -36,6 +36,14 @@ public class CentralDeInformacoes {
 			}
 		}
 	}
+	public void atualizarCentral(Corrida u) {
+		for(int i = 0; i < corridas.size(); i++) {
+			if(corridas.get(i).equals(u)) {
+				corridas.remove(i);
+				corridas.add(i, u);
+			}
+		}
+	}
 	
 	public Usuario getUsuarioPeloId (String Id) {
 		for (Usuario usuario: todosOsUsuarios) {

@@ -42,18 +42,20 @@ public class Mototaxista extends Usuario{
 			return totalASerPago;
 		}
 	}
-	public void reinvidicarCorrida(Corrida corrida) throws MotoTaxistaSemCreditosCreditosException {
+	public void reinvidicarCorrida(Corrida corrida, CentralDeInformacoes central) throws MotoTaxistaSemCreditosCreditosException {
 		if(!creditos.isEmpty()) {
 			creditos.remove(0);
 			corridaAtual = corrida;
 			corrida.setMototaxista(this);
 			corrida.setStatus(Status.REINVINDICADA);
+			central.atualizarCentral(corrida);
 		} else {
 			throw new MotoTaxistaSemCreditosCreditosException();
 		}
 	}
-	public void concluirCorrida() {
+	public void concluirCorrida(CentralDeInformacoes central) {
 		corridaAtual.setStatus(Status.CONCLUIDA);
+		central.atualizarCentral(corridaAtual);
 		corridaAtual = null;
 	}
 	public Corrida getCorridaAtual() {

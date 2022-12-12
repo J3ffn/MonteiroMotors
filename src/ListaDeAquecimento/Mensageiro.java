@@ -155,7 +155,7 @@ public class Mensageiro extends MultiPartEmail{
 		try {
 			addTo(email);
 			EmailAttachment anexo = new EmailAttachment();
-			anexo.setPath("boleto.pdf");
+			anexo.setPath("Boleto.pdf");
 			anexo.setName("BOLETO_GERADO.pdf");
 			
 			attach(anexo);
