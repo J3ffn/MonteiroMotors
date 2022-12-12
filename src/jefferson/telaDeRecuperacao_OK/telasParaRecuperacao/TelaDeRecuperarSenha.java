@@ -10,8 +10,11 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import ListaDeAquecimento.CentralDeInformacoes;
 import ListaDeAquecimento.Mensageiro;
 import clebson.JanelaPadrao;
+import jefferson.telaDeLogin_OK.telas.TelaDeLogin;
+import jefferson.telaDeRecuperacao_OK.ouvintes.OuvinteCodigoChave;
 
 @SuppressWarnings("serial")
 public class TelaDeRecuperarSenha extends JanelaPadrao {
@@ -32,42 +35,24 @@ public class TelaDeRecuperarSenha extends JanelaPadrao {
 
 	// Botões da tela:
 	protected void addBotoesDaTela() {
-		JButton botaoEnviar = new JButton("ENVIAR CÓDIGO");
-		botaoEnviar.setBounds(170, 270, 125, 40);
-		botaoEnviar.addActionListener(new ActionListener() {
-			
-			private String gerarCodigo() {
-				UUID geradorID = UUID.randomUUID();
-				String codigoChave = String.valueOf(geradorID).substring(0, 7);
-				return codigoChave;
-			}
+		JButton botaoVoltar = new JButton("< voltar");
+		botaoVoltar.setBounds(5, 5, 80, 20);
+		botaoVoltar.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String emailDestinatario = emailDigitado.getText();
-				Mensageiro mensageiro = new Mensageiro();
-				String codigoChave = gerarCodigo();
-				
-				// TODO Descomentar essas verificações.
-//				if (new CentralDeInformacoes().recuperarUsuarioPeloEmail(emailDestinatario) != null) {
-				
-					System.out.println(emailDestinatario);
-					if (mensageiro.verificarEmail(emailDestinatario)) {
-						
-						System.out.println(codigoChave);
-						mensageiro.enviarCodigoDeRecuperacao(emailDestinatario, codigoChave, "Chave de recuperação");
-						
-						tela.dispose();
-						new TelaVerificarCodigo(codigoChave, emailDigitado.getText());
-						
-					} else {JOptionPane.showMessageDialog(null, "Email inválido");}
-				}
-			
-//				else {JOptionPane.showMessageDialog(null, "Usuário não encontrado");}
+				dispose();
+				new TelaDeLogin();
+			}
 		});
+		
+		JButton botaoEnviar = new JButton("ENVIAR CÓDIGO");
+		botaoEnviar.setBounds(170, 270, 125, 40);
+		botaoEnviar.addActionListener(new OuvinteCodigoChave(tela, emailDigitado));
 		
 		/*-----------------------------------------*/
 		
+		add(botaoVoltar);
 		add(botaoEnviar);
 	}
 
@@ -75,7 +60,6 @@ public class TelaDeRecuperarSenha extends JanelaPadrao {
 		JLabel linhaTitulo = new JLabel("RECUPERAR CONTA");
 		linhaTitulo.setBounds(150, 100, 190, 40);
 		linhaTitulo.setFont(new Font("", Font.BOLD, 18));
-		linhaTitulo.setHorizontalTextPosition((int) CENTER_ALIGNMENT);
 		
 		add(linhaTitulo);
 	}

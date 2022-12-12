@@ -16,6 +16,7 @@ import ListaDeAquecimento.Persistencia;
 import ListaDeAquecimento.Usuario;
 import clebson.JanelaPadrao;
 import jefferson.telaDeLogin_OK.telas.TelaDeLogin;
+import jefferson.telaDeRecuperacao_OK.ouvintes.OuvinteBotaoConfirmar;
 
 @SuppressWarnings("serial")
 public final class TelaDeAlteracaoDaSenha extends JanelaPadrao {
@@ -41,7 +42,7 @@ public final class TelaDeAlteracaoDaSenha extends JanelaPadrao {
 		try {
 			central = (CentralDeInformacoes) new Persistencia().recuperar("dados-passageiros.xml");
 		} catch (Exception e) {
-			System.out.println("Não deu certo");
+			JOptionPane.showMessageDialog(null, "Ocorreu um erro na recuperação");
 		}
 	}
 	
@@ -83,53 +84,7 @@ public final class TelaDeAlteracaoDaSenha extends JanelaPadrao {
 		JButton botaoConfirmar = new JButton("Alterar senha");
 		botaoConfirmar.setBounds(170, 270, 125, 40);
 		
-		botaoConfirmar.addActionListener(new ActionListener() {
-			
-			
-			@SuppressWarnings("deprecation")
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String novaSenha = new String(linhaPassword.getPassword());
-				String confirmarNovaSenha = new String(linhaConfirmarPassword.getPassword());
-				
-				if (confirmarNovaSenha.equals(novaSenha) && !(confirmarNovaSenha.isBlank() || novaSenha.isBlank())) {
-					
-					try {
-						ArrayList<Usuario> usuarios = central.getTodosOsUsuarios();
-						
-						for(int i = 0; i < usuarios.size(); i++) {
-							if (usuarioParaAlteracao.equals(usuarios.get(i))) {
-								usuarios.get(0).alterarSenha(linhaPassword.getText());
-								break;
-							}
-						}
-						
-						central.setTodosOsUsuarios(usuarios);
-					
-						new Persistencia().salvar(central, "dados-passageiros.xml");
-						
-						tela.dispose();
-						new TelaDeLogin();
-					} catch (Exception e1) {
-						
-						e1.printStackTrace();
-					}
-					// TODO ABAIXO É APENAS PARA TESTE
-//					UsuarioTeste.senha = novaSenha;
-//					System.out.println(UsuarioTeste.senha);
-//					System.out.println("Sucesso!!");
-//					
-//					tela.dispose();
-//					new TelaDeLogin(central, new Persistencia());
-					
-				} else if (linhaPassword.getText().isEmpty()){
-					JOptionPane.showMessageDialog(null, "Campos vazios");
-				} else {
-					JOptionPane.showMessageDialog(null, "Senhas diferentes");
-				}
-				
-			}
-		});
+		botaoConfirmar.addActionListener(new OuvinteBotaoConfirmar(this, linhaPassword, linhaConfirmarPassword, central, usuarioParaAlteracao));
 		
 		add(botaoConfirmar);
 	}

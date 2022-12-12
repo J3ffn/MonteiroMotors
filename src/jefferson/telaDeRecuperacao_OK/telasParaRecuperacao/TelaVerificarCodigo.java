@@ -51,9 +51,6 @@ public /*final*/ class TelaVerificarCodigo extends JanelaPadrao {
 			public void actionPerformed(ActionEvent e) {
 				String codigoDigitado = linhaValidacao.getText();
 				
-				System.out.println("Codigo digitado: " + codigoDigitado);
-				System.out.println("Codido enviado: " + codigoEnviado);
-				
 				if (codigoEnviado.equals(codigoDigitado)) {
 					tela.dispose();
 					new TelaDeAlteracaoDaSenha(emailDigitado);

@@ -50,7 +50,6 @@ public class TelaDeAdicionarCreditos extends JFrame{
 			quantidadeCreditos.setBounds(40, 60, 100, 40);
 			quantidadeCreditos.setHorizontalAlignment(JFormattedTextField.CENTER);
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

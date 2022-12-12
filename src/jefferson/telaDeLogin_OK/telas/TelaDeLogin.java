@@ -27,7 +27,6 @@ public class TelaDeLogin extends JanelaPadrao{
 		addTextField();
 		addImagem();
 		addBotoes();
-		new CentralDeInformacoes() ;
 		
 		setVisible(true);
 	}

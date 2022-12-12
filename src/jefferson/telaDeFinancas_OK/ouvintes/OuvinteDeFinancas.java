@@ -19,6 +19,7 @@ import ListaDeAquecimento.Usuario;
 
 public class OuvinteDeFinancas implements ActionListener {
 
+	private Usuario usuario;
 	private ArrayList< Corrida > corridas;
 	private LocalDateTime dataFiltro;
 	private JComboBox<String> campoBox;
@@ -27,8 +28,9 @@ public class OuvinteDeFinancas implements ActionListener {
 	private String email;
 	private CentralDeInformacoes central;
 	
-	public OuvinteDeFinancas(Usuario usuario, ArrayList<Corrida> listaCorridas, LocalDateTime data, JComboBox<String> box, JFormattedTextField campoData, CentralDeInformacoes centralI){
-		email = usuario.getEmail();
+	public OuvinteDeFinancas(Usuario infoUsuario, ArrayList<Corrida> listaCorridas, LocalDateTime data, JComboBox<String> box, JFormattedTextField campoData, CentralDeInformacoes centralI){
+		usuario = infoUsuario;
+		email = infoUsuario.getEmail();
 		corridas = listaCorridas;
 		dataFiltro = data;
 		campoBox = box;
@@ -44,8 +46,6 @@ public class OuvinteDeFinancas implements ActionListener {
 			
 			String dataDigitada = textoData + " 00:00";
 			
-			System.out.println(textoData);
-			
 			try {
 				
 				DateTimeFormatter sdf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
@@ -58,7 +58,7 @@ public class OuvinteDeFinancas implements ActionListener {
 			/*---------------------------------------------------------------------*/
 			if (dataFiltro != null) {
 				String escolha = (String) campoBox.getSelectedItem();
-				System.out.println(escolha);
+
 				ArrayList<Corrida> corridasFiltradas = new ArrayList<>();
 				for(Corrida c: corridas) {
 					switch(escolha) {
@@ -73,14 +73,7 @@ public class OuvinteDeFinancas implements ActionListener {
 						}
 					}
 				}
-				ArrayList<Mototaxista> mototaxistas = new ArrayList<>();
-				
-				for(Usuario m: central.getTodosOsMototaxistas()) {
-					mototaxistas.add( (Mototaxista) m );
-				}
-				
-				new GeradorDePDF().gerarRelatorioFinancas(mototaxistas);
-				mensageiro.enviarRelatorioFinancas(email);
+				central.atualizarCentral(usuario);
 			} 
 		} else {
 			JOptionPane.showConfirmDialog(null, "Não há registro de compras", "Impossível", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);

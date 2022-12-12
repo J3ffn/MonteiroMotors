@@ -38,7 +38,6 @@ public class OuvinteBotaoLogin implements ActionListener{
 			central = (CentralDeInformacoes) new Persistencia().recuperar("dados-passageiros.xml");
 			
 		} catch (Exception e) {
-			System.out.println("Não foi possível recuperar");
 			e.printStackTrace();
 		}
 	}
@@ -55,7 +54,6 @@ public class OuvinteBotaoLogin implements ActionListener{
 				JOptionPane.showMessageDialog(null, "Está dentro");
 				tela.dispose();
 				
-				// TODO alterar o switch.
 				switch(usuario.getTipoDeConta()) {
 				case ADMINISTRADOR:
 					new JanelaAdministrador((Administrador) usuario);

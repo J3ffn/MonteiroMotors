@@ -35,7 +35,7 @@ public class OuvinteBotaoComprar implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		System.out.println(quantidadeCreditos.getText());
+		
 		if (!quantidadeCreditos.getText().isBlank()) {
 			int quantidadeCreditosComprados = Integer.parseInt(quantidadeCreditos.getText());
 			try {

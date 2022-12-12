@@ -49,9 +49,6 @@ public class TelaFinancas extends JFrame{
 		addTitulo();
 		addComboBox();
 		
-		// TODO remover teste
-//		testeAdicionarCorridas();
-		
 		addBotoes(adm);
 
 		setVisible(true);
@@ -136,7 +133,6 @@ public class TelaFinancas extends JFrame{
 				JComboBox<String> box = (JComboBox<String>) e.getSource();
 				
 				String selecionado = (String) box.getSelectedItem();
-				System.out.println(selecionado);
 				
 				switch (selecionado) {
 				case "Tudo":
