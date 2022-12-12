@@ -21,7 +21,7 @@ import ListaDeAquecimento.Corrida;
 import ListaDeAquecimento.Persistencia;
 import clebson.JanelaAdministrador;
 import jefferson.UsuarioTeste;
-import jefferson.telaDeAdicionarCreditos.ouvintesAdicionar.OuvinteComboBox;
+import jefferson.telaDeAdicionarCreditos_OK.ouvintesAdicionar.OuvinteComboBox;
 import jefferson.telaDeFinancas_TERMINAR.ouvintes.OuvinteDeFinancas;
 
 @SuppressWarnings("serial")

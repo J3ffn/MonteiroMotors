@@ -18,6 +18,7 @@ import ListaDeAquecimento.Persistencia;
 import ListaDeAquecimento.Usuario;
 import eduardo.Ouvintes.OuvinteBotaoDetalhes;
 
+@SuppressWarnings("serial")
 public abstract class Painel extends JPanel{
 	private ArrayList < Corrida > corridasTodasAsDisponiveis;
 	private CentralDeInformacoes central;
@@ -40,7 +41,6 @@ public abstract class Painel extends JPanel{
 		int y = 10;
 		this.setLayout(null);
 		this.repaint();
-		int contador = 0;
 		
 		if(getCorridasTodasAsDisponiveis() != null) {
 			

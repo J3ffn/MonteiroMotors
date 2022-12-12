@@ -16,7 +16,7 @@ import eduardo.JanelaCorridasDisponiveis.JanelaDeChamadasDeCorridas;
 import eduardo.JanelaCorridasDisponiveis.JanelaDeCorridasDisponiveis;
 import eduardo.JanelaCorridasDisponiveis.PainelListaCorridasMototaxista;
 import eduardo.Ouvintes.OuvinteBotaoListarCorridas;
-import jefferson.telaDeAdicionarCreditos.telasParaAdicionar.TelaDeAdicionarCreditos;
+import jefferson.telaDeAdicionarCreditos_OK.telasParaAdicionar.TelaDeAdicionarCreditos;
 
 
 

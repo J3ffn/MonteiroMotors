@@ -12,7 +12,7 @@ import ListaDeAquecimento.*;
 import clebson.JanelaMototaxista;
 import clebson.JanelaAdministrador;
 import clebson.JanelaPassageiro;
-import jefferson.telaDeAdicionarCreditos.UsuarioTeste;
+import jefferson.telaDeAdicionarCreditos_OK.UsuarioTeste;
 
 public class OuvinteBotaoLogin implements ActionListener{
 
