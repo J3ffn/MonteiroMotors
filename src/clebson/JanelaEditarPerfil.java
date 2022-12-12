@@ -149,13 +149,44 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 	}
 	private class OuvinteBotaoEditarTipo implements ActionListener{
 		private Usuario usuario;
-		public OuvinteBotaoEditarTipo(Usuario usuario) {
+		private JFrame janela;
+		public OuvinteBotaoEditarTipo(Usuario usuario, JFrame janela) {
 			this.usuario = usuario;
+			this.janela = janela;	
 		}
 		
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			new JanelaMudancaTipo(getCentral() ,usuario);
+			try {
+				String novoTipo = JOptionPane.showInputDialog("Digite o novo email: ");
+				if (!novoTipo.equals("")) {
+					switch(novoTipo.toUpperCase()) {
+					case ("ADMINISTRADOR"):
+						usuario.setTipoDeConta(TipoDeConta.ADMINISTRADOR);
+						getCentral().getUsuarioPeloId(usuario.getId()).setTipoDeConta(TipoDeConta.ADMINISTRADOR);
+						getCentral().atualizarCentral(usuario);
+						break;
+					case("MOTOTAXISTA"):
+						usuario.setTipoDeConta(TipoDeConta.MOTOTAXISTA);
+					getCentral().getUsuarioPeloId(usuario.getId()).setTipoDeConta(TipoDeConta.MOTOTAXISTA);
+					getCentral().atualizarCentral(usuario);
+					break;
+					case("PASSAGEIRO"):
+						usuario.setTipoDeConta(TipoDeConta.PASSAGEIRO);
+					getCentral().getUsuarioPeloId(usuario.getId()).setTipoDeConta(TipoDeConta.PASSAGEIRO);
+					getCentral().atualizarCentral(usuario);
+					break;
+					}
+					}
+					}catch(NullPointerException erro) {
+						
+					} finally {
+					JOptionPane.showMessageDialog(null, "Mudança Concluida");
+					getCentral().atualizarCentral(usuario);
+					new JanelaEditarPerfil(usuario);
+					lbTipoDeUsuario.setText("TIPO: " + usuario.getTipoDeConta());
+					janela.dispose();
+					}
 			
 		}
 		
@@ -165,7 +196,7 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 	OuvinteBotaoEditarNome ouvinteEditarNome = new OuvinteBotaoEditarNome(this.getUsuario(),this);
 	OuvinteBotaoEditarEmail ouvinteEditarEmail = new OuvinteBotaoEditarEmail(this.getUsuario(), this);
 	OuvinteBotaoDeletarPerfil ouvinteDeletarPerfil = new OuvinteBotaoDeletarPerfil(this.getUsuario(),this);
-	OuvinteBotaoEditarTipo ouvinteEditarTipo = new OuvinteBotaoEditarTipo(this.getUsuario());
+	OuvinteBotaoEditarTipo ouvinteEditarTipo = new OuvinteBotaoEditarTipo(this.getUsuario(),this);
 	
 	private void adicionarBotoes(Usuario usuario) {
 		JButton btEditarNome = new JButton();
