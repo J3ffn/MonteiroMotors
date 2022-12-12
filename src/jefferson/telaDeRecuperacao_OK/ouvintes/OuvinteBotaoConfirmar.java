@@ -13,16 +13,14 @@ import ListaDeAquecimento.Persistencia;
 import ListaDeAquecimento.Usuario;
 import jefferson.telaDeLogin_OK.telas.TelaDeLogin;
 
-public class OuvinteBotaoConfirmar implements ActionListener{
-	
+public class OuvinteBotaoConfirmar implements ActionListener {
+
 	private JFrame tela;
 	private JPasswordField linhaPassword;
 	private JPasswordField linhaConfirmarPassword;
 	private CentralDeInformacoes central;
 	private Usuario usuarioParaAlteracao;
-	
-	
-	
+
 	public OuvinteBotaoConfirmar(JFrame tela, JPasswordField linhaPassword, JPasswordField linhaConfirmarPassword,
 			CentralDeInformacoes central, Usuario usuarioParaAlteracao) {
 		this.tela = tela;
@@ -32,43 +30,40 @@ public class OuvinteBotaoConfirmar implements ActionListener{
 		this.usuarioParaAlteracao = usuarioParaAlteracao;
 	}
 
-
-
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String novaSenha = new String(linhaPassword.getPassword());
 		String confirmarNovaSenha = new String(linhaConfirmarPassword.getPassword());
-		
+
 		if (confirmarNovaSenha.equals(novaSenha) && !(confirmarNovaSenha.isBlank() || novaSenha.isBlank())) {
-			
+
 			try {
 				usuarioParaAlteracao.alterarSenha(confirmarNovaSenha);
 				ArrayList<Usuario> usuarios = central.getTodosOsUsuarios();
-				
-				for(int i = 0; i < usuarios.size(); i++) {
+
+				for (int i = 0; i < usuarios.size(); i++) {
 					if (usuarioParaAlteracao.equals(usuarios.get(i))) {
 						usuarios.remove(i);
 						usuarios.add(usuarioParaAlteracao);
 					}
 				}
-				
+
 				central.setTodosOsUsuarios(usuarios);
-				
+
 				new Persistencia().salvar(central, "dados-passageiros.xml");
-				
+
 				tela.dispose();
 				new TelaDeLogin();
 			} catch (Exception e1) {
-				
+
 				e1.printStackTrace();
 			}
-		} else if (linhaPassword.getText().isEmpty()){
+		} else if (linhaPassword.getText().isEmpty()) {
 			JOptionPane.showMessageDialog(null, "Campos vazios");
 		} else {
 			JOptionPane.showMessageDialog(null, "Senhas diferentes");
 		}
-		
-		
+
 	}
 
 }

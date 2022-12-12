@@ -12,23 +12,22 @@ import javax.swing.JOptionPane;
 
 import ListaDeAquecimento.CentralDeInformacoes;
 import ListaDeAquecimento.Corrida;
-import ListaDeAquecimento.GeradorDePDF;
 import ListaDeAquecimento.Mensageiro;
-import ListaDeAquecimento.Mototaxista;
 import ListaDeAquecimento.Usuario;
 
 public class OuvinteDeFinancas implements ActionListener {
 
 	private Usuario usuario;
-	private ArrayList< Corrida > corridas;
+	private ArrayList<Corrida> corridas;
 	private LocalDateTime dataFiltro;
 	private JComboBox<String> campoBox;
 	private JFormattedTextField dataDigitada;
 	private Mensageiro mensageiro = new Mensageiro();
 	private String email;
 	private CentralDeInformacoes central;
-	
-	public OuvinteDeFinancas(Usuario infoUsuario, ArrayList<Corrida> listaCorridas, LocalDateTime data, JComboBox<String> box, JFormattedTextField campoData, CentralDeInformacoes centralI){
+
+	public OuvinteDeFinancas(Usuario infoUsuario, ArrayList<Corrida> listaCorridas, LocalDateTime data,
+			JComboBox<String> box, JFormattedTextField campoData, CentralDeInformacoes centralI) {
 		usuario = infoUsuario;
 		email = infoUsuario.getEmail();
 		corridas = listaCorridas;
@@ -37,31 +36,31 @@ public class OuvinteDeFinancas implements ActionListener {
 		dataDigitada = campoData;
 		central = centralI;
 	}
-	
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (corridas.size() > 0) {
-			
+
 			String textoData = dataDigitada.getText();
-			
+
 			String dataDigitada = textoData + " 00:00";
-			
+
 			try {
-				
+
 				DateTimeFormatter sdf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 				dataFiltro = LocalDateTime.parse(dataDigitada, sdf);
-				
-			} catch(Exception c){
+
+			} catch (Exception c) {
 				JOptionPane.showMessageDialog(null, "Data inválida");
 			}
-			
+
 			/*---------------------------------------------------------------------*/
 			if (dataFiltro != null) {
 				String escolha = (String) campoBox.getSelectedItem();
 
 				ArrayList<Corrida> corridasFiltradas = new ArrayList<>();
-				for(Corrida c: corridas) {
-					switch(escolha) {
+				for (Corrida c : corridas) {
+					switch (escolha) {
 					case "Recentes":
 						if (c.getData().isAfter(dataFiltro)) {
 							corridasFiltradas.add(c);
@@ -74,11 +73,12 @@ public class OuvinteDeFinancas implements ActionListener {
 					}
 				}
 				central.atualizarCentral(usuario);
-			} 
+			}
 		} else {
-			JOptionPane.showConfirmDialog(null, "Não há registro de compras", "Impossível", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showConfirmDialog(null, "Não há registro de compras", "Impossível", JOptionPane.DEFAULT_OPTION,
+					JOptionPane.INFORMATION_MESSAGE);
 		}
-		
+
 	}
-	
+
 }

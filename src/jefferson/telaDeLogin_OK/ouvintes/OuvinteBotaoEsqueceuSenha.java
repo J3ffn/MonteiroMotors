@@ -7,18 +7,18 @@ import javax.swing.JFrame;
 
 import jefferson.telaDeRecuperacao_OK.telasParaRecuperacao.TelaDeRecuperarSenha;
 
-public class OuvinteBotaoEsqueceuSenha  implements ActionListener{
-	
+public class OuvinteBotaoEsqueceuSenha implements ActionListener {
+
 	private JFrame tela;
-	
+
 	public OuvinteBotaoEsqueceuSenha(JFrame tela) {
 		this.tela = tela;
 	}
-	
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		tela.dispose();
 		new TelaDeRecuperarSenha();
 	}
-	
+
 }

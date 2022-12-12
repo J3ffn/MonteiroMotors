@@ -21,4 +21,5 @@ public class OuvinteBotaoRegistrar implements ActionListener{
 		new JanelaDeRegistro();
 	}
 	
+	
 }

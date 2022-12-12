@@ -1,6 +1,5 @@
 package jefferson.telaDeAdicionarCreditos_OK.telasParaAdicionar;
 
-import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
@@ -9,14 +8,11 @@ import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
 
 import ListaDeAquecimento.CentralDeInformacoes;
-import ListaDeAquecimento.Mensageiro;
 import ListaDeAquecimento.Mototaxista;
 import clebson.JanelaMototaxista;
-import eduardo.Janelas.AdicaoInvalidaException;
 import jefferson.telaDeAdicionarCreditos_OK.ouvintesAdicionar.OuvinteBotaoComprar;
 
 @SuppressWarnings({ "serial" })
