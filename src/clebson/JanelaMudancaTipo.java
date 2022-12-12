@@ -23,17 +23,10 @@ public class JanelaMudancaTipo extends JFrame{
 		return tipos;
 	}
 	
-	public void setCentral(CentralDeInformacoes central) {
-		this.central = central;
-	}
 
-	public JanelaMudancaTipo(Usuario usuario) {
+	public JanelaMudancaTipo(CentralDeInformacoes central, Usuario usuario) {
 		this.usuario = usuario;
-		try {
-			this.setCentral((CentralDeInformacoes)new Persistencia().recuperar("dados-passageiros.xml"));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		this.central = central;
 		setTitle("Mudança de Tipo");
 		setSize(350, 200);
 		setResizable(false);
@@ -59,7 +52,7 @@ public class JanelaMudancaTipo extends JFrame{
 		confirmar.setFont(new Font("Tahoma",Font.BOLD,12));
 		add(confirmar);
 		OuvinteBotaoConfirmar ouvinteConfirmar = new OuvinteBotaoConfirmar(this);
-		confirmar.addActionListener(ouvinteConfirmar);	
+		confirmar.addActionListener(ouvinteConfirmar);
 		
 	}
 	private class OuvinteBotaoConfirmar implements ActionListener{
@@ -81,11 +74,12 @@ public class JanelaMudancaTipo extends JFrame{
 			case("PASSAGEIRO"):
 				central.recuperarUsuarioPeloEmail(usuario.getEmail()).setTipoDeConta(TipoDeConta.PASSAGEIRO);
 				break;
+			default:
+				break;
 			}
-			
 			janela.dispose();
+			}			
 		}
-	}
 	
 
 		

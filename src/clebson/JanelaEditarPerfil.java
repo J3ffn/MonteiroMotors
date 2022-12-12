@@ -25,13 +25,13 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 	
 	
 
-	public CentralDeInformacoes getCentral() {
-		return central;
+	public void setCentral(CentralDeInformacoes central) {
+		this.central = central;
 	}
 
 
-	public void setCentral(CentralDeInformacoes central) {
-		this.central = central;
+	public CentralDeInformacoes getCentral() {
+		return central;
 	}
 
 
@@ -69,11 +69,7 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 
 	public JanelaEditarPerfil(Usuario usuario) {
 		super("Editar Perfil", usuario);
-		try {
-			this.setCentral((CentralDeInformacoes)new Persistencia().recuperar("dados-passageiros.xml"));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		central = super.getCentral();
 		adicionarTextos(usuario);
 		adicionarBotoes(usuario);
 		setVisible(true);
@@ -163,7 +159,7 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 		
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			new JanelaMudancaTipo(usuario);
+			new JanelaMudancaTipo(central ,usuario);
 			
 		}
 		
