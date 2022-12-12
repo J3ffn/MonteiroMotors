@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 
-import jefferson.telaDeFinancas_TERMINAR.telas.TelaFinancas;
+import jefferson.telaDeFinancas_OK.telas.TelaFinancas;
 
 public class OuvinteComboBox implements ActionListener{
 

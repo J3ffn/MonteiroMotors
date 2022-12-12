@@ -1,42 +1,21 @@
 package ListaDeAquecimento;
 
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.OutputStream;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
 
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.ImageIcon;
-
-import com.itextpdf.text.BaseColor;
-import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
-
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.Barcode;
-import com.itextpdf.text.pdf.BarcodeEAN;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
 public class GeradorDePDF{
 
-	private CentralDeInformacoes central;
-	
-	public GeradorDePDF(){
-		try {
-			central = (CentralDeInformacoes) new Persistencia().recuperar("dados-passageiros.xml");
-		} catch (Exception e) {
-			
-		}
-	}
-	
 	public void gerarBoleto(CentralDeInformacoes central, Mototaxista m, float valor) {
 		Document doc = new Document(PageSize.A4);
 		

@@ -12,7 +12,7 @@ import ListaDeAquecimento.Persistencia;
 import eduardo.Janelas.JanelaDeDefinicaoDeValorDosCreditos;
 import eduardo.Janelas.JanelaDeListagemDeUsuarios;
 import eduardo.Ouvintes.OuvinteBotaoListarCorridas;
-import jefferson.telaDeFinancas_TERMINAR.telas.TelaFinancas;
+import jefferson.telaDeFinancas_OK.telas.TelaFinancas;
 
 @SuppressWarnings("serial")
 public class JanelaAdministrador extends JanelaPadraoUsuario {

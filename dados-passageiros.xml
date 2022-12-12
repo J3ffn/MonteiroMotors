@@ -23,18 +23,6 @@
       <mototaxistasBloqueados/>
     </ListaDeAquecimento.Passageiro>
     <ListaDeAquecimento.Mototaxista>
-      <nome>jeff - mototaxista</nome>
-      <sexo>MASCULINO</sexo>
-      <senha>12345</senha>
-      <dataDeNascimento>2002-03-15</dataDeNascimento>
-      <email>jefferson.mototaxista@gmail.com</email>
-      <id>jefferson.mototaxista@gmail.com</id>
-      <perfilAtivo>true</perfilAtivo>
-      <tipoDeConta>MOTOTAXISTA</tipoDeConta>
-      <avaliacoes/>
-      <creditos/>
-    </ListaDeAquecimento.Mototaxista>
-    <ListaDeAquecimento.Mototaxista>
       <nome>Eduardo m</nome>
       <sexo>MASCULINO</sexo>
       <senha>edu</senha>
@@ -45,6 +33,109 @@
       <tipoDeConta>MOTOTAXISTA</tipoDeConta>
       <avaliacoes/>
       <creditos/>
+    </ListaDeAquecimento.Mototaxista>
+    <ListaDeAquecimento.Mototaxista>
+      <nome>jeff - mototaxista</nome>
+      <sexo>MASCULINO</sexo>
+      <senha>12345</senha>
+      <dataDeNascimento>2002-03-15</dataDeNascimento>
+      <email>jefferson.mototaxista@gmail.com</email>
+      <id>jefferson.mototaxista@gmail.com</id>
+      <perfilAtivo>true</perfilAtivo>
+      <tipoDeConta>MOTOTAXISTA</tipoDeConta>
+      <avaliacoes/>
+      <creditos>
+        <ListaDeAquecimento.Credito>
+          <valor>0.5</valor>
+        </ListaDeAquecimento.Credito>
+        <ListaDeAquecimento.Credito>
+          <valor>0.5</valor>
+        </ListaDeAquecimento.Credito>
+        <ListaDeAquecimento.Credito>
+          <valor>0.5</valor>
+        </ListaDeAquecimento.Credito>
+        <ListaDeAquecimento.Credito>
+          <valor>0.5</valor>
+        </ListaDeAquecimento.Credito>
+        <ListaDeAquecimento.Credito>
+          <valor>0.5</valor>
+        </ListaDeAquecimento.Credito>
+        <ListaDeAquecimento.Credito>
+          <valor>0.5</valor>
+        </ListaDeAquecimento.Credito>
+        <ListaDeAquecimento.Credito>
+          <valor>0.5</valor>
+        </ListaDeAquecimento.Credito>
+        <ListaDeAquecimento.Credito>
+          <valor>0.5</valor>
+        </ListaDeAquecimento.Credito>
+        <ListaDeAquecimento.Credito>
+          <valor>0.5</valor>
+        </ListaDeAquecimento.Credito>
+        <ListaDeAquecimento.Credito>
+          <valor>0.5</valor>
+        </ListaDeAquecimento.Credito>
+        <ListaDeAquecimento.Credito>
+          <valor>0.5</valor>
+        </ListaDeAquecimento.Credito>
+        <ListaDeAquecimento.Credito>
+          <valor>0.5</valor>
+        </ListaDeAquecimento.Credito>
+        <ListaDeAquecimento.Credito>
+          <valor>0.5</valor>
+        </ListaDeAquecimento.Credito>
+        <ListaDeAquecimento.Credito>
+          <valor>0.5</valor>
+        </ListaDeAquecimento.Credito>
+        <ListaDeAquecimento.Credito>
+          <valor>0.5</valor>
+        </ListaDeAquecimento.Credito>
+        <ListaDeAquecimento.Credito>
+          <valor>0.5</valor>
+        </ListaDeAquecimento.Credito>
+        <ListaDeAquecimento.Credito>
+          <valor>0.5</valor>
+        </ListaDeAquecimento.Credito>
+        <ListaDeAquecimento.Credito>
+          <valor>0.5</valor>
+        </ListaDeAquecimento.Credito>
+        <ListaDeAquecimento.Credito>
+          <valor>0.5</valor>
+        </ListaDeAquecimento.Credito>
+        <ListaDeAquecimento.Credito>
+          <valor>0.5</valor>
+        </ListaDeAquecimento.Credito>
+        <ListaDeAquecimento.Credito>
+          <valor>0.5</valor>
+        </ListaDeAquecimento.Credito>
+        <ListaDeAquecimento.Credito>
+          <valor>0.5</valor>
+        </ListaDeAquecimento.Credito>
+        <ListaDeAquecimento.Credito>
+          <valor>0.5</valor>
+        </ListaDeAquecimento.Credito>
+        <ListaDeAquecimento.Credito>
+          <valor>0.5</valor>
+        </ListaDeAquecimento.Credito>
+        <ListaDeAquecimento.Credito>
+          <valor>0.5</valor>
+        </ListaDeAquecimento.Credito>
+        <ListaDeAquecimento.Credito>
+          <valor>0.5</valor>
+        </ListaDeAquecimento.Credito>
+        <ListaDeAquecimento.Credito>
+          <valor>0.5</valor>
+        </ListaDeAquecimento.Credito>
+        <ListaDeAquecimento.Credito>
+          <valor>0.5</valor>
+        </ListaDeAquecimento.Credito>
+        <ListaDeAquecimento.Credito>
+          <valor>0.5</valor>
+        </ListaDeAquecimento.Credito>
+        <ListaDeAquecimento.Credito>
+          <valor>0.5</valor>
+        </ListaDeAquecimento.Credito>
+      </creditos>
     </ListaDeAquecimento.Mototaxista>
   </todosOsUsuarios>
   <corridas>
