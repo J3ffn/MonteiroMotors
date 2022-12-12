@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -135,23 +137,19 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 	}
 	private class OuvinteBotaoEditarTipo implements ActionListener{
 		
-		private Usuario usuario;
-		public OuvinteBotaoEditarTipo(Usuario usuario) {
-			this.usuario = usuario;
-		}
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			new JanelaMudançaTipo(usuario);
-
+			new JanelaMudancaTipo();
+			
 		}
-				
+		
 		}
 	
 	
 	OuvinteBotaoEditarNome ouvinteEditarNome = new OuvinteBotaoEditarNome(this.getUsuario());
 	OuvinteBotaoEditarEmail ouvinteEditarEmail = new OuvinteBotaoEditarEmail(this.getUsuario());
-	OuvinteBotaoDeletarPerfil ouvinteDeletarPerfil = new OuvinteBotaoDeletarPerfil();
-	OuvinteBotaoEditarTipo ouvinteEditarTipo = new OuvinteBotaoEditarTipo(this.getUsuario());
+	OuvinteBotaoDeletarPerfil ouvinteDeletarPerfil = new OuvinteBotaoDeletarPerfil(this.getUsuario());
+	OuvinteBotaoEditarTipo ouvinteEditarTipo = new OuvinteBotaoEditarTipo();
 	
 	private void adicionarBotoes(Usuario usuario) {
 		JButton btEditarNome = new JButton();
