@@ -1,0 +1,29 @@
+<sistemas.GestãoDeInformacoes.CentralDeInformacoes>
+  <todosOsUsuarios>
+    <sistemas.Usuários.Administrador>
+      <nome>jefferson</nome>
+      <sexo>MASCULINO</sexo>
+      <senha>123</senha>
+      <dataDeNascimento>2003-02-12</dataDeNascimento>
+      <email>jf@gmail.com</email>
+      <id>jf@gmail.com</id>
+      <perfilAtivo>true</perfilAtivo>
+      <tipoDeConta>ADMINISTRADOR</tipoDeConta>
+      <valorDosCreditos>0.5</valorDosCreditos>
+    </sistemas.Usuários.Administrador>
+    <sistemas.Usuários.Mototaxista>
+      <nome>jefferson pass</nome>
+      <sexo>MASCULINO</sexo>
+      <senha>123</senha>
+      <dataDeNascimento>2002-12-12</dataDeNascimento>
+      <email>jf_pass@gmail.com</email>
+      <id>jf_pass@gmail.com</id>
+      <perfilAtivo>true</perfilAtivo>
+      <tipoDeConta>MOTOTAXISTA</tipoDeConta>
+      <avaliacoes/>
+      <creditos/>
+    </sistemas.Usuários.Mototaxista>
+  </todosOsUsuarios>
+  <corridas/>
+  <caixaDoSistema>0.0</caixaDoSistema>
+</sistemas.GestãoDeInformacoes.CentralDeInformacoes>
