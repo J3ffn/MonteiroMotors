@@ -21,8 +21,7 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 
 	private JLabel lbNome;
 	private JLabel lbEmailDeUsuario;
-
-
+	private JLabel lbTipoDeUsuario;
 
 
 	public JLabel getLbNome() {
@@ -45,7 +44,7 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 	}
 
 
-	private JLabel lbTipoDeUsuario;
+
 	
 	public JLabel getLbTipoDeUsuario() {
 		return lbTipoDeUsuario;
@@ -150,6 +149,7 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 	private class OuvinteBotaoEditarTipo implements ActionListener{
 		private Usuario usuario;
 		private JFrame janela;
+		private String novoTipo;
 		public OuvinteBotaoEditarTipo(Usuario usuario, JFrame janela) {
 			this.usuario = usuario;
 			this.janela = janela;	
@@ -158,31 +158,38 @@ public class JanelaEditarPerfil extends JanelaPadrao{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			try {
-				String novoTipo = JOptionPane.showInputDialog("Digite o novo email: ");
+				novoTipo = JOptionPane.showInputDialog("Digite o novo tipo: ");
 				if (!novoTipo.equals("")) {
 					switch(novoTipo.toUpperCase()) {
 					case ("ADMINISTRADOR"):
 						usuario.setTipoDeConta(TipoDeConta.ADMINISTRADOR);
 						getCentral().atualizarCentral(usuario);
-						lbTipoDeUsuario.setText("TIPO: " + usuario.getTipoDeConta());
+						lbTipoDeUsuario.setText("TIPO : "+usuario.recuperarCargo());
+						novoTipo = "Administrador";
 						break;
 					case("MOTOTAXISTA"):
 						usuario.setTipoDeConta(TipoDeConta.MOTOTAXISTA);
 						getCentral().atualizarCentral(usuario);
-						lbTipoDeUsuario.setText("TIPO: " + usuario.getTipoDeConta());
-					break;
+						lbTipoDeUsuario.setText("TIPO : "+usuario.recuperarCargo());					
+						novoTipo = "Mototaxista";
+						break;
 					case("PASSAGEIRO"):
 						usuario.setTipoDeConta(TipoDeConta.PASSAGEIRO);
+						getCentral().getUsuarioPeloId(usuario.getId()).setTipoDeConta(TipoDeConta.PASSAGEIRO);;
 						getCentral().atualizarCentral(usuario);
-						lbTipoDeUsuario.setText("TIPO: " + usuario.getTipoDeConta());
-					break;
+						lbTipoDeUsuario.setText("TIPO : "+usuario.recuperarCargo());					
+						novoTipo = "Passageiro";
+						break;
 					}
 					}
 					}catch(NullPointerException erro) {
 						
 					} finally {
 						JOptionPane.showMessageDialog(null, "Mudança Concluida");
-						getCentral().atualizarCentral(usuario);
+						//janela.dispose();
+						lbTipoDeUsuario.setText("TIPO : "+novoTipo);
+						new JanelaEditarPerfil(usuario);
+						//lbTipoDeUsuario.setText("TIPO : "+novoTipo);
 					}
 			
 		}
