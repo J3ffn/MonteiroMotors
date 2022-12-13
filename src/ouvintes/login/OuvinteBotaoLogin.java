@@ -34,7 +34,7 @@ public class OuvinteBotaoLogin implements ActionListener {
 		this.tela = tela;
 
 		try {
-			central = (CentralDeInformacoes) new Persistencia().recuperar("src/arquivos/dados-passageiros.xml");
+			central = (CentralDeInformacoes) new Persistencia().recuperar("dados-passageiros.xml");
 
 		} catch (Exception e) {
 			e.printStackTrace();

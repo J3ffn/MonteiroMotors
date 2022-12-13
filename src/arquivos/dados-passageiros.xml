@@ -11,6 +11,49 @@
       <tipoDeConta>ADMINISTRADOR</tipoDeConta>
       <valorDosCreditos>0.5</valorDosCreditos>
     </sistemas.Usuários.Administrador>
+    <sistemas.Usuários.Mototaxista>
+      <nome>eduardo</nome>
+      <sexo>MASCULINO</sexo>
+      <senha>edu</senha>
+      <dataDeNascimento>2004-02-21</dataDeNascimento>
+      <email>edu</email>
+      <id>edu</id>
+      <perfilAtivo>true</perfilAtivo>
+      <tipoDeConta>MOTOTAXISTA</tipoDeConta>
+      <avaliacoes/>
+      <creditos>
+        <sistemas.Usuários.Credito>
+          <valor>0.5</valor>
+        </sistemas.Usuários.Credito>
+        <sistemas.Usuários.Credito>
+          <valor>0.5</valor>
+        </sistemas.Usuários.Credito>
+        <sistemas.Usuários.Credito>
+          <valor>0.5</valor>
+        </sistemas.Usuários.Credito>
+        <sistemas.Usuários.Credito>
+          <valor>0.5</valor>
+        </sistemas.Usuários.Credito>
+        <sistemas.Usuários.Credito>
+          <valor>0.5</valor>
+        </sistemas.Usuários.Credito>
+        <sistemas.Usuários.Credito>
+          <valor>0.5</valor>
+        </sistemas.Usuários.Credito>
+        <sistemas.Usuários.Credito>
+          <valor>0.5</valor>
+        </sistemas.Usuários.Credito>
+        <sistemas.Usuários.Credito>
+          <valor>0.5</valor>
+        </sistemas.Usuários.Credito>
+        <sistemas.Usuários.Credito>
+          <valor>0.5</valor>
+        </sistemas.Usuários.Credito>
+        <sistemas.Usuários.Credito>
+          <valor>0.5</valor>
+        </sistemas.Usuários.Credito>
+      </creditos>
+    </sistemas.Usuários.Mototaxista>
   </todosOsUsuarios>
   <corridas/>
   <caixaDoSistema>0.0</caixaDoSistema>

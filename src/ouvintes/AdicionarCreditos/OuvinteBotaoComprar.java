@@ -55,7 +55,7 @@ public class OuvinteBotaoComprar implements ActionListener {
 					}
 				}
 				central.setTodosOsUsuarios(usuarios);
-				new Persistencia().salvar(central, "src/arquivos/dados-passageiros.xml");
+				new Persistencia().salvar(central, "dados-passageiros.xml");
 
 				telaAtual.dispose();
 
