@@ -30,11 +30,18 @@
       <dataDeNascimento>2004-02-21</dataDeNascimento>
       <email>edu@gmail.com</email>
       <id>edu@gmail.com</id>
+      <nome>jf_moto</nome>
+      <sexo>MASCULINO</sexo>
+      <senha>123</senha>
+      <dataDeNascimento>2002-11-12</dataDeNascimento>
+      <email>jf_moto@gmail.com</email>
+      <id>jf_moto@gmail.com</id>
       <perfilAtivo>true</perfilAtivo>
       <tipoDeConta>MOTOTAXISTA</tipoDeConta>
       <avaliacoes/>
       <creditos/>
     </sistemas.Usuários.Mototaxista>
+>
   </todosOsUsuarios>
   <corridas/>
   <caixaDoSistema>0.0</caixaDoSistema>

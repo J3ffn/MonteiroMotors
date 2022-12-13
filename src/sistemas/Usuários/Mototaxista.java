@@ -18,7 +18,7 @@ public class Mototaxista extends Usuario {
 
 	public Mototaxista(String nome, String sexo, String email, String senha, LocalDate i) {
 		super(nome, sexo, email, senha, i);
-		this.setTipoDeConta(TipoDeConta.MOTOTAXISTA);
+		setTipoDeConta(TipoDeConta.MOTOTAXISTA);
 	}
 
 	public String recuperarCargo() {
@@ -44,7 +44,7 @@ public class Mototaxista extends Usuario {
 				totalASerPago += c.getValor();
 			}
 			try {
-				new Persistencia().salvar(central, "dados-passageiros.xml");
+				new Persistencia().salvar(central, "src/arquivos/dados-passageiros.xml");
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}

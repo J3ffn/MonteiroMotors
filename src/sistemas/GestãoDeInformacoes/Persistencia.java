@@ -13,24 +13,24 @@ public class Persistencia {
 	public Persistencia() {
 		xstream.addPermission(AnyTypePermission.ANY);
 	}
-	
+
 	private XStream xstream = new XStream(new DomDriver());
-	
-	public void salvar(CentralDeInformacoes central, String nomeDoArquivo) throws Exception{
-		
+
+	public void salvar(CentralDeInformacoes central, String nomeDoArquivo) throws Exception {
+
 		File arquivo = new File("src/arquivos/" + nomeDoArquivo);
 		arquivo.createNewFile();
-		
+
 		PrintWriter pw = new PrintWriter(arquivo);
 		String xml = xstream.toXML(central);
 		pw.print(xml);
 		pw.close();
 	}
-	
-	public Object recuperar (String nomeDoArquivo) throws Exception {
+
+	public Object recuperar(String nomeDoArquivo) throws Exception {
 		File arquivo = new File(nomeDoArquivo);
 		try {
-			if(arquivo.exists()) {
+			if (arquivo.exists()) {
 				FileInputStream fis = new FileInputStream(arquivo);
 				return (Object) xstream.fromXML(fis);
 			}
@@ -38,5 +38,5 @@ public class Persistencia {
 			e.printStackTrace();
 		}
 		return new CentralDeInformacoes();
-	}	
+	}
 }

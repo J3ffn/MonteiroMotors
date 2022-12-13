@@ -58,6 +58,8 @@ public class JanelaDeRegistro extends JanelaPadrao {
 
 		String[] tiposUsuarios = {"Tipo de Usuario", "Administrador", "Mototaxista", "Passageiro" };
 		cbTipoUsuario = new JComboBox<String>(tiposUsuarios);
+//		String[] tiposUsuarios = { "Administrador", "Mototaxista", "Passageiro" };
+		cbTipoUsuario = new JComboBox<String>(new String[] { "Administrador", "Mototaxista", "Passageiro" });
 		cbTipoUsuario.setBounds(190, 7, 110, 30);
 		
 		if (getCentral().getTodosOsUsuarios().isEmpty()) {
@@ -158,7 +160,7 @@ public class JanelaDeRegistro extends JanelaPadrao {
 		btCancelar = new JButton("Cancelar");
 		btCancelar.setBounds(250, 365, 120, 30);
 		btCancelar.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();
