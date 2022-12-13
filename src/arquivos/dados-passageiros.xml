@@ -1,0 +1,17 @@
+<sistemas.GestãoDeInformacoes.CentralDeInformacoes>
+  <todosOsUsuarios>
+    <sistemas.Usuários.Administrador>
+      <nome>ed</nome>
+      <sexo>MASCULINO</sexo>
+      <senha>ed</senha>
+      <dataDeNascimento>2004-02-21</dataDeNascimento>
+      <email>ed</email>
+      <id>ed</id>
+      <perfilAtivo>true</perfilAtivo>
+      <tipoDeConta>ADMINISTRADOR</tipoDeConta>
+      <valorDosCreditos>0.5</valorDosCreditos>
+    </sistemas.Usuários.Administrador>
+  </todosOsUsuarios>
+  <corridas/>
+  <caixaDoSistema>0.0</caixaDoSistema>
+</sistemas.GestãoDeInformacoes.CentralDeInformacoes>
