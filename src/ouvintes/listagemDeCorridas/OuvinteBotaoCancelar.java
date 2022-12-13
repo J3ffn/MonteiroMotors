@@ -25,17 +25,5 @@ public class OuvinteBotaoCancelar implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		telaAtual.dispose();
 		telaAnterior.setVisible(true);
-//		janela.dispose();
-//		switch (usuario.getTipoDeConta()) {
-//		case ADMINISTRADOR:
-//			new JanelaAdministrador((Administrador) usuario);
-//			break;
-//		case MOTOTAXISTA:
-//			new JanelaMototaxista((Mototaxista) usuario);
-//			break;
-//		case PASSAGEIRO:
-//			new JanelaPassageiro((Passageiro) usuario);
-//		}
-
 	}
 }
