@@ -177,15 +177,19 @@ public class JanelaDeRegistro extends JanelaPadrao {
 
 		public void actionPerformed(ActionEvent e) {
 			try {
-				if (new String(inputSenha.getPassword()).equals(new String(inputConfirmacaoSenha.getPassword()))
+				String[] datas = inputDataDeNascimento.getText().split("/");
+				LocalDate dataNascimento = LocalDate.of(Integer.parseInt(datas[2]), Integer.parseInt(datas[1]),
+						Integer.parseInt(datas[0]));
+				if(dataNascimento.isAfter(LocalDate.now()) || LocalDate.now().getYear()- dataNascimento.getYear() < 18) {
+					inputDataDeNascimento.setBackground(Color.RED);
+					JOptionPane.showMessageDialog(j, "Data nascimento inválida!", "Erro!", JOptionPane.ERROR_MESSAGE);
+					inputDataDeNascimento.setBackground(Color.WHITE);
+				} else if (new String(inputSenha.getPassword()).equals(new String(inputConfirmacaoSenha.getPassword()))
 						&& !inputNome.getText().equals("") && !inputEmail.getText().equals("")
 						&& !inputDataDeNascimento.getText().equals("  /  /    ")
 						&& !new String(inputSenha.getPassword()).equals("") 
 						&& !cbTipoUsuario.getSelectedItem().equals("Tipo de Usuario")) {
 					Usuario u;
-					String[] datas = inputDataDeNascimento.getText().split("/");
-					LocalDate dataNascimento = LocalDate.of(Integer.parseInt(datas[2]), Integer.parseInt(datas[1]),
-							Integer.parseInt(datas[0]));
 					if (getCentral().getTodosOsUsuarios().isEmpty()) {
 
 						u = new Administrador(inputNome.getText(), (String) cbSexo.getSelectedItem(),
@@ -201,16 +205,12 @@ public class JanelaDeRegistro extends JanelaPadrao {
 						}
 					}
 					getCentral().adicionarUsuario(u);
-					try {
-						new Persistencia().salvar(getCentral(), "dados-passageiros.xml");
-					} catch (Exception e1) {
-						e1.printStackTrace();
-					}
+					new Persistencia().salvar(getCentral(), "dados-passageiros.xml");
 					JOptionPane.showMessageDialog(j, "Usuário cadastrado Com Sucesso!");
 					j.dispose();
 					new JanelaDeLogin();
 				} else {
-					JOptionPane.showMessageDialog(j, "Insira todos os dados!", "Erro!", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(j, "Insira todos os dados corretamente!", "Erro!", JOptionPane.ERROR_MESSAGE);
 				}
 			} catch (Exception erro) {
 				JOptionPane.showMessageDialog(j, "Ocorreu um erro, corrija os campos!", "Erro!",
