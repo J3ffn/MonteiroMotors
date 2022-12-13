@@ -11,6 +11,30 @@
       <tipoDeConta>ADMINISTRADOR</tipoDeConta>
       <valorDosCreditos>0.5</valorDosCreditos>
     </sistemas.Usuários.Administrador>
+    <sistemas.Usuários.Mototaxista>
+      <nome>jefferson pass</nome>
+      <sexo>MASCULINO</sexo>
+      <senha>123</senha>
+      <dataDeNascimento>2002-12-12</dataDeNascimento>
+      <email>jf_pass@gmail.com</email>
+      <id>jf_pass@gmail.com</id>
+      <perfilAtivo>true</perfilAtivo>
+      <tipoDeConta>MOTOTAXISTA</tipoDeConta>
+      <avaliacoes/>
+      <creditos/>
+    </sistemas.Usuários.Mototaxista>
+    <sistemas.Usuários.Mototaxista>
+      <nome>jf_moto</nome>
+      <sexo>MASCULINO</sexo>
+      <senha>123</senha>
+      <dataDeNascimento>2002-11-12</dataDeNascimento>
+      <email>jf_moto@gmail.com</email>
+      <id>jf_moto@gmail.com</id>
+      <perfilAtivo>true</perfilAtivo>
+      <tipoDeConta>MOTOTAXISTA</tipoDeConta>
+      <avaliacoes/>
+      <creditos/>
+    </sistemas.Usuários.Mototaxista>
   </todosOsUsuarios>
   <corridas/>
   <caixaDoSistema>0.0</caixaDoSistema>
