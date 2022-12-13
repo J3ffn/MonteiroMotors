@@ -28,7 +28,7 @@ public class Persistencia {
 	}
 
 	public Object recuperar(String nomeDoArquivo) throws Exception {
-		File arquivo = new File(nomeDoArquivo);
+		File arquivo = new File("src/arquivos/" + nomeDoArquivo);
 		try {
 			if (arquivo.exists()) {
 				FileInputStream fis = new FileInputStream(arquivo);
