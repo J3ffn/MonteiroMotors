@@ -9,17 +9,17 @@ import janelas.janelasDeUsuários.JanelaEditarPerfil;
 import sistemas.Usuários.Usuario;
 
 public class OuvinteBotaoEditarPerfil implements ActionListener {
-	JFrame janela;
-	Usuario usuario;
+	private JFrame janela;
+	private Usuario usuario;
 
-	public OuvinteBotaoEditarPerfil(JFrame j, Usuario usuario) {
-		janela = j;
+	public OuvinteBotaoEditarPerfil(JFrame janelaAtual, Usuario usuario) {
+		janela = janelaAtual;
 		this.usuario = usuario;
 	}
 
 	public void actionPerformed(ActionEvent e) {
 		janela.dispose();
-		new JanelaEditarPerfil(usuario);
+		new JanelaEditarPerfil(janela, usuario);
 	}
 
 }

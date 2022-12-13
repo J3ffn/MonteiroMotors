@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 
@@ -25,15 +26,15 @@ public class JanelaDeListagemDeUsuarios extends JanelaPadrao {
 	private JButton btAtualizar;
 	private ArrayList<Usuario> usuariosQueVaoAparecer;
 
-	public JanelaDeListagemDeUsuarios(Administrador u) {
+	public JanelaDeListagemDeUsuarios(JFrame janelaAnterior, Administrador u) {
 		super("Janela de Listagem de Usuarios", u);
 		usuariosQueVaoAparecer = getCentral().getTodosOsUsuarios();
-		adicionarBotoes(u);
-		adicionarPainel();
+		adicionarBotoes(janelaAnterior, u);
+		adicionarPainel(janelaAnterior);
 		this.setVisible(true);
 	}
 
-	public void adicionarBotoes(Administrador adm) {
+	public void adicionarBotoes(JFrame janelaAnterior, Administrador adm) {
 		String[] opcoes = { "Todos", "Mototaxistas", "Passageiros" };
 
 		JLabel texto = new JLabel("Lista de Usuarios");
@@ -61,14 +62,14 @@ public class JanelaDeListagemDeUsuarios extends JanelaPadrao {
 
 		btAtualizar = new JButton("Atualize!");
 		btAtualizar.setBounds(90, 5, 100, 20);
-		btAtualizar.addMouseListener(new OuvinteDoAtualizar(this));
+		btAtualizar.addMouseListener(new OuvinteDoAtualizar(janelaAnterior, this));
 		this.add(btAtualizar);
 
 	}
 
-	public void adicionarPainel() {
+	public void adicionarPainel(JFrame janelaAnterior) {
 
-		painel1 = new PainelListaUsuarios((Administrador) getUsuario(), usuariosQueVaoAparecer);
+		painel1 = new PainelListaUsuarios(janelaAnterior, (Administrador) getUsuario(), usuariosQueVaoAparecer);
 		painel = new JScrollPane(painel1);
 
 		painel.setBounds(20, 60, 440, 340);
@@ -77,9 +78,11 @@ public class JanelaDeListagemDeUsuarios extends JanelaPadrao {
 	}
 
 	private class OuvinteDoAtualizar extends MouseAdapter {
+		JFrame janelaAnterior;
 		JanelaDeListagemDeUsuarios janela;
 
-		public OuvinteDoAtualizar(JanelaDeListagemDeUsuarios j) {
+		public OuvinteDoAtualizar(JFrame janelaAnterior, JanelaDeListagemDeUsuarios j) {
+			this.janelaAnterior = janelaAnterior;
 			janela = j;
 		}
 
@@ -95,7 +98,7 @@ public class JanelaDeListagemDeUsuarios extends JanelaPadrao {
 			botao.setText("Atualizar!");
 			botao.transferFocus();
 			janela.remove(painel);
-			adicionarPainel();
+			adicionarPainel(janelaAnterior);
 			janela.repaint();
 		}
 	}

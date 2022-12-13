@@ -16,14 +16,6 @@ public class OuvinteBotaoDeletarPerfil implements ActionListener {
 	private Usuario usuario;
 	private JFrame janela;
 
-	public CentralDeInformacoes getCentral() {
-		return central;
-	}
-
-	public void setCentral(CentralDeInformacoes central) {
-		this.central = central;
-	}
-
 	public OuvinteBotaoDeletarPerfil(Usuario usuario, JFrame janela) {
 		this.usuario = usuario;
 		this.janela = janela;
@@ -33,6 +25,15 @@ public class OuvinteBotaoDeletarPerfil implements ActionListener {
 			e.printStackTrace();
 		}
 	}
+	
+	public CentralDeInformacoes getCentral() {
+		return central;
+	}
+
+	public void setCentral(CentralDeInformacoes central) {
+		this.central = central;
+	}
+
 
 	public void actionPerformed(ActionEvent e) {
 		int op = JOptionPane.showConfirmDialog(null, "Deseja Deletar o Perfil?", "Pergunta", JOptionPane.YES_NO_OPTION,
