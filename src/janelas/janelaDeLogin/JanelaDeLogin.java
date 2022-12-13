@@ -41,27 +41,14 @@ public class JanelaDeLogin extends JanelaPadrao {
 
 		JButton registrar = new JButton("Registrar");
 		registrar.setBounds(100, 330, 125, 40);
-		registrar.addMouseListener(new MouseAdapter() {
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				registrar.addActionListener(new OuvinteBotaoRegistrar(tela));
-			}
-
-		});
+		registrar.addActionListener(new OuvinteBotaoRegistrar(tela));
+		
 
 		/*---------------------------------------*/
 
 		JButton esqueceuSenha = new JButton("Esqueceu a senha");
 		esqueceuSenha.setBounds(236, 330, 145, 40);
-		esqueceuSenha.addMouseListener(new MouseAdapter() {
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				esqueceuSenha.addActionListener(new OuvinteBotaoEsqueceuSenha(tela));
-			}
-
-		});
+		esqueceuSenha.addActionListener(new OuvinteBotaoEsqueceuSenha(tela));
 
 		/*---------------------------------------*/
 

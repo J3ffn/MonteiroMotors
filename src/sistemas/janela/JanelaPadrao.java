@@ -26,7 +26,7 @@ public class JanelaPadrao extends JFrame {
 
 	public JanelaPadrao(String titulo, Usuario usuario) {
 		try {
-			this.setCentral((CentralDeInformacoes) (new Persistencia().recuperar("src/arquivos/dados-passageiros.xml")));
+			this.setCentral((CentralDeInformacoes) (new Persistencia().recuperar("dados-passageiros.xml")));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

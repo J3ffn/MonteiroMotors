@@ -43,11 +43,6 @@ public class JanelaDeRegistro extends JanelaPadrao {
 
 	public JanelaDeRegistro() {
 		super("Registro de Usuário", null);
-		try {
-			this.setCentral((CentralDeInformacoes) new Persistencia().recuperar("src/arquivos/dados-passageiros.xml"));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 		this.adicionarBotoes();
 		this.adicionarCaixasDeTexto();
 		this.setVisible(true);
@@ -56,18 +51,19 @@ public class JanelaDeRegistro extends JanelaPadrao {
 	public void adicionarCaixasDeTexto() {
 		int x = 125;
 
-		String[] tiposUsuarios = {"Tipo de Usuario", "Administrador", "Mototaxista", "Passageiro" };
-		cbTipoUsuario = new JComboBox<String>(tiposUsuarios);
+		//String[] tiposUsuarios = {"Tipo de Usuario", "Administrador", "Mototaxista", "Passageiro" };
+		//cbTipoUsuario = new JComboBox<String>(tiposUsuarios);
 //		String[] tiposUsuarios = { "Administrador", "Mototaxista", "Passageiro" };
-		cbTipoUsuario = new JComboBox<String>(new String[] { "Administrador", "Mototaxista", "Passageiro" });
+		cbTipoUsuario = new JComboBox<String>(new String[] {"Tipo de Usuario", "Administrador", "Mototaxista", "Passageiro" });
 		cbTipoUsuario.setBounds(190, 7, 110, 30);
 		
 		if (getCentral().getTodosOsUsuarios().isEmpty()) {
 			cbTipoUsuario.setSelectedIndex(1);
 			cbTipoUsuario.setEnabled(false);
+			
 		} else {
-			cbTipoUsuario.setSelectedIndex(0);
 			cbTipoUsuario.removeItemAt(1);
+			cbTipoUsuario.setSelectedIndex(0);
 			cbTipoUsuario.setEnabled(true);
 		}
 		JLabel txNome = new JLabel("Nome Completo:");
