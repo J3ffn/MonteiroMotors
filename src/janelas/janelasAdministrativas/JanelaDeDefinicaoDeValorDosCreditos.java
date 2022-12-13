@@ -87,11 +87,7 @@ public class JanelaDeDefinicaoDeValorDosCreditos extends JanelaPadrao {
 					administrador.atualizarValorDosCreditos(Float.parseFloat(v));
 					JOptionPane.showMessageDialog(janela, "Valor atualizado!", "Mensagem",
 							JOptionPane.INFORMATION_MESSAGE);
-				}
-				try {
-					new Persistencia().salvar(getCentral(), "src/arquivos/dados-passageiros.xml");
-				} catch (Exception e1) {
-					e1.printStackTrace();
+					getCentral().atualizarCentral(administrador);
 				}
 				janela.dispose();
 			} else {

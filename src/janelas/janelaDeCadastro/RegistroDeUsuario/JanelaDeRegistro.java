@@ -39,7 +39,7 @@ public class JanelaDeRegistro extends JanelaPadrao {
 	private JPasswordField inputSenha;
 	private JPasswordField inputConfirmacaoSenha;
 	private JFormattedTextField inputDataDeNascimento;
-	JComboBox<String> cbSexo;
+	private JComboBox<String> cbSexo;
 
 	public JanelaDeRegistro() {
 		super("Registro de Usuário", null);
@@ -56,13 +56,18 @@ public class JanelaDeRegistro extends JanelaPadrao {
 	public void adicionarCaixasDeTexto() {
 		int x = 125;
 
+		String[] tiposUsuarios = {"Tipo de Usuario", "Administrador", "Mototaxista", "Passageiro" };
+		cbTipoUsuario = new JComboBox<String>(tiposUsuarios);
 //		String[] tiposUsuarios = { "Administrador", "Mototaxista", "Passageiro" };
 		cbTipoUsuario = new JComboBox<String>(new String[] { "Administrador", "Mototaxista", "Passageiro" });
 		cbTipoUsuario.setBounds(190, 7, 110, 30);
+		
 		if (getCentral().getTodosOsUsuarios().isEmpty()) {
+			cbTipoUsuario.setSelectedIndex(1);
 			cbTipoUsuario.setEnabled(false);
 		} else {
-			cbTipoUsuario.removeItemAt(0);
+			cbTipoUsuario.setSelectedIndex(0);
+			cbTipoUsuario.removeItemAt(1);
 			cbTipoUsuario.setEnabled(true);
 		}
 		JLabel txNome = new JLabel("Nome Completo:");
@@ -179,7 +184,8 @@ public class JanelaDeRegistro extends JanelaPadrao {
 				if (new String(inputSenha.getPassword()).equals(new String(inputConfirmacaoSenha.getPassword()))
 						&& !inputNome.getText().equals("") && !inputEmail.getText().equals("")
 						&& !inputDataDeNascimento.getText().equals("  /  /    ")
-						&& !new String(inputSenha.getPassword()).equals("")) {
+						&& !new String(inputSenha.getPassword()).equals("") 
+						&& !cbTipoUsuario.getSelectedItem().equals("Tipo de Usuario")) {
 					Usuario u;
 					String[] datas = inputDataDeNascimento.getText().split("/");
 					LocalDate dataNascimento = LocalDate.of(Integer.parseInt(datas[2]), Integer.parseInt(datas[1]),
@@ -207,6 +213,8 @@ public class JanelaDeRegistro extends JanelaPadrao {
 					JOptionPane.showMessageDialog(j, "Usuário cadastrado Com Sucesso!");
 					j.dispose();
 					new JanelaDeLogin();
+				} else {
+					JOptionPane.showMessageDialog(j, "Insira todos os dados!", "Erro!", JOptionPane.ERROR_MESSAGE);
 				}
 			} catch (Exception erro) {
 				JOptionPane.showMessageDialog(j, "Ocorreu um erro, corrija os campos!", "Erro!",
