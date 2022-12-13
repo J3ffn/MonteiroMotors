@@ -23,18 +23,6 @@
       <avaliacoes/>
       <creditos/>
     </sistemas.Usuários.Mototaxista>
-    <sistemas.Usuários.Mototaxista>
-      <nome>sslslsl</nome>
-      <sexo>MASCULINO</sexo>
-      <senha>wsu</senha>
-      <dataDeNascimento>2004-02-21</dataDeNascimento>
-      <email>edu@gmail.com</email>
-      <id>edu@gmail.com</id>
-      <perfilAtivo>true</perfilAtivo>
-      <tipoDeConta>MOTOTAXISTA</tipoDeConta>
-      <avaliacoes/>
-      <creditos/>
-    </sistemas.Usuários.Mototaxista>
   </todosOsUsuarios>
   <corridas/>
   <caixaDoSistema>0.0</caixaDoSistema>
