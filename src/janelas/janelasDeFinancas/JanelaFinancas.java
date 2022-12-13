@@ -56,7 +56,7 @@ public class JanelaFinancas extends JFrame {
 
 	private void adicionarCentral() {
 		try {
-			central = (CentralDeInformacoes) new Persistencia().recuperar("src/arquivos/dados-passageiros.xml");
+			central = (CentralDeInformacoes) new Persistencia().recuperar("dados-passageiros.xml");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -131,13 +131,13 @@ public class JanelaFinancas extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JComboBox<String> box = (JComboBox<String>) e.getSource();
 
 				String selecionado = (String) box.getSelectedItem();
 
 				switch (selecionado) {
 				case "Tudo":
 					linhaData.setVisible(false);
+					subData.setText("");
 					break;
 				case "Recentes":
 					linhaData.setVisible(true);

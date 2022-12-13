@@ -45,10 +45,16 @@ public class JanelaMototaxista extends JanelaPadraoUsuario {
 
 	private class OuvinteBotaoChamadas implements ActionListener {
 
+		private Mototaxista mtx;
+
+		public OuvinteBotaoChamadas(Mototaxista mtx) {
+			this.mtx = mtx;
+		}
+
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			dispose();
-			new JanelaDeChamadasDeCorridas(getUsuario());
+			new JanelaDeChamadasDeCorridas(mtx);
 		}
 	}
 
@@ -59,13 +65,13 @@ public class JanelaMototaxista extends JanelaPadraoUsuario {
 		btListarCorridas.setBounds(170, 121, 130, 40);
 		btListarCorridas.setText("Listar Corridas");
 		btListarCorridas.setFont(new Font("Tahoma", Font.BOLD, 10));
-		btListarCorridas.addActionListener(new OuvinteBotaoListarCorridas(getUsuario(), this));
+		btListarCorridas.addActionListener(new OuvinteBotaoListarCorridas(mtx, this));
 		add(btListarCorridas);
 
 		JButton btChamadas = new JButton();
 		btChamadas.setBounds(170, 181, 130, 60);
 		btChamadas.setText("Chamadas para corridas");
-		btChamadas.addActionListener(new OuvinteBotaoChamadas());
+		btChamadas.addActionListener(new OuvinteBotaoChamadas(mtx));
 		btChamadas.setFont(new Font("Tahoma", Font.BOLD, 8));
 		add(btChamadas);
 

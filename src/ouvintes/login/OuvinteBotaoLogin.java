@@ -48,7 +48,7 @@ public class OuvinteBotaoLogin implements ActionListener {
 			Usuario usuario = central.fazerLogin(campoLogin.getText(), senha);
 
 			if (usuario.getEmail().equals(campoLogin.getText()) && usuario.getSenha().equals(senha)) {
-				JOptionPane.showMessageDialog(null, "Está dentro");
+				JOptionPane.showMessageDialog(null, "Entrou");
 				tela.dispose();
 
 				switch (usuario.getTipoDeConta()) {

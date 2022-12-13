@@ -69,7 +69,7 @@ public class JanelaDeListagemDeUsuarios extends JanelaPadrao {
 
 	public void adicionarPainel(JFrame janelaAnterior) {
 
-		painel1 = new PainelListaUsuarios(janelaAnterior, (Administrador) getUsuario(), usuariosQueVaoAparecer);
+		painel1 = new PainelListaUsuarios(this, (Administrador) getUsuario(), usuariosQueVaoAparecer);
 		painel = new JScrollPane(painel1);
 
 		painel.setBounds(20, 60, 440, 340);

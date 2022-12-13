@@ -39,6 +39,7 @@ public class PainelListaUsuarios extends Painel {
 				botao.setBounds(310, y, 115, 40);
 				botao.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
+						janelaAnterior.setVisible(false);
 						new JanelaEditarPerfil(janelaAnterior, c);
 					}
 				});

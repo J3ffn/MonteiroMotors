@@ -15,10 +15,13 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
-import ouvintes.listagemDeCorridas.OuvinteBotaoCancelar;
+import janelas.janelasCentrais.JanelaPassageiro;
+import janelas.janelasDeUsuários.JanelaPadraoUsuario;
+import ouvintes.botaoVoltar.OuvinteBotaoCancelar;
 import ouvintes.listagemDeCorridas.OuvinteDoTecladoParaApenasNumerico;
 import sistemas.Corridas.Corrida;
 import sistemas.GestãoDeInformacoes.Persistencia;
+import sistemas.Usuários.Passageiro;
 import sistemas.Usuários.Usuario;
 import sistemas.janela.JanelaPadrao;
 
@@ -30,9 +33,11 @@ public class JanelaDeCadastroDeCorrida extends JanelaPadrao {
 	private JFormattedTextField inputDataDaCorrida;
 	private JFormattedTextField inputHoraDaCorrida;
 	private JCheckBox checkBCorridaParaAgora;
+	private Passageiro passageiro;
 
 	public JanelaDeCadastroDeCorrida(JFrame telaAnterior, Usuario p) {
 		super("Cadastrar Solicitação de Corrida", p);
+		passageiro = (Passageiro)p;
 		this.adicionarBotoes(telaAnterior, p);
 		this.adicionarTextos();
 		this.setSize(500, 320);
@@ -42,7 +47,7 @@ public class JanelaDeCadastroDeCorrida extends JanelaPadrao {
 	public void adicionarBotoes(JFrame telaAnterior, Usuario u) {
 		JButton botaoConfirmar = new JButton("Confirmar");
 		botaoConfirmar.setBounds(360, 240, 100, 30);
-		botaoConfirmar.addActionListener(new OuvinteDoBotaoConfirmarCadastroCorrida(this));
+		botaoConfirmar.addActionListener(new OuvinteDoBotaoConfirmarCadastroCorrida(telaAnterior, this));
 		this.add(botaoConfirmar);
 		JButton botaoCancelar = new JButton("Cancelar");
 		botaoCancelar.setBounds(255, 240, 100, 30);
@@ -52,9 +57,11 @@ public class JanelaDeCadastroDeCorrida extends JanelaPadrao {
 
 	private class OuvinteDoBotaoConfirmarCadastroCorrida implements ActionListener {
 		private JanelaDeCadastroDeCorrida janela;
-
-		public OuvinteDoBotaoConfirmarCadastroCorrida(JanelaDeCadastroDeCorrida j) {
+		private JFrame janelaAnterior;
+		
+		public OuvinteDoBotaoConfirmarCadastroCorrida(JFrame janelaAnterior, JanelaDeCadastroDeCorrida j) {
 			janela = j;
+			this.janelaAnterior = janelaAnterior;
 		}
 
 		public void actionPerformed(ActionEvent e) {
@@ -85,7 +92,9 @@ public class JanelaDeCadastroDeCorrida extends JanelaPadrao {
 					}
 
 					JOptionPane.showMessageDialog(janela, "Corrida adicionada com Sucesso!");
-					janela.dispose();
+					dispose();
+					new JanelaPassageiro(passageiro);
+					
 				} else {
 					JOptionPane.showMessageDialog(janela, "Agende a corrida para agora ou para uma data futura!",
 							"ERRO!", JOptionPane.ERROR_MESSAGE);

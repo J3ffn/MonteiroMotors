@@ -16,7 +16,7 @@ import sistemas.Usuários.Passageiro;
 public class JanelaPassageiro extends JanelaPadraoUsuario {
 
 	private JFrame tela = this;
-	
+
 	public JanelaPassageiro(Passageiro p) {
 		super("Passageiro", p);
 		adicionarBotoesPassageiro();

@@ -10,9 +10,12 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
+import janelas.janelasAdministrativas.JanelaDeListagemDeUsuarios;
+import ouvintes.botaoVoltar.OuvinteBotaoCancelar;
 import ouvintes.botoesPerfil.OuvinteBotaoDeletarPerfil;
-import ouvintes.listagemDeCorridas.OuvinteBotaoCancelar;
+import sistemas.GestãoDeInformacoes.CentralDeInformacoes;
 import sistemas.GestãoDeInformacoes.Persistencia;
+import sistemas.Usuários.Administrador;
 import sistemas.Usuários.TipoDeConta;
 import sistemas.Usuários.Usuario;
 import sistemas.janela.JanelaPadrao;
@@ -104,16 +107,11 @@ public class JanelaEditarPerfil extends JanelaPadrao {
 					usuario.setNome(novoNome);
 					getCentral().recuperarUsuarioPeloEmail(usuario.getEmail()).setNome(usuario.getNome());
 					lbNome.setText("NOME: " + usuario.getNome());
+					new Persistencia().salvar(getCentral(), "dados-passageiros.xml");
 					getCentral().atualizarCentral(usuario);
-					try {
-						new Persistencia().salvar(getCentral(), "dados-passageiros.xml");
-					} catch (Exception e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
 				}
 
-			} catch (NullPointerException erro) {
+			} catch (Exception erro) {
 
 			} finally {
 				JOptionPane.showMessageDialog(null, "Mudança Concluida");
@@ -127,6 +125,7 @@ public class JanelaEditarPerfil extends JanelaPadrao {
 
 		private Usuario usuario;
 		private JFrame janelaAnterior, janelaAtual;
+		private CentralDeInformacoes central;
 
 		public OuvinteBotaoEditarEmail(JFrame janelaAnterior, Usuario usuario, JFrame janelaAtual) {
 			this.usuario = usuario;
@@ -135,6 +134,7 @@ public class JanelaEditarPerfil extends JanelaPadrao {
 		}
 
 		public void actionPerformed(ActionEvent e) {
+			central = getCentral();
 			try {
 				String novoEmail = JOptionPane.showInputDialog("Digite o novo email: ");
 				if (!novoEmail.equals("")) {
@@ -142,19 +142,16 @@ public class JanelaEditarPerfil extends JanelaPadrao {
 					getCentral().getUsuarioPeloId(usuario.getId()).setEmail(novoEmail);
 					lbEmailDeUsuario.setText("EMAIL: " + usuario.getEmail());
 					getCentral().atualizarCentral(usuario);
-					try {
-						new Persistencia().salvar(getCentral(), "dados-passageiros.xml");
-					} catch (Exception e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
 				}
-			} catch (NullPointerException erro) {
-
-			} finally {
 				JOptionPane.showMessageDialog(null, "Mudança Concluida");
 				janelaAtual.dispose();
+				central.atualizarCentral(usuario);
+				new Persistencia().salvar(central, "dados-passageiros.xml");
 				new JanelaEditarPerfil(janelaAnterior, usuario);
+			} catch (NullPointerException erro) {
+
+			} catch (Exception c) {
+				
 			}
 		}
 	}
@@ -163,8 +160,8 @@ public class JanelaEditarPerfil extends JanelaPadrao {
 		private Usuario usuario;
 		private JFrame janelaAnterior, janelaAtual;
 		private String novoTipo;
-
-		public OuvinteBotaoEditarTipo(JFrame janelaAnterior, Usuario usuario, JFrame janelaAtual) {
+		
+		public OuvinteBotaoEditarTipo(JFrame janelaAnterior, Usuario usuario, JFrame janelaAtual, JButton btEditarPerfil) {
 			this.usuario = usuario;
 			this.janelaAnterior = janelaAnterior;
 			this.janelaAtual = janelaAtual;
@@ -224,15 +221,17 @@ public class JanelaEditarPerfil extends JanelaPadrao {
 		btEditarEmail.setBounds(350, 205, 100, 20);
 		btEditarEmail.setText("Editar E-mail");
 		btEditarEmail.setFont(new Font("Tahoma", Font.BOLD, 10));
-		btEditarEmail.addActionListener(new OuvinteBotaoEditarEmail(telaAnterior, this.getUsuario(), this));
+		btEditarEmail.addActionListener(new OuvinteBotaoEditarEmail(telaAnterior, usuario, this));
 		add(btEditarEmail);
-
-		JButton btDeletarPerfil = new JButton();
-		btDeletarPerfil.setBounds(174, 362, 150, 20);
-		btDeletarPerfil.setText("Deletar Perfil");
-		btDeletarPerfil.setFont(new Font("Tahoma", Font.BOLD, 10));
-		btDeletarPerfil.addActionListener(new OuvinteBotaoDeletarPerfil(this.getUsuario(), this));
-		add(btDeletarPerfil);
+		
+		if (usuario.getTipoDeConta() != TipoDeConta.ADMINISTRADOR && getUsuario().getTipoDeConta() != TipoDeConta.ADMINISTRADOR) {
+			JButton btDeletarPerfil = new JButton();
+			btDeletarPerfil.setBounds(174, 362, 150, 20);
+			btDeletarPerfil.setText("Deletar Perfil");
+			btDeletarPerfil.setFont(new Font("Tahoma", Font.BOLD, 10));
+			btDeletarPerfil.addActionListener(new OuvinteBotaoDeletarPerfil(usuario, this, getUsuario(), telaAnterior));/**/
+			add(btDeletarPerfil);
+		}
 
 		JButton btVoltar = new JButton();
 		btVoltar.setBounds(174, 387, 150, 20);
@@ -241,12 +240,12 @@ public class JanelaEditarPerfil extends JanelaPadrao {
 		btVoltar.addActionListener(new OuvinteBotaoCancelar(telaAnterior, this));
 		add(btVoltar);
 		
-		if (usuario.getTipoDeConta() == TipoDeConta.ADMINISTRADOR) {
+		if (usuario.getTipoDeConta() != TipoDeConta.ADMINISTRADOR && getUsuario().getTipoDeConta() != TipoDeConta.ADMINISTRADOR) {
 			JButton btEditarPerfil = new JButton();
 			btEditarPerfil.setBounds(350, 240, 100, 20);
 			btEditarPerfil.setText("Editar Tipo");
 			btEditarPerfil.setFont(new Font("Tahoma", Font.BOLD, 10));
-			btEditarPerfil.addActionListener(new OuvinteBotaoEditarTipo(telaAnterior, this.getUsuario(), this));
+			btEditarPerfil.addActionListener(new OuvinteBotaoEditarTipo(telaAnterior, usuario, this, btEditarPerfil));
 			add(btEditarPerfil);
 
 		}

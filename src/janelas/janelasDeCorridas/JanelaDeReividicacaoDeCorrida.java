@@ -11,7 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import exceções.MotoTaxistaSemCreditosCreditosException;
-import ouvintes.listagemDeCorridas.OuvinteBotaoCancelar;
+import ouvintes.botaoVoltar.OuvinteBotaoCancelar;
 import sistemas.Corridas.Corrida;
 import sistemas.Corridas.Status;
 import sistemas.GestãoDeInformacoes.Persistencia;
@@ -78,7 +78,7 @@ public class JanelaDeReividicacaoDeCorrida extends JanelaPadrao {
 						btConfirmar.setEnabled(false);
 
 						try {
-							new Persistencia().salvar(getCentral(), "src/arquivos/dados-passageiros.xml");
+							new Persistencia().salvar(getCentral(), "dados-passageiros.xml");
 
 						} catch (Exception erro) {
 							JOptionPane.showMessageDialog(null, "Houve um erro ao tentar recuperar o banco");

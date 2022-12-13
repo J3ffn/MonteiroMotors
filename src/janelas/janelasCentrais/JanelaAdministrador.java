@@ -18,12 +18,10 @@ import sistemas.Usuários.Administrador;
 @SuppressWarnings("serial")
 public class JanelaAdministrador extends JanelaPadraoUsuario {
 
-	private String email;
 	private JFrame telaAtual = this;
-	
+
 	public JanelaAdministrador(Administrador adm) {
 		super("Administrador", adm);
-		email = adm.getEmail();
 
 		adicionarBotoesAdministrador(adm);
 
@@ -41,7 +39,7 @@ public class JanelaAdministrador extends JanelaPadraoUsuario {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				new JanelaDeListagemDeUsuarios(telaAtual, (Administrador) getUsuario());
+				new JanelaDeListagemDeUsuarios(telaAtual, adm);
 			}
 
 		});
@@ -78,7 +76,7 @@ public class JanelaAdministrador extends JanelaPadraoUsuario {
 			public void actionPerformed(ActionEvent e) {
 				new JanelaDeDefinicaoDeValorDosCreditos(telaAtual, (Administrador) getUsuario());
 				try {
-					new Persistencia().salvar(getCentral(), "src/arquivos/dados-passageiros.xml");
+					new Persistencia().salvar(getCentral(), "dados-passageiros.xml");
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}

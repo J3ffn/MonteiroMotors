@@ -18,9 +18,9 @@ import sistemas.Usuários.Usuario;
 import sistemas.painel.Painel;
 
 public class PainelReinvindicacao extends Painel {
-	
+
 	private JFrame telaAnterior;
-	
+
 	public PainelReinvindicacao(JFrame telaAnterior, ArrayList<Corrida> corridasTodasAsDisponiveis, Usuario usuario) {
 		super(corridasTodasAsDisponiveis, usuario);
 		this.telaAnterior = telaAnterior;

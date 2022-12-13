@@ -1,6 +1,7 @@
 package sistemas.Usuários;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import exceções.AdicaoInvalidaException;
@@ -39,7 +40,7 @@ public class Mototaxista extends Usuario {
 		} else {
 			float totalASerPago = 0;
 			for (int i = 0; i < num; i++) {
-				Credito c = new Credito(central, LocalDate.now());
+				Credito c = new Credito(central, LocalDateTime.now());
 				creditos.add(c);
 				totalASerPago += c.getValor();
 			}

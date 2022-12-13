@@ -55,7 +55,7 @@ public class JanelaDeChamadasDeCorridas extends JanelaDeCorridasDisponiveis {
 
 					JOptionPane.showMessageDialog(janela, "Corrida Concluida!");
 					try {
-						new Persistencia().salvar(getCentral(), "src/arquivos/dados-passageiros.xml");
+						new Persistencia().salvar(getCentral(), "dados-passageiros.xml");
 					} catch (Exception e1) {
 						e1.printStackTrace();
 					}

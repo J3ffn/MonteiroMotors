@@ -20,8 +20,6 @@ import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
 import janelas.janelaDeLogin.JanelaDeLogin;
-import ouvintes.listagemDeCorridas.OuvinteBotaoCancelar;
-import sistemas.GestãoDeInformacoes.CentralDeInformacoes;
 import sistemas.GestãoDeInformacoes.Persistencia;
 import sistemas.Usuários.Administrador;
 import sistemas.Usuários.Mototaxista;
@@ -51,16 +49,18 @@ public class JanelaDeRegistro extends JanelaPadrao {
 	public void adicionarCaixasDeTexto() {
 		int x = 125;
 
-		//String[] tiposUsuarios = {"Tipo de Usuario", "Administrador", "Mototaxista", "Passageiro" };
-		//cbTipoUsuario = new JComboBox<String>(tiposUsuarios);
+		// String[] tiposUsuarios = {"Tipo de Usuario", "Administrador", "Mototaxista",
+		// "Passageiro" };
+		// cbTipoUsuario = new JComboBox<String>(tiposUsuarios);
 //		String[] tiposUsuarios = { "Administrador", "Mototaxista", "Passageiro" };
-		cbTipoUsuario = new JComboBox<String>(new String[] {"Tipo de Usuario", "Administrador", "Mototaxista", "Passageiro" });
+		cbTipoUsuario = new JComboBox<String>(
+				new String[] { "Tipo de Usuario", "Administrador", "Mototaxista", "Passageiro" });
 		cbTipoUsuario.setBounds(190, 7, 110, 30);
-		
+
 		if (getCentral().getTodosOsUsuarios().isEmpty()) {
 			cbTipoUsuario.setSelectedIndex(1);
 			cbTipoUsuario.setEnabled(false);
-			
+
 		} else {
 			cbTipoUsuario.removeItemAt(1);
 			cbTipoUsuario.setSelectedIndex(0);
@@ -180,15 +180,11 @@ public class JanelaDeRegistro extends JanelaPadrao {
 				String[] datas = inputDataDeNascimento.getText().split("/");
 				LocalDate dataNascimento = LocalDate.of(Integer.parseInt(datas[2]), Integer.parseInt(datas[1]),
 						Integer.parseInt(datas[0]));
-				if(dataNascimento.isAfter(LocalDate.now()) || LocalDate.now().getYear()- dataNascimento.getYear() < 18) {
+				if (dataNascimento.isAfter(LocalDate.now()) || LocalDate.now().getYear()- dataNascimento.getYear() < 18) {
 					inputDataDeNascimento.setBackground(Color.RED);
 					JOptionPane.showMessageDialog(j, "Data nascimento inválida!", "Erro!", JOptionPane.ERROR_MESSAGE);
 					inputDataDeNascimento.setBackground(Color.WHITE);
-				} else if (new String(inputSenha.getPassword()).equals(new String(inputConfirmacaoSenha.getPassword()))
-						&& !inputNome.getText().equals("") && !inputEmail.getText().equals("")
-						&& !inputDataDeNascimento.getText().equals("  /  /    ")
-						&& !new String(inputSenha.getPassword()).equals("") 
-						&& !cbTipoUsuario.getSelectedItem().equals("Tipo de Usuario")) {
+				} else if (new String(inputSenha.getPassword()).equals(new String(inputConfirmacaoSenha.getPassword()))) {
 					Usuario u;
 					if (getCentral().getTodosOsUsuarios().isEmpty()) {
 
@@ -205,7 +201,11 @@ public class JanelaDeRegistro extends JanelaPadrao {
 						}
 					}
 					getCentral().adicionarUsuario(u);
-					new Persistencia().salvar(getCentral(), "dados-passageiros.xml");
+					try {
+						new Persistencia().salvar(getCentral(), "dados-passageiros.xml");
+					} catch (Exception e1) {
+						e1.printStackTrace();
+					}
 					JOptionPane.showMessageDialog(j, "Usuário cadastrado Com Sucesso!");
 					j.dispose();
 					new JanelaDeLogin();

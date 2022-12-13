@@ -12,7 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
 
-import ouvintes.listagemDeCorridas.OuvinteBotaoCancelar;
+import ouvintes.botaoVoltar.OuvinteBotaoCancelar;
 import sistemas.GestãoDeInformacoes.Persistencia;
 import sistemas.Usuários.Administrador;
 import sistemas.Usuários.Usuario;
@@ -84,10 +84,15 @@ public class JanelaDeDefinicaoDeValorDosCreditos extends JanelaPadrao {
 				if (JOptionPane.showConfirmDialog(janela,
 						"Deseja alterar o valor dos creditos para R$ " + v + " ?") == 0) {
 					Administrador administrador = (Administrador) janela.getUsuario();
-					administrador.atualizarValorDosCreditos(Float.parseFloat(v));
-					JOptionPane.showMessageDialog(janela, "Valor atualizado!", "Mensagem",
-							JOptionPane.INFORMATION_MESSAGE);
-					getCentral().atualizarCentral(administrador);
+					try {
+						administrador.atualizarValorDosCreditos(Float.parseFloat(v));
+						JOptionPane.showMessageDialog(janela, "Valor atualizado!", "Mensagem", JOptionPane.INFORMATION_MESSAGE);
+						
+						getCentral().atualizarCentral(administrador);
+						new Persistencia().salvar(getCentral(), "dados-passageiros.xml");
+					} catch (Exception e1) {
+						
+					}
 				}
 				janela.dispose();
 			} else {

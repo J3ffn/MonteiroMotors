@@ -1,8 +1,5 @@
 package janelas.janelaDeLogin;
 
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -42,7 +39,6 @@ public class JanelaDeLogin extends JanelaPadrao {
 		JButton registrar = new JButton("Registrar");
 		registrar.setBounds(100, 330, 125, 40);
 		registrar.addActionListener(new OuvinteBotaoRegistrar(tela));
-		
 
 		/*---------------------------------------*/
 

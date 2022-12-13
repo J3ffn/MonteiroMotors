@@ -1,22 +1,23 @@
 package sistemas.Usuários;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import sistemas.GestãoDeInformacoes.CentralDeInformacoes;
 
 public class Credito {
 	private float valor;
-	private LocalDate data;
+	private LocalDateTime data;
 
-	public Credito(CentralDeInformacoes central, LocalDate data) {
+	public Credito(CentralDeInformacoes central, LocalDateTime data) {
 		valor = central.recuperarAdministradorDoSistema().getValorDosCreditos();
+		this.data = data.now();
 	}
 
 	public float getValor() {
 		return valor;
 	}
 
-	public LocalDate getData() {
+	public LocalDateTime getData() {
 		return data;
 	}
 }

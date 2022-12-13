@@ -78,7 +78,7 @@
       <mototaxistasBloqueados/>
     </sistemas.Usuários.Passageiro>
     <sistemas.Usuários.Mototaxista>
-      <nome>edu</nome>
+      <nome>Eduardo</nome>
       <sexo>MASCULINO</sexo>
       <senha>edu</senha>
       <dataDeNascimento>2002-02-21</dataDeNascimento>
@@ -120,7 +120,59 @@
         </sistemas.Usuários.Credito>
       </creditos>
     </sistemas.Usuários.Mototaxista>
+    <sistemas.Usuários.Passageiro>
+      <nome>Eduardo</nome>
+      <sexo>MASCULINO</sexo>
+      <senha>edu</senha>
+      <dataDeNascimento>2004-02-21</dataDeNascimento>
+      <email>eduardojose71953@gmail.com</email>
+      <id>eduardojose71953@gmail.com</id>
+      <perfilAtivo>true</perfilAtivo>
+      <tipoDeConta>PASSAGEIRO</tipoDeConta>
+      <mototaxistasBloqueados/>
+    </sistemas.Usuários.Passageiro>
   </todosOsUsuarios>
-  <corridas/>
+  <corridas>
+    <sistemas.Corridas.Corrida>
+      <id>1670956354833</id>
+      <status>PENDENTE</status>
+      <enderecoDePartida>Rua das Flores</enderecoDePartida>
+      <enderecoDeDestino>Rua do Coco</enderecoDeDestino>
+      <distancia>0.1</distancia>
+      <paraAgora>true</paraAgora>
+      <data>2022-12-13T15:32:34.8331598</data>
+      <usuario class="sistemas.Usuários.Passageiro">
+        <nome>Eduardo</nome>
+        <sexo>MASCULINO</sexo>
+        <senha>edu</senha>
+        <dataDeNascimento>2004-02-21</dataDeNascimento>
+        <email>eduardojose71953@gmail.com</email>
+        <id>eduardojose71953@gmail.com</id>
+        <perfilAtivo>true</perfilAtivo>
+        <tipoDeConta>PASSAGEIRO</tipoDeConta>
+        <mototaxistasBloqueados/>
+      </usuario>
+    </sistemas.Corridas.Corrida>
+    <sistemas.Corridas.Corrida>
+      <id>1670956458691</id>
+      <status>PENDENTE</status>
+      <enderecoDePartida>Rua das Neves</enderecoDePartida>
+      <enderecoDeDestino>Rua M Maravilha</enderecoDeDestino>
+      <distancia>3.0</distancia>
+      <paraAgora>true</paraAgora>
+      <data>2022-12-13T15:34:18.69114</data>
+      <usuario class="sistemas.Usuários.Passageiro">
+        <nome>Eduardo</nome>
+        <sexo>MASCULINO</sexo>
+        <senha>edu</senha>
+        <dataDeNascimento>2004-02-21</dataDeNascimento>
+        <email>eduardojose71953@gmail.com</email>
+        <id>eduardojose71953@gmail.com</id>
+        <perfilAtivo>true</perfilAtivo>
+        <tipoDeConta>PASSAGEIRO</tipoDeConta>
+        <mototaxistasBloqueados/>
+      </usuario>
+    </sistemas.Corridas.Corrida>
+  </corridas>
   <caixaDoSistema>0.0</caixaDoSistema>
 </sistemas.GestãoDeInformacoes.CentralDeInformacoes>

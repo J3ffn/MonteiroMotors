@@ -36,7 +36,7 @@ public final class JanelaDeAlteracaoDaSenha extends JanelaPadrao {
 
 	private void recuperarCentral() {
 		try {
-			central = (CentralDeInformacoes) new Persistencia().recuperar("src/arquivos/dados-passageiros.xml");
+			central = (CentralDeInformacoes) new Persistencia().recuperar("dados-passageiros.xml");
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "Ocorreu um erro na recuperação");
 		}
