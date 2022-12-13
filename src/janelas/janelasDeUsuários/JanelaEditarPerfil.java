@@ -105,6 +105,12 @@ public class JanelaEditarPerfil extends JanelaPadrao {
 					getCentral().recuperarUsuarioPeloEmail(usuario.getEmail()).setNome(usuario.getNome());
 					lbNome.setText("NOME: " + usuario.getNome());
 					getCentral().atualizarCentral(usuario);
+					try {
+						new Persistencia().salvar(getCentral(), "dados-passageiros.xml");
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}
 
 			} catch (NullPointerException erro) {
@@ -136,6 +142,12 @@ public class JanelaEditarPerfil extends JanelaPadrao {
 					getCentral().getUsuarioPeloId(usuario.getId()).setEmail(novoEmail);
 					lbEmailDeUsuario.setText("EMAIL: " + usuario.getEmail());
 					getCentral().atualizarCentral(usuario);
+					try {
+						new Persistencia().salvar(getCentral(), "dados-passageiros.xml");
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}
 			} catch (NullPointerException erro) {
 

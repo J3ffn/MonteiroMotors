@@ -79,7 +79,7 @@ public class JanelaDeCadastroDeCorrida extends JanelaPadrao {
 					getCentral().adicionarCorrida(c);
 
 					try {
-						new Persistencia().salvar(getCentral(), "src/arquivosdados-passageiros.xml");
+						new Persistencia().salvar(getCentral(), "dados-passageiros.xml");
 					} catch (Exception e1) {
 						e1.printStackTrace();
 					}

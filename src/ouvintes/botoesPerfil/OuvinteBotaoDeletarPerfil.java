@@ -20,7 +20,7 @@ public class OuvinteBotaoDeletarPerfil implements ActionListener {
 		this.usuario = usuario;
 		this.janela = janela;
 		try {
-			this.setCentral((CentralDeInformacoes) new Persistencia().recuperar("src/arquivos/dados-passageiros.xml"));
+			this.setCentral((CentralDeInformacoes) new Persistencia().recuperar("dados-passageiros.xml"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -42,6 +42,12 @@ public class OuvinteBotaoDeletarPerfil implements ActionListener {
 		case (JOptionPane.YES_OPTION):
 			central.deletarPerfil(usuario);
 			JOptionPane.showMessageDialog(null, "Perfil Deletado! :)");
+			try {
+				new Persistencia().salvar(getCentral(), "dados-passageiros.xml");
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			janela.dispose();
 			new JanelaDeLogin();
 			break;
