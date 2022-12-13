@@ -46,7 +46,7 @@ public class JanelaDeListagemDeUsuarios extends JanelaPadrao {
 		JButton b = new JButton("< Voltar");
 		b.setBounds(5, 5, 80, 20);
 		b.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();

@@ -11,7 +11,7 @@ import sistemas.Usuários.Usuario;
 public class OuvinteBotaoListarCorridas implements ActionListener {
 	private Usuario usuario;
 	private JFrame telaAtual;
-	
+
 	public OuvinteBotaoListarCorridas(Usuario u, JFrame tela) {
 		usuario = u;
 		telaAtual = tela;

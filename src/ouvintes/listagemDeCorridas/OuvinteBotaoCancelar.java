@@ -12,21 +12,22 @@ import janelas.janelasCentrais.JanelaPassageiro;
 import sistemas.Usuários.Administrador;
 import sistemas.Usuários.Mototaxista;
 import sistemas.Usuários.Passageiro;
+import sistemas.Usuários.TipoDeConta;
 import sistemas.Usuários.Usuario;
 
 public class OuvinteBotaoCancelar implements ActionListener {
 	JFrame janela;
 	private Usuario usuario;
-	
+
 	public OuvinteBotaoCancelar(JFrame j, Usuario usuario) {
 		janela = j;
 	}
 
 	public void actionPerformed(ActionEvent e) {
 		janela.dispose();
-		if (usuario instanceof Administrador) {
+		if (usuario.getTipoDeConta() == TipoDeConta.ADMINISTRADOR) {
 			new JanelaAdministrador((Administrador) usuario);
-		} else if (usuario instanceof Mototaxista) {
+		} else if (usuario.getTipoDeConta() == TipoDeConta.MOTOTAXISTA) {
 			new JanelaMototaxista((Mototaxista) usuario);
 		} else {
 			new JanelaPassageiro((Passageiro) usuario);

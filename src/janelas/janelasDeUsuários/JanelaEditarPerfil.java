@@ -24,6 +24,18 @@ public class JanelaEditarPerfil extends JanelaPadrao {
 	private JLabel lbEmailDeUsuario;
 	private JLabel lbTipoDeUsuario;
 
+	public JanelaEditarPerfil(Usuario usuario) {
+		super("Editar Perfil", usuario);
+		try {
+			new Persistencia().salvar(getCentral(), getName());
+			adicionarTextos(usuario);
+			adicionarBotoes(usuario);
+			setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 	public JLabel getLbNome() {
 		return lbNome;
 	}
@@ -46,18 +58,6 @@ public class JanelaEditarPerfil extends JanelaPadrao {
 
 	public void setLbTipoDeUsuario(JLabel lbTipoDeUsuario) {
 		this.lbTipoDeUsuario = lbTipoDeUsuario;
-	}
-
-	public JanelaEditarPerfil(Usuario usuario) {
-		super("Editar Perfil", usuario);
-		try {
-			new Persistencia().salvar(getCentral(), getName());
-			adicionarTextos(usuario);
-			adicionarBotoes(usuario);
-			setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 
 	private void adicionarTextos(Usuario usuario) {
