@@ -18,7 +18,6 @@ import sistemas.Usuários.Mototaxista;
 public class JanelaMototaxista extends JanelaPadraoUsuario {
 
 	private int qtddDeCretidos;
-	private Mototaxista mototaxista;
 
 	public JanelaMototaxista(Mototaxista mtx) {
 		super("Mototaxista", mtx);

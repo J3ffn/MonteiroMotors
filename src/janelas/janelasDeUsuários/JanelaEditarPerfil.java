@@ -206,22 +206,22 @@ public class JanelaEditarPerfil extends JanelaPadrao {
 		btEditarNome.setBounds(350, 170, 100, 20);
 		btEditarNome.setText("Editar Nome");
 		btEditarNome.setFont(new Font("Tahoma", Font.BOLD, 10));
-		add(btEditarNome);
 		btEditarNome.addActionListener(ouvinteEditarNome);
+		add(btEditarNome);
 
 		JButton btEditarEmail = new JButton();
 		btEditarEmail.setBounds(350, 205, 100, 20);
 		btEditarEmail.setText("Editar E-mail");
 		btEditarEmail.setFont(new Font("Tahoma", Font.BOLD, 10));
-		add(btEditarEmail);
 		btEditarEmail.addActionListener(ouvinteEditarEmail);
+		add(btEditarEmail);
 
 		JButton btDeletarPerfil = new JButton();
 		btDeletarPerfil.setBounds(174, 362, 150, 20);
 		btDeletarPerfil.setText("Deletar Perfil");
 		btDeletarPerfil.setFont(new Font("Tahoma", Font.BOLD, 10));
-		add(btDeletarPerfil);
 		btDeletarPerfil.addActionListener(ouvinteDeletarPerfil);
+		add(btDeletarPerfil);
 
 		JButton btVoltar = new JButton();
 		btVoltar.setBounds(174, 387, 150, 20);
@@ -229,7 +229,7 @@ public class JanelaEditarPerfil extends JanelaPadrao {
 		btVoltar.setFont(new Font("Tahoma", Font.BOLD, 10));
 		btVoltar.addActionListener(new OuvinteBotaoCancelar(this, usuario));
 		add(btVoltar);
-
+		
 		if (usuario.getTipoDeConta() == TipoDeConta.ADMINISTRADOR) {
 			JButton btEditarPerfil = new JButton();
 			btEditarPerfil.setBounds(350, 240, 100, 20);

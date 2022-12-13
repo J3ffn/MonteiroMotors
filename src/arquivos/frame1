@@ -23,6 +23,29 @@
       <avaliacoes/>
       <creditos/>
     </sistemas.Usuários.Mototaxista>
+    <sistemas.Usuários.Mototaxista>
+      <nome>jf_moto</nome>
+      <sexo>MASCULINO</sexo>
+      <senha>123</senha>
+      <dataDeNascimento>2002-11-12</dataDeNascimento>
+      <email>jf_moto@gmail.com</email>
+      <id>jf_moto@gmail.com</id>
+      <perfilAtivo>true</perfilAtivo>
+      <tipoDeConta>MOTOTAXISTA</tipoDeConta>
+      <avaliacoes/>
+      <creditos/>
+    </sistemas.Usuários.Mototaxista>
+    <sistemas.Usuários.Passageiro>
+      <nome>Jeff_pass</nome>
+      <sexo>MASCULINO</sexo>
+      <senha>123</senha>
+      <dataDeNascimento>2003-02-12</dataDeNascimento>
+      <email>jeff_pass@gmail.com</email>
+      <id>jeff_pass@gmail.com</id>
+      <perfilAtivo>true</perfilAtivo>
+      <tipoDeConta>PASSAGEIRO</tipoDeConta>
+      <mototaxistasBloqueados/>
+    </sistemas.Usuários.Passageiro>
   </todosOsUsuarios>
   <corridas/>
   <caixaDoSistema>0.0</caixaDoSistema>
