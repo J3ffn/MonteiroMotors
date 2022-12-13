@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 
 import janelas.janelaDeCadastro.CadastroDeCorrida.JanelaDeCadastroDeCorrida;
 import janelas.janelasDeUsuários.JanelaPadraoUsuario;
@@ -14,6 +15,8 @@ import sistemas.Usuários.Passageiro;
 @SuppressWarnings("serial")
 public class JanelaPassageiro extends JanelaPadraoUsuario {
 
+	private JFrame tela = this;
+	
 	public JanelaPassageiro(Passageiro p) {
 		super("Passageiro", p);
 		adicionarBotoesPassageiro();
@@ -22,7 +25,8 @@ public class JanelaPassageiro extends JanelaPadraoUsuario {
 
 	private class OuvinteDeBtCadastroCorrida implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			new JanelaDeCadastroDeCorrida(getUsuario());
+			dispose();
+			new JanelaDeCadastroDeCorrida(tela, getUsuario());
 		}
 	}
 

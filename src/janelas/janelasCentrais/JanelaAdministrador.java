@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 
 import janelas.janelasAdministrativas.JanelaDeDefinicaoDeValorDosCreditos;
 import janelas.janelasAdministrativas.JanelaDeListagemDeUsuarios;
@@ -18,7 +19,8 @@ import sistemas.Usuários.Administrador;
 public class JanelaAdministrador extends JanelaPadraoUsuario {
 
 	private String email;
-
+	private JFrame telaAtual = this;
+	
 	public JanelaAdministrador(Administrador adm) {
 		super("Administrador", adm);
 		email = adm.getEmail();
@@ -39,7 +41,7 @@ public class JanelaAdministrador extends JanelaPadraoUsuario {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				new JanelaDeListagemDeUsuarios((Administrador) getUsuario());
+				new JanelaDeListagemDeUsuarios(telaAtual, (Administrador) getUsuario());
 			}
 
 		});
@@ -74,7 +76,7 @@ public class JanelaAdministrador extends JanelaPadraoUsuario {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new JanelaDeDefinicaoDeValorDosCreditos((Administrador) getUsuario());
+				new JanelaDeDefinicaoDeValorDosCreditos(telaAtual, (Administrador) getUsuario());
 				try {
 					new Persistencia().salvar(getCentral(), "src/arquivos/dados-passageiros.xml");
 				} catch (Exception e1) {

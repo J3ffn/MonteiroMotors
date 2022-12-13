@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFormattedTextField;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -30,22 +31,22 @@ public class JanelaDeCadastroDeCorrida extends JanelaPadrao {
 	private JFormattedTextField inputHoraDaCorrida;
 	private JCheckBox checkBCorridaParaAgora;
 
-	public JanelaDeCadastroDeCorrida(Usuario p) {
+	public JanelaDeCadastroDeCorrida(JFrame telaAnterior, Usuario p) {
 		super("Cadastrar Solicitação de Corrida", p);
-		this.adicionarBotoes(p);
+		this.adicionarBotoes(telaAnterior, p);
 		this.adicionarTextos();
 		this.setSize(500, 320);
 		this.setVisible(true);
 	}
 
-	public void adicionarBotoes(Usuario u) {
+	public void adicionarBotoes(JFrame telaAnterior, Usuario u) {
 		JButton botaoConfirmar = new JButton("Confirmar");
 		botaoConfirmar.setBounds(360, 240, 100, 30);
 		botaoConfirmar.addActionListener(new OuvinteDoBotaoConfirmarCadastroCorrida(this));
 		this.add(botaoConfirmar);
 		JButton botaoCancelar = new JButton("Cancelar");
 		botaoCancelar.setBounds(255, 240, 100, 30);
-		botaoCancelar.addActionListener(new OuvinteBotaoCancelar(this, u));
+		botaoCancelar.addActionListener(new OuvinteBotaoCancelar(telaAnterior, this));
 		this.add(botaoCancelar);
 	}
 

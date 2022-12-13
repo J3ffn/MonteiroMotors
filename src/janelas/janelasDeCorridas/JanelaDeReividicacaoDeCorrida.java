@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -28,18 +29,18 @@ public class JanelaDeReividicacaoDeCorrida extends JanelaPadrao {
 	private Corrida corrida;
 	private JLabel txCreditos;
 
-	public JanelaDeReividicacaoDeCorrida(Corrida c, Mototaxista m) {
+	public JanelaDeReividicacaoDeCorrida(JFrame telaAnterior, Corrida c, Mototaxista m) {
 		super("Reivindicação de corrida", m);
 		corrida = c;
 		this.setSize(400, 177);
 		this.setLocationRelativeTo(null);
 
 		this.adicionarLabels();
-		this.adicionarBotoes(m);
+		this.adicionarBotoes(telaAnterior, m);
 		this.setVisible(true);
 	}
 
-	public void adicionarBotoes(Usuario usuario) {
+	public void adicionarBotoes(JFrame telaAnterior, Usuario usuario) {
 		btConfirmar = new JButton("Confirmar");
 		btConfirmar.setBounds(207, 103, 111, 30);
 		btConfirmar.addActionListener(new OuvinteDosBotoesJanelaRegistro(this));
@@ -47,7 +48,7 @@ public class JanelaDeReividicacaoDeCorrida extends JanelaPadrao {
 
 		btCancelar = new JButton("Cancelar");
 		btCancelar.setBounds(91, 103, 111, 30);
-		btCancelar.addActionListener(new OuvinteBotaoCancelar(this, usuario));
+		btCancelar.addActionListener(new OuvinteBotaoCancelar(telaAnterior, this));
 		this.add(btCancelar);
 	}
 

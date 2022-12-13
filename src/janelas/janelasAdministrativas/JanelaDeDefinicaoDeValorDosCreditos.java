@@ -7,6 +7,7 @@ import java.text.ParseException;
 
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
@@ -22,12 +23,12 @@ public class JanelaDeDefinicaoDeValorDosCreditos extends JanelaPadrao {
 	private JFormattedTextField inputValorCreditos;
 	private JButton btConfirmar;
 
-	public JanelaDeDefinicaoDeValorDosCreditos(Administrador adm) {
+	public JanelaDeDefinicaoDeValorDosCreditos(JFrame janelaAnterior, Administrador adm) {
 		super("Definir Valor Dos Creditos", adm);
 		this.setSize(500, 300);
 		this.setLocationRelativeTo(null);
 		this.adicionarCamposTexto();
-		this.adicionarBotoes(adm);
+		this.adicionarBotoes(janelaAnterior, adm);
 		this.setVisible(true);
 	}
 
@@ -57,14 +58,14 @@ public class JanelaDeDefinicaoDeValorDosCreditos extends JanelaPadrao {
 		this.add(inputValorCreditos);
 	}
 
-	public void adicionarBotoes(Usuario usuario) {
+	public void adicionarBotoes(JFrame janelaAnterior, Usuario usuario) {
 		btConfirmar = new JButton("Confirmar");
 		btConfirmar.setBounds(365, 220, 100, 30);
 		btConfirmar.addActionListener(new OuvinteDoBotaoConfirmar(this));
 
 		JButton btCancelar = new JButton("Cancelar");
 		btCancelar.setBounds(260, 220, 100, 30);
-		btCancelar.addActionListener(new OuvinteBotaoCancelar(this, usuario));
+		btCancelar.addActionListener(new OuvinteBotaoCancelar(janelaAnterior, this));
 
 		this.add(btConfirmar);
 		this.add(btCancelar);

@@ -21,7 +21,7 @@ public class JanelaDeChamadasDeCorridas extends JanelaDeCorridasDisponiveis {
 	}
 
 	public void adicionarPainel() {
-		this.setPainel1(new PainelReinvindicacao(getCorridasTodasAsDisponiveis(), getUsuario()));
+		this.setPainel1(new PainelReinvindicacao(this, getCorridasTodasAsDisponiveis(), getUsuario()));
 		JButton btConcluir = new JButton("Concluir corrida atual!");
 		btConcluir.setBackground(Color.getHSBColor(100 / 360f, 50 / 100f, 80 / 100f));
 		btConcluir.setBounds(150, 400, 180, 20);

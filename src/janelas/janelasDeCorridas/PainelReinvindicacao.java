@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import sistemas.Corridas.Corrida;
@@ -17,9 +18,12 @@ import sistemas.Usuários.Usuario;
 import sistemas.painel.Painel;
 
 public class PainelReinvindicacao extends Painel {
-
-	public PainelReinvindicacao(ArrayList<Corrida> corridasTodasAsDisponiveis, Usuario usuario) {
+	
+	private JFrame telaAnterior;
+	
+	public PainelReinvindicacao(JFrame telaAnterior, ArrayList<Corrida> corridasTodasAsDisponiveis, Usuario usuario) {
 		super(corridasTodasAsDisponiveis, usuario);
+		this.telaAnterior = telaAnterior;
 	}
 
 	public void preencherPainel() {
@@ -39,7 +43,7 @@ public class PainelReinvindicacao extends Painel {
 					botao.setBounds(310, y, 115, 40);
 					botao.addActionListener((ActionListener) new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
-							new JanelaDeReividicacaoDeCorrida(c, (Mototaxista) getUsuario());
+							new JanelaDeReividicacaoDeCorrida(telaAnterior, c, (Mototaxista) getUsuario());
 						}
 					});
 					this.add(corrida);

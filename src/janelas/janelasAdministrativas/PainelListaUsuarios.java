@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import janelas.janelasDeUsuários.JanelaEditarPerfil;
@@ -17,13 +18,13 @@ import sistemas.painel.Painel;
 public class PainelListaUsuarios extends Painel {
 	ArrayList<Usuario> usuarios;
 
-	public PainelListaUsuarios(Administrador usuario, ArrayList<Usuario> usuarios) {
+	public PainelListaUsuarios(JFrame janelaAnterior, Administrador usuario, ArrayList<Usuario> usuarios) {
 		super(null, usuario);
 		this.usuarios = usuarios;
-		preencherPainel();
+		preencherPainel(janelaAnterior);
 	}
 
-	public void preencherPainel() {
+	public void preencherPainel(JFrame janelaAnterior) {
 
 		this.setBackground(Color.WHITE);
 		int y = 10;
@@ -38,7 +39,7 @@ public class PainelListaUsuarios extends Painel {
 				botao.setBounds(310, y, 115, 40);
 				botao.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						new JanelaEditarPerfil(c);
+						new JanelaEditarPerfil(janelaAnterior, c);
 					}
 				});
 				this.add(corrida);

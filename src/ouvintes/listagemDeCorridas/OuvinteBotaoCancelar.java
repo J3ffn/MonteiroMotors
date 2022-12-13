@@ -14,26 +14,16 @@ import sistemas.Usuários.Passageiro;
 import sistemas.Usuários.Usuario;
 
 public class OuvinteBotaoCancelar implements ActionListener {
-	JFrame janela;
-	private Usuario usuario;
+	private JFrame telaAnterior;
+	private JFrame telaAtual;
 
-	public OuvinteBotaoCancelar(JFrame j, Usuario usuario) {
-		janela = j;
-		this.usuario = usuario;
+	public OuvinteBotaoCancelar(JFrame telaAnterior, JFrame telaAtual) {
+		this.telaAnterior = telaAnterior;
+		this.telaAtual = telaAtual;
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		janela.dispose();
-		switch (usuario.getTipoDeConta()) {
-		case ADMINISTRADOR:
-			new JanelaAdministrador((Administrador) usuario);
-			break;
-		case MOTOTAXISTA:
-			new JanelaMototaxista((Mototaxista) usuario);
-			break;
-		case PASSAGEIRO:
-			new JanelaPassageiro((Passageiro) usuario);
-		}
-
+		telaAtual.dispose();
+		telaAnterior.setVisible(true);
 	}
 }
