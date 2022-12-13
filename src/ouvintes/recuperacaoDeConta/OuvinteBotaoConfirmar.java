@@ -58,7 +58,7 @@ public class OuvinteBotaoConfirmar implements ActionListener {
 
 				e1.printStackTrace();
 			}
-		} else if (linhaPassword.getText().isEmpty()) {
+		} else if (new String(linhaPassword.getPassword()).isEmpty()) {
 			JOptionPane.showMessageDialog(null, "Campos vazios");
 		} else {
 			JOptionPane.showMessageDialog(null, "Senhas diferentes");
